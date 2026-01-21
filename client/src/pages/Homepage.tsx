@@ -53,75 +53,96 @@ export default function Homepage() {
     <div className="text-gray-800">
 
       {/* Hero Section */}
-      <section className="relative px-6 pt-32 pb-24 overflow-hidden">
-        <div className="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+      <section className="relative px-6 pt-32 pb-20 overflow-hidden">
+        <div className="relative max-w-7xl mt-12 mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
           
-          {/* LEFT SIDE — IMAGE */}
-          <div className="flex justify-center lg:justify-start">
-            <img 
-              src="/hero/hero1.png"
-              alt="Hero"
-              className="w-full max-w-lg object-contain"
-            />
-          </div>
+          {/* LEFT SIDE — TEXT */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
 
-          {/* RIGHT SIDE — THE EXISTING CONTENT */}
-          <div className="flex flex-col items-center lg:items-end text-center lg:text-right">
-            
-            {/* 2. The "Pre-Header" Badge */}
-            <div className="mb-6 px-4 py-1.5 bg-stone-50 border border-stone-100 rounded-full">
-              <span className="text-[10px] font-bold tracking-[0.3em] text-emerald-600 uppercase">
-                Future-Proof Architecture
-              </span>
-            </div>
-
-            {/* 3. High-Impact Typography */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-stone-900 leading-[0.9]">
-              Innovative Software <br />
+            {/* 2. High-Impact Typography */}
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-stone-900 leading-[0.85]">
+              Innovative <br />
+              <span className="text-green-600">Software</span>
+              <br />
               <span
                 className="text-transparent"
-                style={{ WebkitTextStroke: "1.5px #1c1917" }}
+                style={{ WebkitTextStroke: "1px #1c1917" }}
               >
                 Solutions.
               </span>
             </h1>
 
-            {/* 4. Elegant Description */}
-            <p className="mt-10 text-lg md:text-xl text-stone-500 max-w-2xl font-light leading-relaxed">
-              Empowering global enterprises with{" "}
-              <span className="text-stone-900 font-medium">bespoke platforms</span>.
-              We bridge the gap between complex engineering and intuitive user
-              experience.
+            {/* 3. Elegant Description */}
+            <p className="mt-8 text-lg md:text-xl text-stone-600 max-w-xl font-light leading-relaxed">
+              We develop{" "}
+              <span className="text-emerald-900 font-semibold italic">bespoke software platforms</span>
+              under new concepts for global businesses, prioritizing quality, reliability, and customer satisfaction.
             </p>
 
-            {/* 5. Professional Call-to-Action Buttons */}
-            <div className="mt-12 flex flex-col sm:flex-row lg:justify-end items-center gap-6">
-              
-              {/* Main Button */}
-              <button className="relative px-10 py-4 overflow-hidden group border border-stone-900 rounded-full transition-all duration-500">
-                <span className="absolute inset-0 w-0 h-full bg-stone-900 transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:w-full"></span>
-                <span className="relative z-10 text-[11px] font-bold tracking-[0.2em] uppercase text-stone-900 group-hover:text-white transition-colors duration-500">
+            {/* 4. Professional CTA Section */}
+            <div className="mt-8 flex flex-col sm:flex-row items-center gap-8">
+              <button 
+                    onClick={() => navigate("/contact")}  
+                    className="relative px-12 py-4 overflow-hidden group bg-stone-900 rounded-full transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(5,150,105,0.3)]">
+                <span className="absolute inset-0 w-0 h-full bg-emerald-600 transition-all duration-500 ease-out group-hover:w-full"></span>
+                <span className="relative z-10 text-[11px] font-bold tracking-[0.2em] uppercase text-white">
                   Start Your Project
                 </span>
               </button>
-
-              {/* Secondary Button */}
-              <button className="text-[11px] font-bold tracking-[0.2em] uppercase text-stone-400 hover:text-stone-900 transition-colors flex items-center gap-2 group">
-                Our Portfolio
-                <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-              </button>
+              
+              {/* Trust Indicator */}
+              <div className="flex flex-col items-start gap-1 mt-2">
+                <div className="flex -space-x-2">
+                  <img
+                  className="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100&h=100"
+                  alt="Executive Partner"
+                />
+                <img
+                  className="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100&h=100"
+                  alt="Tech Lead"
+                />
+                <img
+                  className="inline-block h-8 w-8 rounded-full ring-2 ring-white object-cover"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=100&h=100"
+                  alt="Product Director"
+                />
+                <div className="flex items-center justify-center h-8 w-8 rounded-full ring-1 ring-gray-300 bg-gray-100 text-[10px] font-bold text-emerald-700">
+                  +50
+                </div>
+                </div>
+                <p className="text-[11px] font-medium text-stone-600 uppercase tracking-widest">
+                  <span className="text-emerald-700">Fortune</span> Partners
+                </p>
+              </div>
             </div>
+          </div>
 
-            {/* 6. Social Proof */}
-            <div className="mt-20 pt-10 border-t border-stone-100 w-full">
-              <p className="text-[10px] font-bold tracking-[0.4em] text-stone-300 uppercase">
-                Trusted by Industry Leaders Worldwide
-              </p>
+          <div className="flex justify-center lg:justify-end order-1 lg:order-2 relative group">
+            
+            {/* Soft organic glow (no square edges) */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-emerald-500/30 blur-[120px] rounded-full z-0" />
+            <div className="relative">
+              <img
+                src="/hero/hero4.png"
+                alt="Software Graphics"
+                className="
+                  w-full
+                  max-w-2xl
+                  md:max-w-4xl
+                  lg:max-w-5xl
+                  xl:max-w-6xl
+                  object-contain
+                  brightness-110
+                  relative z-10
+                  drop-shadow-[20px_30px_20px_rgba(0,0,0,0.2)]
+                "
+              />
             </div>
           </div>
         </div>
       </section>
-
 
       {/* Our Story Section */}
       <section className="relative px-6 py-20  overflow-hidden">
@@ -574,7 +595,7 @@ export default function Homepage() {
                 {/* Visual Side */}
                 <div className="relative bg-slate-50 flex items-center justify-center p-1 lg:p-2">
                   <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-                  <div className="relative w-full aspect-video rounded overflow-hidden border border-slate-200">
+                  <div className="relative h-full aspect-video rounded overflow-hidden border border-slate-200">
                     <img 
                       src="/islekeyholidays.png" 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
@@ -613,7 +634,7 @@ export default function Homepage() {
                 {/* Visual Side (Reversed) */}
                 <div className="relative bg-slate-50 flex items-center justify-center p-1 lg:p-2 order-2 lg:order-1">
                   <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-                  <div className="relative w-full aspect-video rounded  overflow-hidden border border-slate-200">
+                  <div className="relative w-full aspect-video rounded   overflow-hidden border border-slate-200">
                     <img 
                       src="/dreamspeed.png" 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
@@ -754,29 +775,16 @@ export default function Homepage() {
           <div className="w-full lg:w-1/2 order-1 lg:order-2">
             <div className="relative group">
               {/* Architectural Framing Elements */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-purple-50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+              <div className="absolute -top-6 -right-6 w-32 h-32  rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
               
               {/* Main Image Stage */}
-              <div className="relative p-3 bg-white border border-slate-200 rounded-[3rem] shadow-2xl transition-transform duration-700 group-hover:scale-[1.02]">
-                <div className="rounded-[2.2rem] overflow-hidden border border-slate-100 shadow-inner">
+              <div className="relative p-3    rounded-[3rem]  transition-transform duration-700 group-hover:scale-[1.02]">
+                <div className="rounded-[2.2rem] overflow-hidden  ">
                   <img 
-                    src="/web1.png" // Replace with your link
+                    src="/hero/hero1.png" // Replace with your link
                     alt="Collaboration Highlight" 
                     className="w-full h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000"
                   />
-                </div>
-                
-                {/* Float Card Overlay */}
-                <div className="absolute -bottom-10 right-10 bg-white/80 backdrop-blur-xl p-6 rounded-3xl border border-white shadow-2xl hidden md:block">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-bold italic">
-                      LWD
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-xs font-black text-slate-400 uppercase tracking-widest">Design Node</span>
-                      <span className="text-sm font-bold text-slate-900">System Ready 2.0</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
