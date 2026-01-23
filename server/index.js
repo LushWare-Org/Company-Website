@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config(); // Load .env variables
 
+const inquiryRoutes = require("./routes/inquiries");
+
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -36,6 +38,12 @@ app.get("/api", async (req, res) => {
     res.status(500).json({ message: "Error checking DB connection", error: err.message });
   }
 });
+
+// --------------------------
+// Routes
+// --------------------------
+// Mount inquiry routes
+app.use("/api/inquiries", inquiryRoutes);
 
 // --------------------------
 // Start server

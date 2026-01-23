@@ -1,8 +1,14 @@
 import { useState } from "react";
+import type { InquiryType, InquiryFormData } from "../services/inquiryService";
+import { submitInquiry, validateEmail, validatePhone } from "../services/inquiryService";
+import { getNames } from "country-list";
+import Select from "react-select";
 
 type InquiryFormProps = {
+  inquiryType: InquiryType;
   topic: string;
-  industry: string;
+  industry?: string;
+  project?: string;
   ctaLabel?: string;
   onSuccess?: () => void;
   onClose?: () => void;
@@ -14,27 +20,38 @@ type FormData = {
   lastName: string;
   email: string;
   organization: string;
-  country: string;
+  country: { value: string; label: string } | null;
   whatsappNumber: string;
-  requirements: string;
+  // Solution fields
+  requirements?: string;
+  // Project fields
+  teamMembers?: string;
+  message?: string;
 };
 
 export default function InquiryForm({ 
+  inquiryType,
   topic, 
-  industry, 
-  ctaLabel = "Send Inquiry", 
+  industry,
+  project,
+  ctaLabel = "Submit", 
   onSuccess, 
   onClose,
   showCloseButton = false 
 }: InquiryFormProps) {
+  const countries = getNames();
+  const countryOptions = countries.map((c) => ({ value: c, label: c }));
+
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
     email: "",
     organization: "",
-    country: "",
+    country: null,
     whatsappNumber: "",
-    requirements: ""
+    requirements: "",
+    teamMembers: "",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,53 +63,94 @@ export default function InquiryForm({
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleCountryChange = (option: { value: string; label: string } | null) => {
+    setFormData(prev => ({
+      ...prev,
+      country: option,
+    }));
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus("idle");
     setErrorMessage("");
 
-    try {
-      const response = await fetch("/api/inquiries", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          topic,
-          industry,
-          submittedAt: new Date().toISOString()
-        }),
-      });
+    // Validation
+    if (!validateEmail(formData.email)) {
+      setErrorMessage("Please enter a valid email address");
+      setSubmitStatus("error");
+      setIsSubmitting(false);
+      return;
+    }
 
-      if (!response.ok) {
-        throw new Error("Failed to submit inquiry");
+    if (!validatePhone(formData.whatsappNumber)) {
+      setErrorMessage("Please enter a valid WhatsApp number");
+      setSubmitStatus("error");
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (!formData.country) {
+      setErrorMessage("Please select a country");
+      setSubmitStatus("error");
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Build inquiry data based on type
+      const inquiryData: InquiryFormData = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        organization: formData.organization,
+        country: formData.country.value,
+        whatsapp: formData.whatsappNumber,
+        inquiryType,
+      };
+
+      // Add type-specific fields
+      if (inquiryType === 'solution') {
+        inquiryData.industry = industry || topic;
+        inquiryData.requirements = formData.requirements;
+      } else if (inquiryType === 'project') {
+        inquiryData.project = project || topic;
+        inquiryData.teamMembers = formData.teamMembers;
+        inquiryData.message = formData.message;
       }
 
-      setSubmitStatus("success");
-      
-      // Reset form after successful submission
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        organization: "",
-        country: "",
-        whatsappNumber: "",
-        requirements: ""
-      });
+      const result = await submitInquiry(inquiryData);
 
-      // Call onSuccess callback after a brief delay to show success message
-      if (onSuccess) {
-        setTimeout(() => {
-          onSuccess();
-        }, 2000);
+      if (result.success) {
+        setSubmitStatus("success");
+        
+        // Reset form after successful submission
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          organization: "",
+          country: null,
+          whatsappNumber: "",
+          requirements: "",
+          teamMembers: "",
+          message: "",
+        });
+
+        // Call onSuccess callback after a brief delay to show success message
+        if (onSuccess) {
+          setTimeout(() => {
+            onSuccess();
+          }, 2000);
+        }
+      } else {
+        throw new Error(result.message);
       }
     } catch (error) {
       console.error("Error submitting inquiry:", error);
       setSubmitStatus("error");
-      setErrorMessage("Failed to submit your inquiry. Please try again.");
+      setErrorMessage(error instanceof Error ? error.message : "Failed to submit your inquiry. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -105,38 +163,54 @@ export default function InquiryForm({
   };
 
   // Shared styles for inputs to keep code clean
-  const inputStyles = "w-full bg-slate-50/50 border border-slate-200 rounded-lg px-4 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition-all duration-200 outline-none disabled:opacity-50 disabled:cursor-not-allowed";
+  const heading = inquiryType === "project" ? "Project Base Application" : "Customer Requirement";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 bg-white w-full">
+    <form onSubmit={handleSubmit} className="space-y-8 bg-white w-full px-6 md:px-8 lg:px-12">
       {/* Header with optional close button */}
-      <div className="mb-6 relative">
-        <h3 className="text-4xl font-bold text-slate-900 mb-2">Let's build.</h3>
-        <p className="text-slate-500 mb-4 text-lg">Inquiry for {topic}</p>
-        
-        {showCloseButton && (
-          <button
-            type="button"
-            onClick={handleClose}
-            className="absolute top-0 right-0 p-2 text-slate-400 hover:text-slate-900 transition-colors"
-            aria-label="Close form"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        )}
-      </div>
+        <div className="relative pb-2">
+          <div className="flex justify-between items-start">
+            <div>
 
-      {/* Industry Display */}
-      <div className="pb-2 border-b border-slate-200">
-        <p className="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-0.5">Industry</p>
-        <p className="text-sm text-slate-700 font-medium">{industry}</p>
-      </div>
+              <h3 className="text-4xl font-bold tracking-tighter text-slate-900 leading-none">
+                {heading}
+              </h3>
+              <p className="mt-2 text-md text-slate-500 font-medium">Topic: <span className="text-slate-900">{topic}</span></p>
+            </div>
+            
+            {showCloseButton && (
+              <button
+                type="button"
+                onClick={handleClose}
+                className="group relative h-10 w-10 flex items-center justify-center overflow-hidden rounded-full border border-slate-400 transition-colors duration-300 hover:border-red-600"
+                aria-label="Close form"
+              >
+                {/* Red Background - Slides from left to right */}
+                <div className="absolute inset-0 z-0 -translate-x-full bg-red-600 transition-transform duration-300 ease-out group-hover:translate-x-0" />
+                
+                {/* Close Icon */}
+                <svg 
+                  className="relative z-10 w-5 h-5 text-slate-500 transition-all duration-300 group-hover:text-white group-hover:rotate-90" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2.5} 
+                    d="M6 18L18 6M6 6l12 12" 
+                  />
+                </svg>
+              </button>
+            )}
+          </div>
+        </div>
+
 
       {/* Success Message */}
       {submitStatus === "success" && (
-        <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
+        <div className="p-2 bg-emerald-50 border border-emerald-200 rounded-lg">
           <div className="flex items-center gap-2 text-emerald-700">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -148,7 +222,7 @@ export default function InquiryForm({
 
       {/* Error Message */}
       {submitStatus === "error" && (
-        <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
+        <div className="p-2 bg-red-50 border border-red-200 rounded-lg">
           <div className="flex items-center gap-2 text-red-700">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -158,135 +232,215 @@ export default function InquiryForm({
         </div>
       )}
 
-      {/* Name Fields */}
-      <div className="grid grid-cols-2 gap-3">
+{/* Row 1: Names */}
+    <div className="grid grid-cols-2 gap-6">
+      <div className="group space-y-1">
+        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 group-focus-within:text-emerald-600 transition-colors">First Name</label>
         <input
           type="text"
           name="firstName"
-          placeholder="First Name"
           value={formData.firstName}
           onChange={handleInputChange}
-          className={inputStyles}
+          className="w-full border-b border-slate-200 bg-transparent py-2 text-slate-900 placeholder:text-slate-300 focus:border-emerald-600 focus:outline-none transition-all"
+          placeholder="e.g. Alexander"
           disabled={isSubmitting}
           required
         />
+      </div>
+      <div className="group space-y-1">
+        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 group-focus-within:text-emerald-600 transition-colors">Last Name</label>
         <input
           type="text"
           name="lastName"
-          placeholder="Last Name"
           value={formData.lastName}
           onChange={handleInputChange}
-          className={inputStyles}
+          className="w-full border-b border-slate-200 bg-transparent py-2 text-slate-900 placeholder:text-slate-300 focus:border-emerald-600 focus:outline-none transition-all"
+          placeholder="e.g. Pierce"
           disabled={isSubmitting}
           required
         />
       </div>
+    </div>
 
-      {/* Email and Organization */}
-      <div className="grid grid-cols-2 gap-3">
+{/* Row 2: Contact Info */}
+    <div className="grid grid-cols-2 gap-6">
+      <div className="group space-y-1">
+        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors">Email Address</label>
         <input
           type="email"
           name="email"
-          placeholder="Email Address"
           value={formData.email}
           onChange={handleInputChange}
-          className={inputStyles}
+          className="w-full border-b border-slate-200 bg-transparent py-2 text-slate-900 placeholder:text-slate-300 focus:border-emerald-600 focus:outline-none transition-all"
+          placeholder="alex@organization.com"
           disabled={isSubmitting}
           required
         />
+      </div>
+      <div className="group space-y-1">
+        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors">Organization</label>
         <input
           type="text"
           name="organization"
-          placeholder="Organization"
           value={formData.organization}
           onChange={handleInputChange}
-          className={inputStyles}
+          className="w-full border-b border-slate-200 bg-transparent py-2 text-slate-900 placeholder:text-slate-300 focus:border-emerald-600 focus:outline-none transition-all"
+          placeholder="Company or Uni"
           disabled={isSubmitting}
         />
       </div>
+    </div>
 
-      {/* Country and WhatsApp Number */}
-      <div className="grid grid-cols-2 gap-3">
-        <select 
-          name="country"
+{/* Row 3: Location & Phone */}
+    <div className="grid grid-cols-2 gap-6">
+      <div className="group space-y-1">
+        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors">Region</label>
+        <Select 
+          options={countryOptions}
           value={formData.country}
-          onChange={handleInputChange}
-          className={inputStyles} 
-          disabled={isSubmitting}
+          onChange={handleCountryChange}
+          isDisabled={isSubmitting}
+          isClearable
+          isSearchable
+          className="react-select-container"
+          classNamePrefix="react-select"
+          styles={{
+            control: (base) => ({
+              ...base,
+              borderBottom: "1px solid #e2e8f0",
+              backgroundColor: "transparent",
+              border: "none",
+              borderRadius: "0",
+              padding: "8px 0",
+              fontSize: "14px",
+              cursor: "pointer",
+              "&:hover": {
+                ...base["&:hover"],
+                borderBottomColor: "#10b981",
+              },
+              "&:focus-within": {
+                borderBottomColor: "#10b981",
+                boxShadow: "none",
+              },
+            }),
+            option: (base, state) => ({
+              ...base,
+              backgroundColor: state.isSelected ? "#10b981" : state.isFocused ? "#f0fdf4" : "white",
+              color: state.isSelected ? "white" : "#1f2937",
+              cursor: "pointer",
+              "&:hover": {
+                backgroundColor: state.isSelected ? "#10b981" : "#f0fdf4",
+              },
+            }),
+            singleValue: (base) => ({
+              ...base,
+              color: "#1f2937",
+            }),
+            input: (base) => ({
+              ...base,
+              color: "#1f2937",
+            }),
+            placeholder: (base) => ({
+              ...base,
+              color: "#d1d5db",
+            }),
+          }}
+          placeholder="Select Country"
           required
-        >
-          <option value="">Select Country</option>
-          <option value="us">United States</option>
-          <option value="uk">United Kingdom</option>
-          <option value="ca">Canada</option>
-          <option value="au">Australia</option>
-          <option value="in">India</option>
-          <option value="lk">Sri Lanka</option>
-          <option value="sg">Singapore</option>
-          <option value="ae">United Arab Emirates</option>
-          <option value="other">Other</option>
-        </select>
+        />
+      </div>
+      <div className="group space-y-1">
+        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors">WhatsApp Number</label>
         <input
           type="tel"
           name="whatsappNumber"
-          placeholder="WhatsApp Number"
           value={formData.whatsappNumber}
           onChange={handleInputChange}
-          className={inputStyles}
+          className="w-full border-b border-slate-200 bg-transparent py-2 text-slate-900 placeholder:text-slate-300 focus:border-emerald-600 focus:outline-none transition-all"
+          placeholder="+94 00 000 0000"
           disabled={isSubmitting}
           required
         />
       </div>
+    </div>
 
-      {/* Requirement / Project Details */}
-      <div>
-        <textarea
-          name="requirements"
-          placeholder={`Tell us about your requirements for ${topic}...`}
-          rows={3}
-          value={formData.requirements}
-          onChange={handleInputChange}
-          className={`${inputStyles} resize-none`}
-          disabled={isSubmitting}
-          required
-        />
-      </div>
+      {/* Solution-specific fields */}
+      {inquiryType === 'solution' && (
+        <div className="group space-y-1">
+          <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors">Your Requirements</label>
+          <textarea
+            name="requirements"
+            placeholder="Describe your software solution needs, challenges, and goals..."
+            rows={4}
+            value={formData.requirements}
+            onChange={handleInputChange}
+            className="w-full border-b border-slate-200 bg-transparent py-2 text-slate-900 placeholder:text-slate-300 focus:border-emerald-600 focus:outline-none transition-all resize-none"
+            disabled={isSubmitting}
+            required
+          />
+        </div>
+      )}
 
-      {/* Submit Button */}
-      <button
-        type="submit"
-        disabled={isSubmitting || submitStatus === "success"}
-        className="group relative w-full overflow-hidden rounded-lg bg-slate-900 px-6 py-2.5 text-sm font-bold text-white transition-all hover:bg-slate-800 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-slate-900 disabled:active:scale-100"
-      >
-        <span className="relative z-10 flex items-center justify-center gap-2">
-          {isSubmitting ? (
-            <>
-              <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              Submitting...
-            </>
-          ) : submitStatus === "success" ? (
-            <>
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-              </svg>
-              Submitted!
-            </>
-          ) : (
-            <>
-              {ctaLabel}
-              <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </>
-          )}
-        </span>
-        {!isSubmitting && submitStatus !== "success" && (
-          <div className="absolute inset-0 z-0 translate-x-[-100%] bg-emerald-600 transition-transform duration-300 group-hover:translate-x-0" />
-        )}
-      </button>
+      {/* Project-specific fields */}
+      {inquiryType === 'project' && (
+        <>
+          <div className="group space-y-1">
+            <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors">Team Members</label>
+            <input
+              type="text"
+              name="teamMembers"
+              placeholder="Names of other team members (if any)"
+              value={formData.teamMembers}
+              onChange={handleInputChange}
+              className="w-full border-b border-slate-200 bg-transparent py-2 text-slate-900 placeholder:text-slate-300 focus:border-emerald-600 focus:outline-none transition-all"
+              disabled={isSubmitting}
+            />
+          </div>
+          <div className="group space-y-1">
+            <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 group-focus-within:text-emerald-600 transition-colors">Additional Details</label>
+            <textarea
+              name="message"
+              placeholder="Tell us more about your project goals, scope, and expectations..."
+              rows={4}
+              value={formData.message}
+              onChange={handleInputChange}
+              className="w-full border-b border-slate-200 bg-transparent py-2 text-slate-900 placeholder:text-slate-300 focus:border-emerald-600 focus:outline-none transition-all resize-none"
+              disabled={isSubmitting}
+            />
+          </div>
+        </>
+      )}
+
+
+          <button
+            type="submit"
+            disabled={isSubmitting || submitStatus === "success"}
+            className="group relative w-full overflow-hidden h-16 bg-slate-900 text-white rounded-xl transition-all hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] active:scale-[0.99] disabled:opacity-50"
+          >
+            {/* Emerald Sweep Layer */}
+            <div className={`absolute inset-0 bg-emerald-600 -translate-x-full transition-transform duration-500 ease-out ${!isSubmitting && submitStatus !== "success" ? 'group-hover:translate-x-0' : ''}`} />
+            
+            <div className="relative z-10 flex items-center justify-center gap-4">
+              {isSubmitting ? (
+                <div className="flex items-center gap-3">
+                  <svg className="animate-spin h-5 w-5 text-emerald-400" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <span className="text-[13px] font-black uppercase tracking-[0.2em]">Processing...</span>
+                </div>
+              ) : submitStatus === "success" ? (
+                <span className="text-[13px] font-black uppercase tracking-[0.2em]">Application Received</span>
+              ) : (
+                <>
+                  <span className="text-[13px] font-black uppercase tracking-[0.2em]">{ctaLabel}</span>
+                  <svg className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </>
+              )}
+            </div>
+          </button>
     </form>
   );
 }

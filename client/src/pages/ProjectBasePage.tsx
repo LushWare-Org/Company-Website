@@ -4,16 +4,19 @@ import InquiryForm from "../components/InquiryForm";
 
 type Program = {
   title: string;
+  subtitle: string; // Restored from data usage
   description: string;
 };
 
 const programs: Program[] = [
   {
+    title: "Software Engineering", // Added title to match your mapping logic
     subtitle: "Software Development Project Base",
     description:
       "Join structured builds with mentors, code reviews, and delivery rituals. Perfect for engineers growing into product ownership.",
   },
   {
+    title: "AI & Automation", // Added title to match your mapping logic
     subtitle: "AI & Automation Project Base",
     description:
       "Hands-on automation and agent projects: data pipelines, workflow orchestration, and LLM-powered copilots.",
@@ -24,120 +27,226 @@ export default function ProjectBasePage() {
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
 
   return (
-    <section id="project-base" className="scroll-mt-24  px-6 py-20">
+    <section id="project-base" className="scroll-mt-24 px-6 py-16">
       <div className="mx-auto max-w-6xl">
-<div className="max-w-7xl mx-auto px-6">
-    
-    {/* Header Section */}
-    <div className="mb-16">
-      <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">
-        Project Base
-      </p>
-      <h2 className="mt-2 text-4xl md:text-5xl font-black text-gray-900">
-        Build with us.
-      </h2>
-      <p className="mt-4 text-xl text-gray-600 max-w-3xl leading-relaxed">
-        Choose a track and send an inquiry. We will align scope, timelines, and the outcomes you need to bridge the gap between learning and industry.
-      </p>
-    </div>
+        <div className="max-w-7xl mt-20 mx-auto px-6">
 
-    {/* Primary Hero: Join/Skills Section */}
-    <div className="grid lg:grid-cols-2 gap-12 items-center bg-slate-900 rounded-3xl p-8 md:p-16 text-white mb-20">
-      <div>
-        <h3 className="text-3xl md:text-4xl font-bold leading-tight">
-          Let’s join to <span className="text-blue-400">add value to your skills</span> with real-world experience.
-        </h3>
-        <button className="mt-8 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full transition-all transform hover:scale-105">
-          Get Started
-        </button>
-      </div>
-      <div className="border-l border-slate-700 pl-8 hidden lg:block">
-        <p className="text-slate-400 italic text-lg">
-          "The best way to predict the future is to build it. Join a community where your code translates into real-world impact."
-        </p>
-      </div>
-    </div>
 
-    {/* Details Grid: What is & Legacy */}
-    <div className="grid md:grid-cols-2 gap-16">
-      
-      {/* Column 1: What is Lush Project Base */}
-      <div className="space-y-6">
-        <div className="inline-block p-3 bg-blue-50 rounded-xl">
-          <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+          {/* HEADER */}
+          <div className="mb-20 text-center relative">
+            <h2 className="text-5xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+              Become a{" "}
+              <span className="relative inline-block text-emerald-600">
+                Product Builder
+                <svg
+                  className="absolute -bottom-2 left-0 w-full h-3 text-emerald-400/70"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0 5 Q 25 0 50 5 T 100 5"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="transparent"
+                  />
+                </svg>
+              </span>
+              ,
+              <br className="hidden md:block" />
+              not just a learner.
+            </h2>
+
+            <p className="mt-6 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+              Choose a track and apply now. We align{" "}
+              <span className="text-emerald-600 font-semibold">
+                scope, timelines, and real outcomes
+              </span>{" "}
+              so your work actually ships.
+            </p>
+          </div>
+
+
+
+          {/* PRIMARY CTA HERO */}
+          <div className="grid lg:grid-cols-2 gap-14 items-center bg-emerald-50/60 border border-emerald-100 rounded-3xl p-10 md:p-16 text-slate-900 mb-28">
+            <div>
+              <h3 className="text-3xl md:text-4xl font-bold leading-tight">
+                Build real products.{" "}
+                <span className="text-emerald-600">
+                  Work like an industry engineer.
+                </span>
+              </h3>
+
+              <p className="mt-4 text-slate-600 max-w-xl">
+                Collaborate with teams, solve real problems, and gain experience that
+                actually matters.
+              </p>
+
+              <button 
+                onClick={() => {
+                  const element = document.getElementById('active-programs');
+                  element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+                className="mt-10 px-10 py-4 bg-emerald-600 text-white font-bold rounded-full transition-all duration-300 hover:bg-emerald-700 hover:scale-105 shadow-xl shadow-emerald-200 focus:outline-none focus:ring-4 focus:ring-emerald-300"
+              >
+                Start My Journey →
+              </button>
+            </div>
+
+            <div className="border-l border-emerald-200 pl-10 hidden lg:block">
+              <p className="text-slate-500 italic text-lg leading-relaxed">
+                “You don’t learn by watching — you learn by building.  
+                Here, your work becomes part of real products.”
+              </p>
+            </div>
+          </div>
+
+      <div className="grid md:grid-cols-2 gap-0 mb-20 border-y bg-white border-slate-200">
+
+        {/* SECTION 1: THE CORE */}
+        <div className="group relative py-16 pr-8 md:pr-16 border-b md:border-b-0 md:border-r border-slate-200">
+          <div className="space-y-12">
+
+            {/* Heading + Description */}
+            <div className="space-y-6">
+              <h4 className="text-4xl font-bold text-slate-900 tracking-tighter leading-[0.95]">
+                What is <br />
+                <span className="text-slate-400 group-hover:text-emerald-600 transition-colors duration-500">
+                  Lush Project Base?
+                </span>
+              </h4>
+
+              <p className="text-slate-500 leading-relaxed text-lg">
+                Lush Project Base is a hands-on environment where you contribute directly
+                to <span className="text-slate-900 font-medium">real software products</span>{" "}
+                that we continuously build and improve.
+              </p>
+
+              <p className="text-slate-500 leading-relaxed text-lg">
+                This is not traditional training. You learn by working on live projects,
+                gaining practical experience in real-world production environments.
+              </p>
+            </div>
+
+            {/* Feature Tags */}
+            <div className="flex flex-wrap gap-3">
+              {[
+                "Software Development Projects",
+                "AI Research & Development",
+                "Production-Level Experience",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="px-4 py-2 rounded-2xl bg-slate-50 border border-slate-200 text-[10px] font-bold uppercase tracking-widest text-slate-600 group-hover:border-emerald-200 transition-colors"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+
+
+          </div>
         </div>
-        <h4 className="text-2xl font-bold text-gray-900">What is Lush Project Base?</h4>
-        <p className="text-gray-600 leading-relaxed">
-          Here you can contribute to the software projects that we continue building as our products. This isn't just practice; it's an opportunity to learn and experience high-level production environments.
-        </p>
-        <ul className="space-y-3">
-          <li className="flex items-center gap-3 text-gray-700 font-medium">
-            <span className="w-1.5 h-1.5 bg-blue-600 rounded-full" /> Software Development Tracks
-          </li>
-          <li className="flex items-center gap-3 text-gray-700 font-medium">
-            <span className="w-1.5 h-1.5 bg-blue-600 rounded-full" /> AI Research & Development
-          </li>
-        </ul>
-        <button className="text-blue-600 font-bold hover:underline flex items-center gap-2">
-          Apply Now <span>→</span>
-        </button>
+
+        {/* SECTION 2: THE LEGACY */}
+        <div className="group/legacy relative py-16 md:pl-16 flex flex-col justify-between">
+          <div className="space-y-14">
+
+            <div className="space-y-8">
+              <h4 className="text-4xl font-bold text-slate-900 tracking-tighter leading-tight">
+                Make Partner Of <br />
+                <span className="text-slate-900">A Legacy of Innovation & Success</span>
+              </h4>
+
+              <div className="space-y-6">
+                <p className="text-slate-600 leading-relaxed text-lg border-l-4 border-slate-900 pl-8 group-hover/legacy:border-emerald-600 transition-colors duration-500">
+                  As <strong className="text-slate-900 font-black">LushWare ORG</strong>, we
+                  continuously create new platforms that help the general public simplify
+                  their daily lives, while consistently pushing boundaries and embracing
+                  emerging technologies.
+                </p>
+
+                <p className="text-slate-500 leading-relaxed pl-9 text-lg">
+                  Our journey is driven by a commitment to excellence, a strong
+                  customer-centric focus, and a passion for building cutting-edge
+                  solutions that move both people and businesses forward.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
 
-      {/* Column 2: Legacy/Mission */}
-      <div className="space-y-6 border-t md:border-t-0 md:border-l border-gray-100 md:pl-16 pt-12 md:pt-0">
-        <h4 className="text-2xl font-bold text-gray-900 tracking-tight">
-          A Legacy of Innovation
-        </h4>
-        <p className="text-gray-600 leading-relaxed">
-          As <strong>LushWare ORG</strong>, we produce new platforms designed to make daily life easier. We consistently push boundaries by embracing cutting-edge technologies.
-        </p>
-        <p className="text-gray-600 leading-relaxed">
-          Our journey is marked by a commitment to excellence and a customer-centric focus, creating solutions that drive both lives and businesses forward.
-        </p>
-      </div>
+        </div>
 
-    </div>
-  </div>
+        {/* PROGRAM PATHS */}
+      <div id="active-programs" className="max-w-7xl mx-auto py-2 px-6">
+        <div className="text-center mb-16">
+          <div>
+            <h1 className="text-5xl font-semibold tracking-tighter text-slate-900">
+              Active Programs<span className="text-emerald-600">.</span>
+            </h1>
+          </div>
+        </div>
 
-        <div className="mt-10 grid gap-8 md:grid-cols-2">
-          {programs.map((program) => (
+        <div className="border-t border-slate-400">
+          {programs.map((program, index) => (
             <div
               key={program.title}
-              className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              onClick={() => setSelectedProgram(program)}
+              className="group relative flex flex-col md:flex-row md:items-center justify-between py-12 border-b border-slate-400 cursor-pointer"
             >
-              <h3 className="text-xl font-semibold text-gray-900">{program.title}</h3>
-              <p className="mt-2 text-sm font-medium text-emerald-600">{program.subtitle}</p>
-              <p className="mt-3 text-gray-600">{program.description}</p>
-              
-              <button
-                onClick={() => setSelectedProgram(program)}
-                className="group mt-6 relative rounded-lg flex items-center gap-3 overflow-hidden bg-slate-900 px-6 py-3 text-white transition-all duration-300 active:scale-95"
-              >
-                {/* The Emerald Slider */}
-                <span className="absolute inset-0 z-0 h-full w-full translate-x-[-100%] bg-emerald-600 transition-transform duration-500 ease-out group-hover:translate-x-0" />
-
-                {/* Button Content */}
-                <span className="relative z-10 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em]">
-                  Send Inquiry
-                  <svg 
-                    className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2.5} 
-                      d="M17 8l4 4m0 0l-4 4m4-4H3" 
-                    />
-                  </svg>
+              {/* Left Side: Index & Title */}
+              <div className="flex items-start gap-12 md:gap-20">
+                <span className="font-mono text-md text-slate-400 group-hover:text-emerald-600 transition-colors duration-300 pt-1">
+                  {String(index + 1).padStart(2, '0')}
                 </span>
-              </button>
+                
+                <div className="space-y-2">
+                  <h3 className="text-3xl font-bold text-slate-900 tracking-tight transition-transform duration-500 group-hover:translate-x-2">
+                    {program.title}
+                  </h3>
+                  <p className="text-slate-600 text-sm font-bold uppercase tracking-[0.2em] group-hover:text-slate-600 transition-colors">
+                    {program.subtitle}
+                  </p>
+                </div>
+              </div>
+
+              {/* Right Side: Description & Sweep Button */}
+              <div className="mt-8 md:mt-0 flex items-center gap-12">
+                <p className="hidden lg:block text-slate-700 text-md leading-relaxed max-w-[280px] opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  {program.description}
+                </p>
+
+                {/* Sweep Button */}
+                <button className="relative rounded-3xl h-14 w-52 bg-slate-900 overflow-hidden transition-all duration-300 group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)]">
+                  {/* The Emerald Sweep (Going from left) */}
+                  <div className="absolute inset-0 z-0 -translate-x-full bg-emerald-600 transition-transform duration-500 ease-[cubic-bezier(0.85,0,0.15,1)] group-hover:translate-x-0" />
+                  
+                  {/* Button Text & Icon */}
+                  <div className="relative z-10  flex items-center justify-center gap-3 px-6">
+                    <span className="text-white text-[11px] font-black uppercase tracking-[0.2em]">
+                      Apply Now
+                    </span>
+                    <svg 
+                      className="w-4 h-4 text-white transition-transform duration-500 group-hover:translate-x-2" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor" 
+                      strokeWidth="3"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </button>
+              </div>
             </div>
           ))}
         </div>
       </div>
+      </div>
+
 
       {/* MODAL */}
       {selectedProgram && createPortal(
@@ -149,19 +258,17 @@ export default function ProjectBasePage() {
           />
 
           {/* Modal Container */}
-          <div className="relative w-full max-w-4xl bg-white shadow-2xl rounded-3xl overflow-hidden animate-in fade-in zoom-in-95 duration-300">
-
+          <div className="relative w-full max-w-2xl max-h-[94vh] overflow-y-scroll bg-white shadow-2xl rounded-3xl overflow-hidden animate-in fade-in zoom-in-95 duration-300">
             {/* Form Content */}
-            <div className="p-12 lg:p-20">
-              <div className="max-w-2xl">
-                <InquiryForm 
-                  topic={selectedProgram.title}
-                  industry={selectedProgram.subtitle}
-                  onSuccess={() => setSelectedProgram(null)}
-                  onClose={() => setSelectedProgram(null)}
-                  showCloseButton={true}
-                />
-              </div>
+            <div className="p-8 lg:p-14">
+              <InquiryForm 
+                inquiryType="project"
+                topic={selectedProgram.title}
+                project={selectedProgram.subtitle}
+                onSuccess={() => setSelectedProgram(null)}
+                onClose={() => setSelectedProgram(null)}
+                showCloseButton={true}
+              />
             </div>
           </div>
         </div>,

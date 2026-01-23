@@ -161,18 +161,17 @@ export default function SolutionsPage() {
     />
 
     {/* Modal Container - Full width */}
-    <div className="relative w-full max-w-4xl bg-white shadow-2xl rounded-3xl overflow-hidden animate-in fade-in zoom-in-95 duration-300">
+    <div className="relative w-full max-w-2xl max-h-[94vh] overflow-y-scroll bg-white shadow-2xl rounded-3xl overflow-hidden animate-in fade-in zoom-in-95 duration-300">
       {/* Form Content */}
-      <div className="p-12 lg:p-20">
-        <div className="max-w-2xl">
-          <InquiryForm 
-            topic={selectedSolution.title}
-            industry={selectedSolution.subtitle}
-            onSuccess={() => setSelectedSolution(null)}
-            onClose={() => setSelectedSolution(null)}
-            showCloseButton={true}
-          />
-        </div>
+      <div className="p-8 lg:p-14">
+        <InquiryForm 
+          inquiryType="solution"
+          topic={selectedSolution.title}
+          industry={selectedSolution.subtitle}
+          onSuccess={() => setSelectedSolution(null)}
+          onClose={() => setSelectedSolution(null)}
+          showCloseButton={true}
+        />
       </div>
     </div>
   </div>,
