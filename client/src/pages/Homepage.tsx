@@ -619,7 +619,7 @@ export default function Homepage() {
           {/* The Technical Grid */}
           <div className="max-w-7xl mx-auto px-6 space-y-16">
             
-            <div className="group border border-slate-300 bg-white shadow-sm hover:shadow-2xl transition-all duration-500 rounded-lg overflow-hidden">
+            <div className="group border border-slate-300 bg-white shadow-sm hover:shadow-2xl transition-all duration-500 rounded-2xl overflow-hidden">
               <div className="flex items-center justify-between px-6 py-3 border-b border-slate-300 bg-slate-50/50">
                 <div className="flex gap-2 group/controls">
                   {/* Red / Close */}
@@ -668,9 +668,21 @@ export default function Homepage() {
                       View Live
                     </span>
                     
-                    {/* Arrow Icon */}
-                    <svg className="relative z-10 w-4 h-4 text-white transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    {/* Globe Icon */}
+                    <svg 
+                      width="14" 
+                      height="14" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="white" 
+                      strokeWidth="2.5" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      className="relative z-10 transition-transform duration-700 group-hover:rotate-[360deg]"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="2" y1="12" x2="22" y2="12"></line>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                     </svg>
                   </button>
                 </div>
@@ -678,7 +690,7 @@ export default function Homepage() {
                 {/* Visual Side */}
                 <div className="relative bg-slate-50 flex items-center justify-center p-1 lg:p-2">
                   <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-                  <div className="relative h-full aspect-video rounded overflow-hidden border border-slate-200">
+                  <div className="relative h-full aspect-video rounded-r-lg overflow-hidden border border-slate-200">
                     <img 
                       src="/islekeyholidays.png" 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
@@ -690,7 +702,7 @@ export default function Homepage() {
             </div>
 
             {/* Project Block 02 */}
-            <div className="group border border-slate-300 bg-white shadow-sm hover:shadow-2xl transition-all duration-500 rounded-lg overflow-hidden">
+            <div className="group border border-slate-300 bg-white shadow-sm hover:shadow-2xl transition-all duration-500 rounded-2xl overflow-hidden">
               <div className="flex items-center justify-between px-6 py-3 border-b border-slate-300 bg-slate-50/50">
                 <div className="flex gap-2 group/controls">
                   {/* Red / Close */}
@@ -717,7 +729,7 @@ export default function Homepage() {
                 {/* Visual Side (Reversed) */}
                 <div className="relative bg-slate-50 flex items-center justify-center p-1 lg:p-2 order-2 lg:order-1">
                   <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-                  <div className="relative w-full aspect-video rounded   overflow-hidden border border-slate-200">
+                  <div className="relative w-full aspect-video rounded-l-lg   overflow-hidden border border-slate-200">
                     <img 
                       src="/dreamspeed.png" 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
@@ -752,9 +764,21 @@ export default function Homepage() {
                       View Live
                     </span>
                     
-                    {/* Arrow Icon */}
-                    <svg className="relative z-10 w-4 h-4 text-white transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    {/* Globe Icon */}
+                    <svg 
+                      width="14" 
+                      height="14" 
+                      viewBox="0 0 24 24" 
+                      fill="none" 
+                      stroke="white" 
+                      strokeWidth="2.5" 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      className="relative z-10 transition-transform duration-700 group-hover:rotate-[360deg]"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="2" y1="12" x2="22" y2="12"></line>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                     </svg>
                   </button>
                 </div>
