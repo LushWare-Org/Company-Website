@@ -11,16 +11,5 @@
       "src": "/(.*)",
       "dest": "index.js"
     }
-  ],
-  "env": {
-    "MONGO_URI": "@mongo_uri",
-    "SMTP_HOST": "@smtp_host",
-    "SMTP_PORT": "@smtp_port",
-    "SMTP_USER": "@smtp_user",
-    "SMTP_PASS": "@smtp_pass",
-    "MAIL_USER": "@mail_user",
-    "ADMIN_USERNAME": "@admin_username",
-    "ADMIN_PASSWORD": "@admin_password",
-    "JWT_SECRET": "@jwt_secret"
-  }
+  ]
 }
