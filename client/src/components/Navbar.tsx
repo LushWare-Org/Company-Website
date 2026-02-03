@@ -99,28 +99,96 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Full Screen Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-white z-[-1] transition-transform duration-700 ease-in-out md:hidden ${
-        open ? "translate-y-0" : "-translate-y-full"
-      }`}>
-      <div className="flex flex-col items-center justify-center h-full space-y-8 px-8">
-        {links
-          .concat({ name: "Free Consultation", to: "/contact" })
-          .map((link, i) => (
-            <Link
-              key={link.name}
-              to={link.to}
-              onClick={() => setOpen(false)}
-              className={`text-3xl font-light tracking-widest text-stone-800 hover:text-emerald-600 transition-colors
-                ${link.name === "Free Consultation" ? "border-2 border-emerald-400 px-4 py-2 rounded-full  shadow-[0_0_20px_rgba(16,185,129,0.35)]  hover:shadow-[0_0_35px_rgba(16,185,129,0.55)]" : ""}`}
-              style={{ transitionDelay: `${i * 100}s` }}
-            >
-              {link.name}
-            </Link>
-          ))}
-      </div>
+      {/* Mobile Menu Sidebar */}
+      {open && (
+        <div 
+          className="fixed inset-0 z-50 md:hidden" 
+          onClick={() => setOpen(false)}
+        >
+          {/* Backdrop with blur */}
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+          
+          {/* Sidebar */}
+          <div 
+            className={`absolute top-0 right-0 w-[82%] max-w-sm h-screen rounded-bl-3xl bg-white shadow-2xl transform transition-all duration-500 ease-out ${
+              open ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
+            } overflow-y-auto`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex flex-col h-full">
+              {/* Header */}
+              <div className="flex items-center justify-between px-6 pt-6 pb-5 border-b border-stone-100">
+                <div className="flex items-center gap-3">
+                  <div className="h-9 w-9 rounded-full border border-stone-200 flex items-center justify-center">
+                    <img
+                      src="/logo.jpeg"
+                      alt="LushWare ORG"
+                      className="h-7 w-7 rounded-full object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-sm font-bold tracking-tight text-stone-800">LUSHWARE</span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setOpen(false)}
+                  className="h-9 w-9 rounded-full border border-stone-200 text-stone-700 hover:text-emerald-700 hover:border-emerald-200 transition-colors"
+                  aria-label="Close menu"
+                >
+                  <span className="block text-lg leading-none">×</span>
+                </button>
+              </div>
 
-      </div>
+              {/* Navigation Links */}
+              <div className="flex flex-col px-4 py-6 space-y-6">
+                {links.map((link, i) => (
+                  <Link
+                    key={link.name}
+                    to={link.to}
+                    onClick={() => setOpen(false)}
+                    className="group px-4 py-3 text-stone-700 hover:text-emerald-600 hover:bg-emerald-50/60 rounded-xl transition-all duration-300 font-semibold relative overflow-hidden"
+                    style={{ 
+                      animation: `slideIn 0.5s ease-out ${i * 0.1}s backwards`
+                    }}
+                  >
+                    <span className="relative z-10 flex items-center justify-between">
+                      <span className="flex items-center">
+                        {link.name}
+                      </span>
+                      <span className="text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                    </span>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Consultation Button */}
+              <div className="mt-auto px-6 pb-6">
+                <Link
+                  to="/contact"
+                  onClick={() => setOpen(false)}
+                  className="group relative w-full overflow-hidden bg-stone-900 text-white rounded-full px-6 py-4 text-center font-bold tracking-wide transition-all duration-500 hover:shadow-[0_10px_30px_-10px_rgba(16,185,129,0.35)] inline-flex items-center justify-center"
+                >
+                  <span className="absolute inset-0 w-0 h-full bg-emerald-600 transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:w-full"></span>
+                  <span className="relative z-10 text-[11px] font-bold tracking-[0.2em] uppercase text-white leading-none">Free Consultation</span>
+                </Link>
+              </div>
+            </div>
+
+            <style>{`
+              @keyframes slideIn {
+                from {
+                  opacity: 0;
+                  transform: translateX(20px);
+                }
+                to {
+                  opacity: 1;
+                  transform: translateX(0);
+                }
+              }
+            `}</style>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

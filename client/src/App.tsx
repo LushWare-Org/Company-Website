@@ -2,17 +2,22 @@ import './App.css'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
+import ProtectedRoute from './components/ProtectedRoute'
 import Homepage from './pages/Homepage'
 import SolutionsPage from './pages/SolutionsPage'
 import WorkPage from './pages/WorkPage'
 import ProjectBasePage from './pages/ProjectBasePage'
 import ConsultationPage from './pages/ConsultationPage'
-import { Routes, Route } from 'react-router-dom'
+import AdminLogin from './pages/AdminLogin'
+import AdminDashboard from './pages/AdminDashboard'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Loading from './components/Loading'
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const isAdminPage = location.pathname.startsWith('/admin') || location.pathname.startsWith('/dashboard');
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
@@ -26,7 +31,7 @@ function App() {
     <div className="relative min-h-screen  bg-white">
       
       <div className="fixed top-1/2 right-[-25%] -translate-y-1/2 w-[800px] md:w-[1000px] aspect-square pointer-events-none select-none opacity-[0.09] z-0">
-        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-emerald-900">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-emerald-600">
           <g stroke="currentColor" strokeWidth="0.2">
             <circle cx="100" cy="100" r="30" />
             {[...Array(6)].map((_, i) => (
@@ -55,7 +60,7 @@ function App() {
       </div>
 
       {/* 3. CONTENT LAYOUT */}
-      <Navbar />
+      {!isAdminPage && <Navbar />}
       <ScrollToTop />
       
       <main className="relative z-10">
@@ -65,10 +70,19 @@ function App() {
           <Route path="/work" element={<WorkPage />} />
           <Route path="/project-base" element={<ProjectBasePage />} />
           <Route path="/contact" element={<ConsultationPage />} />
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route 
+            path="/admin/dashboard" 
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            } 
+          />
         </Routes>
       </main>
 
-      <Footer />
+      {!isAdminPage && <Footer />}
     </div>
   )
 }

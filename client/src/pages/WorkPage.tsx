@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 
 const projects = [
   {
@@ -53,6 +54,31 @@ const projects = [
 ];
 
 export default function WorkPage() {
+  const [visibleProjects, setVisibleProjects] = useState<Set<number>>(new Set());
+  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = projectRefs.current.indexOf(entry.target as HTMLDivElement);
+            if (index !== -1) {
+              setVisibleProjects((prev) => new Set(prev).add(index));
+            }
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "50px" }
+    );
+
+    projectRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
 <section id="work" className="py-24 md:py-28 selection:bg-emerald-50 ">
       <div className="mx-auto max-w-7xl px-6">
@@ -89,7 +115,16 @@ export default function WorkPage() {
         {/* 2-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-32">
           {projects.map((project, index) => (
-            <div key={project.name} className="group flex flex-col bg-white">
+            <div 
+              key={project.name} 
+              ref={(el) => { projectRefs.current[index] = el; }}
+              className={`group flex flex-col bg-white transition-all duration-700 ${
+                visibleProjects.has(index)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
+              }`}
+              style={{ transitionDelay: `${(index % 2) * 150}ms` }}
+            >
               
               {/* Project Image Frame */}
               <div className="relative aspect-[16/10] overflow-hidden bg-gray-50 rounded-t-2xl border border-gray-100 mb-10 transition-all duration-700 group-hover:shadow-2xl group-hover:shadow-emerald-100 group-hover:border-emerald-200">

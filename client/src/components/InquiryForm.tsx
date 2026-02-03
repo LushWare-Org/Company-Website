@@ -324,12 +324,9 @@ export default function InquiryForm({
             }),
             option: (base, state) => ({
               ...base,
-              backgroundColor: state.isSelected ? "#10b981" : state.isFocused ? "#f0fdf4" : "white",
-              color: state.isSelected ? "white" : "#1f2937",
+              backgroundColor: state.isFocused ? "#10B981" : "white",
+              color: state.isFocused ? "white" : "#1f2937",
               cursor: "pointer",
-              "&:hover": {
-                backgroundColor: state.isSelected ? "#10b981" : "#f0fdf4",
-              },
             }),
             singleValue: (base) => ({
               ...base,

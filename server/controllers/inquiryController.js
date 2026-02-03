@@ -39,7 +39,7 @@ const submitInquiry = async (req, res) => {
       message: req.body.message || null,
       
       submittedAt: new Date(),
-      status: 'new'
+      status: 'not-seen'
     });
 
     // Save to database
@@ -118,15 +118,15 @@ const getInquiryById = async (req, res) => {
 };
 
 /**
- * Update inquiry status
+ * Update inquiry status (mark as seen or not-seen)
  */
 const updateInquiryStatus = async (req, res) => {
   try {
     const { id } = req.params;
     const { status } = req.body;
 
-    if (!status || !['new', 'in-progress', 'responded', 'archived'].includes(status)) {
-      return res.status(400).json({ message: "Invalid status" });
+    if (!status || !['seen', 'not-seen'].includes(status)) {
+      return res.status(400).json({ message: "Invalid status. Must be 'seen' or 'not-seen'" });
     }
 
     const updatedInquiry = await Inquiry.findByIdAndUpdate(

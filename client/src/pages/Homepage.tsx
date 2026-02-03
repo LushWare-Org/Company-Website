@@ -1,59 +1,85 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
 export default function Homepage() {
 
   const navigate = useNavigate();
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll("[data-reveal]"));
+
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
   const services = [
     {
       number: "01",
       title: "Product Development",
-      desc: "Innovative Software Products that serve as powerful platforms, designed for scalability and market impact.",
+      desc: "We build strong software products from idea to launch, designed to grow with your business and users.",
       tags: ["SaaS Architecture", "Product Strategy"],
       color: "group-hover:text-blue-600"
     },
     {
       number: "02",
       title: "Custom Development",
-      desc: "Bespoke software systems tailored to your unique business needs, eliminating inefficiencies and technical debt.",
+      desc: "Custom software solutions made for your company, helping you save time, reduce cost, and work smarter.",
       tags: ["Enterprise Solutions", "Legacy Migration"],
       color: "group-hover:text-indigo-600"
     },
     {
       number: "03",
       title: "Mobile App Development",
-      desc: "Cutting-edge mobile applications providing seamless user experiences across iOS and Android platforms.",
+      desc: "High-quality mobile apps for iOS and Android, built for smooth performance and great user experience.",
       tags: ["React Native", "Native Performance"],
       color: "group-hover:text-emerald-600"
     },
     {
       number: "04",
       title: "Web Development",
-      desc: "Modern, responsive websites and web applications built to elevate your digital presence and conversion rates.",
+      desc: "Modern websites and web apps that look great, load fast, and help your business attract more customers.",
       tags: ["Fullstack JS", "SEO Optimized"],
       color: "group-hover:text-amber-600"
     },
     {
       number: "05",
       title: "Cloud System Development",
-      desc: "Enterprise-grade systems to automate complex business processes and secure data in the cloud.",
+      desc: "Secure cloud-based systems that manage your data, improve operations, and support business automation.",
       tags: ["AWS/Azure", "Process Automation"],
       color: "group-hover:text-purple-600"
     },
     {
       number: "06",
       title: "AI Based Development",
-      desc: "Intelligent AI agents and advanced workflows designed for modern task automation and data insights.",
+      desc: "AI-powered tools and smart systems that help automate tasks, improve decisions, and boost efficiency.",
       tags: ["Gen AI", "Neural Workflows"],
       color: "group-hover:text-rose-600"
     }
   ];
 
+
   return (
     <div className="text-gray-800">
 
       {/* Hero Section */}
-      <section className="relative px-6 pt-32 pb-20 overflow-hidden">
+      <section  className=" relative px-6 pt-32 pb-20 overflow-hidden">
         <div className="relative max-w-7xl mt-12 mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
           
           {/* LEFT SIDE — TEXT */}
@@ -158,7 +184,7 @@ export default function Homepage() {
       </section>
 
       {/* Our Story Section */}
-      <section className="relative px-6 py-20  overflow-hidden">
+      <section data-reveal className="reveal-section relative px-10 md:px-6 py-8 md:py-20  overflow-hidden">
 
         <div className="max-w-6xl mx-auto relative">
           {/* Grid Container for 2 Columns */}
@@ -230,43 +256,43 @@ export default function Homepage() {
       </section>
 
       {/* Services */}
-      <section className="px-6 py-20  relative">
+      <section data-reveal className="reveal-section px-6 py-20  relative">
         
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col lg:flex-row gap-24">
             
             <div className="lg:w-1/3 lg:sticky lg:top-48 h-fit">
-              <div className="flex flex-col">
+              <div className="flex flex-col pl-4 md:pl-0  ">
                 <div className="flex items-center gap-2 mb-8">
                   <div className="w-1 h-4 bg-emerald-500 rounded-full"></div>
                   <span className="text-[12px] font-bold tracking-[0.3em] text-slate-600 uppercase">Our Services</span>
                 </div>
 
-                <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tighter leading-[1.1] mb-8">
+                <h2 className="text-4xl md:text-6xl  font-bold text-slate-900 tracking-tighter leading-[1.1] mb-8">
                   Our 
                   Specialized Software <br /> 
                   <span className="relative">
                     <span className="relative z-10 text-emerald-600">Solutions.</span>
-                    <svg className="absolute -bottom-2 left-0 w-full h-2 text-emerald-300" viewBox="0 0 100 10" preserveAspectRatio="none">
-                      <path d="M0 5 Q 25 0, 50 5 T 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
+                    <svg className="absolute -bottom-1 left-0 w-full h-0.5 text-emerald-300" viewBox="0 0 100 2" preserveAspectRatio="none">
+                      <line x1="0" y1="1" x2="100" y2="1" stroke="currentColor" strokeWidth="2" />
                     </svg>
                   </span>
                 </h2>
               <div className="mt-8">
                 <button
                   onClick={() => navigate("/solutions")}
-                  className="group relative overflow-hidden px-10 py-4 rounded-full border-2 border-emerald-800/60 bg-white transition-all duration-500 hover:border-emerald-600 hover:shadow-[0_10px_30px_-10px_rgba(16,185,129,0.3)]"
+                  className="group relative overflow-hidden px-10 py-4 rounded-full bg-stone-900 transition-all duration-500 hover:shadow-[0_10px_30px_-10px_rgba(16,185,129,0.3)]"
                 >
-                  <span className="absolute inset-0 w-0 bg-emerald-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+                  <span className="absolute inset-0 w-0 h-full bg-emerald-600 transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:w-full"></span>
                   
-                  <span className="relative flex items-center justify-center gap-3">
-                    <span className="text-sm font-semibold tracking-wider text-emerald-900 transition-colors duration-500 group-hover:text-white">
+                  <span className="relative z-10 flex items-center justify-center gap-3">
+                    <span className="text-sm font-semibold tracking-wider text-white transition-colors duration-500">
                       VIEW ALL SOLUTIONS
                     </span>
 
                     <div className="relative flex h-5 w-5 items-center justify-center overflow-hidden">
                       <svg 
-                        className="h-4 w-4 transform transition-all duration-500 text-emerald-700 group-hover:text-white group-hover:translate-x-5" 
+                        className="h-4 w-4 transform transition-all duration-500 text-white group-hover:translate-x-5" 
                         fill="none" viewBox="0 0 24 24" stroke="currentColor"
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -290,7 +316,7 @@ export default function Homepage() {
                 <div 
                   key={service.number}
                   className="group relative px-4 bg-white border-2 border-slate-200 group-hover:border-transparent  transition-all duration-500 rounded-3xl hover:shadow-[0_20px_50px_rgba(16,185,129,0.2)]  shadow-[0_20px_50px_rgba(0,0,0,0.1)] " >
-                <span className="absolute bottom-2 right-4 text-8xl font-black text-slate-100 transition-all duration-1000 group-hover:text-emerald-100 group-hover:-translate-y-4 select-none">
+                <span className="hidden md:block absolute bottom-2 right-4 text-8xl font-black text-slate-100 transition-all duration-1000 group-hover:text-emerald-100 group-hover:-translate-y-4 select-none">
                   {service.number}
                 </span>
                   {/* Top-Left Path */}
@@ -300,7 +326,7 @@ export default function Homepage() {
                   <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-emerald-500 rounded-br-3xl opacity-0 group-hover:opacity-100 group-hover:w-full group-hover:h-full transition-all duration-700 ease-in-out z-10" />
 
                   <div className="p-10 md:p-14 border border-slate-50 transition-all duration-500 group-hover:bg-slate-50/50">
-                    <div className="flex flex-col gap-12">
+                    <div className="flex flex-col gap-10">
                       
 
                       {/* Main Content */}
@@ -308,7 +334,7 @@ export default function Homepage() {
                         <h3 className="text-3xl font-bold text-slate-900 uppercase tracking-tighter group-hover:tracking-wide transition-all duration-500">
                           {service.title}
                         </h3>
-                        <p className="text-slate-500 text-lg leading-relaxed font-normal max-w-lg border-l-2 border-slate-100 pl-6 group-hover:border-emerald-500 transition-all duration-500">
+                        <p className="text-slate-500 text-lg leading-relaxed font-normal max-w-lg border-l-2 border-slate-100 md:pl-6 pl-0 group-hover:border-emerald-500 transition-all duration-500">
                           {service.desc}
                         </p>
                       </div>
@@ -318,7 +344,7 @@ export default function Homepage() {
                         {service.tags.map((tag) => (
                           <span 
                             key={tag} 
-                            className="px-3 py-1 bg-slate-100 text-[11px] rounded-md font-mono font-bold text-slate-500 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300"
+                            className="px-3 py-1 bg-emerald-50 border border-emerald-400 text-[11px] rounded-lg font-mono font-bold text-emerald-700 group-hover:bg-emerald-600 group-hover:border-emerald-600 group-hover:text-white transition-all duration-300"
                           >
                             {tag}
                           </span>
@@ -335,99 +361,95 @@ export default function Homepage() {
       </section>
 
       {/* Join */}
-      <section className="px-6 py-20">
-        <div className="max-w-6xl mx-auto border bg-white border-gray-300 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-emerald-100/40">
-          
-          {/* Grid Header */}
-          <div className="flex flex-col lg:flex-row items-center justify-between p-8 lg:p-14 bg-white border-b border-gray-300 relative overflow-hidden">
-            
-            {/* Background Detail - Subtle Grid Pattern (Common in Big Tech) */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-                style={{ backgroundImage: `radial-gradient(#000 0.5px, transparent 0.5px)`, backgroundSize: '24px 24px' }}>
-            </div>
+      <section data-reveal className="reveal-section px-4 py-16  overflow-hidden relative">
+        {/* Ambient Background Elements */}
+        <div className="absolute top-0 -right-20 w-[600px] h-[600px] bg-emerald-100/30 rounded-full blur-[140px] pointer-events-none"></div>
+        <div className="absolute bottom-0 -left-20 w-[600px] h-[600px] bg-blue-50/40 rounded-full blur-[140px] pointer-events-none"></div>
 
-            {/* Left: System Identity */}
-            <div className="relative z-10 max-w-2xl">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="flex items-center gap-1.5 px-3 py-1 bg-green-50 rounded-md border border-green-100">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                  <span className="text-[13px] font-mono font-bold text-green-700 uppercase tracking-widest">JOIN Now</span>
-                </div>
-              </div>
+        <div className="max-w-7xl mx-auto relative z-10 px-8">
+          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+            
+            {/* Left Column: Mission & CTA */}
+            <div className="lg:w-5/12 text-center lg:text-left">
+
               
-              <h2 className="text-4xl md:text-6xl font-bold text-gray-900 tracking-tighter leading-[0.9] mb-6">
-                Project <span className="text-gray-500 font-light">Inventory.</span>
+              <h2 className="text-5xl font-bold md:text-7xl  text-gray-900 leading-[0.85] tracking-tighter mb-8">
+                Project <br />
+                <span className="bg-emerald-600 bg-clip-text text-transparent"> Inventory.</span>
               </h2>
               
-              <p className="text-gray-500 text-base md:text-lg max-w-lg leading-relaxed font-medium">
-                Contribute to our software projects and smoothen your skills with professional experience.
+              <p className="text-xl text-gray-500 max-w-md leading-relaxed mb-12 mx-auto lg:mx-0 font-medium">
+                Join our growing team and work on real-world projects. Develop your skills, collaborate with talented professionals, and make a real impact.
               </p>
-            </div>
-            
-            {/* Right: Technical Metadata & Action */}
-            <div className="relative z-10 mt-12 lg:mt-0 flex flex-col items-center lg:items-end">
 
-              <button 
-                onClick={() => navigate("/project-base")}
-                className="group relative px-10 py-4 bg-gray-900 text-white text-[14px] font-bold tracking-[0.2em] rounded-md transition-all duration-300 hover:bg-green-600 hover:translate-y-[-2px] active:translate-y-[0px] shadow-xl shadow-gray-200"
-              >
-                <span className="relative z-10">Learn More</span>
-                {/* Subtle bottom-glow effect on hover */}
-                <div className="absolute inset-0 rounded-md bg-green-400 opacity-0 group-hover:opacity-20 blur-lg transition-opacity"></div>
-              </button>
+              <div className="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
+                <button 
+                  onClick={() => navigate("/project-base")}
+                  className="group relative px-10 py-4 overflow-hidden bg-stone-900 text-white rounded-full font-bold transition-all duration-500 hover:shadow-[0_10px_30px_-10px_rgba(16,185,129,0.3)]"
+                >
+                  <span className="absolute inset-0 w-0 h-full bg-emerald-600 transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:w-full"></span>
+                  <span className="relative z-10 text-[11px] font-bold tracking-[0.2em] uppercase">Join Now</span>
+                </button>
+                
+
+              </div>
+            </div>
+
+            {/* Right Column: The "Stats Galaxy" */}
+            <div className="lg:w-7/12 relative w-full h-[450px] sm:h-[500px] md:h-[600px] mt-10 lg:mt-0">
               
-            </div>
-
-          </div>
-
-          {/* The Metric Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-gray-300">
-            
-            {/* Metric 01 */}
-            <div className="p-12 group hover:bg-green-50/20 transition-all duration-500">
-              <p className="text-[14px]  text-gray-600 uppercase tracking-widest mb-4 group-hover:text-green-600 transition-colors">
-                Deployed
-              </p>
-              <div className="flex items-baseline">
-                <span className="text-6xl font-black text-gray-900 tracking-tighter tabular-nums">52</span>
-                <span className="ml-2 w-1.5 h-1.5 rounded-full bg-green-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+              {/* Experience Card (The 8+ Years) */}
+              <div className="absolute border-2 border-emerald-600 top-0 left-0 md:left-20 z-30 w-36 sm:w-44 md:w-56 p-4 sm:p-6 md:p-8 bg-white/80 backdrop-blur-xl rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] shadow-xl shadow-gray-200/40 transform -rotate-2 md:-rotate-6 hover:rotate-0 hover:-translate-y-2 transition-all duration-500">
+                <p className="text-[10px] sm:text-[11px] md:text-[14px] font-black text-emerald-600 uppercase mb-1 sm:mb-2 tracking-[0.15em] sm:tracking-[0.2em]">Our Team</p>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 tracking-tighter">8</span>
+                  <span className="text-lg sm:text-xl md:text-2xl font-bold text-emerald-500">+</span>
+                </div>
+                <p className="text-[9px] sm:text-[10px] md:text-xs text-gray-700 font-medium leading-tight mt-1 sm:mt-2">Years of combined expertise</p>
               </div>
-              <p className="mt-4 text-xs font-medium text-gray-400">Verified production repos</p>
-            </div>
 
-            {/* Metric 02 */}
-            <div className="p-12 group hover:bg-green-50/20 transition-all duration-500">
-              <p className="text-[14px]  text-gray-600 uppercase tracking-widest mb-4 group-hover:text-green-600 transition-colors">
-                Active
-              </p>
-              <div className="flex items-baseline">
-                <span className="text-6xl font-black text-gray-900 tracking-tighter tabular-nums">14</span>
+              {/* Reliability Card (The 98%) */}
+              <div className="absolute top-6 sm:top-8 md:top-10 right-0 z-10 w-40 sm:w-48 md:w-64 p-5 sm:p-6 md:p-10 bg-emerald-500 rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[3rem] shadow-2xl shadow-emerald-200/50 transform rotate-2 md:rotate-6 hover:rotate-0 hover:scale-105 transition-all duration-500">
+                <div className="text-white">
+                  <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-widest mb-2 sm:mb-3 md:mb-4">Reliability</p>
+                  <div className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-none">98%</div>
+                  <div className="mt-3 sm:mt-4 md:mt-6 h-1 w-full bg-white/20 rounded-full overflow-hidden">
+                      <div className="h-full bg-white w-[98%]"></div>
+                  </div>
+                  <p className="text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase mt-2 sm:mt-3 md:mt-4 opacity-80 italic underline underline-offset-2 sm:underline-offset-4">Standard uptime</p>
+                </div>
               </div>
-              <p className="mt-4 text-xs font-medium text-gray-400">Concurrent sprint cycles</p>
-            </div>
 
-            {/* Metric 03 */}
-            <div className="p-12 group hover:bg-green-50/20 transition-all duration-500">
-              <p className="text-[14px]  text-gray-600 uppercase tracking-widest mb-4 group-hover:text-green-600 transition-colors">
-                Years Of Experience
-              </p>
-              <div className="flex items-baseline">
-                <span className="text-6xl font-black  tracking-tighter tabular-nums text-emerald-600">8</span>
-                <span className="text-2xl text-gray-500 font-light ml-1">+</span>
+              {/* Active Sprints Card (The 14) */}
+              <div className="absolute top-[48%] sm:top-[47%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-64 sm:w-72 md:w-80 p-6 sm:p-8 md:p-10 bg-gray-900 rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] shadow-[0_20px_40px_-10px_rgba(0,0,0,0.4)] sm:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.4)] md:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] transform transition-transform hover:scale-105 duration-500 group">
+                <div className="flex justify-between items-center mb-4 sm:mb-6 md:mb-8">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl md:rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+                      <polyline points="13 2 13 9 20 9" />
+                      </svg>
+                  </div>
+                  <div className="text-right">
+                      <span className="block text-[10px] sm:text-[11px] md:text-[13px] font-black text-emerald-300 uppercase tracking-widest">Active Now</span>
+                      <span className="block text-[9px] sm:text-[10px] md:text-[11px] text-gray-200 font-mono italic">In Progress</span>
+                  </div>
+                </div>
+                <div className="text-5xl sm:text-6xl md:text-7xl font-black text-white tracking-tighter mb-2">14</div>
+                <p className="text-[11px] sm:text-xs md:text-sm text-gray-200 font-medium">Active projects you can join today</p>
               </div>
-              <p className="mt-4 text-xs font-medium text-gray-400">Global open-source talent</p>
-            </div>
 
-            {/* Metric 04 */}
-            <div className="p-12 group hover:bg-green-50/20 transition-all duration-500">
-              <p className="text-[14px]  text-gray-600 uppercase tracking-widest mb-4 group-hover:text-green-600 transition-colors">
-                Reliability
-              </p>
-              <div className="flex items-baseline">
-                <span className="text-6xl font-black text-gray-900 tracking-tighter tabular-nums">98</span>
-                <span className="text-2xl font-light text-gray-500 ml-1">%</span>
+              {/* Deployed Apps Card (The 52) */}
+              <div className="absolute bottom-1 sm:bottom-2 md:bottom-4 right-1 sm:right-2 md:right-12 z-20 w-44 sm:w-52 md:w-64 p-5 sm:p-6 md:p-8 bg-white border-2 border-emerald-500 rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] shadow-2xl shadow-gray-200 rotate-4 sm:rotate-6 md:rotate-12 hover:rotate-0 transition-all duration-500">
+                <p className="text-[11px] sm:text-[12px] md:text-[14px] font-bold text-gray-500 uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-1 sm:mb-2 md:mb-3">Live Projects</p>
+                <div className="flex items-baseline gap-1 sm:gap-2">
+                  <span className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 tracking-tighter">52</span>
+                  <span className="text-[11px] sm:text-xs md:text-sm font-bold text-gray-700 uppercase">Active</span>
+                </div>
+                <p className="text-[10px] sm:text-[11px] md:text-[12px] font-bold text-emerald-600 mt-2 sm:mt-3 md:mt-4 bg-emerald-50 px-2 py-1 rounded-md inline-block">
+                  Ready to Join
+                </p>
               </div>
-              <p className="mt-4 text-xs font-medium text-gray-400">Uptime across all builds</p>
+
             </div>
 
           </div>
@@ -435,14 +457,14 @@ export default function Homepage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="px-6 py-28  relative overflow-hidden">
+      <section data-reveal className="reveal-section px-6 pb-20 pt-10  relative overflow-hidden">
 
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10">
           
           <div className="max-w-6xl mx-auto mb-20 border-b border-slate-200 pb-10">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
               
-              <div className="max-w-2xl">
+              <div className="max-w-2xl pl-4 md:pl-0">
                 <div className="flex items-center gap-2 mb-6">
                   <div className="px-2 py-0.5 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
                    Why Choose Us
@@ -523,7 +545,7 @@ export default function Homepage() {
       </section>
 
       {/* Software Products */}
-      <section className="px-6 py-8  relative">
+      <section data-reveal className="reveal-section px-6 py-8  relative">
 
         <div className="max-w-7xl mx-auto relative z-10">
           
@@ -717,7 +739,7 @@ export default function Homepage() {
       </section>
 
       {/* Visit Lush Web Designers */}
-      <section className="relative w-full bg-white/60 py-24 sm:py-32 overflow-hidden">
+      <section data-reveal className="reveal-section relative w-full bg-white/60 py-24 sm:py-32 overflow-hidden">
         {/* The Image as a subtle 'Background Mask' */}
         <div 
           className="absolute inset-0 z-0 opacity-[0.19] grayscale hover:opacity-30 hover:grayscale-0 transition-all duration-1000"

@@ -25,11 +25,11 @@ const InquirySchema = new mongoose.Schema({
   // General message/details field (used by multiple inquiry types)
   message: { type: String, trim: true, default: null },
   
-  // Status tracking
+  // Status tracking (seen/not-seen)
   status: { 
     type: String, 
-    enum: ['new', 'in-progress', 'responded', 'archived'],
-    default: 'new'
+    enum: ['seen', 'not-seen'],
+    default: 'not-seen'
   },
   
   submittedAt: { type: Date, default: Date.now },

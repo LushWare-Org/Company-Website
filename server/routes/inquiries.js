@@ -6,6 +6,7 @@ const {
   updateInquiryStatus,
   getInquiriesByType 
 } = require("../controllers/inquiryController");
+const adminAuthMiddleware = require("../middleware/adminAuth");
 
 const router = express.Router();
 
@@ -16,18 +17,18 @@ const router = express.Router();
 router.post("/", submitInquiry);
 
 /**
- * Admin Routes (in production, add authentication middleware)
+ * Admin Routes (protected with authentication)
  */
 // GET - Get all inquiries with optional filters
-router.get("/", getAllInquiries);
+router.get("/", adminAuthMiddleware, getAllInquiries);
 
 // GET - Get inquiries by type (solution, project, consultation)
-router.get("/type/:type", getInquiriesByType);
+router.get("/type/:type", adminAuthMiddleware, getInquiriesByType);
 
 // GET - Get single inquiry by ID
-router.get("/:id", getInquiryById);
+router.get("/:id", adminAuthMiddleware, getInquiryById);
 
 // PATCH - Update inquiry status
-router.patch("/:id/status", updateInquiryStatus);
+router.patch("/:id/status", adminAuthMiddleware, updateInquiryStatus);
 
 module.exports = router;

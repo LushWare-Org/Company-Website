@@ -1,5 +1,5 @@
 // pages/SolutionsPage.tsx
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import InquiryForm from "../components/InquiryForm";
 
@@ -41,6 +41,30 @@ const solutions: Solution[] = [
 export default function SolutionsPage() {
   // Track which solution is being inquired about
   const [selectedSolution, setSelectedSolution] = useState<Solution | null>(null);
+  const [visibleSolutions, setVisibleSolutions] = useState<Set<number>>(new Set());
+  const solutionRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = solutionRefs.current.indexOf(entry.target as HTMLDivElement);
+            if (index !== -1) {
+              setVisibleSolutions((prev) => new Set(prev).add(index));
+            }
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "50px" }
+    );
+
+    solutionRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
 <section id="solutions" className="scroll-mt-24  px-6 py-30">
@@ -57,7 +81,13 @@ export default function SolutionsPage() {
           {solutions.map((solution, index) => (
             <div 
               key={solution.title}
-              className="group relative grid md:grid-cols-2 bg-white transition-all duration-700"
+              ref={(el) => { solutionRefs.current[index] = el; }}
+              className={`group relative grid md:grid-cols-2 bg-white transition-all duration-700 ${
+                visibleSolutions.has(index)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
+              }`}
+              style={{ transitionDelay: `${(index % 2) * 150}ms` }}
             >
               <div className={`relative flex h-[550px] items-center justify-center overflow-hidden bg-white p-12 ${index % 2 === 1 ? 'md:order-last' : ''}`}>
                 
@@ -75,7 +105,7 @@ export default function SolutionsPage() {
                   <img
                     src={solution.image}
                     alt={solution.title}
-                    className="w-[90%] scale-110 object-contain filter drop-shadow-[0_30px_50px_rgba(0,0,0,0.12)]"
+                    className="w-full scale-125 sm:w-[90%] sm:scale-110 object-contain filter drop-shadow-[0_30px_50px_rgba(0,0,0,0.12)]"
                   />
                   
                   {/*  DUAL-LAYER GROUNDING SHADOW: Enhanced for static realism */}

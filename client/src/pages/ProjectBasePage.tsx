@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import InquiryForm from "../components/InquiryForm";
 
@@ -25,6 +25,30 @@ const programs: Program[] = [
 
 export default function ProjectBasePage() {
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
+  const [visiblePrograms, setVisiblePrograms] = useState<Set<number>>(new Set());
+  const programRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = programRefs.current.indexOf(entry.target as HTMLDivElement);
+            if (index !== -1) {
+              setVisiblePrograms((prev) => new Set(prev).add(index));
+            }
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "50px" }
+    );
+
+    programRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="project-base" className="scroll-mt-24 px-6 py-16">
@@ -38,17 +62,8 @@ export default function ProjectBasePage() {
               Become a{" "}
               <span className="relative inline-block text-emerald-600">
                 Product Builder
-                <svg
-                  className="absolute -bottom-2 left-0 w-full h-3 text-emerald-400/70"
-                  viewBox="0 0 100 10"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0 5 Q 25 0 50 5 T 100 5"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    fill="transparent"
-                  />
+                <svg className="absolute -bottom-1 left-0 w-full h-1 text-emerald-300" viewBox="0 0 100 2" preserveAspectRatio="none">
+                  <line x1="0" y1="1" x2="100" y2="1" stroke="currentColor" strokeWidth="2" />
                 </svg>
               </span>
               ,
@@ -194,8 +209,14 @@ export default function ProjectBasePage() {
           {programs.map((program, index) => (
             <div
               key={program.title}
+              ref={(el) => { programRefs.current[index] = el; }}
               onClick={() => setSelectedProgram(program)}
-              className="group relative flex flex-col md:flex-row md:items-center justify-between py-12 border-b border-slate-400 cursor-pointer"
+              className={`group relative flex flex-col md:flex-row md:items-center justify-between py-12 border-b border-slate-400 cursor-pointer transition-all duration-700 ${
+                visiblePrograms.has(index)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
+              }`}
+              style={{ transitionDelay: `${(index % 2) * 150}ms` }}
             >
               {/* Left Side: Index & Title */}
               <div className="flex items-start gap-12 md:gap-20">

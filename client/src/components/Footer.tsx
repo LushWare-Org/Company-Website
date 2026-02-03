@@ -22,8 +22,8 @@ export default function Footer() {
       
 
       <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
-        <div className="absolute -bottom-24 -left-24 w-[600px] h-[600px] opacity-[0.1]">
-          <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" className="text-emerald-900">
+        <div className="absolute -bottom-24 -left-24 w-[600px] h-[600px] opacity-[0.08] md:opacity-[0.1]">
+          <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" className="text-emerald-600">
             {[...Array(8)].map((_, i) => (
               <rect
                 key={i}
@@ -44,9 +44,9 @@ export default function Footer() {
         
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 pl-8 md:pl-0">
         
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-16 mb-16">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-16 mb-10">
           <div className="max-w-xl space-y-8">
             <Link to="/" className="group flex items-center gap-3">
               <div className="h-10 w-10 border border-zinc-900 rounded-full flex items-center justify-center group-hover:bg-emerald-800 group-hover:border-emerald-800 group-hover:text-white transition-all duration-500">
@@ -129,32 +129,32 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-16 gap-x-8 pb-8">
 
           <div className="space-y-6">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">The Lab</h4>
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">Services</h4>
             <ul className="space-y-4">
-              <li><AnimatedLink to="/products">Products</AnimatedLink></li>
-              <li><AnimatedLink to="/process">Our Workflow</AnimatedLink></li>
-              <li><AnimatedLink to="/stack">Tech Stack</AnimatedLink></li>
-              <li><AnimatedLink to="/r-d">R&D Initiatives</AnimatedLink></li>
-            </ul>
-          </div>
-
-          <div className="space-y-6">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">Resources</h4>
-            <ul className="space-y-4">
-              <li><AnimatedLink to="/docs">Documentation</AnimatedLink></li>
-              <li><AnimatedLink to="/api">API Reference</AnimatedLink></li>
-              <li><AnimatedLink to="/changelog">Release Notes</AnimatedLink></li>
-              <li><AnimatedLink to="/open-source">Open Source</AnimatedLink></li>
+              <li><AnimatedLink to="/solutions">Our Solutions</AnimatedLink></li>
+              <li><AnimatedLink to="/solutions">Web Development</AnimatedLink></li>
+              <li><AnimatedLink to="/solutions">Mobile Apps</AnimatedLink></li>
+              <li><AnimatedLink to="/solutions">Custom Software</AnimatedLink></li>
             </ul>
           </div>
 
           <div className="space-y-6">
             <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">Company</h4>
             <ul className="space-y-4">
-              <li><AnimatedLink to="/about">About Us</AnimatedLink></li>
-              <li><AnimatedLink to="/careers">Careers</AnimatedLink></li>
-              <li><AnimatedLink to="/partners">Partners</AnimatedLink></li>
-              <li><AnimatedLink to="/press">Press & Media</AnimatedLink></li>
+              <li><AnimatedLink to="/">About Us</AnimatedLink></li>
+              <li><AnimatedLink to="/work">Our Work</AnimatedLink></li>
+              <li><AnimatedLink to="/project-base">Join Our Team</AnimatedLink></li>
+              <li><AnimatedLink to="/contact">Contact Us</AnimatedLink></li>
+            </ul>
+          </div>
+
+          <div className="space-y-6">
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">Support</h4>
+            <ul className="space-y-4">
+              <li><AnimatedLink to="/contact">Get in Touch</AnimatedLink></li>
+              <li><AnimatedLink to="/contact">Request a Quote</AnimatedLink></li>
+              <li><AnimatedLink to="/contact">Free Consultation</AnimatedLink></li>
+              <li><AnimatedLink to="/contact">Help Center</AnimatedLink></li>
             </ul>
           </div>
 

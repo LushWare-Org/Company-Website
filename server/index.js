@@ -4,6 +4,7 @@ const cors = require("cors");
 require("dotenv").config(); // Load .env variables
 
 const inquiryRoutes = require("./routes/inquiries");
+const adminRoutes = require("./routes/admin");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -44,6 +45,9 @@ app.get("/api", async (req, res) => {
 // --------------------------
 // Mount inquiry routes
 app.use("/api/inquiries", inquiryRoutes);
+
+// Mount admin routes
+app.use("/api/admin", adminRoutes);
 
 // --------------------------
 // Start server
