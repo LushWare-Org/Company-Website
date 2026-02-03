@@ -20,7 +20,7 @@ router.post("/", submitInquiry);
  * Admin Routes (protected with authentication)
  */
 // GET - Get all inquiries with optional filters
-//router.get("/", adminAuthMiddleware, getAllInquiries);
+///router.get("/", adminAuthMiddleware, getAllInquiries);
 router.get("/", getAllInquiries);
 
 // GET - Get inquiries by type (solution, project, consultation)
