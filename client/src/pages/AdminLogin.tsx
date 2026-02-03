@@ -17,8 +17,8 @@ export default function AdminLogin() {
     try {
       const data = await adminLogin(username, password);
 
-      // Store session token
-      localStorage.setItem('adminToken', data.sessionToken);
+      // Store JWT token
+      localStorage.setItem('adminToken', data.token);
       localStorage.setItem('adminUsername', data.username);
 
       // Redirect to admin dashboard

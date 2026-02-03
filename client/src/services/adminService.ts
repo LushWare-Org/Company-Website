@@ -98,13 +98,12 @@ export const adminLogin = async (username: string, password: string) => {
 /**
  * Admin logout
  */
-export const adminLogout = async (sessionToken: string) => {
+export const adminLogout = async () => {
   const response = await fetch(`${API_BASE_URL}/admin/logout`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ sessionToken })
+    }
   });
 
   if (!response.ok) {

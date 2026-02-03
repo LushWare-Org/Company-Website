@@ -5,7 +5,7 @@ interface ProtectedRouteProps {
 }
 
 export default function ProtectedRoute({ children }: ProtectedRouteProps) {
-  const token = localStorage.getItem('adminSessionToken');
+  const token = localStorage.getItem('adminToken');
 
   if (!token) {
     return <Navigate to="/admin" replace />;

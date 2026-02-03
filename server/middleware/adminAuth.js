@@ -1,18 +1,26 @@
-const { verifySession } = require("../controllers/adminController");
+const { verifyToken } = require("../controllers/adminController");
 
 /**
- * Middleware to verify admin authentication
+ * Middleware to verify admin authentication using JWT
  */
 const adminAuthMiddleware = (req, res, next) => {
-  const sessionToken = req.headers['authorization']?.replace('Bearer ', '');
+  const token = req.headers['authorization']?.replace('Bearer ', '');
 
-  if (!sessionToken || !verifySession(sessionToken)) {
+  if (!token) {
     return res.status(401).json({
-      message: "Unauthorized: Invalid or missing session token"
+      message: "Unauthorized: No token provided"
     });
   }
 
-  req.adminSessionToken = sessionToken;
+  const decoded = verifyToken(token);
+  
+  if (!decoded) {
+    return res.status(401).json({
+      message: "Unauthorized: Invalid or expired token"
+    });
+  }
+
+  req.admin = decoded;
   next();
 };
 

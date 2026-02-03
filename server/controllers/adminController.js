@@ -1,11 +1,9 @@
-const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
 
-// Simple in-memory store for sessions (in production, use Redis or database)
-const sessions = new Map();
-
-// Admin credentials (in production, store in database with hashed passwords)
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
+// Admin credentials (loaded from environment variables)
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 /**
  * Admin Login
@@ -28,19 +26,19 @@ const adminLogin = async (req, res) => {
       });
     }
 
-    // Generate session token
-    const sessionToken = crypto.randomBytes(32).toString('hex');
-    const sessionData = {
-      username,
-      createdAt: new Date(),
-      expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000) // 24 hours
-    };
-
-    sessions.set(sessionToken, sessionData);
+    // Generate JWT token
+    const token = jwt.sign(
+      { 
+        username,
+        role: 'admin'
+      },
+      JWT_SECRET,
+      { expiresIn: '24h' }
+    );
 
     res.json({
       message: "Login successful",
-      sessionToken,
+      token,
       username
     });
   } catch (error) {
@@ -57,12 +55,8 @@ const adminLogin = async (req, res) => {
  */
 const adminLogout = async (req, res) => {
   try {
-    const { sessionToken } = req.body;
-
-    if (sessionToken && sessions.has(sessionToken)) {
-      sessions.delete(sessionToken);
-    }
-
+    // With JWT, logout is handled client-side by removing the token
+    // No server-side session to delete
     res.json({ message: "Logout successful" });
   } catch (error) {
     console.error("Error during logout:", error);
@@ -74,25 +68,19 @@ const adminLogout = async (req, res) => {
 };
 
 /**
- * Verify session token
+ * Verify JWT token
  */
-const verifySession = (sessionToken) => {
-  if (!sessionToken) return false;
-  
-  const session = sessions.get(sessionToken);
-  if (!session) return false;
-
-  // Check if session is expired
-  if (new Date() > session.expiresAt) {
-    sessions.delete(sessionToken);
-    return false;
+const verifyToken = (token) => {
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    return decoded;
+  } catch (error) {
+    return null;
   }
-
-  return true;
 };
 
 module.exports = {
   adminLogin,
   adminLogout,
-  verifySession
+  verifyToken
 };
