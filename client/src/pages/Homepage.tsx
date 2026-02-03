@@ -658,14 +658,20 @@ export default function Homepage() {
 
                   <button 
                     onClick={() => window.open("https://islekeyholidays.com/", "_blank")}
-                    className="group/link flex items-center gap-3 text-xs font-black uppercase tracking-[0.2em] text-slate-900"
+                    className="relative px-6 py-3 overflow-hidden group bg-stone-900 rounded-full transition-all duration-500 hover:border-emerald-600 flex items-center gap-2"
                   >
-                    <span className="bg-slate-900 text-white px-6 py-3 group-hover/link:bg-emerald-600 transition-colors">
+                    {/* The color layer that slides in */}
+                    <span className="absolute inset-0 w-0 h-full bg-emerald-600 transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:w-full"></span>
+                    
+                    {/* The Text */}
+                    <span className="relative z-10 text-[11px] font-bold tracking-[0.2em] uppercase text-white transition-colors duration-500">
                       View Live
                     </span>
-                    <span className="p-3 border border-slate-200 group-hover/link:border-slate-900 transition-colors">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                    </span>
+                    
+                    {/* Arrow Icon */}
+                    <svg className="relative z-10 w-4 h-4 text-white transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
                   </button>
                 </div>
 
@@ -736,14 +742,20 @@ export default function Homepage() {
 
                   <button 
                     onClick={() => window.open("https://www.dreamspeedmaldives.com/", "_blank")}
-                    className="group/link flex items-center gap-3 text-xs font-black uppercase tracking-[0.2em] text-slate-900"
+                    className="relative px-6 py-3 overflow-hidden group bg-stone-900 rounded-full transition-all duration-500 hover:border-emerald-600 flex items-center gap-2"
                   >
-                    <span className="bg-slate-900 text-white px-6 py-3 group-hover/link:bg-emerald-600 transition-colors">
+                    {/* The color layer that slides in */}
+                    <span className="absolute inset-0 w-0 h-full bg-emerald-600 transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:w-full"></span>
+                    
+                    {/* The Text */}
+                    <span className="relative z-10 text-[11px] font-bold tracking-[0.2em] uppercase text-white transition-colors duration-500">
                       View Live
                     </span>
-                    <span className="p-3 border border-slate-200 group-hover/link:border-slate-900 transition-colors">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                    </span>
+                    
+                    {/* Arrow Icon */}
+                    <svg className="relative z-10 w-4 h-4 text-white transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
                   </button>
                 </div>
               </div>
@@ -753,27 +765,23 @@ export default function Homepage() {
           {/* The Footer Bar */}
           <div className="mt-16 mb-8 flex flex-col items-center">
             <div className="text-center">
-              {/* The Premium Architect Button */}
+              {/* Call to Action Button */}
               <button 
                 onClick={() => navigate("/work")}
-                className="group relative flex items-center gap-0 overflow-hidden rounded-sm border border-slate-900 transition-all duration-500"
+                className="relative px-8 py-4 overflow-hidden group bg-stone-900 rounded-full transition-all duration-500 hover:border-emerald-600 flex items-center gap-2 justify-center"
               >
-                {/* Left Side: Label */}
-                <span className="px-8 py-4 text-[14px] font-black tracking-[0.3em] text-slate-900 group-hover:bg-slate-950 group-hover:text-white transition-all duration-500 uppercase">
-                  VIEW_ALL_WORKS
+                {/* The color layer that slides in */}
+                <span className="absolute inset-0 w-0 h-full bg-emerald-600 transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:w-full"></span>
+                
+                {/* The Text */}
+                <span className="relative z-10 text-[12px] font-bold tracking-[0.2em] uppercase text-white transition-colors duration-500">
+                  View All Works
                 </span>
                 
-                {/* Right Side: Icon with Accent Color */}
-                <span className="bg-emerald-500 px-6 py-5 border-l border-slate-900 group-hover:bg-slate-900 transition-colors duration-500">
-                  <svg 
-                    className="w-5 h-5 text-white transition-transform duration-500 group-hover:translate-x-1" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </span>
+                {/* Arrow Icon */}
+                <svg className="relative z-10 w-4 h-4 text-white transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
               </button>
             </div>
           </div>
