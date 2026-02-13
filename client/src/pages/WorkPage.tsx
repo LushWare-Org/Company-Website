@@ -90,11 +90,11 @@ export default function WorkPage() {
             {/* Headline Section */}
             <div className="flex-1">
               {/* Small Category Label */}
-              <div className="flex items-center gap-2 mb-5">
-                <span className="w-8 h-[1px] bg-emerald-600"></span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-emerald-600">
-                  Selected Works
-                </span>
+
+              <div className="flex items-center  gap-2 mb-5 ">
+                <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
+                Selected Works
+                </div>
               </div>
 
               <h1 className="text-4xl md:text-6xl font-bold text-gray-950 tracking-tighter leading-none hero-line">

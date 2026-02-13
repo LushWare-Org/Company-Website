@@ -25,7 +25,7 @@ export default function ConsultationPageV15() {
     const { id, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [id === 'fname' ? 'firstName' : id === 'lname' ? 'lastName' : id === 'email' ? 'email' : id === 'whatsapp' ? 'whatsapp' : 'requirement']: value,
+      [id]: value,
     }));
   };
 
@@ -170,108 +170,70 @@ export default function ConsultationPageV15() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="rounded-[2.5rem] bg-gray-50/50 p-2 ring-1 ring-gray-800/20">
-              <div className="relative overflow-hidden rounded-[2rem] bg-white p-8 lg:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.04)]">
-                
-                <div className="absolute top-0 right-0 h-16 w-16 bg-gradient-to-bl from-green-50 to-transparent opacity-50" />
-
-                <form className="relative space-y-12" onSubmit={handleSubmit}>
-                  {/* Success Message */}
-                  {submitStatus === 'success' && (
-                    <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
-                      <div className="flex items-center gap-2 text-emerald-700">
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <p className="font-medium text-sm">{successMessage}</p>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Error Message */}
-                  {submitStatus === 'error' && (
-                    <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                      <div className="flex items-center gap-2 text-red-700">
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                        <p className="font-medium text-sm">{successMessage}</p>
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="grid grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2">
-                    {/* First Name */}
-                    <div className="group relative border-b border-gray-500 pb-1 focus-within:border-green-600 transition-all duration-300">
-                      <input 
-                        type="text" 
-                        id="fname"
-                        value={formData.firstName}
-                        onChange={handleInputChange}
-                        disabled={isSubmitting}
-                        className="peer w-full bg-transparent py-2 text-sm outline-none border-none focus:ring-0 placeholder-transparent disabled:opacity-50" 
-                        placeholder="First Name" 
-                        required
-                      />
-                      <label 
-                        htmlFor="fname"
-                        className="absolute left-0 -top-3.5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-600 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-placeholder-shown:font-medium peer-placeholder-shown:text-gray-700 peer-focus:-top-3.5 peer-focus:text-[10px] peer-focus:text-green-600"
-                      >
-                        01. First Name
-                      </label>
-                    </div>
-
-                    {/* Last Name */}
-                    <div className="group relative border-b border-gray-500 pb-1 focus-within:border-green-600 transition-all duration-300">
-                      <input 
-                        type="text" 
-                        id="lname"
-                        value={formData.lastName}
-                        onChange={handleInputChange}
-                        disabled={isSubmitting}
-                        className="peer w-full bg-transparent py-2 text-sm outline-none border-none focus:ring-0 placeholder-transparent disabled:opacity-50" 
-                        placeholder="Last Name" 
-                        required
-                      />
-                      <label 
-                        htmlFor="lname"
-                        className="absolute left-0 -top-3.5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-600 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-placeholder-shown:font-medium peer-placeholder-shown:text-gray-700 peer-focus:-top-3.5 peer-focus:text-[10px] peer-focus:text-green-600"
-                      >
-                        02. Last Name
-                      </label>
-                    </div>
+            <div className="relative rounded-[2rem] bg-white p-1 shadow-[0_2px_10px_rgba(0,0,0,0.02)] ring-1 ring-emerald-500">
+              
+              <form className="p-10 lg:p-16" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2">
+                  
+                  {/* Field 01: First Name */}
+                  <div className="relative space-y-3 group">
+                    <label className="flex items-center gap-2 text-[16px] font-semibold uppercase tracking-widest text-gray-700 group-focus-within:text-emerald-600 transition-colors">
+                      <span className="font-serif italic lowercase text-lg opacity-90">i.</span> First Name
+                    </label>
+                    <input 
+                      id="firstName"
+                      type="text" 
+                      placeholder="Ex: Alistair"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      disabled={isSubmitting}
+                      className="w-full border-b border-gray-400 bg-transparent py-2 text-xl font-medium  text-gray-900 outline-none transition-all focus:border-emerald-600 placeholder:text-gray-300" 
+                    />
                   </div>
 
-                  {/* Email */}
-                  <div className="group relative border-b border-gray-500 pb-1 focus-within:border-green-600 transition-all duration-300">
+                  {/* Field 02: Last Name */}
+                  <div className="relative space-y-3 group">
+                    <label className="flex items-center gap-2 text-[16px] font-semibold uppercase tracking-widest text-gray-700 group-focus-within:text-emerald-600 transition-colors">
+                      <span className="font-serif italic lowercase text-lg opacity-90">ii.</span> Last Name
+                    </label>
                     <input 
-                      type="email" 
+                      id="lastName"
+                      type="text" 
+                      placeholder="Ex: Montgomery"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      disabled={isSubmitting}
+                      className="w-full border-b border-gray-400 bg-transparent py-2 text-xl font-medium text-gray-900 outline-none transition-all focus:border-emerald-600 placeholder:text-gray-300" 
+                    />
+                  </div>
+
+                  {/* Field 03: Corporate Email */}
+                  <div className="sm:col-span-2 relative space-y-3 group">
+                    <label className="flex items-center gap-2 text-[16px] font-semibold uppercase tracking-widest text-gray-700 group-focus-within:text-emerald-600 transition-colors">
+                      <span className="font-serif italic lowercase text-lg opacity-90">iii.</span>  Business Email
+                    </label>
+                    <input 
                       id="email"
+                      type="email" 
+                      placeholder="director@firm.co.uk"
                       value={formData.email}
                       onChange={handleInputChange}
                       disabled={isSubmitting}
-                      className="peer w-full bg-transparent py-2 text-sm outline-none border-none focus:ring-0 placeholder-transparent disabled:opacity-50" 
-                      placeholder="Email" 
-                      required
+                      className="w-full border-b border-gray-400 bg-transparent py-2 text-xl font-medium text-gray-900 outline-none transition-all focus:border-emerald-600 placeholder:text-gray-300" 
                     />
-                    <label 
-                      htmlFor="email"
-                      className="absolute left-0 -top-3.5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-700 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-placeholder-shown:font-medium peer-placeholder-shown:text-gray-700 peer-focus:-top-3.5 peer-focus:text-[10px] peer-focus:text-green-600"
-                    >
-                      03. Business Email
-                    </label>
                   </div>
 
-                  <div className="grid grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2">
-                    {/* Country Selection */}
-                    <div className="group relative border-b border-gray-500 pb-1">
-                      <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-700">04. Geography</label>
-                      <Select
+                  {/* Field 04: Geography */}
+                  <div className="relative space-y-3 group">
+                    <label className="flex items-center gap-2  font-semibold uppercase tracking-widest text-gray-700 group-focus-within:text-emerald-600 transition-colors">
+                      <span className="font-serif italic lowercase text-lg opacity-90">iv.</span> Geography
+                    </label>
+                    <Select
                         options={countryOptions}
                         value={formData.country}
                         onChange={handleCountryChange}
                         placeholder="Select a country"
-                        className="mt-2 text-sm"
+                        className="mt-2 text-[16px] font-medium border-b border-gray-400"
                         classNamePrefix="react-select"
                         isDisabled={isSubmitting}
                         
@@ -297,74 +259,64 @@ export default function ConsultationPageV15() {
                           }),
                         }}
                       />
-                    </div>
-
-                    {/* WhatsApp */}
-                    <div className="group relative border-b border-gray-500 pb-1 focus-within:border-green-600 transition-all duration-300">
-                      <input 
-                        type="tel" 
-                        id="whatsapp"
-                        value={formData.whatsapp}
-                        onChange={handleInputChange}
-                        disabled={isSubmitting}
-                        className="peer w-full bg-transparent py-2 text-sm outline-none border-none focus:ring-0 placeholder-transparent disabled:opacity-50" 
-                        placeholder="WhatsApp" 
-                        required
-                      />
-                      <label 
-                        htmlFor="whatsapp"
-                        className="absolute left-0 -top-3.5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-700 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-placeholder-shown:font-medium peer-placeholder-shown:text-gray-700 peer-focus:-top-3.5 peer-focus:text-[10px] peer-focus:text-green-600"
-                      >
-                        05. WhatsApp Number
-                      </label>
-                    </div>
                   </div>
 
-                  {/* Requirement */}
-                  <div className="group relative border-b border-gray-500 pb-4 focus-within:border-green-600 transition-all duration-300">
+                  {/* Field 05: WhatsApp */}
+                  <div className="relative space-y-3 group">
+                    <label className="flex items-center gap-2 text-[16px] font-semibold uppercase tracking-widest text-gray-700 group-focus-within:text-emerald-600 transition-colors">
+                      <span className="font-serif italic lowercase text-lg opacity-90">v.</span> WhatsApp Number
+                    </label>
+                    <input 
+                      id="whatsapp"
+                      type="tel" 
+                      placeholder="+94 71 643 0053"
+                      value={formData.whatsapp}
+                      onChange={handleInputChange}
+                      disabled={isSubmitting}
+                      className="w-full border-b border-gray-400 bg-transparent py-2 text-xl font-medium text-gray-900 outline-none transition-all focus:border-emerald-600 placeholder:text-gray-300" 
+                    />
+                  </div>
+
+                  {/* Field 06: Requirement */}
+                  <div className="sm:col-span-2 relative space-y-3 group">
+                    <label className="flex items-center gap-2 text-[16px] font-semibold uppercase tracking-widest text-gray-700 group-focus-within:text-emerald-600 transition-colors">
+                      <span className="font-serif italic lowercase text-lg opacity-90">vi.</span> Requirement
+                    </label>
                     <textarea 
                       id="requirement"
+                      rows={2}
+                      placeholder="What problem are you looking to solve?"
                       value={formData.requirement}
                       onChange={handleInputChange}
                       disabled={isSubmitting}
-                      rows={4} 
-                      className="peer w-full bg-transparent py-2 text-sm outline-none border-none focus:ring-0 resize-none placeholder-transparent disabled:opacity-50" 
-                      placeholder="Requirement"
-                    ></textarea>
-                    <label 
-                      htmlFor="requirement"
-                      className="absolute left-0 -top-3.5 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-800 transition-all peer-placeholder-shown:top-2 peer-placeholder-shown:text-sm peer-placeholder-shown:font-medium peer-placeholder-shown:text-gray-700 peer-focus:-top-3.5 peer-focus:text-[10px] peer-focus:text-green-600"
-                    >
-                      06. Requirement
-                    </label>
+                      className="w-full border-b border-gray-400 bg-transparent py-2 text-xl font-medium text-gray-900 outline-none transition-all focus:border-emerald-600 placeholder:text-gray-300 resize-none" 
+                    />
                   </div>
+                </div>
 
-                  <div className="pt-8 group">
-                    <button 
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-gray-900 px-10 py-5 text-[13px] font-black uppercase tracking-[0.3em] text-white transition-all shadow-xl shadow-gray-200/50 group-hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      <span className="relative z-10">
+                {/* The Sovereign Button */}
+                <div className="mt-20">
+                  <button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="group relative w-full bg-gray-900 py-6 px-10 rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_20px_40px_rgba(16,185,129,0.2)]"
+                  >
+                    {/* Emerald Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-emerald-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                    
+                    <div className="relative z-10 flex items-center justify-center gap-2">
+                      <span className="text-[12px] font-bold uppercase tracking-[0.5em] text-white">
                         {isSubmitting ? 'Submitting...' : 'Start With LushWare'}
                       </span>
-                      <ArrowUpRight
-                        size={20}
-                        className="relative z-10 transition-transform duration-500 group-hover:rotate-45 group-hover:translate-x-1"
-                      />
+                      <div className="flex items-center gap-4">
+                        <ArrowUpRight size={20} className="text-white transition-transform group-hover:rotate-45" />
+                      </div>
+                    </div>
+                  </button>
+                  
 
-                      {/* Emerald Hover Sweep */}
-                      {!isSubmitting && <div className="absolute inset-0 z-0 h-full w-0 bg-emerald-600 transition-all duration-500 ease-out group-hover:w-full"></div>}
-                    </button>
-
-                    {/* Trust Label */}
-                    <p className="mt-5 text-center text-[10px] font-bold uppercase tracking-widest text-gray-500 transition-colors group-hover:text-emerald-600">
-                      Trusted Communication
-                    </p>
-                  </div>
-
-                </form>
-              </div>
+                </div>
+              </form>
             </div>
           </div>
 
