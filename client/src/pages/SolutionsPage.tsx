@@ -69,12 +69,30 @@ export default function SolutionsPage() {
   return (
     <section id="solutions" className="scroll-mt-24  px-6 py-30">
       <div className="mx-auto  max-w-7xl">
-        <p className="py-6 text-4xl md:text-5xl mb-6 text-center font-bold tracking-tight text-slate-900 leading-[1.1] hero-line">
-          Tailored software solutions <br />
-          <span className="inline-block mt-2 px-4 py-1 rounded-xl border border-emerald-100 bg-emerald-50/30 text-emerald-600 shadow-sm shadow-emerald-100/50">
-            designed to power your success.
-          </span>
-        </p>
+        <div className="max-w-6xl mt-12 mx-auto text-center mb-16">
+          {/* Badge */}
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
+              Travel Management Solutions
+            </div>
+          </div>
+
+          {/* Heading */}
+          <h1 className="text-5xl lg:text-7xl font-extrabold text-[#0F172A] tracking-tight leading-[1.1] mb-6 hero-line">
+            Power Smarter Travel <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-800 via-emerald-500 to-emerald-800 hero-line">
+              With Intelligent Travel Software
+            </span>
+          </h1>
+
+          {/* Description */}
+          <p className="text-xl text-slate-600 font-medium max-w-6xl mx-auto hero-line">
+            Our travel solutions help agencies, tour operators, and travel businesses
+            streamline bookings, manage itineraries, automate operations, and deliver
+            exceptional travel experiences from planning to completion.
+          </p>
+        </div>
+
 
         {/* The Grid */}
         <div className="grid gap-px  border border-slate-100 rounded-[3rem] overflow-hidden">

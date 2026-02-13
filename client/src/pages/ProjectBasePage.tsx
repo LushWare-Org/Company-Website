@@ -58,7 +58,7 @@ export default function ProjectBasePage() {
 
           {/* HEADER */}
           <div className="mb-20 max-w-7xl mx-auto px-6 text-center relative">
-            <h2 className="text-5xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight hero-line">
+            <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900  hero-line">
               Become a{" "}
               <span className="relative inline-block text-emerald-600">
                 Product Builder
@@ -71,7 +71,7 @@ export default function ProjectBasePage() {
               not just a learner.
             </h2>
 
-            <p className="mt-6 text-lg md:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-6 text-lg md:text-xl text-slate-800 max-w-3xl mx-auto leading-relaxed">
               Choose a track and apply now. We align{" "}
               <span className="text-emerald-600 font-semibold">
                 scope, timelines, and real outcomes
