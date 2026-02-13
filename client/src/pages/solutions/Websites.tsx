@@ -2,8 +2,10 @@ import React from "react";
 import QuestionItem from "../../components/QuestionItem";
 import WhyChooseLushWare from "../../components/WhyChooseLushWare";
 import ValueCard from "../../components/ValueCard";
+import { useNavigate } from "react-router-dom";
 
 const Websites: React.FC = () => {
+  const navigate = useNavigate();
   const faqItems = [
     {
       question: "What is a corporate website?",
@@ -63,8 +65,10 @@ const Websites: React.FC = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-transparent to-transparent"></div>
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-              <button className="bg-white text-[#1A1A1A] px-12 py-4 rounded-full font-bold shadow-xl hover:bg-[#B89450] hover:text-white transition-all transform hover:scale-105">
-                DISCOVER OUR WEBSITES
+              <button className="bg-white text-[#1A1A1A] px-12 py-4 rounded-full cursor-pointer font-bold shadow-xl hover:bg-emerald-600 duration-700 hover:text-white transition-all transform hover:scale-105"
+                onClick={() => navigate("/contact")}
+              >
+                DISCOVER THE PLATFORM
               </button>
             </div>
           </div>
@@ -147,73 +151,166 @@ const Websites: React.FC = () => {
           </div>
         </section>
 
-        <section className="bg-white py-32 px-6 min-h-[150vh] relative">
-          {/* Sticky Container - Keeps the laptop in view while scrolling */}
-          <div className="sticky top-20 max-w-7xl mx-auto overflow-visible">
-            
-            {/* Header Text - Fades out as you scroll */}
-                <div className="text-center mb-20 relative z-30">
-                  <div className="inline-block px-4 py-1 rounded-full border border-emerald-100 bg-white/50 backdrop-blur-md mb-6 shadow-sm">
-                    <span className="text-emerald-800 font-bold tracking-[0.4em] text-[10px] uppercase">
-                      Precision Engineering
-                    </span>
-                  </div>
-                  <h3 className="text-5xl md:text-7xl font-serif text-slate-900 mb-4 tracking-tight">
-                    Experience the <span className=" font-light text-emerald-800">Interface.</span>
-                  </h3>
-                  <p className="text-slate-400 font-medium">Scroll to engage the system</p>
-                </div>
-
-            {/* The Laptop Rig */}
-            <div className="relative perspective-[2000px] w-full flex flex-col items-center">
-              
-              {/* LID / SCREEN (The part that opens) */}
-              <div 
-                className="relative z-20 w-full max-w-[900px] aspect-[16/10] bg-[#020617] rounded-2xl p-2 shadow-2xl border border-slate-800 origin-bottom transition-all duration-100 ease-out"
-                style={{
-                  transformStyle: 'preserve-3d',
-                  animation: 'open-lid linear both',
-                  animationTimeline: 'view()',
-                  animationRange: 'entry 10% cover 40%'
-                }}
-              >
-                {/* Screen Content (Your Live Site) */}
-                <div className="w-full h-full bg-white rounded-xl overflow-hidden relative border border-slate-900">
-                    {/* Glass Reflection Layer */}
-                    <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-tr from-transparent via-white/10 to-transparent"></div>
-                    
-                    <iframe 
-                      src="https://lushware.vercel.app/" 
-                      className="w-full h-full border-none"
-                      title="Lushware Interactive"
-                    />
-                </div>
-
-                {/* Camera Notch Detail */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#020617] rounded-b-xl flex items-center justify-center border-x border-b border-slate-800">
-                    <div className="w-1.5 h-1.5 bg-slate-700 rounded-full"></div>
-                </div>
-              </div>
-
-              {/* BASE / KEYBOARD (The part that stays flat) */}
-              <div className="relative z-10 w-full max-w-[920px] h-[20px] bg-gradient-to-b from-slate-800 to-black rounded-b-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] mt-[-2px]">
-                {/* Reflection on the desk surface */}
-                <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[90%] h-20 bg-emerald-900/10 blur-3xl rounded-full -z-10"></div>
-              </div>
-
+      <section className="bg-white py-24 px-6 min-h-[160vh] relative">
+        {/* Sticky Container - Keeps the laptop in view while scrolling */}
+        <div className="sticky top-20 max-w-7xl mx-auto overflow-visible">
+          
+          {/* Header Text - Sophisticated London Agency Style */}
+          <div className="text-center mb-16 relative z-30">
+            <div className="inline-block px-4 py-1 rounded-full border border-emerald-300 bg-white/50 backdrop-blur-md mb-6 ">
+              <span className="text-emerald-800 font-bold tracking-[0.4em] text-[10px] uppercase">
+                Corporate Excellence
+              </span>
             </div>
+            <h3 className="text-5xl md:text-7xl  text-slate-900 mb-4 tracking-tight">
+              The Digital <span className=" text-emerald-700 ">Cornerstone.</span>
+            </h3>
+            <p className="text-slate-600 text-lg font-medium tracking-wide">Scroll to deconstruct the corporate advantage</p>
           </div>
 
-          {/* Spacer to allow for scrolling room */}
-          <div className="h-[50vh]"></div>
+          {/* The Laptop Rig */}
+          <div className="relative perspective-[2000px] w-full flex flex-col items-center">
+            
+            {/* LID / SCREEN */}
+            <div 
+              className="relative z-20 w-full max-w-[900px] aspect-[16/10] bg-[#020617] rounded-2xl p-2 shadow-2xl border border-slate-800 origin-bottom transition-all duration-100 ease-out"
+              style={{
+                transformStyle: 'preserve-3d',
+                animation: 'open-lid linear both',
+                animationTimeline: 'view()',
+                animationRange: 'entry 10% cover 45%'
+              }}
+            >
+              {/* INNER SCREEN CONTENT (High Density Business Architecture) */}
+              <div className="w-full h-full bg-[#fcfcfb] rounded-xl overflow-hidden relative border border-slate-900 flex flex-col font-sans">
+                
+                {/* 1. TOP BRAND BAR */}
+                <div className="h-10 border-b border-stone-200 bg-white px-5 flex items-center justify-between shrink-0">
+                  <div className="flex items-center gap-4">
+                    <span className="font-serif italic text-xs text-stone-900">Lushware <span className="font-sans font-bold not-italic text-emerald-900 text-[9px] tracking-tighter">CORP</span></span>
+                    <div className="h-3 w-[1px] bg-stone-200"></div>
+                    <span className="text-[8px] font-bold text-stone-400 uppercase tracking-widest">Global Solutions / Web Architecture</span>
+                  </div>
+                  <div className="flex gap-1.5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-stone-200"></div>
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-700"></div>
+                  </div>
+                </div>
 
-          <style dangerouslySetInnerHTML={{ __html: `
-            @keyframes open-lid {
-              from { transform: rotateX(-95deg); opacity: 0.8; }
-              to { transform: rotateX(0deg); opacity: 1; }
-            }
-          `}} />
-        </section>
+                <div className="flex-1 flex overflow-hidden">
+                  
+                  {/* 2. MAIN CONTENT GRID */}
+                  <div className="flex-1 p-5 grid grid-cols-12 gap-4 overflow-y-auto">
+                    
+                    {/* Left Column: Strategic Value */}
+                    <div className="col-span-7 flex flex-col gap-4">
+                      <div className="bg-emerald-950 p-5 rounded-xl text-white relative overflow-hidden">
+                        <p className="text-[9px] font-bold uppercase tracking-[0.3em] text-emerald-400 mb-2">Value Proposition</p>
+                        <h4 className="text-xl font-serif italic mb-3 leading-tight">Digital Presence as a Revenue Multiplier.</h4>
+                        <p className="text-[10px] text-emerald-100/60 leading-relaxed mb-4">Establishing authority in the London B2B market through high-fidelity engineering.</p>
+                        
+                        <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/10">
+                          <div>
+                            <p className="text-lg font-bold">94%</p>
+                            <p className="text-[8px] text-emerald-400 uppercase font-bold tracking-tighter">First Impression Rating</p>
+                          </div>
+                          <div>
+                            <p className="text-lg font-bold">2.4x</p>
+                            <p className="text-[8px] text-emerald-400 uppercase font-bold tracking-tighter">Inquiry Conversion</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Benefit Ledger */}
+                      <div className="bg-white border border-stone-100 rounded-xl p-4 shadow-sm">
+                        <h5 className="text-[10px] font-bold uppercase tracking-widest mb-4 text-stone-900">Strategic Business Benefits</h5>
+                        <div className="space-y-4">
+                          {[
+                            { t: "Institutional Trust", d: "Premium digital aesthetics that validate high-ticket corporate offerings." },
+                            { t: "Investor Transparency", d: "Scalable portals for real-time stakeholder and analyst communication." },
+                            { t: "Lead Capture Funnels", d: "UX architecture designed to convert high-intent B2B traffic." }
+                          ].map((b, i) => (
+                            <div key={i} className="flex gap-3 items-start border-b border-stone-50 pb-3 last:border-0">
+                              <span className="text-emerald-800 font-serif italic font-bold">0{i+1}</span>
+                              <div>
+                                <p className="text-[10px] font-bold text-stone-900 leading-none mb-1">{b.t}</p>
+                                <p className="text-[9px] text-stone-500 leading-tight">{b.d}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right Column: Performance Analytics */}
+                    <div className="col-span-5 flex flex-col gap-4">
+                      <div className="bg-white border border-stone-100 rounded-xl p-4 shadow-sm flex-1 flex flex-col items-center justify-center">
+                        <p className="text-[8px] font-bold uppercase tracking-widest text-stone-400 mb-4">Retention Analytics</p>
+                        
+                        <div className="relative h-28 w-28">
+                          <svg className="w-full h-full transform -rotate-90">
+                              <circle cx="56" cy="56" r="52" stroke="currentColor" strokeWidth="6" fill="transparent" className="text-stone-50" />
+                              <circle cx="56" cy="56" r="52" stroke="currentColor" strokeWidth="6" fill="transparent" strokeDasharray="327" strokeDashoffset="80" className="text-emerald-800" />
+                          </svg>
+                          <div className="absolute inset-0 flex flex-col items-center justify-center">
+                              <span className="text-xl font-bold text-stone-900 leading-none">88%</span>
+                              <span className="text-[7px] uppercase font-bold text-stone-400 mt-1">Growth Index</span>
+                          </div>
+                        </div>
+
+                        <div className="w-full space-y-2 mt-6">
+                          <div className="flex justify-between items-center bg-stone-50 px-2 py-1.5 rounded">
+                            <span className="text-[8px] font-bold">SEO Rank</span>
+                            <span className="text-[8px] text-emerald-800 font-black tracking-tighter">TOP 1%</span>
+                          </div>
+                          <div className="flex justify-between items-center bg-stone-50 px-2 py-1.5 rounded">
+                            <span className="text-[8px] font-bold">Latency</span>
+                            <span className="text-[8px] text-emerald-800 font-black tracking-tighter">0.62ms</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-stone-900 p-4 rounded-xl text-white relative overflow-hidden">
+                        <p className="text-[8px] font-bold uppercase tracking-[0.3em] opacity-40 mb-2">Governance</p>
+                        <p className="text-[10px] italic font-serif leading-relaxed opacity-90">
+                          "Our architecture ensures global compliance and absolute data integrity."
+                        </p>
+                        <div className="absolute -right-2 -bottom-2 w-12 h-12 bg-emerald-500/10 rounded-full blur-xl"></div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                {/* Glass Reflection Over Screen */}
+                <div className="absolute inset-0 z-50 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-transparent"></div>
+              </div>
+
+              {/* Camera Notch Detail */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#020617] rounded-b-xl flex items-center justify-center border-x border-b border-slate-800">
+                  <div className="w-1.5 h-1.5 bg-slate-700 rounded-full"></div>
+              </div>
+            </div>
+
+            {/* BASE / KEYBOARD (Stays flat) */}
+            <div className="relative z-10 w-full max-w-[920px] h-[20px] bg-gradient-to-b from-slate-800 to-black rounded-b-2xl shadow-[0_20px_50px_rgba(0,0,0,0.4)] mt-[-2px]">
+              {/* Ambient Reflection on desk */}
+              <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[90%] h-20 bg-emerald-900/10 blur-3xl rounded-full -z-10"></div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Spacer to allow for scrolling room */}
+        <div className="h-[60vh]"></div>
+
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes open-lid {
+            from { transform: rotateX(-95deg); opacity: 0.8; }
+            to { transform: rotateX(0deg); opacity: 1; }
+          }
+        `}} />
+      </section>
 
 
         {/* Value Section */}

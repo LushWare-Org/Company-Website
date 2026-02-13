@@ -53,7 +53,7 @@ export default function JoinSection() {
       <div className="max-w-7xl mx-auto relative z-10 px-8">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           <div className="lg:w-5/12 text-center lg:text-left">
-            <h2 className="text-5xl font-bold md:text-7xl text-gray-900 leading-[0.85] tracking-tighter mb-8">
+            <h2 className="text-5xl font-semibold md:text-7xl text-gray-900 leading-[0.85] tracking-tighter mb-8">
               Project <br />
               <span className="bg-emerald-600 bg-clip-text text-transparent"> Inventory.</span>
             </h2>

@@ -75,7 +75,7 @@ const AIAgents: React.FC = () => {
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
               <button
                 onClick={() => navigate("/contact")}
-                className="bg-white text-[#1A1A1A] px-12 py-4 rounded-full font-bold shadow-xl hover:bg-[#B89450] hover:text-white transition-all transform hover:scale-105"
+                className="bg-white text-[#1A1A1A] cursor-pointer px-12 py-4 rounded-full font-bold shadow-xl hover:bg-emerald-700 duration-700 hover:text-white transition-all transform hover:scale-105"
               >
                 Learn How AI Can Help
               </button>

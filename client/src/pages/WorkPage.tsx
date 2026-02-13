@@ -104,7 +104,7 @@ export default function WorkPage() {
                 </span>
               </h1>
 
-              <p className="mt-5 text-gray-500 text-lg md:text-xl max-w-2xl leading-relaxed">
+              <p className="mt-5 text-gray-800 text-lg md:text-xl max-w-2xl leading-relaxed">
                 A selection of our work demonstrating custom software solutions for real-world challenges.
               </p>
             </div>

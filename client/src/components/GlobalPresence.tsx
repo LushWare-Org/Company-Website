@@ -22,7 +22,7 @@ export default function GlobalPresence() {
               {/* Headline */}
               <h2 className="text-5xl md:text-7xl font-medium text-slate-950 leading-[0.9] tracking-tight">
                 Working with the UK. <br />
-                <span className="text-emerald-700">
+                <span className="text-emerald-600">
                   Trusted in Sri Lanka.
                 </span>
               </h2>

@@ -129,7 +129,7 @@ export default function Homepage() {
                 {/* Headline */}
                 <h2 className="text-5xl md:text-7xl font-semibold text-stone-950 leading-[1.1] tracking-tight hero-line">
                   Transforming <br />
-                  <span className=" text-emerald-700">
+                  <span className=" text-emerald-600">
                     Client Relationships
                   </span>
                 </h2>
@@ -202,8 +202,8 @@ export default function Homepage() {
                     <div className="w-full h-full bg-white rounded-[2.2rem] overflow-hidden flex flex-col">
                       
                       {/* App Header */}
-                      <div className="bg-emerald-900 p-8 pt-14 text-white">
-                        <p className="text-[10px] uppercase tracking-widest opacity-60 mb-1">Secure Dashboard</p>
+                      <div className="bg-emerald-700 p-8 pt-14 text-white">
+                        <p className="text-[10px] uppercase tracking-widest opacity-90 mb-1">Secure Dashboard</p>
                         <h4 className="text-xl font-serif">CRM Enterprise</h4>
                       </div>
 
@@ -406,7 +406,7 @@ export default function Homepage() {
                   Our 
                   Specialized Software <br /> 
                   <span className="relative">
-                    <span className="relative z-10 text-emerald-700">Solutions.</span>
+                    <span className="relative z-10 text-emerald-600">Solutions.</span>
                     <svg className="absolute -bottom-1 left-0 w-full h-0.5 text-emerald-300" viewBox="0 0 100 2" preserveAspectRatio="none">
                       <line x1="0" y1="1" x2="100" y2="1" stroke="currentColor" strokeWidth="2" />
                     </svg>
@@ -585,7 +585,7 @@ export default function Homepage() {
                 <div className="md:col-span-3">
                   <h3 className="text-4xl md:text-6xl font-bold uppercase tracking-[-0.06em] text-slate-900 leading-[0.8] ">
                     Systems We’re <br />
-                    <span className="text-emerald-700">Building</span> Up.
+                    <span className="text-emerald-600">Building</span> Up.
                   </h3>
                 </div>
               </div>

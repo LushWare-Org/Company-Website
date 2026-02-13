@@ -2,8 +2,12 @@ import React from "react";
 import QuestionItem from "../../components/QuestionItem";
 import WhyChooseLushWare from "../../components/WhyChooseLushWare";
 import ValueCard from "../../components/ValueCard";
+import { useNavigate } from "react-router-dom";
+
 
 const CRM: React.FC = () => {
+  const navigate = useNavigate();
+
   const faqItems = [
     {
       question: "What is CRM software?",
@@ -74,7 +78,9 @@ const CRM: React.FC = () => {
             
             {/* Floating Action Button on Image */}
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-              <button className="bg-white text-[#1A1A1A] px-12 py-4 rounded-full font-bold shadow-xl hover:bg-[#B89450] hover:text-white transition-all transform hover:scale-105">
+              <button className="bg-white text-[#1A1A1A] px-12 py-4 rounded-full cursor-pointer font-bold shadow-xl hover:bg-emerald-600 duration-700 hover:text-white transition-all transform hover:scale-105"
+                onClick={() => navigate("/contact")}
+              >
                 DISCOVER THE PLATFORM
               </button>
             </div>
@@ -133,79 +139,210 @@ const CRM: React.FC = () => {
             ))}
           </div>
 
-        <section className="bg-white py-32 px-6 min-h-[150vh] relative">
-          {/* Sticky Container - Keeps the laptop in view while scrolling */}
-          <div className="sticky top-20 max-w-7xl mx-auto overflow-visible">
-            
-            {/* Header Text - Fades out as you scroll */}
-                <div className="text-center mb-20 relative z-30">
-                  <div className="inline-block px-4 py-1 rounded-full border border-emerald-100 bg-white/50 backdrop-blur-md mb-6 shadow-sm">
-                    <span className="text-emerald-800 font-bold tracking-[0.4em] text-[10px] uppercase">
-                      Precision Engineering
-                    </span>
-                  </div>
-                  <h3 className="text-5xl md:text-7xl font-serif text-slate-900 mb-4 tracking-tight">
-                    Experience the <span className=" font-light text-emerald-800">Interface.</span>
-                  </h3>
-                  <p className="text-slate-400 font-medium">Scroll to engage the system</p>
-                </div>
-
-            {/* The Laptop Rig */}
-            <div className="relative perspective-[2000px] w-full flex flex-col items-center">
+          <section className="bg-white py-32 px-6 min-h-[150vh] relative">
+            {/* Sticky Container */}
+            <div className="sticky top-20 max-w-7xl mx-auto overflow-visible">
               
-              {/* LID / SCREEN (The part that opens) */}
-              <div 
-                className="relative z-20 w-full max-w-[900px] aspect-[16/10] bg-[#020617] rounded-2xl p-2 shadow-2xl border border-slate-800 origin-bottom transition-all duration-100 ease-out"
-                style={{
-                  transformStyle: 'preserve-3d',
-                  animation: 'open-lid linear both',
-                  animationTimeline: 'view()',
-                  animationRange: 'entry 10% cover 40%'
-                }}
-              >
-                {/* Screen Content (Your Live Site) */}
-                <div className="w-full h-full bg-white rounded-xl overflow-hidden relative border border-slate-900">
-                    {/* Glass Reflection Layer */}
-                    <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-tr from-transparent via-white/10 to-transparent"></div>
+              {/* Header Text */}
+              <div className="text-center mb-20 relative z-30">
+                <div className="inline-block px-4 py-1 rounded-full border border-emerald-300 bg-white/50 backdrop-blur-md mb-6 ">
+                  <span className="text-emerald-800 font-bold tracking-[0.4em] text-[10px] uppercase">
+                    Precision Engineering
+                  </span>
+                </div>
+                <h3 className="text-5xl md:text-7xl  text-slate-900 mb-4 tracking-tight">
+                  Experience the <span className=" font-light text-emerald-700">Interface.</span>
+                </h3>
+                <p className="text-slate-600 text-xl font-medium">Scroll to engage the system</p>
+              </div>
+
+              {/* The Laptop Rig */}
+              <div className="relative perspective-[2000px] w-full flex flex-col items-center">
+                
+                {/* LID / SCREEN */}
+                <div 
+                  className="relative z-20 w-full max-w-[900px] aspect-[16/10] bg-[#020617] rounded-2xl p-2 shadow-2xl border border-slate-800 origin-bottom transition-all duration-100 ease-out"
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    animation: 'open-lid linear both',
+                    animationTimeline: 'view()',
+                    animationRange: 'entry 10% cover 40%'
+                  }}
+                >
+                  {/* INNER SCREEN CONTENT (The "Real" Site Mockup) */}
+                  <div className="w-full h-full bg-[#f1f5f9] rounded-xl overflow-hidden relative border border-slate-900 flex flex-col font-sans">
                     
-                    <iframe 
-                      src="https://lushware.vercel.app/" 
-                      className="w-full h-full border-none"
-                      title="Lushware Interactive"
-                    />
+                    {/* 1. COMPACT TOP NAV */}
+                    <div className="h-10 border-b border-slate-200 bg-emerald-950 px-4 flex items-center justify-between shrink-0">
+                      <div className="flex items-center gap-6">
+                        <div className="flex items-center gap-2">
+                          <div className="w-4 h-4 bg-emerald-500 rounded-sm flex items-center justify-center">
+                            <div className="w-1.5 h-1.5 bg-emerald-950 rounded-full"></div>
+                          </div>
+                          <span className="font-bold text-white tracking-tighter text-[10px]">LUSHWARE <span className="text-emerald-400">PREMIUM</span></span>
+                        </div>
+                        <div className="hidden sm:flex gap-3 text-[8px] font-bold uppercase tracking-[0.2em] text-emerald-200/60">
+                          <span className="text-white bg-white/10 px-2 py-1 rounded">Terminal</span>
+                          <span className="px-2 py-1">Markets</span>
+                          <span className="px-2 py-1">Custodians</span>
+                          <span className="px-2 py-1">Flows</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="h-4 w-24 bg-emerald-900/50 rounded-full border border-emerald-800 flex items-center px-2">
+                            <div className="h-1 w-1 bg-emerald-400 rounded-full animate-pulse mr-2"></div>
+                            <span className="text-[7px] text-emerald-400 uppercase font-bold tracking-widest">System Live</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-1 overflow-hidden">
+                      {/* 2. DENSE LEFT SIDEBAR */}
+                      <div className="w-10 border-r border-slate-200 bg-white flex flex-col items-center py-4 gap-4 shrink-0">
+                        {[...Array(8)].map((_, i) => (
+                          <div key={i} className={`w-6 h-6 rounded flex items-center justify-center ${i === 0 ? 'bg-emerald-900 text-white' : 'text-slate-300 hover:bg-slate-50'}`}>
+                            <div className="w-3 h-3 border border-current rounded-sm"></div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* 3. MULTI-COLUMN DATA GRID */}
+                      <div className="flex-1 flex flex-col overflow-hidden">
+                        
+                        {/* Top Ribbon Stats */}
+                        <div className="grid grid-cols-4 border-b border-slate-200 bg-white shrink-0">
+                          {[
+                            { label: "Portfolio Value", val: "£8,421,090", change: "+0.42%" },
+                            { label: "Daily Volume", val: "£1.2M", change: "-0.12%" },
+                            { label: "Active Nodes", val: "1,024", change: "Stable" },
+                            { label: "Risk Index", val: "0.02", change: "Minimal" }
+                          ].map((s, i) => (
+                            <div key={i} className="p-3 border-r border-slate-100 last:border-r-0">
+                              <p className="text-[7px] font-black text-slate-400 uppercase tracking-widest mb-1">{s.label}</p>
+                              <div className="flex items-baseline gap-2">
+                                <span className="text-sm font-bold text-slate-900 leading-none">{s.val}</span>
+                                <span className={`text-[7px] font-bold ${s.change.startsWith('+') ? 'text-emerald-600' : 'text-slate-400'}`}>{s.change}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="flex-1 flex overflow-hidden">
+                          {/* Main Feed (High Density Table) */}
+                          <div className="flex-[2] bg-white border-r border-slate-200 overflow-y-auto p-4">
+                            <div className="flex items-center justify-between mb-4">
+                              <h5 className="text-[10px] font-bold uppercase tracking-widest text-slate-900">Transaction Ledger</h5>
+                              <div className="flex gap-2">
+                                <div className="h-5 w-16 bg-slate-50 border border-slate-200 rounded"></div>
+                                <div className="h-5 w-16 bg-emerald-900 rounded"></div>
+                              </div>
+                            </div>
+                            <table className="w-full text-left border-collapse">
+                              <thead>
+                                <tr className="border-b border-slate-100">
+                                  {["Entity", "Status", "Allocation", "Rating"].map(h => (
+                                    <th key={h} className="pb-2 text-[8px] font-bold text-slate-400 uppercase tracking-tighter">{h}</th>
+                                  ))}
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-slate-50">
+                                {[
+                                  { n: "Blackfriars Ltd", s: "Verified", a: "£450k", r: "AAA" },
+                                  { n: "Mayfair Equity", s: "Pending", a: "£1.2M", r: "AA+" },
+                                  { n: "Canary Global", s: "Verified", a: "£890k", r: "A+" },
+                                  { n: "Kensington PI", s: "Escrow", a: "£210k", r: "AAA" },
+                                  { n: "Sloane Asset", s: "Verified", a: "£3.4M", r: "AAA" },
+                                  { n: "Chelsea Wealth", s: "Review", a: "£150k", r: "B+" },
+                                  { n: "City Brokers", s: "Verified", a: "£670k", r: "AA" },
+                                ].map((row, i) => (
+                                  <tr key={i} className="group hover:bg-slate-50 transition-colors">
+                                    <td className="py-2 text-[9px] font-bold text-slate-700">{row.n}</td>
+                                    <td className="py-2"><span className="text-[7px] px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold uppercase">{row.s}</span></td>
+                                    <td className="py-2 text-[9px] font-mono text-slate-500">{row.a}</td>
+                                    <td className="py-2 text-[9px] font-bold text-slate-900">{row.r}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+
+                          {/* Sidebar Analytics (The "Busy" look) */}
+                          <div className="flex-1 bg-slate-50/50 p-4 space-y-4">
+                            <div className="bg-white p-3 rounded-lg border border-slate-100 shadow-sm">
+                              <p className="text-[8px] font-bold text-slate-400 uppercase mb-3">Revenue Flux</p>
+                              <div className="flex items-end gap-1 h-12">
+                                {[40,60,30,80,90,50,70,100,60,40,80].map((h,i) => (
+                                  <div key={i} className="flex-1 bg-emerald-900/10 rounded-t-[1px]" style={{height: `${h}%`}}></div>
+                                ))}
+                              </div>
+                            </div>
+
+                            <div className="bg-white p-3 rounded-lg border border-slate-100 shadow-sm">
+                              <p className="text-[8px] font-bold text-slate-400 uppercase mb-3">Asset Distribution</p>
+                              <div className="space-y-2">
+                                {[
+                                  { l: "Real Estate", p: "45%" },
+                                  { l: "Equities", p: "30%" },
+                                  { l: "Bonds", p: "25%" }
+                                ].map((item, i) => (
+                                  <div key={i}>
+                                    <div className="flex justify-between text-[7px] font-bold mb-1">
+                                      <span>{item.l}</span>
+                                      <span>{item.p}</span>
+                                    </div>
+                                    <div className="h-1 w-full bg-slate-100 rounded-full overflow-hidden">
+                                      <div className="h-full bg-emerald-900" style={{width: item.p}}></div>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+
+                            <div className="bg-emerald-900 rounded-lg p-3 text-white">
+                              <p className="text-[7px] font-bold uppercase tracking-[0.2em] opacity-60 mb-2">Security Hash</p>
+                              <p className="text-[8px] font-mono break-all opacity-90 leading-tight">
+                                0x4F2A...9B21...88C1...E4A2
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Glass Reflection Layer */}
+                    <div className="absolute inset-0 z-50 pointer-events-none bg-gradient-to-tr from-transparent via-white/5 to-transparent"></div>
+                  </div>
+
+                  {/* Camera Notch Detail */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#020617] rounded-b-xl flex items-center justify-center border-x border-b border-slate-800">
+                      <div className="w-1.5 h-1.5 bg-slate-700 rounded-full"></div>
+                  </div>
                 </div>
 
-                {/* Camera Notch Detail */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#020617] rounded-b-xl flex items-center justify-center border-x border-b border-slate-800">
-                    <div className="w-1.5 h-1.5 bg-slate-700 rounded-full"></div>
+                {/* BASE / KEYBOARD */}
+                <div className="relative z-10 w-full max-w-[940px] h-[24px] bg-gradient-to-b from-slate-800 to-black rounded-b-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] mt-[-2px]">
+                  {/* Reflection on the desk surface */}
+                  <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[90%] h-20 bg-emerald-900/10 blur-3xl rounded-full -z-10"></div>
                 </div>
-              </div>
 
-              {/* BASE / KEYBOARD (The part that stays flat) */}
-              <div className="relative z-10 w-full max-w-[920px] h-[20px] bg-gradient-to-b from-slate-800 to-black rounded-b-2xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] mt-[-2px]">
-                {/* Reflection on the desk surface */}
-                <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[90%] h-20 bg-emerald-900/10 blur-3xl rounded-full -z-10"></div>
               </div>
-
             </div>
-          </div>
 
-          {/* Spacer to allow for scrolling room */}
-          <div className="h-[50vh]"></div>
+            {/* Spacer */}
+            <div className="h-[50vh]"></div>
 
-          <style dangerouslySetInnerHTML={{ __html: `
-            @keyframes open-lid {
-              from { transform: rotateX(-95deg); opacity: 0.8; }
-              to { transform: rotateX(0deg); opacity: 1; }
-            }
-          `}} />
-        </section>
+            <style dangerouslySetInnerHTML={{ __html: `
+              @keyframes open-lid {
+                from { transform: rotateX(-95deg); opacity: 0.8; }
+                to { transform: rotateX(0deg); opacity: 1; }
+              }
+            `}} />
+          </section>
 
-            {/* Divider */}
-            <div className="my-24 border-t border-slate-200"></div>
+
 
             {/* How We Add Value - LushWare Premium Edition */}
-            <section className="bg-white py-24 px-2">
+            <section className="bg-white py-16 px-2">
               <div className="max-w-8xl mx-auto">
                 
                 {/* Header Section */}

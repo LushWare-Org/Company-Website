@@ -1,8 +1,10 @@
 import React from "react";
 import QuestionItem from "../../components/QuestionItem";
 import WhyChooseLushWare from "../../components/WhyChooseLushWare";
+import { useNavigate } from "react-router-dom";
 
 const MobileApps: React.FC = () => {
+  const navigate = useNavigate();
   const faqItems = [
     {
       question: "What is Mobile App Development?",
@@ -58,8 +60,10 @@ const MobileApps: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-transparent to-transparent"></div>
 
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-              <button className="bg-white text-[#1A1A1A] px-12 py-4 rounded-full font-bold shadow-xl hover:bg-[#B89450] hover:text-white transition-all transform hover:scale-105">
-                DISCOVER MOBILE SOLUTIONS
+              <button className="bg-white text-[#1A1A1A] px-12 py-4 rounded-full cursor-pointer font-bold shadow-xl hover:bg-emerald-600 duration-700 hover:text-white transition-all transform hover:scale-105"
+                onClick={() => navigate("/contact")}
+              >
+                DISCOVER THE PLATFORM
               </button>
             </div>
           </div>
