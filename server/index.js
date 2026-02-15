@@ -9,6 +9,18 @@ const adminRoutes = require("./routes/admin");
 const app = express();
 const port = process.env.PORT || 5000;
 
+// Verify SMTP configuration on startup
+if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+  console.warn('⚠️  WARNING: SMTP configuration incomplete. Email notifications will fail.');
+  console.warn('   Missing:', [
+    !process.env.SMTP_HOST && 'SMTP_HOST',
+    !process.env.SMTP_USER && 'SMTP_USER', 
+    !process.env.SMTP_PASS && 'SMTP_PASS'
+  ].filter(Boolean).join(', '));
+} else {
+  console.log('✓ SMTP configuration loaded');
+}
+
 // CORS Configuration for production
 const corsOptions = {
   origin: function (origin, callback) {

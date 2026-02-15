@@ -45,13 +45,17 @@ const submitInquiry = async (req, res) => {
     // Save to database
     const savedInquiry = await inquiry.save();
 
-    // Send email notification to LushWare
-    await sendInquiryEmail(savedInquiry);
-    await sendUserConfirmationEmail(savedInquiry);
+    // Send email notifications (don't block submission if emails fail)
+    const adminEmailSent = await sendInquiryEmail(savedInquiry);
+    const userEmailSent = await sendUserConfirmationEmail(savedInquiry);
 
     res.status(201).json({
       message: "Inquiry submitted successfully",
       id: savedInquiry._id,
+      emailStatus: {
+        adminNotification: adminEmailSent ? "sent" : "failed",
+        userConfirmation: userEmailSent ? "sent" : "failed"
+      },
       inquiry: {
         id: savedInquiry._id,
         email: savedInquiry.email,

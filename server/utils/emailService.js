@@ -162,6 +162,15 @@ const sendInquiryEmail = async (inquiry) => {
   try {
     const transporter = createEmailTransporter();
 
+    // Verify transporter configuration
+    try {
+      await transporter.verify();
+      console.log('✓ SMTP connection verified for admin email');
+    } catch (verifyError) {
+      console.error('✗ SMTP verification failed for admin email:', verifyError.message);
+      throw verifyError;
+    }
+
     const mailOptions = {
       from: `"LushWare Support" <${process.env.MAIL_USER}>`,
       to: 'info@lushware.org',
@@ -230,11 +239,21 @@ const sendInquiryEmail = async (inquiry) => {
     };
 
     const info = await transporter.sendMail(mailOptions);
-    //console.log('Requestemail sent successfully:', info.messageId);
+    console.log('✓ Admin notification email sent successfully:', info.messageId);
+    if (info.accepted && info.accepted.length > 0) {
+      console.log('  Accepted:', info.accepted.join(', '));
+    }
+    if (info.rejected && info.rejected.length > 0) {
+      console.warn('  Rejected:', info.rejected.join(', '));
+    }
     return true;
   } catch (error) {
-    console.error('Error sending Requestemail:', error);
-    // Don't throw - log the error but don't fail the Requestsubmission
+    console.error('✗ Error sending admin notification email:');
+    console.error('  Error message:', error.message);
+    if (error.code) console.error('  Error code:', error.code);
+    if (error.command) console.error('  SMTP command:', error.command);
+    if (error.response) console.error('  Server response:', error.response);
+    // Don't throw - log the error but don't fail the inquiry submission
     return false;
   }
 };
@@ -242,12 +261,11 @@ const sendInquiryEmail = async (inquiry) => {
 const sendUserConfirmationEmail = async (inquiry) => {
   try {
     const transporter = createEmailTransporter();
-    console.log('inquiry is ',inquiry);
 
     const mailOptions = {
       from: `"LushWare Team" <${process.env.MAIL_USER || process.env.SMTP_USER}>`,
       to: inquiry.email,
-      subject: "We’ve received your inquiry – LushWare",
+      subject: "We’ve received your submission – LushWare",
       html: `
 <!DOCTYPE html>
 <html>
@@ -271,7 +289,7 @@ const sendUserConfirmationEmail = async (inquiry) => {
       <h1 class="title">Thank you, ${inquiry.firstName} 👋</h1>
 
       <p class="text">
-        We’ve successfully received your inquiry at <strong>LushWare</strong>.
+        We’ve successfully received your submission at <strong>LushWare</strong>.
         Our team is currently reviewing your request, and one of our members
         will get in touch with you as soon as possible.
       </p>
@@ -314,19 +332,30 @@ const sendUserConfirmationEmail = async (inquiry) => {
       `,
     };
 
+    // Verify transporter configuration
     try {
       await transporter.verify();
+      console.log('✓ SMTP connection verified for user confirmation email');
     } catch (verifyErr) {
-      console.error('SMTP transporter verification failed for user confirmation email:', verifyErr);
+      console.error('✗ SMTP verification failed for user confirmation email:', verifyErr.message);
+      throw verifyErr;
     }
 
     const info = await transporter.sendMail(mailOptions);
-    console.log("User confirmation email sent:", info && info.messageId);
-    if (info && info.accepted) console.log('Accepted recipients:', info.accepted);
-    if (info && info.rejected) console.log('Rejected recipients:', info.rejected);
+    console.log('✓ User confirmation email sent successfully:', info.messageId);
+    if (info.accepted && info.accepted.length > 0) {
+      console.log('  Accepted:', info.accepted.join(', '));
+    }
+    if (info.rejected && info.rejected.length > 0) {
+      console.warn('  Rejected:', info.rejected.join(', '));
+    }
     return true;
   } catch (error) {
-    console.error("Error sending user confirmation email:", error);
+    console.error('✗ Error sending user confirmation email:');
+    console.error('  Error message:', error.message);
+    if (error.code) console.error('  Error code:', error.code);
+    if (error.command) console.error('  SMTP command:', error.command);
+    if (error.response) console.error('  Server response:', error.response);
     return false;
   }
 };

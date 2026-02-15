@@ -32,11 +32,11 @@ export default function Navbar() {
     <nav 
       className={`fixed w-full z-50 transition-all duration-500 ${
         scrolled 
-          ? "bg-white/90 backdrop-blur-md py-3 shadow-sm" 
+          ? "bg-white backdrop-blur-md py-3 shadow-md" 
           : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-8 flex justify-between items-center">
+      <div className="max-w-8xl md:px-22 px-9 mx-auto  flex justify-between items-center">
         
         {/* Logo Section */}
         <Link 
@@ -155,13 +155,13 @@ export default function Navbar() {
           {/* Call to Action Button */}
           <Link 
             to="/contact" 
-            className="relative px-5 py-2 overflow-hidden group  bg-stone-900  rounded-full transition-all duration-500 hover:border-emerald-600"
+            className="relative px-5 py-2 overflow-hidden group  hover:scale-105 bg-stone-900  rounded-full transition-all duration-500 hover:border-emerald-600"
           >
             {/* The color layer that slides in */}
             <span className="absolute inset-0 w-0 h-full bg-emerald-600 transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:w-full"></span>
             
             {/* The Text */}
-            <span className="relative z-10 text-[10px] font-bold tracking-[0.2em] uppercase  text-white transition-colors duration-500">
+            <span className="relative z-10 text-[10px] font-bold tracking-[0.2em] uppercase  text-white transition-colors duration-500 ">
               Free Tech Consultation
             </span>
           </Link>

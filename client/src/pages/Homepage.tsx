@@ -316,10 +316,10 @@ export default function Homepage() {
               <div className="inline-flex items-center group cursor-default">
                 <div className="relative flex items-center">
                 {/* Adjusted Ring Colors for Dark Mode */}
-\                <div className="w-6 h-6 rounded-full border border-emerald-300 flex items-center justify-center bg-emerald-950 group-hover:bg-emerald-900 transition-all">
+                <div className="w-6 h-6 rounded-full border border-emerald-300 flex items-center justify-center bg-emerald-950 group-hover:bg-emerald-900 transition-all">
                   <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 </div>
-\                  
+                 
                   <div className="w-6 h-px bg-emerald-400 group-hover:w-10 group-hover:bg-emerald-500 transition-all duration-500" />
                 </div>
 
@@ -390,7 +390,7 @@ export default function Homepage() {
 
       {/* Services */}
       <section data-reveal className=" bg-[#ffffff] px-6 py-20  relative">
-        
+       
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col lg:flex-row gap-24">
             
@@ -450,6 +450,7 @@ export default function Homepage() {
                 <div 
                   key={service.number}
                   className="group relative px-4 bg-white border-2 border-slate-200 group-hover:border-transparent  transition-all duration-500 rounded-3xl hover:shadow-[0_20px_50px_rgba(16,185,129,0.2)]  shadow-[0_20px_50px_rgba(0,0,0,0.1)] " >
+
                 <span className="hidden md:block absolute bottom-2 right-4 text-8xl font-black text-slate-100 transition-all duration-1000 group-hover:text-emerald-100 group-hover:-translate-y-4 select-none">
                   {service.number}
                 </span>
