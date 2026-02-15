@@ -183,15 +183,15 @@ export default function Navbar() {
       {/* Mobile Menu Sidebar */}
       {open && (
         <div 
-          className="fixed inset-0 z-50 md:hidden" 
+          className="fixed inset-0 z-50 h-screen md:hidden" 
           onClick={() => setOpen(false)}
         >
           {/* Backdrop with blur */}
-          <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-xl"></div>
           
           {/* Sidebar */}
           <div 
-            className={`absolute top-0 right-0 w-[82%] max-w-sm h-screen rounded-bl-3xl bg-white shadow-2xl transform transition-all duration-500 ease-out ${
+            className={`absolute top-0 right-0 w-[82%] max-w-sm  rounded-bl-3xl bg-white shadow-2xl transform transition-all duration-500 ease-out ${
               open ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
             } overflow-y-auto`}
             onClick={(e) => e.stopPropagation()}
@@ -200,7 +200,7 @@ export default function Navbar() {
               {/* Header */}
               <div className="flex items-center justify-between px-6 pt-6 pb-5 border-b border-stone-100">
                 <div className="flex items-center gap-3">
-                  <div className="h-9 w-9 rounded-full border border-stone-200 flex items-center justify-center">
+                  <div className="h-12 w-12  border  flex items-center justify-center">
                     <img
                       src="/logo.jpeg"
                       alt="LushWare ORG"
@@ -280,7 +280,7 @@ export default function Navbar() {
               </div>
 
               {/* Consultation Button */}
-              <div className="mt-auto px-6 pb-6">
+              <div className="mt-12 px-6 pb-6">
                 <Link
                   to="/contact"
                   onClick={() => setOpen(false)}

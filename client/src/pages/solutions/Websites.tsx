@@ -34,8 +34,8 @@ const Websites: React.FC = () => {
       <div className="max-w-7xl mx-auto">
 
         {/* Hero Section */}
-        <div className="max-w-6xl mt-12 mx-auto text-center mb-16">
-          <div className="flex items-center justify-center gap-2 mb-2 ">
+        <div className="max-w-6xl mt-12 mx-auto text-center mb-5">
+          <div className="flex items-center justify-center gap-2 mb-5 ">
             <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
               Business & Corporate Websites
             </div>
@@ -55,7 +55,7 @@ const Websites: React.FC = () => {
         </div>
 
         {/* Hero Image */}
-        <div className="relative mb-24">
+        <div className="relative mb-10">
           <div className="absolute inset-0 bg-blue-100/50 rounded-[3rem] blur-3xl transform scale-90 -z-10"></div>
           <div className="relative rounded-[2.5rem] overflow-hidden border-[12px] border-white shadow-2xl">
             <img
@@ -64,19 +64,44 @@ const Websites: React.FC = () => {
               className="w-full h-[500px] object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-transparent to-transparent"></div>
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-              <button className="bg-white text-[#1A1A1A] px-12 py-4 rounded-full cursor-pointer font-bold shadow-xl hover:bg-emerald-600 duration-700 hover:text-white transition-all transform hover:scale-105"
-                onClick={() => navigate("/contact")}
-              >
-                DISCOVER THE PLATFORM
-              </button>
-            </div>
+              {/* Floating Action Button on Image */}
+              <div className="
+                absolute 
+                bottom-4 sm:bottom-6 lg:bottom-8 
+                left-1/2 -translate-x-1/2 
+                w-full px-4 sm:px-0 
+                flex justify-center
+              ">
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="
+                    w-full sm:w-auto
+                    max-w-xs sm:max-w-none
+                    
+                    bg-white text-[#1A1A1A]
+                    px-6 sm:px-8 lg:px-12
+                    py-3 sm:py-4
+                    
+                    text-xs sm:text-sm lg:text-base
+                    font-bold tracking-wide
+                    
+                    rounded-full
+                    shadow-xl
+                    
+                    transition-all duration-500
+                    hover:bg-emerald-600 hover:text-white
+                    hover:scale-105
+                  "
+                >
+                  DISCOVER THE PLATFORM
+                </button>
+              </div>
           </div>
         </div>
 
         {/* Benefits Section - Emerald Premium Style */}
-        <section className="bg-white py-20 px-6 font-sans">
-          <div className="max-w-6xl mx-auto">
+        <section className="bg-white py-20 md:px-0 px-2 font-sans">
+          <div className="max-w-7xl mx-auto">
             
             {/* Header Section */}
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
@@ -99,7 +124,7 @@ const Websites: React.FC = () => {
             <div className="grid grid-cols-12 gap-5">
               
               {/* Feature 1: The "Hero" Card */}
-              <div className="col-span-12 md:col-span-8 bg-white p-10 rounded-[2.5rem] border border-emerald-300 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-col justify-between min-h-[450px] hover:shadow-[0_8px_30px_rgb(16,185,129,0.1)] transition-all duration-500">
+              <div className="col-span-12 md:col-span-8 bg-white md:p-10 p-6 rounded-[2.5rem] border border-emerald-300 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex flex-col justify-between min-h-[450px] hover:shadow-[0_8px_30px_rgb(16,185,129,0.1)] transition-all duration-500">
                 <div className="w-16 h-16  rounded-2xl flex items-center justify-center text-emerald-700 mb-8  border-2 border-emerald-300">
                   <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 </div>
@@ -112,7 +137,7 @@ const Websites: React.FC = () => {
               </div>
 
               {/* Feature 2: High Contrast Emerald Card */}
-              <div className="col-span-12 md:col-span-4 bg-emerald-900 p-10 rounded-[2.5rem] text-white flex flex-col justify-between hover:bg-emerald-900 transition-colors">
+              <div className="col-span-12 md:col-span-4 bg-emerald-900 md:p-10 p-8 rounded-[2.5rem] text-white flex flex-col justify-between hover:bg-emerald-900 transition-colors">
                 <div className="text-emerald-200 text-3xl font-light underline underline-offset-8">01.</div>
                 <div>
                   <h4 className="text-2xl font-semibold mb-3">Global Uptime</h4>
@@ -123,7 +148,7 @@ const Websites: React.FC = () => {
               </div>
 
               {/* Feature 3: Small Card */}
-              <div className="col-span-12 md:col-span-4 bg-emerald-50/50 p-8 rounded-[2rem] border border-emerald-300 group hover:bg-white transition-all">
+              <div className="col-span-12 md:col-span-4 bg-emerald-50/50 p-6 md:p-8 rounded-[2rem] border border-emerald-300 group hover:bg-white transition-all">
                 <div className="text-emerald-700 mb-4 group-hover:scale-110 transition-transform">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 </div>
@@ -132,7 +157,7 @@ const Websites: React.FC = () => {
               </div>
 
               {/* Feature 4: Small Card */}
-              <div className="col-span-12 md:col-span-4 bg-white p-8 rounded-[2rem] border border-emerald-300 shadow-sm">
+              <div className="col-span-12 md:col-span-4 bg-white p-6 md:p-8 rounded-[2rem] border border-emerald-300 shadow-sm">
                 <div className="text-emerald-700 mb-4">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                 </div>
@@ -141,7 +166,7 @@ const Websites: React.FC = () => {
               </div>
 
               {/* Feature 5: Small Card */}
-              <div className="col-span-12 md:col-span-4 bg-white p-8 rounded-[2rem] border border-emerald-300 shadow-sm">
+              <div className="col-span-12 md:col-span-4 bg-white p-6 md:p-8 rounded-[2rem] border border-emerald-300 shadow-sm">
                 <div className="text-emerald-700 mb-4">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 00-2-2H5a2 2 0 00-2 2v10m14 0v-4a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2zm0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                 </div>

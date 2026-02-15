@@ -41,7 +41,7 @@ const CRM: React.FC = () => {
       <div className="max-w-7xl mt-4 mx-auto">
         
         <div className="max-w-6xl mt-12 mx-auto text-center mb-16">
-          <div className="flex items-center justify-center gap-2 mb-2 ">
+          <div className="flex items-center justify-center gap-2 mb-5 ">
             <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
               Customer Relationship Management
             </div>
@@ -63,7 +63,7 @@ const CRM: React.FC = () => {
 
 
         {/* Middle Section: The Product Window */}
-        <div className="relative mb-24">
+        <div className="relative mb-10">
           {/* Subtle "Royal Glow" behind image */}
           <div className="absolute inset-0 bg-blue-100/50 rounded-[3rem] blur-3xl transform scale-90 -z-10"></div>
           
@@ -76,14 +76,39 @@ const CRM: React.FC = () => {
             {/* Dark Gradient Overlay for the Image */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-transparent to-transparent"></div>
             
-            {/* Floating Action Button on Image */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-              <button className="bg-white text-[#1A1A1A] px-12 py-4 rounded-full cursor-pointer font-bold shadow-xl hover:bg-emerald-600 duration-700 hover:text-white transition-all transform hover:scale-105"
-                onClick={() => navigate("/contact")}
-              >
-                DISCOVER THE PLATFORM
-              </button>
-            </div>
+              {/* Floating Action Button on Image */}
+              <div className="
+                absolute 
+                bottom-4 sm:bottom-6 lg:bottom-8 
+                left-1/2 -translate-x-1/2 
+                w-full px-4 sm:px-0 
+                flex justify-center
+              ">
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="
+                    w-full sm:w-auto
+                    max-w-xs sm:max-w-none
+                    
+                    bg-white text-[#1A1A1A]
+                    px-6 sm:px-8 lg:px-12
+                    py-3 sm:py-4
+                    
+                    text-xs sm:text-sm lg:text-base
+                    font-bold tracking-wide
+                    
+                    rounded-full
+                    shadow-xl
+                    
+                    transition-all duration-500
+                    hover:bg-emerald-600 hover:text-white
+                    hover:scale-105
+                  "
+                >
+                  DISCOVER THE PLATFORM
+                </button>
+              </div>
+
           </div>
         </div>
 

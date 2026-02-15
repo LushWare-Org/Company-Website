@@ -30,7 +30,7 @@ const MobileApps: React.FC = () => {
         {/* Hero Section */}
         <div className="max-w-6xl mt-12 mx-auto text-center mb-16">
 
-          <div className="flex items-center justify-center gap-2 mb-2 ">
+          <div className="flex items-center justify-center gap-2 mb-5 ">
             <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
               Mobile Applications
             </div>
@@ -49,7 +49,7 @@ const MobileApps: React.FC = () => {
         </div>
 
         {/* Hero Image */}
-        <div className="relative max-w-7xl mx-auto mb-24">
+        <div className="relative max-w-7xl mx-auto mb-12">
           <div className="absolute inset-0 bg-blue-100/50 rounded-[3rem] blur-3xl transform scale-90 -z-10"></div>
           <div className="relative rounded-[2.5rem] overflow-hidden border-[12px] border-white shadow-2xl">
             <img
@@ -59,13 +59,38 @@ const MobileApps: React.FC = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-transparent to-transparent"></div>
 
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-              <button className="bg-white text-[#1A1A1A] px-12 py-4 rounded-full cursor-pointer font-bold shadow-xl hover:bg-emerald-600 duration-700 hover:text-white transition-all transform hover:scale-105"
-                onClick={() => navigate("/contact")}
-              >
-                DISCOVER THE PLATFORM
-              </button>
-            </div>
+              {/* Floating Action Button on Image */}
+              <div className="
+                absolute 
+                bottom-4 sm:bottom-6 lg:bottom-8 
+                left-1/2 -translate-x-1/2 
+                w-full px-4 sm:px-0 
+                flex justify-center
+              ">
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="
+                    w-full sm:w-auto
+                    max-w-xs sm:max-w-none
+                    
+                    bg-white text-[#1A1A1A]
+                    px-6 sm:px-8 lg:px-12
+                    py-3 sm:py-4
+                    
+                    text-xs sm:text-sm lg:text-base
+                    font-bold tracking-wide
+                    
+                    rounded-full
+                    shadow-xl
+                    
+                    transition-all duration-500
+                    hover:bg-emerald-600 hover:text-white
+                    hover:scale-105
+                  "
+                >
+                  DISCOVER THE PLATFORM
+                </button>
+              </div>
           </div>
         </div>
 
@@ -97,7 +122,7 @@ const MobileApps: React.FC = () => {
         </div>
 
             {/* The Isometric Device Stack */}
-            <div className="relative flex flex-col lg:pl-32 lg:flex-row items-center gap-24">
+            <div className="relative flex flex-col lg:pl-32 lg:flex-row items-center md:gap-24 gap-32">
               
               {/* 1. iPhone 16 Pro - Left Angle */}
               <div className="relative z-30 transform  lg:-rotate-4 transition-transform duration-1000 group">
@@ -183,13 +208,13 @@ const MobileApps: React.FC = () => {
 
               {/* Text Content (Floating Side Card) */}
               <div className="lg:max-w-md space-y-12">
-                <div className="p-10 bg-emerald-50 rounded-[3rem] border border-emerald-400">
+                <div className="md:p-10 p-6 bg-emerald-50 rounded-[3rem] border border-emerald-400">
                   <h4 className="text-2xl font-bold text-emerald-900 mb-6 tracking-tight">Enterprise Connectivity</h4>
                   <p className="text-lg text-emerald-800/70  leading-relaxed">
                     Mobile apps improve productivity by enabling employees to complete tasks, communicate, and manage workflows on the go. 
                   </p>
                 </div>
-                <p className="text-xl text-slate-700  leading-relaxed pl-10 border-l-2 border-slate-400">
+                <p className="text-xl text-slate-700  leading-relaxed md:pl-10 pl-4 border-l-2 border-slate-400">
                   Together, Android and iOS development ensures that your business is accessible, reliable, and engaging for all users, wherever they are.
                 </p>
               </div>
@@ -201,13 +226,13 @@ const MobileApps: React.FC = () => {
 
 
       {/* Engineering Excellence - Compact High-Density Section */}
-      <section className="py-12 border-y border-stone-100 bg-[#fdfdfb]">
+      <section className="md:py-12 border-y border-stone-100 bg-[#fdfdfb]">
         <div className="max-w-7xl mx-auto px-6">
           
-          <div className="flex flex-col lg:flex-row items-center gap-12">
+          <div className="flex flex-col lg:flex-row items-center gap-2 md:gap-12">
             
             {/* 01 - iOS NATIVE SECTION */}
-            <div className="group flex-1 w-full flex items-center justify-between p-8 bg-white border border-stone-100 rounded-sm hover:shadow-2xl hover:shadow-emerald-900/5 transition-all duration-700 cursor-pointer overflow-hidden">
+            <div className="group flex-1 w-full flex items-center justify-between p-4 md:p-8 bg-white border border-stone-100 rounded-sm hover:shadow-2xl hover:shadow-emerald-900/5 transition-all duration-700 cursor-pointer overflow-hidden">
               <div className="relative z-10 flex flex-col gap-2">
                 <h3 className="text-4xl font-extralight tracking-tight text-slate-900">
                   iOS <span className="font-serif italic text-stone-700 group-hover:text-emerald-700 transition-colors">Native</span>
@@ -228,7 +253,7 @@ const MobileApps: React.FC = () => {
             </div>
 
             {/* 02 - ANDROID OS SECTION */}
-            <div className="group flex-1 w-full flex items-center justify-between p-8 bg-white border border-stone-100 rounded-sm hover:shadow-2xl hover:shadow-emerald-900/5 transition-all duration-700 cursor-pointer overflow-hidden">
+            <div className="group flex-1 w-full flex items-center justify-between p-4 md:p-8 bg-white border border-stone-100 rounded-sm hover:shadow-2xl hover:shadow-emerald-900/5 transition-all duration-700 cursor-pointer overflow-hidden">
               <div className="relative z-10 flex flex-col gap-2">
                 <h3 className="text-4xl font-extralight tracking-tight text-slate-900">
                   Android <span className="font-serif italic text-stone-700 group-hover:text-emerald-700 transition-colors">OS</span>

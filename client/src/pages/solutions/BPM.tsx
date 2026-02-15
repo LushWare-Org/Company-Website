@@ -40,7 +40,7 @@ const BPM: React.FC = () => {
         {/* Hero Section */}
         <div className="max-w-6xl mt-12 mx-auto text-center mb-16">
 
-          <div className="flex items-center justify-center gap-2 mb-2 ">
+          <div className="flex items-center justify-center gap-2 mb-5 ">
             <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
               Business Process Management
             </div>
@@ -70,13 +70,37 @@ const BPM: React.FC = () => {
               className="w-full h-[500px] object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-transparent to-transparent"></div>
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-              <button className="bg-white text-[#1A1A1A] px-12 py-4 rounded-full cursor-pointer font-bold shadow-xl hover:bg-emerald-600 duration-700 hover:text-white transition-all transform hover:scale-105"
-                onClick={() => navigate("/contact")}
-              >
-                DISCOVER THE PLATFORM
-              </button>
-            </div>
+            <div className="
+                absolute 
+                bottom-4 sm:bottom-6 lg:bottom-8 
+                left-1/2 -translate-x-1/2 
+                w-full px-4 sm:px-0 
+                flex justify-center
+              ">
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="
+                    w-full sm:w-auto
+                    max-w-xs sm:max-w-none
+                    
+                    bg-white text-[#1A1A1A]
+                    px-6 sm:px-8 lg:px-12
+                    py-3 sm:py-4
+                    
+                    text-xs sm:text-sm lg:text-base
+                    font-bold tracking-wide
+                    
+                    rounded-full
+                    shadow-xl
+                    
+                    transition-all duration-500
+                    hover:bg-emerald-600 hover:text-white
+                    hover:scale-105
+                  "
+                >
+                  DISCOVER THE PLATFORM
+                </button>
+              </div>
           </div>
         </div>
 
@@ -137,85 +161,87 @@ const BPM: React.FC = () => {
             ))}
           </div>
 
-          {/* BPM Overview Section - Gallery Style */}
-          <section className="bg-white py-24 px-6">
-            <div className="max-w-7xl mx-auto">
-              
-              {/* Header with Luxury Spacing */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-32">
-                <div>
-    
-                <div className="flex items-center  gap-2 mb-2 ">
-                  <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
-                    Operational Excellence
-                  </div>
-                </div>
-                  <h3 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tighter leading-none">
-                    Streamline, Optimize <br/>
-                    <span className="text-emerald-600  font-normal">& Grow.</span>
-                  </h3>
-                </div>
-                <div className="lg:pt-12">
-                  <p className="text-2xl text-slate-700  leading-snug mb-6">
-                    LushWare’s BPM solutions enable organizations to manage their processes more efficiently.
-                  </p>
-                  <div className="h-1 w-24 bg-emerald-600"></div>
-                </div>
-              </div>
 
-              {/* The Step-by-Step Architecture */}
-              <div className="space-y-12">
-                
-                {/* 1. What is BPM - Large "Poster" Card */}
-                <div className="group relative grid grid-cols-1  lg:grid-cols-12 bg-slate-50 rounded-[3rem] overflow-hidden border border-emerald-500 transition-all duration-700 hover:shadow-2xl hover:shadow-emerald-900/10">
-                  <div className="lg:col-span-4 bg-emerald-800 p-12 flex flex-col justify-between text-white">
-                    <span className="text-7xl font-serif italic opacity-50">01</span>
-                    <h4 className="text-3xl font-bold tracking-tight">What is <br/> Business Process Management</h4>
-                  </div>
-                  <div className="lg:col-span-8 p-12 lg:p-16 flex items-center">
-                    <p className="text-2xl text-slate-700 leading-relaxed ">
-                      Business Process Management (BPM) is a <span className="text-slate-900 font-medium italic">structured approach</span> to analyzing, designing, automating, and improving your business processes. It ensures that every workflow is optimized to achieve strategic goals and operational efficiency.
-                    </p>
-                  </div>
-                </div>
-
-                {/* 2 & 3 Split Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                  
-                  {/* How it benefits */}
-                  <div className="p-12 rounded-[3rem] border-2 border-emerald-200 hover:border-emerald-500 transition-all duration-500 group">
-                    <div className="flex items-center gap-4 mb-8">
-                      <span className="text-2xl font-serif italic text-emerald-600">02</span>
-                      <div className="h-px flex-1 bg-emerald-300"></div>
-                    </div>
-                    <h4 className="text-3xl font-bold text-slate-900 mb-8 tracking-tight">How it Benefits Your Business</h4>
-                    <p className="text-xl text-slate-900 leading-relaxed font-light group-hover:text-slate-900 transition-colors">
-                      By implementing BPM, businesses can reduce process bottlenecks, improve collaboration between departments, and gain <span className="text-emerald-700 font-semibold">real-time visibility</span> into operations for faster, data-driven decisions.
-                    </p>
-                  </div>
-
-                  {/* How we add value */}
-                  <div className="p-12 rounded-[3rem] bg-emerald-900 text-white group relative overflow-hidden">
-                    {/* Decorative Glow */}
-                    <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-emerald-400/20 blur-3xl"></div>
-                    
-                    <div className="flex items-center gap-4 mb-8">
-                      <span className="text-2xl font-serif italic text-emerald-400">03</span>
-                      <div className="h-px flex-1 bg-emerald-500"></div>
-                    </div>
-                    <h4 className="text-3xl font-bold mb-8 tracking-tight">How We Add Value</h4>
-                    <p className="text-xl text-white leading-relaxed font-light">
-                      LushWare customizes BPM solutions to align with your unique business goals. We provide automation, <span className="text-white font-medium">integration with your existing systems</span>, monitoring dashboards, and continuous support.
-                    </p>
-                  </div>
-
-                </div>
-              </div>
-
-
-            </div>
-          </section>
         </div>
+
+        {/* BPM Overview Section - Gallery Style */}
+        <section className="bg-white py-24 px-3 md:px-0">
+          <div className="max-w-7xl mx-auto">
+            
+            {/* Header with Luxury Spacing */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mb-24">
+              <div>
+  
+              <div className="flex items-center  gap-2 mb-2 ">
+                <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
+                  Operational Excellence
+                </div>
+              </div>
+                <h3 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tighter leading-none">
+                  Streamline, Optimize <br/>
+                  <span className="text-emerald-600  font-normal">& Grow.</span>
+                </h3>
+              </div>
+              <div className="lg:pt-12">
+                <p className="text-2xl text-slate-700  leading-snug mb-6">
+                  LushWare’s BPM solutions enable organizations to manage their processes more efficiently.
+                </p>
+                <div className="h-1 w-24 bg-emerald-600"></div>
+              </div>
+            </div>
+
+            {/* The Step-by-Step Architecture */}
+            <div className="space-y-12">
+              
+              {/* 1. What is BPM - Large "Poster" Card */}
+              <div className="group relative grid grid-cols-1  lg:grid-cols-12 bg-slate-50 rounded-[3rem] overflow-hidden border border-emerald-500 transition-all duration-700 hover:shadow-2xl hover:shadow-emerald-900/10">
+                <div className="lg:col-span-4 bg-emerald-800 p-4 md:p-12 flex flex-col justify-between text-white">
+                  <span className="text-7xl font-serif italic opacity-50">01</span>
+                  <h4 className="text-3xl font-bold tracking-tight">What is <br/> Business Process Management</h4>
+                </div>
+                <div className="lg:col-span-8 p-6 md:p-16 flex items-center">
+                  <p className="text-2xl text-slate-700 leading-relaxed ">
+                    Business Process Management (BPM) is a <span className="text-slate-900 font-medium italic">structured approach</span> to analyzing, designing, automating, and improving your business processes. It ensures that every workflow is optimized to achieve strategic goals and operational efficiency.
+                  </p>
+                </div>
+              </div>
+
+              {/* 2 & 3 Split Grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                {/* How it benefits */}
+                <div className="md:p-12 p-6 rounded-[3rem] border-2 border-emerald-200 hover:border-emerald-500 transition-all duration-500 group">
+                  <div className="flex items-center gap-4 mb-8">
+                    <span className="text-2xl font-serif italic text-emerald-600">02</span>
+                    <div className="h-px flex-1 bg-emerald-300"></div>
+                  </div>
+                  <h4 className="text-3xl font-bold text-slate-900 mb-8 tracking-tight">How it Benefits Your Business</h4>
+                  <p className="text-xl text-slate-900 leading-relaxed font-light group-hover:text-slate-900 transition-colors">
+                    By implementing BPM, businesses can reduce process bottlenecks, improve collaboration between departments, and gain <span className="text-emerald-700 font-semibold">real-time visibility</span> into operations for faster, data-driven decisions.
+                  </p>
+                </div>
+
+                {/* How we add value */}
+                <div className="md:p-12 p-6 rounded-[3rem] bg-emerald-900 text-white group relative overflow-hidden">
+                  {/* Decorative Glow */}
+                  <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-emerald-400/20 blur-3xl"></div>
+                  
+                  <div className="flex items-center gap-4 mb-8">
+                    <span className="text-2xl font-serif italic text-emerald-400">03</span>
+                    <div className="h-px flex-1 bg-emerald-500"></div>
+                  </div>
+                  <h4 className="text-3xl font-bold mb-8 tracking-tight">How We Add Value</h4>
+                  <p className="text-xl text-white leading-relaxed font-light">
+                    LushWare customizes BPM solutions to align with your unique business goals. We provide automation, <span className="text-white font-medium">integration with your existing systems</span>, monitoring dashboards, and continuous support.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+        </section>
 
         <WhyChooseLushWare />
 

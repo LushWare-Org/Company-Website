@@ -311,20 +311,39 @@ export default function ConsultationPageV15() {
                   <button 
                     type="submit"
                     disabled={isSubmitting}
-                    className="group relative w-full bg-gray-900 py-6 px-10 rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_20px_40px_rgba(16,185,129,0.2)]"
+                    className="
+                      group relative w-full 
+                      py-4 sm:py-5 lg:py-6 
+                      px-6 sm:px-8 lg:px-10 
+                      bg-gray-900 
+                      rounded-full 
+                      overflow-hidden 
+                      transition-all duration-500 
+                      hover:shadow-[0_20px_40px_rgba(16,185,129,0.2)]
+                    "
                   >
                     {/* Emerald Gradient Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-emerald-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                     
-                    <div className="relative z-10 flex items-center justify-center gap-2">
-                      <span className="text-[12px] font-bold uppercase tracking-[0.5em] text-white">
+                    <div className="relative z-10 flex items-center justify-center gap-2 sm:gap-3">
+                      
+                      <span className="
+                        text-[10px] sm:text-xs lg:text-sm 
+                        font-bold uppercase 
+                        tracking-[0.3em] sm:tracking-[0.4em] lg:tracking-[0.3em] 
+                        text-white text-center
+                      ">
                         {isSubmitting ? 'Submitting...' : 'Start With LushWare'}
                       </span>
-                      <div className="flex items-center gap-4">
-                        <ArrowUpRight size={20} className="text-white transition-transform group-hover:rotate-45" />
-                      </div>
+
+                      <ArrowUpRight 
+                        size={16} 
+                        className="sm:w-[18px] sm:h-[18px] lg:w-[20px] lg:h-[20px] text-white transition-transform group-hover:rotate-45" 
+                      />
+
                     </div>
                   </button>
+
                   
 
                 </div>

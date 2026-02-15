@@ -99,7 +99,7 @@ export default function SolutionsPage() {
       <div className="mx-auto  max-w-7xl">
         <div className="max-w-6xl mt-12 mx-auto text-center mb-16">
           {/* Badge */}
-          <div className="flex items-center justify-center gap-2 mb-2">
+          <div className="flex items-center justify-center gap-2 mb-5">
             <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
               Travel Management Solutions
             </div>

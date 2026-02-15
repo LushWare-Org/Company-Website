@@ -42,7 +42,7 @@ const AIAgents: React.FC = () => {
         {/* Page Header */}
         <div className="max-w-6xl mt-12 mx-auto text-center mb-16">
 
-          <div className="flex items-center justify-center gap-2 mb-2 ">
+          <div className="flex items-center justify-center gap-2 mb-5 ">
             <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
               AI Agents & AI Chatbots
             </div>
@@ -62,7 +62,7 @@ const AIAgents: React.FC = () => {
         </div>
 
         {/* Hero Image Section */}
-        <div className="relative mb-24">
+        <div className="relative mb-12">
           <div className="absolute inset-0 bg-blue-100/50 rounded-[3rem] blur-3xl transform scale-90 -z-10"></div>
           
           <div className="relative rounded-[2.5rem] overflow-hidden border-[12px] border-white shadow-2xl">
@@ -72,19 +72,45 @@ const AIAgents: React.FC = () => {
               className="w-full h-[500px] object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-transparent to-transparent"></div>
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+
+            {/* Floating Action Button on Image */}
+            <div className="
+              absolute 
+              bottom-4 sm:bottom-6 lg:bottom-8 
+              left-1/2 -translate-x-1/2 
+              w-full px-4 sm:px-0 
+              flex justify-center
+            ">
               <button
                 onClick={() => navigate("/contact")}
-                className="bg-white text-[#1A1A1A] cursor-pointer px-12 py-4 rounded-full font-bold shadow-xl hover:bg-emerald-700 duration-700 hover:text-white transition-all transform hover:scale-105"
+                className="
+                  w-full sm:w-auto
+                  max-w-xs sm:max-w-none
+                  
+                  bg-white text-[#1A1A1A]
+                  px-6 sm:px-8 lg:px-12
+                  py-3 sm:py-4
+                  
+                  text-xs sm:text-sm lg:text-base
+                  font-bold tracking-wide
+                  
+                  rounded-full
+                  shadow-xl
+                  
+                  transition-all duration-500
+                  hover:bg-emerald-600 hover:text-white
+                  hover:scale-105
+                "
               >
                 Learn How AI Can Help
               </button>
             </div>
+
           </div>
         </div>
 
         {/* AI Value & Benefits Section */}
-        <div className="max-w-7xl py-20 mx-auto px-6 lg:px-0">
+        <div className="max-w-7xl py-20 mx-auto px-4 lg:px-0">
 
           {/* Section Intro */}
           <div className="max-w-5xl mx-auto text-center mb-20">
@@ -138,12 +164,12 @@ const AIAgents: React.FC = () => {
         </div>
 
         {/* How We Add Value */}
-        <section className=" py-24 px-6">
+        <section className=" py-16">
           <div className="max-w-7xl mx-auto">
             
             {/* Section Header */}
             <div className="mb-20 text-center md:text-left">
-              <div className="flex items-center  gap-2 mb-4 ">
+              <div className="flex items-center md:justify-start justify-center gap-2 mb-4 ">
                 <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
                   AI Agents & AI Chatbots
                 </div>
@@ -161,7 +187,7 @@ const AIAgents: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(300px,_auto)]">
               
               {/* 1. Large Feature: AI Agents (Dominant Emerald Card) */}
-              <div className="md:col-span-8 group relative overflow-hidden rounded-[2.5rem] bg-[#062c1b] p-12 flex flex-col justify-end shadow-2xl">
+              <div className="md:col-span-8 group relative overflow-hidden rounded-[2.5rem] bg-[#062c1b] md:p-12 p-8 flex flex-col justify-end shadow-2xl">
                 {/* Abstract Emerald Glow */}
                 <div className="absolute -top-20 -right-20 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px] group-hover:bg-emerald-500/20 transition-all duration-1000"></div>
                 
@@ -177,7 +203,7 @@ const AIAgents: React.FC = () => {
               </div>
 
               {/* 2. About AI Chatbots (Sophisticated Light Card) */}
-              <div className="md:col-span-4 group rounded-[2.5rem] bg-white border border-emerald-200 p-10 hover:shadow-2xl hover:shadow-emerald-900/5 transition-all duration-500 flex flex-col">
+              <div className="md:col-span-4 group rounded-[2.5rem] bg-white border border-emerald-200 md:p-10 p-6 hover:shadow-2xl hover:shadow-emerald-900/5 transition-all duration-500 flex flex-col">
                 <div className="mb-auto">
                     <div className="w-16 h-16 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 mb-8 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 shadow-sm">
                         <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
@@ -190,7 +216,7 @@ const AIAgents: React.FC = () => {
               </div>
 
               {/* 3. How We Add Value (The Full-Width "Royal Banner" Card) */}
-              <div className="md:col-span-12 group rounded-[2.5rem] bg-white border border-emerald-300 p-12 relative overflow-hidden">
+              <div className="md:col-span-12 group rounded-[2.5rem] bg-white border border-emerald-300 md:p-12 p-7 relative overflow-hidden">
                 
                 <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-12">
                   <div className="md:max-w-xl">
