@@ -113,11 +113,13 @@ app.use("/api/inquiries", inquiryRoutes);
 app.use("/api/admin", adminRoutes);
 
 // --------------------------
-// Start server
+// Start server (skip in production for serverless platforms)
 // --------------------------
-app.listen(port, () => {
-  console.log(`🚀 Server running on http://localhost:${port}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(port, () => {
+    console.log(`🚀 Server running on http://localhost:${port}`);
+  });
+}
 
 // Export for Vercel serverless
 module.exports = app;
