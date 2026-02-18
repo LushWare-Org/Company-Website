@@ -142,28 +142,77 @@ export default function ConsultationPageV15() {
               </div>
 
               {/* Phone Section */}
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2">Phone</p>
-                <a href="tel:+94716430053" className="text-lg font-medium text-gray-900 hover:text-green-600 transition-colors">
-                  +94 71 643 0053
-                </a>
+              <div className="space-y-6">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-4">
+                    Globle Contact
+                  </p>
+                  
+                  <div className="flex flex-col gap-6">
+                    {/* UK Number */}
+                    <div className="flex items-center gap-4 group">
+                      <div className="w-8 h-8 rounded-sm overflow-hidden  flex-shrink-0">
+                        <img 
+                          src="https://flagcdn.com/gb.svg" 
+                          alt="UK Flag" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[9px] uppercase font-bold text-gray-500 tracking-wider">United Kingdom</span>
+                        <a href="tel:+447777667074" className="text-[17px] font-medium text-gray-900 hover:text-blue-800 transition-colors tracking-tight">
+                          +44 7777 667074
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Sri Lanka Number */}
+                    <div className="flex items-center gap-4 group">
+                      <div className="w-8 h-8 rounded-sm overflow-hidden flex-shrink-0">
+                        <img 
+                          src="https://flagcdn.com/lk.svg" 
+                          alt="SL Flag" 
+                          className="w-full h-full object-cover scale-150" 
+                        />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[9px] uppercase font-bold text-gray-500 tracking-wider">Sri Lanka</span>
+                        <a href="tel:+94716430053" className="text-[17px] font-medium text-gray-900 hover:text-blue-800 transition-colors tracking-tight">
+                          +94 71 643 0053
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <div >
-                <div className="flex items-center gap-5">
-                  <a href="#" className="text-gray-400 hover:text-gray-900 transition-colors p-1" aria-label="LinkedIn">
-                    <Linkedin size={20} strokeWidth={1.5} />
+              <div className="flex items-center gap-3">
+                {[
+                  { icon: <Linkedin size={20} strokeWidth={1.5} />, label: "LinkedIn" },
+                  { icon: <Twitter size={20} strokeWidth={1.5} />, label: "Twitter" },
+                  { icon: <Instagram size={20} strokeWidth={1.5} />, label: "Instagram" },
+                  { icon: <Facebook size={20} strokeWidth={1.5} />, label: "Facebook" },
+                ].map((social, index) => (
+                  <a
+                    key={index}
+                    href="#"
+                    aria-label={social.label}
+                    className="group relative p-2.5 rounded-full transition-all duration-500 hover:bg-emerald-50"
+                  >
+                    {/* 1. The Icon: Sophisticated Gray that turns Emerald */}
+                    <div className="relative z-10 text-gray-500 group-hover:text-emerald-600 transition-colors duration-300">
+                      {social.icon}
+                    </div>
+
+                    {/* 2. The "Aura": A soft, elegant glow that appears behind the icon */}
+                    <div className="absolute inset-0 rounded-full bg-emerald-600/0 opacity-0 group-hover:opacity-10 group-hover:scale-110 transition-all duration-500 ease-out" />
+                    
+                    {/* 3. The Tooltip: A premium touch for 12-category footers */}
+                    <span className="absolute -top-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-gray-900 text-[10px] font-bold text-white rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none uppercase tracking-widest">
+                      {social.label}
+                    </span>
                   </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-900 transition-colors p-1" aria-label="Twitter">
-                    <Twitter size={20} strokeWidth={1.5} />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-900 transition-colors p-1" aria-label="Instagram">
-                    <Instagram size={20} strokeWidth={1.5} />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-gray-900 transition-colors p-1" aria-label="Facebook">
-                    <Facebook size={20} strokeWidth={1.5} />
-                  </a>
-                </div>
+                ))}
               </div>
             </div>
             </div>
@@ -312,6 +361,7 @@ export default function ConsultationPageV15() {
                     type="submit"
                     disabled={isSubmitting}
                     className="
+                      cursor-pointer
                       group relative w-full 
                       py-4 sm:py-5 lg:py-6 
                       px-6 sm:px-8 lg:px-10 

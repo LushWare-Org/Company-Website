@@ -1,16 +1,42 @@
-const sgMail = require('@sendgrid/mail');
+const nodemailer = require('nodemailer');
 
 /**
- * Email Service for sending Requestnotifications
- * Uses SendGrid API
+ * Email Service for sending Request notifications
+ * Uses SMTP (configurable host, port, and authentication)
  */
 
-const configureSendGrid = () => {
-  const apiKey = process.env.SENDGRID_API_KEY;
-  if (!apiKey) {
-    throw new Error('Missing SENDGRID_API_KEY');
+const configureSmtp = () => {
+  const smtpHost = process.env.SMTP_HOST;
+  const smtpPort = parseInt(process.env.SMTP_PORT || '587');
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPassword = process.env.SMTP_PASSWORD || process.env.SMTP_PASS;
+  const sender = process.env.MAIL_USER;
+  const smtpSecure = process.env.SMTP_SECURE === 'true'; // true for 465, false for 587
+
+  if (!smtpHost) {
+    throw new Error('Missing SMTP_HOST');
   }
-  sgMail.setApiKey(apiKey);
+  if (!smtpUser) {
+    throw new Error('Missing SMTP_USER');
+  }
+  if (!smtpPassword) {
+    throw new Error('Missing SMTP_PASSWORD or SMTP_PASS');
+  }
+  if (!sender) {
+    throw new Error('Missing MAIL_USER');
+  }
+
+  const transporter = nodemailer.createTransport({
+    host: smtpHost,
+    port: smtpPort,
+    secure: smtpSecure, // true for 465 (implicit TLS), false for 587 (STARTTLS)
+    auth: {
+      user: smtpUser,
+      pass: smtpPassword,
+    },
+  });
+
+  return { transporter, sender };
 };
 
 /**
@@ -152,14 +178,15 @@ const getEmailSubject = (inquiry) => {
 };
 
 /**
- * Send Requestnotification email to LushWare
+ * Send Request notification email to LushWare
  */
 const sendInquiryEmail = async (inquiry) => {
   try {
-    configureSendGrid();
+    const { transporter, sender } = configureSmtp();
+    console.log('SMTP: preparing admin email from', sender);
 
     const mailOptions = {
-      from: `"LushWare Support" <${process.env.MAIL_USER}>`,
+      from: `"LushWare Support" <${sender}>`,
       to: 'info@lushware.org',
       subject: getEmailSubject(inquiry),
       html: `
@@ -225,17 +252,14 @@ const sendInquiryEmail = async (inquiry) => {
       `,
     };
 
-    const [response] = await sgMail.send(mailOptions);
-    console.log('✓ Admin notification email sent successfully:', response.statusCode);
+    const response = await transporter.sendMail(mailOptions);
+    console.log('✓ Admin notification email sent successfully:', response.messageId);
     return true;
   } catch (error) {
     console.error('✗ Error sending admin notification email:');
     console.error('  Error message:', error.message);
     if (error.code) console.error('  Error code:', error.code);
-    if (error.code) console.error('  Error code:', error.code);
-    if (error.response && error.response.body) {
-      console.error('  SendGrid response:', JSON.stringify(error.response.body));
-    }
+    if (error.response) console.error('  Response:', error.response);
     // Don't throw - log the error but don't fail the inquiry submission
     return false;
   }
@@ -243,10 +267,11 @@ const sendInquiryEmail = async (inquiry) => {
 
 const sendUserConfirmationEmail = async (inquiry) => {
   try {
-    configureSendGrid();
+    const { transporter, sender } = configureSmtp();
+    console.log('SMTP: preparing user confirmation email from', sender);
 
     const mailOptions = {
-      from: `"LushWare Team" <${process.env.MAIL_USER}>`,
+      from: `"LushWare Team" <${sender}>`,
       to: inquiry.email,
       subject: "We’ve received your submission – LushWare",
       html: `
@@ -315,17 +340,14 @@ const sendUserConfirmationEmail = async (inquiry) => {
       `,
     };
 
-    const [response] = await sgMail.send(mailOptions);
-    console.log('✓ User confirmation email sent successfully:', response.statusCode);
+    const response = await transporter.sendMail(mailOptions);
+    console.log('✓ User confirmation email sent successfully:', response.messageId);
     return true;
   } catch (error) {
     console.error('✗ Error sending user confirmation email:');
     console.error('  Error message:', error.message);
     if (error.code) console.error('  Error code:', error.code);
-    if (error.code) console.error('  Error code:', error.code);
-    if (error.response && error.response.body) {
-      console.error('  SendGrid response:', JSON.stringify(error.response.body));
-    }
+    if (error.response) console.error('  Response:', error.response);
     return false;
   }
 };
