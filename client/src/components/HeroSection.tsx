@@ -108,7 +108,7 @@ export default function HeroSection() {
                 {/* Left Content */}
                 <div className="lg:col-span-7 md:mt-0 lg:mt-0 mt-80 flex flex-col">
                   <h1 className="flex flex-col gap-0 select-none mb-6">
-                    <span className="text-5xl md:text-7xl lg:text-[7rem] font-black text-transparent uppercase leading-[0.8] tracking-tighter hero-line hero-stroke">
+                    <span className="text-5xl md:text-7xl lg:text-[7rem] font-black text-emerald-600 sm:text-transparent uppercase leading-[0.8] tracking-tighter hero-line hero-stroke">
                       {slide.titleTop}
                     </span>
                     <span className="text-5xl md:text-7xl lg:text-[7rem] font-black tracking-tighter text-stone-900 uppercase leading-[0.8] mb-1 hero-line">
@@ -226,11 +226,11 @@ export default function HeroSection() {
           transform: scale(1.3);
         }
         .hero-stroke {
-          -webkit-text-stroke: 2px #1c1917;
+          -webkit-text-stroke: 0 transparent;
         }
-        @media (max-width: 640px) {
+        @media (min-width: 640px) {
           .hero-stroke {
-            -webkit-text-stroke: 1px #1c1917;
+            -webkit-text-stroke: 2px #1c1917;
           }
         }
         .hero-image-container {
