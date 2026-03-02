@@ -4,19 +4,19 @@ import InquiryForm from "../components/InquiryForm";
 
 type Program = {
   title: string;
-  subtitle: string; // Restored from data usage
+  subtitle: string;
   description: string;
 };
 
 const programs: Program[] = [
   {
-    title: "Software Engineering", // Added title to match your mapping logic
+    title: "Software Engineering",
     subtitle: "Software Development Project Base",
     description:
       "Join structured builds with mentors, code reviews, and delivery rituals. Perfect for engineers growing into product ownership.",
   },
   {
-    title: "AI & Automation", // Added title to match your mapping logic
+    title: "AI & Automation",
     subtitle: "AI & Automation Project Base",
     description:
       "Hands-on automation and agent projects: data pipelines, workflow orchestration, and LLM-powered copilots.",
@@ -53,12 +53,11 @@ export default function ProjectBasePage() {
   return (
     <section id="project-base" className="scroll-mt-24 py-16">
       <div className="mx-auto">
-        <div className="mt-20 mx-auto">
-
+        <div className="mt-10 md:mt-20 mx-auto">
 
           {/* HEADER */}
-          <div className="mb-20 max-w-7xl mx-auto px-6 text-center relative">
-            <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900  hero-line">
+          <div className="mb-12 md:mb-20 max-w-7xl mx-auto px-4 sm:px-6 text-center relative">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 hero-line">
               Become a{" "}
               <span className="relative inline-block text-emerald-600">
                 Product Builder
@@ -71,7 +70,7 @@ export default function ProjectBasePage() {
               not just a learner.
             </h2>
 
-            <p className="mt-6 text-lg md:text-xl text-slate-800 max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-6 text-base sm:text-lg md:text-xl text-slate-800 max-w-3xl mx-auto leading-relaxed">
               Choose a track and apply now. We align{" "}
               <span className="text-emerald-600 font-semibold">
                 scope, timelines, and real outcomes
@@ -83,43 +82,41 @@ export default function ProjectBasePage() {
         </div>
 
         {/* PRIMARY CTA HERO - FULL WIDTH */}
-        <div className="w-full mb-28 ">
-          <div className="relative overflow-hidden bg-gradient-to-br from-emerald-700 via-emerald-800 to-emerald-900 border-t-4 border-emerald-400 p-10 md:p-14 shadow-2xl flex flex-col items-center text-center">
-            
-            {/* Decorative background element for texture */}
+        <div className="w-full mb-16 md:mb-28">
+          <div className="relative overflow-hidden bg-gradient-to-br from-emerald-700 via-emerald-800 to-emerald-900 border-t-4 border-emerald-400 p-8 sm:p-10 md:p-14 shadow-2xl flex flex-col items-center text-center">
+
+            {/* Decorative background */}
             <div className="absolute inset-0 opacity-50 pointer-events-none">
               <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
             </div>
 
-            <div className="relative z-10 max-w-5xl">
-              <h3 className="text-4xl md:text-6xl font-serif font-medium tracking-tight text-white hero-line">
+            <div className="relative z-10 max-w-5xl w-full">
+              <h3 className="text-3xl sm:text-4xl md:text-6xl font-serif font-medium tracking-tight text-white hero-line">
                 Build real products.{" "}
-                <span className=" text-emerald-50 block md:inline">
+                <span className="text-emerald-50 block md:inline">
                   Work like an industry engineer.
                 </span>
               </h3>
 
-              <p className="mt-5 text-white text-lg md:text-xl  tracking-wide max-w-2xl mx-auto hero-line">
+              <p className="mt-5 text-white text-base sm:text-lg md:text-xl tracking-wide max-w-2xl mx-auto hero-line">
                 Collaborate with teams, solve real problems, and gain experience that
                 actually matters.
               </p>
 
-              {/* The Quote: Styled as a sophisticated callout below the text */}
-              <div className="mt-10 lg:block hero-line">
-                <p className="text-white  text-lg font-serif">
-                  "You don't learn by watching — you learn by building.  
+              <div className="mt-8 md:mt-10 hero-line">
+                <p className="text-white text-base sm:text-lg font-serif">
+                  "You don't learn by watching — you learn by building.
                   Here, your work becomes part of real products."
                 </p>
               </div>
 
-              {/* Button: Centered with a premium 'glass' shadow effect */}
-              <div className="mt-16 flex justify-center">
-                <button 
+              <div className="mt-10 md:mt-16 flex justify-center">
+                <button
                   onClick={() => {
                     const element = document.getElementById('active-programs');
                     element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }}
-                  className="group relative px-14 py-5 bg-white text-emerald-900 hero-line font-bold uppercase tracking-[0.2em] text-xs transition-all duration-500 hover:bg-emerald-50 hover:tracking-[0.3em] shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
+                  className="group relative px-8 sm:px-14 py-4 sm:py-5 bg-white text-emerald-900 hero-line font-bold uppercase tracking-[0.2em] text-xs transition-all duration-500 hover:bg-emerald-50 hover:tracking-[0.3em] shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
                 >
                   <span className="relative z-10">Start My Journey →</span>
                   <div className="absolute inset-0 translate-x-2 translate-y-2 border border-emerald-400/50 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></div>
@@ -129,174 +126,168 @@ export default function ProjectBasePage() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid max-w-6xl md:grid-cols-2 gap-0 mb-20 border-y bg-white border-slate-200">
+        {/* TWO-COLUMN INFO SECTION */}
+        <div className="max-w-7xl mx-auto px-7 sm:px-6">
+          <div className="grid md:grid-cols-2 gap-0 mb-16 md:mb-20 border-y bg-white border-slate-200">
 
-        {/* SECTION 1: THE CORE */}
-        <div className="group relative py-16 pr-8 md:pr-16 border-b md:border-b-0 md:border-r border-slate-200">
-          <div className="space-y-12">
+            {/* SECTION 1: THE CORE */}
+            <div className="group relative py-10 md:py-16 md:pr-16 border-b md:border-b-0 md:border-r border-slate-200">
+              <div className="space-y-8 md:space-y-12">
 
-            {/* Heading + Description */}
-            <div className="space-y-6">
-              <h4 className="text-4xl font-bold text-slate-900 tracking-tighter leading-[0.95]">
-                What is <br />
-                <span className="text-slate-400 group-hover:text-emerald-600 transition-colors duration-500">
-                  Lush Project Base?
-                </span>
-              </h4>
+                <div className="space-y-5 md:space-y-6">
+                  <h4 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tighter leading-[0.95]">
+                    What is <br />
+                    <span className="text-slate-400 group-hover:text-emerald-600 transition-colors duration-500">
+                      Lush Project Base?
+                    </span>
+                  </h4>
 
-              <p className="text-slate-500 leading-relaxed text-lg">
-                Lush Project Base is a hands-on environment where you contribute directly
-                to <span className="text-slate-900 font-medium">real software products</span>{" "}
-                that we continuously build and improve.
-              </p>
+                  <p className="text-slate-500 leading-relaxed text-base md:text-lg">
+                    Lush Project Base is a hands-on environment where you contribute directly
+                    to <span className="text-slate-900 font-medium">real software products</span>{" "}
+                    that we continuously build and improve.
+                  </p>
 
-              <p className="text-slate-500 leading-relaxed text-lg">
-                This is not traditional training. You learn by working on live projects,
-                gaining practical experience in real-world production environments.
-              </p>
-            </div>
+                  <p className="text-slate-500 leading-relaxed text-base md:text-lg">
+                    This is not traditional training. You learn by working on live projects,
+                    gaining practical experience in real-world production environments.
+                  </p>
+                </div>
 
-            {/* Feature Tags */}
-            <div className="flex flex-wrap gap-3">
-              {[
-                "Software Development Projects",
-                "AI Research & Development",
-                "Production-Level Experience",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="px-4 py-2 rounded-2xl bg-slate-50 border border-slate-200 text-[10px] font-bold uppercase tracking-widest text-slate-600 group-hover:border-emerald-200 transition-colors"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
+                <div className="flex flex-wrap gap-2 sm:gap-3">
+                  {[
+                    "Software Development Projects",
+                    "AI Research & Development",
+                    "Production-Level Experience",
+                  ].map((item) => (
+                    <span
+                      key={item}
+                      className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl bg-slate-50 border border-slate-200 text-[10px] font-bold uppercase tracking-widest text-slate-600 group-hover:border-emerald-200 transition-colors"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
 
-
-          </div>
-        </div>
-
-        {/* SECTION 2: THE LEGACY */}
-        <div className="group/legacy relative py-16 md:pl-16 flex flex-col justify-between">
-          <div className="space-y-14">
-
-            <div className="space-y-8">
-              <h4 className="text-4xl font-bold text-slate-900 tracking-tighter leading-tight">
-                Make Partner Of <br />
-                <span className="text-slate-900">A Legacy of Innovation & Success</span>
-              </h4>
-
-              <div className="space-y-6">
-                <p className="text-slate-600 leading-relaxed text-lg border-l-4 border-slate-900 pl-8 group-hover/legacy:border-emerald-600 transition-colors duration-500">
-                  As <strong className="text-slate-900 font-black">LushWare ORG</strong>, we
-                  continuously create new platforms that help the general public simplify
-                  their daily lives, while consistently pushing boundaries and embracing
-                  emerging technologies.
-                </p>
-
-                <p className="text-slate-500 leading-relaxed pl-9 text-lg">
-                  Our journey is driven by a commitment to excellence, a strong
-                  customer-centric focus, and a passion for building cutting-edge
-                  solutions that move both people and businesses forward.
-                </p>
               </div>
             </div>
 
-          </div>
-        </div>
-      </div>
+            {/* SECTION 2: THE LEGACY */}
+            <div className="group/legacy relative py-10 md:py-16 md:pl-16 flex flex-col justify-between">
+              <div className="space-y-10 md:space-y-14">
 
+                <div className="space-y-6 md:space-y-8">
+                  <h4 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tighter leading-tight">
+                    Make Partner Of <br />
+                    <span className="text-slate-900">A Legacy of Innovation & Success</span>
+                  </h4>
+
+                  <div className="space-y-5 md:space-y-6">
+                    <p className="text-slate-600 leading-relaxed text-base md:text-lg border-l-4 border-slate-900 pl-6 md:pl-8 group-hover/legacy:border-emerald-600 transition-colors duration-500">
+                      As <strong className="text-slate-900 font-black">LushWare ORG</strong>, we
+                      continuously create new platforms that help the general public simplify
+                      their daily lives, while consistently pushing boundaries and embracing
+                      emerging technologies.
+                    </p>
+
+                    <p className="text-slate-500 leading-relaxed pl-7 md:pl-9 text-base md:text-lg">
+                      Our journey is driven by a commitment to excellence, a strong
+                      customer-centric focus, and a passion for building cutting-edge
+                      solutions that move both people and businesses forward.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* PROGRAM PATHS */}
-      <div id="active-programs" className="max-w-7xl mx-auto py-2 px-6">
-        <div className="text-center mb-16">
-          <div>
-            <h1 className="text-5xl font-semibold tracking-tighter text-slate-900">
+        <div id="active-programs" className="max-w-7xl mx-auto py-2 px-4 sm:px-6">
+          <div className="text-center mb-10 md:mb-16">
+            <h1 className="text-4xl sm:text-5xl font-semibold tracking-tighter text-slate-900">
               Active Programs<span className="text-emerald-600">.</span>
             </h1>
           </div>
-        </div>
 
-        <div className="border-t border-slate-400">
-          {programs.map((program, index) => (
-            <div
-              key={program.title}
-              ref={(el) => { programRefs.current[index] = el; }}
-              onClick={() => setSelectedProgram(program)}
-              className={`group relative flex flex-col md:flex-row md:items-center justify-between py-12 border-b border-slate-400 cursor-pointer transition-all duration-700 ${
-                visiblePrograms.has(index)
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-12"
-              }`}
-              style={{ transitionDelay: `${(index % 2) * 150}ms` }}
-            >
-              {/* Left Side: Index & Title */}
-              <div className="flex items-start gap-12 md:gap-20">
-                <span className="font-mono text-md text-slate-400 group-hover:text-emerald-600 transition-colors duration-300 pt-1">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                
-                <div className="space-y-2">
-                  <h3 className="text-3xl font-bold text-slate-900 tracking-tight transition-transform duration-500 group-hover:translate-x-2">
-                    {program.title}
-                  </h3>
-                  <p className="text-slate-600 text-sm font-bold uppercase tracking-[0.2em] group-hover:text-slate-600 transition-colors">
-                    {program.subtitle}
+          <div className="border-t border-slate-400">
+            {programs.map((program, index) => (
+              <div
+                key={program.title}
+                ref={(el) => { programRefs.current[index] = el; }}
+                onClick={() => setSelectedProgram(program)}
+                className={`group relative flex flex-col md:flex-row md:items-center justify-between py-8 sm:py-12 border-b border-slate-400 cursor-pointer transition-all duration-700 ${
+                  visiblePrograms.has(index)
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-12"
+                }`}
+                style={{ transitionDelay: `${(index % 2) * 150}ms` }}
+              >
+                {/* Left Side: Index & Title */}
+                <div className="flex items-start gap-6 sm:gap-12 md:gap-20">
+                  <span className="font-mono text-sm text-slate-400 group-hover:text-emerald-600 transition-colors duration-300 pt-1 shrink-0">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+
+                  <div className="space-y-1 sm:space-y-2">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight transition-transform duration-500 group-hover:translate-x-2">
+                      {program.title}
+                    </h3>
+                    <p className="text-slate-600 text-xs sm:text-sm font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] group-hover:text-slate-600 transition-colors">
+                      {program.subtitle}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right Side: Description & Button */}
+                <div className="mt-6 md:mt-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-12 ml-12 sm:ml-0">
+                  {/* Show description inline on mobile, hover on lg+ */}
+                  <p className="block lg:hidden text-slate-600 text-sm leading-relaxed max-w-xs">
+                    {program.description}
                   </p>
+                  <p className="hidden lg:block text-slate-700 text-md leading-relaxed max-w-[280px] opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    {program.description}
+                  </p>
+
+                  {/* Sweep Button */}
+                  <button className="relative rounded-3xl h-12 sm:h-14 w-40 sm:w-52 bg-slate-900 overflow-hidden transition-all duration-300 group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] shrink-0">
+                    <div className="absolute inset-0 z-0 -translate-x-full bg-emerald-600 transition-transform duration-500 ease-[cubic-bezier(0.85,0,0.15,1)] group-hover:translate-x-0" />
+                    <div className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6">
+                      <span className="text-white text-[10px] sm:text-[11px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em]">
+                        Apply Now
+                      </span>
+                      <svg
+                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white transition-transform duration-500 group-hover:translate-x-2"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="3"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
+                  </button>
                 </div>
               </div>
-
-              {/* Right Side: Description & Sweep Button */}
-              <div className="mt-8 md:mt-0 flex items-center gap-12">
-                <p className="hidden lg:block text-slate-700 text-md leading-relaxed max-w-[280px] opacity-0 group-hover:opacity-100 transition-all duration-500">
-                  {program.description}
-                </p>
-
-                {/* Sweep Button */}
-                <button className="relative rounded-3xl h-14 w-52 bg-slate-900 overflow-hidden transition-all duration-300 group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)]">
-                  {/* The Emerald Sweep (Going from left) */}
-                  <div className="absolute inset-0 z-0 -translate-x-full bg-emerald-600 transition-transform duration-500 ease-[cubic-bezier(0.85,0,0.15,1)] group-hover:translate-x-0" />
-                  
-                  {/* Button Text & Icon */}
-                  <div className="relative z-10  flex items-center justify-center gap-3 px-6">
-                    <span className="text-white text-[11px] font-black uppercase tracking-[0.2em]">
-                      Apply Now
-                    </span>
-                    <svg 
-                      className="w-4 h-4 text-white transition-transform duration-500 group-hover:translate-x-2" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor" 
-                      strokeWidth="3"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </div>
-                </button>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-      </div>
-
 
       {/* MODAL */}
       {selectedProgram && createPortal(
         <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
           {/* Backdrop */}
-          <div 
-            className="fixed inset-0 bg-slate-900/40 backdrop-blur-md transition-all duration-500" 
+          <div
+            className="fixed inset-0 bg-slate-900/40 backdrop-blur-md transition-all duration-500"
             onClick={() => setSelectedProgram(null)}
           />
 
-          {/* Modal Container */}
-          <div className="relative w-full max-w-2xl max-h-[94vh] overflow-y-scroll bg-white shadow-2xl rounded-3xl overflow-hidden animate-in fade-in zoom-in-95 duration-300">
-            {/* Form Content */}
-            <div className="p-8 lg:p-14">
-              <InquiryForm 
+          {/* Modal — fixed overflow-y-scroll + overflow-hidden conflict */}
+          <div className="relative w-full max-w-2xl max-h-[94vh] overflow-y-auto bg-white shadow-2xl rounded-3xl animate-in fade-in zoom-in-95 duration-300">
+            <div className="p-6 sm:p-8 lg:p-14">
+              <InquiryForm
                 inquiryType="project"
                 topic={selectedProgram.title}
                 project={selectedProgram.subtitle}

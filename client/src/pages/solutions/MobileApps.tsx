@@ -25,7 +25,7 @@ const MobileApps: React.FC = () => {
 
   return (
     <section className="w-full py-24 px-6">
-      <div className="max-w-8xl mx-auto">
+      <div className="max-w-8xl pt-6 md:pt-12 mx-auto">
 
         {/* Hero Section */}
         <div className="max-w-6xl mt-12 mx-auto text-center mb-16">
@@ -36,14 +36,14 @@ const MobileApps: React.FC = () => {
             </div>
           </div>
 
-          <h1 className="text-5xl lg:text-7xl font-extrabold text-[#0F172A] tracking-tight leading-[1.1] mb-6 hero-line">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-[#0F172A] tracking-tight leading-[1.1] mb-6 hero-line">
             Transform Your Business <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-800 via-emerald-500 to-emerald-800 hero-line">
               With Intelligent Mobile Apps
             </span>
           </h1>
 
-          <p className="text-xl text-slate-600 font-medium max-w-7xl mx-auto hero-line">
+          <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-7xl mx-auto hero-line">
             LushWare delivers mobile apps designed to optimize business processes, engage customers, and provide measurable impact across iOS and Android devices.
           </p>
         </div>

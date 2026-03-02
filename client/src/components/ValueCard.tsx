@@ -25,7 +25,7 @@ const ValueCard: React.FC<ValueCardProps> = ({
       <div className="absolute top-10 left-10 w-15 h-15 bg-gradient-to-br from-emerald-500 to-emerald-700 rounded-full scale-0 group-hover:scale-[12] transition-transform duration-700 ease-in-out z-0" />
 
       {/* Content Layer */}
-      <div className="relative z-10 h-full p-10 flex flex-col">
+      <div className="relative z-10 h-full p-8 md:p-10 flex flex-col">
         {/* Top Area */}
         <div className="mb-8 flex justify-between items-center">
           <div className="w-12 h-12 rounded-2xl bg-emerald-50 group-hover:bg-white/20 flex items-center justify-center transition-colors duration-500">

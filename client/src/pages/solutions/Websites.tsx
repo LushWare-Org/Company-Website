@@ -31,7 +31,7 @@ const Websites: React.FC = () => {
 
   return (
     <section className="w-full py-24 px-6">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl pt-6 md:pt-12 mx-auto">
 
         {/* Hero Section */}
         <div className="max-w-6xl mt-12 mx-auto text-center mb-5">
@@ -42,14 +42,14 @@ const Websites: React.FC = () => {
           </div>
           
 
-          <h1 className="text-5xl lg:text-7xl font-extrabold text-[#0F172A] tracking-tight leading-[1.1] mb-6 hero-line">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-[#0F172A] tracking-tight leading-[1.1] mb-6 hero-line">
             Build a Strong Digital Presence <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-800 via-emerald-500 to-emerald-800 hero-line">
               With Professional Websites
             </span>
           </h1>
 
-          <p className="text-xl text-slate-600 font-medium max-w-7xl mx-auto hero-line">
+          <p className="text-lg  sm:text-xl text-slate-600 font-medium max-w-7xl mx-auto hero-line">
             LushWare designs websites that not only look amazing but also drive engagement, convert visitors into leads, and represent your brand with excellence.
           </p>
         </div>

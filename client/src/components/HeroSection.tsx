@@ -70,7 +70,7 @@ const heroSlides: HeroSlide[] = [
     description:
       "Scalable iOS and Android applications engineered for performance and user experience.",
     image: "/hero3/app.jpg",
-    maxWidthClass: "lg:max-w-lg",
+    maxWidthClass: "lg:max-w-md",
     aspectClass: "aspect-auto",
   },
 ];
@@ -106,21 +106,21 @@ export default function HeroSection() {
             <div className="relative h-full w-full px-6 lg:px-20 flex flex-col justify-center z-10 overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full items-center">
                 {/* Left Content */}
-                <div className="lg:col-span-7 md:mt-0 lg:mt-0 mt-80 flex flex-col">
+                <div className="lg:col-span-7 md:mt-0 lg:mt-12 mt-80 flex flex-col">
                   <h1 className="flex flex-col gap-0 select-none mb-6">
-                    <span className="text-5xl md:text-7xl lg:text-[7rem] font-black text-emerald-600 sm:text-transparent uppercase leading-[0.8] tracking-tighter hero-line hero-stroke">
+                    <span className="text-5xl md:text-7xl lg:text-[6.5rem] font-black text-emerald-600 sm:text-transparent uppercase leading-[0.8] tracking-tighter hero-line hero-stroke">
                       {slide.titleTop}
                     </span>
-                    <span className="text-5xl md:text-7xl lg:text-[7rem] font-black tracking-tighter text-stone-900 uppercase leading-[0.8] mb-1 hero-line">
+                    <span className="text-5xl md:text-7xl lg:text-[6.5rem] font-black tracking-tighter text-stone-900 uppercase leading-[0.8] mb-1 hero-line">
                       {slide.titleHighlight}
                     </span>
 
-                    <span className="text-5xl md:text-7xl lg:text-[7rem] font-black text-emerald-600 uppercase leading-[0.8] tracking-tighter hero-line hero-stroke">
+                    <span className="text-5xl md:text-7xl lg:text-[6.5rem] font-black text-emerald-600 uppercase leading-[0.8] tracking-tighter hero-line hero-stroke">
                       {slide.titleOutline}
                     </span>
                   </h1>
 
-                  <p className="text-xl font-medium text-stone-800 max-w-xl mb-8 mt-4 hero-line">
+                  <p className="text-xl font-medium text-stone-600 max-w-xl mb-8 mt-4 hero-line">
                     {slide.description}
                   </p>
 
@@ -155,7 +155,7 @@ export default function HeroSection() {
         ))}
 
         {/* Custom Navigation Arrows */}
-        <div className="absolute bottom-12 left-6 lg:left-20 z-20 flex gap-4">
+        <div className="absolute bottom-9 left-6 lg:left-20 z-20 flex gap-4">
           <button className="custom-prev group cursor-pointer flex h-12 w-12 items-center justify-center rounded-full border border-stone-300 hover:border-stone-900 transition-all duration-300 bg-white/80 backdrop-blur-sm">
             <svg
               width="24"

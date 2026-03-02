@@ -32,8 +32,8 @@ export default function Navbar() {
     <nav 
       className={`fixed w-full z-50 transition-all duration-500 ${
         scrolled 
-          ? "bg-white backdrop-blur-md py-3 shadow-md" 
-          : "bg-transparent py-5"
+          ? "bg-white backdrop-blur-md py-3 shadow-lg shadow-emerald-200/30" 
+          : "bg-[#ffffff]  py-5"
       }`}
     >
       <div className="max-w-8xl md:px-22 px-9 mx-auto  flex justify-between items-center">
@@ -44,18 +44,23 @@ export default function Navbar() {
           className="flex items-center group"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
-          <div className="relative h-12 w-18  rounded-xl mr-0 md:mr-2 ">
+          <div className="relative h-12 w-14 md:h-12 md:w-18 rounded-xl mr-0 md:mr-2">
             <img
               src="/logo.jpeg"
               alt="LushWare ORG"
-              className="h-full w-full object-contain  "
+              className="h-full w-full object-contain"
             />
           </div>
-          <div className="flex flex- space-y-1 flex-col ">
-            <span className="text-2xl font-black tracking-wider text-stone-700 leading-none">
-              LUSH<span style={{ WebkitTextStroke: '0.5px #1c1917', color: 'transparent' }}>WARE</span>
+
+          <div className="hidden sm:flex flex-col space-y-0.5 md:space-y-1">
+            <span className="text-xl sm:text-2xl md:text-3xl font-black tracking-wide text-stone-700 leading-none">
+              LUSH
+              <span style={{ WebkitTextStroke: '0.5px #1c1917', color: 'transparent' }}>
+                WARE
+              </span>
             </span>
-            <span className="text-[8.5px] tracking-tighter text-emerald-600 font-bold uppercase leading-none mt-0.5">
+
+            <span className="text-[8px] sm:text-[9px] md:text-[10px] tracking-tight md:tracking-tighter text-emerald-600 font-bold uppercase leading-none mt-0.5">
               Hoisting Your Life to The Next Level
             </span>
           </div>
@@ -83,7 +88,7 @@ export default function Navbar() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                 </svg>
 
-                <span className={`absolute -bottom-1 left-0 h-0.5  bg-emerald-500 transition-all duration-300 ${
+                <span className={`absolute -bottom-1.5 left-0 h-0.75  bg-emerald-500 transition-all duration-300 ${
                   location.pathname.startsWith("/solutions") ? "w-full" : "w-0 group-hover:w-full"
                 }`}></span>
               </div>
@@ -96,7 +101,7 @@ export default function Navbar() {
 
                     {/* Grid Layout for 10-12 Categories */}
                     <nav className="grid grid-cols-2 gap-x-16 gap-y-10">
-                      {solutionLinks.map((item, index) => (
+                      {solutionLinks.map((item) => (
                         <Link
                           key={item.to}
                           to={item.to}
@@ -142,7 +147,7 @@ export default function Navbar() {
                 }`}
               >
                 {link.name}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-emerald-500 transition-all duration-300 ${
+                <span className={`absolute -bottom-1.5 left-0 h-0.75 bg-emerald-500 transition-all duration-300 ${
                   location.pathname === link.to ? "w-full" : "w-0 group-hover:w-full"
                 }`}></span>
               </Link>
@@ -193,20 +198,18 @@ export default function Navbar() {
             } overflow-y-auto`}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col h-3/4">
               {/* Header */}
               <div className="flex items-center justify-between px-6 pt-6 pb-5 border-b border-stone-100">
                 <div className="flex items-center gap-3">
-                  <div className="h-12 w-12    flex items-center justify-center">
+                  <div className="h-12 w-20  pl-1  flex items-center justify-center">
                     <img
                       src="/logo.jpeg"
                       alt="LushWare ORG"
-                      className="h-7 w-7 rounded-full object-cover"
+                      className="h-14 w-14  object-contain"
                     />
                   </div>
-                  <div className="flex flex-col">
-                    <span className="text-sm font-bold tracking-tight text-stone-800">LUSHWARE</span>
-                  </div>
+ 
                 </div>
                 <button
                   onClick={() => setOpen(false)}
