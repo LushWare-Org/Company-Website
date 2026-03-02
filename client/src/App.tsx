@@ -16,6 +16,9 @@ import ProjectBasePage from './pages/ProjectBasePage'
 import ConsultationPage from './pages/ConsultationPage'
 import AdminLogin from './pages/AdminLogin'
 import AdminDashboard from './pages/AdminDashboard'
+import ConsultancyPage from './pages/templates/ConsultancyPage'
+import HealthcarePage from './pages/templates/HealthcarePage'
+import RealEstatePage from './pages/templates/RealEstatePage'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Loading from './components/Loading'
@@ -24,6 +27,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
   const isAdminPage = location.pathname.startsWith('/admin') || location.pathname.startsWith('/dashboard');
+  const isTemplatePage = location.pathname.startsWith('/templates');
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 400);
@@ -66,9 +70,9 @@ function App() {
       </div>
 
       {/* 3. CONTENT LAYOUT */}
-      {!isAdminPage && <Navbar />}
+      {!isAdminPage && !isTemplatePage && <Navbar />}
       <ScrollToTop />
-      {!isAdminPage && <WhatsAppButton />}
+      {!isAdminPage && !isTemplatePage && <WhatsAppButton />}
       
       <main className="relative z-10">
         <Routes>
@@ -82,6 +86,9 @@ function App() {
           <Route path="/work" element={<WorkPage />} />
           <Route path="/project-base" element={<ProjectBasePage />} />
           <Route path="/contact" element={<ConsultationPage />} />
+          <Route path="/templates/consultancy" element={<ConsultancyPage />} />
+          <Route path="/templates/healthcare" element={<HealthcarePage />} />
+          <Route path="/templates/real-estate" element={<RealEstatePage />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route 
             path="/admin/dashboard" 
@@ -94,7 +101,7 @@ function App() {
         </Routes>
       </main>
 
-      {!isAdminPage && <Footer />}
+      {!isAdminPage && !isTemplatePage && <Footer />}
     </div>
   )
 }

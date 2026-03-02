@@ -99,6 +99,8 @@ const Websites: React.FC = () => {
           </div>
         </div>
 
+
+
         {/* Benefits Section - Emerald Premium Style */}
         <section className="bg-white py-20 md:px-0 px-2 font-sans">
           <div className="max-w-7xl mx-auto">
@@ -416,7 +418,29 @@ const Websites: React.FC = () => {
           </div>
         </div>
 
-
+        {/* CTA SECTION WITH 3 BUTTONS */}
+        <section className="py-20 px-6 bg-gradient-to-r from-emerald-900 to-emerald-800 text-white text-center my-10">
+          <h2 className="text-3xl font-bold mb-4">Ready to Build Your Website?</h2>
+          <p className="max-w-2xl mx-auto text-emerald-100 mb-12 text-lg">Transform your online presence with a professional, high-performance website built for success.</p>
+          <div className="flex flex-col md:flex-row gap-6 justify-center items-center max-w-4xl mx-auto">
+            <button 
+              onClick={() => navigate("/templates/real-estate")}
+              className="bg-white hover:bg-emerald-50 text-emerald-900 font-semibold px-8 py-4 rounded-lg transition flex-1 md:flex-none"
+            >
+              Real Estate
+            </button>
+            <button 
+              onClick={() => navigate("/templates/healthcare")}
+              className="bg-emerald-700 hover:bg-emerald-600 text-white font-semibold px-8 py-4 rounded-lg transition flex-1 md:flex-none">
+              Healthcare
+            </button>
+            <button 
+              onClick={() => navigate("/templates/consultancy")}
+              className="border-2 border-white text-white hover:bg-white hover:text-emerald-900 font-semibold px-8 py-4 rounded-lg transition flex-1 md:flex-none">
+              Consultancy
+            </button>
+          </div>
+        </section>
 
       </div>
     </section>

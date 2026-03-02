@@ -102,10 +102,7 @@ export default function Navbar() {
                           to={item.to}
                           className="group/item relative flex flex-col space-y-2 border-l border-transparent pl-6 transition-all duration-500 hover:border-stone-900"
                         >
-                          {/* Index Numbering - creates a 'Catalogue' feel */}
-                          <span className="text-[10px] font-medium text-stone-600 uppercase tracking-widest group-hover/item:text-stone-900 transition-colors duration-500">
-                            {String(index + 1).padStart(2, '0')}
-                          </span>
+
 
                           <div className="flex items-center justify-between">
                             <span className={` text-[17px] tracking-wide font-medium transition-all duration-700 ${
