@@ -53,9 +53,9 @@ export default function Navbar() {
           </div>
 
           <div className="hidden sm:flex flex-col space-y-0.5 md:space-y-1">
-            <span className="text-xl sm:text-2xl md:text-3xl font-black tracking-wide text-stone-700 leading-none">
+            <span className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide text-stone-700 leading-none">
               LUSH
-              <span style={{ WebkitTextStroke: '0.5px #1c1917', color: 'transparent' }}>
+              <span style={{ WebkitTextStroke: '1px #1c1917', color: 'transparent' }}>
                 WARE
               </span>
             </span>

@@ -639,7 +639,7 @@ const CRM: React.FC = () => {
               ].map((item, index) => (
 <div
   key={index}
-  className="group relative bg-white p-8 md:p-10 border border-slate-400 rounded-xl transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] cursor-pointer overflow-hidden"
+  className="group relative bg-white p-8 md:p-10 border mt-1 border-slate-400 rounded-xl transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] cursor-pointer overflow-hidden"
 >
   {/* Subtle Accent Line - Only visible on hover */}
   <div className="absolute top-0 left-0 w-full h-[2px] bg-slate-900 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />

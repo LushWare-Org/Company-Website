@@ -58,6 +58,7 @@ export default function ServicesSection() {
 
   return (
     <section data-reveal className=" bg-[#ffffff] px-6 py-20  relative">
+      
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-24">
           
