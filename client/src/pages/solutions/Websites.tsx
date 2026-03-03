@@ -2,10 +2,8 @@ import React from "react";
 import QuestionItem from "../../components/QuestionItem";
 import WhyChooseLushWare from "../../components/WhyChooseLushWare";
 import ValueCard from "../../components/ValueCard";
-import { useNavigate } from "react-router-dom";
 
 const Websites: React.FC = () => {
-  const navigate = useNavigate();
   const faqItems = [
     {
       question: "What is a corporate website?",
