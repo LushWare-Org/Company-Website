@@ -287,7 +287,7 @@ export default function Homepage() {
 {/* WebKit by Lushway - Homepage Teaser Section */}
 <section
   data-reveal
-  className="relative px-6 md:px-12 py-16 md:py-28 overflow-hidden bg-[#094a3b]"
+  className="relative px-6 md:px-12 py-16 md:py-20 overflow-hidden bg-[#094a3b]"
 >
   {/* Creative Background Elements (Unchanged) */}
   <div className="absolute inset-0 z-0 overflow-hidden">
