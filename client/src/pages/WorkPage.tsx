@@ -2,6 +2,26 @@ import { useEffect, useRef, useState } from "react";
 import WorkCard from "../components/WorkCard";
 
 const projects = [
+    {
+    name: "Travel Booking Website",
+    client: "Trip Sky Way",
+    summary:
+      "Trip Sky Way is a modern travel booking platform designed to help travelers discover destinations and plan seamless journeys.",
+    description:
+      "We developed a clean, responsive travel website focused on intuitive navigation, fast performance, and a streamlined booking experience tailored to modern travelers.",
+    image: "/work/TripSkyWay.jpg",
+    link: "https://tripskyway.com/",
+  },
+    {
+    name: "Tour & Travel Website",
+    client: "Holiday Vibes Tour",
+    summary:
+      "Holiday Vibes Tour is a travel website built to promote curated tours and immersive travel experiences.",
+    description:
+      "We crafted a vibrant and responsive platform that enables users to explore tour packages, view detailed itineraries, and make inquiries with ease.",
+    image: "/work/HolidayVibesTour.jpg",
+    link: "https://holidayvibestour.com/",
+  },
   {
     name: "B2B Portal for Travel Agents",
     client: "Yomaldives",
@@ -12,6 +32,7 @@ const projects = [
     image: "/work/yomaldives.png",
     link: "https://yomaldives.live/",
   },
+  
   {
     name: "Speedboat Ticket Booking System",
     client: "Dream Speed",
@@ -31,6 +52,26 @@ const projects = [
       "We built a platform that not only manages bookings but truly helps users “Experience Paradise” from the moment they land on the site. This project is a perfect example of our ability to create seamless, user-friendly solutions that elevate businesses and delight their customers.",
     image: "/work/islekeyholidays.png",
     link: "https://islekeyholidays.com/",
+  },
+    {
+    name: "Travel Agency Website",
+    client: "Traveliccted",
+    summary:
+      "Traveliccted is a travel-focused website built to showcase curated travel experiences and destination packages.",
+    description:
+      "This project highlights our ability to design engaging travel platforms that combine strong visual storytelling with user-friendly booking flows and conversion-focused layouts.",
+    image: "/work/Traveliccted.jpg",
+    link: "https://traveliccted.com/",
+  },
+    {
+    name: "Travel E-Commerce Platform",
+    client: "Crown Voyages",
+    summary:
+      "Crown Voyages is a travel-focused e-commerce platform designed to showcase and sell curated travel products and services.",
+    description:
+      "This project demonstrates our expertise in building scalable e-commerce solutions with secure payments, dynamic product management, and a premium brand experience.",
+    image: "/work/CrownVoyages.jpg",
+    link: "https://crownvoyages.com/",
   },
 
   {

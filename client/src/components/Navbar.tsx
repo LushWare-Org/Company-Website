@@ -29,170 +29,200 @@ export default function Navbar() {
   ];
 
   return (
-    <nav 
+    <nav
       className={`fixed w-full z-50 transition-all duration-500 ${
-        scrolled 
-          ? "bg-white backdrop-blur-md py-3 shadow-lg shadow-emerald-200/30" 
+        scrolled
+          ? "bg-white backdrop-blur-md py-3 shadow-lg shadow-emerald-200/30"
           : "bg-[#ffffff]  py-5"
       }`}
     >
-      <div className="max-w-8xl md:px-22 px-9 mx-auto  flex justify-between items-center">
-        
-        {/* Logo Section */}
-        <Link 
-          to="/" 
-          className="flex items-center group"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        >
-          <div className="relative h-12 w-14 md:h-12 md:w-18 rounded-xl mr-0 md:mr-2">
-            <img
-              src="/logo.jpeg"
-              alt="LushWare ORG"
-              className="h-full w-full object-contain"
-            />
-          </div>
+      <div className="max-w-8xl md:px-22 px-9 mx-auto flex md:grid md:grid-cols-3 justify-between items-center gap-4">
+        {/* Left: Logo Section */}
+        <div className="flex justify-start">
+          <Link
+            to="/"
+            className="flex items-center group"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            <div className="relative h-12 w-14 md:h-12 md:w-18 rounded-xl mr-0 md:mr-2">
+              <img
+                src="/logo.jpeg"
+                alt="LushWare ORG"
+                className="h-full w-full object-contain"
+              />
+            </div>
 
-          <div className="hidden sm:flex flex-col space-y-0.5 md:space-y-1">
-            <span className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide text-stone-700 leading-none">
-              LUSH
-              <span style={{ WebkitTextStroke: '1px #1c1917', color: 'transparent' }}>
-                WARE
-              </span>
-            </span>
-
-            <span className="text-[8px] sm:text-[9px] md:text-[10px] tracking-tight md:tracking-tighter text-emerald-600 font-bold uppercase leading-none mt-0.5">
-              Hoisting Your Life to The Next Level
-            </span>
-          </div>
-        </Link>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-10">
-          <div className="flex items-center space-x-8">
-            <div className="relative group">
-              <div
-                className={`text-md font-medium cursor-pointer tracking-wide transition-all duration-300 hover:text-emerald-900 flex items-center gap-2 relative ${
-                  location.pathname.startsWith("/solutions") ? "text-emerald-900" : "text-stone-800"
-                }`}
-              >
-                Our Solutions
-                {/* Elegant Chevron Icon */}
-                <svg 
-                  className={`w-3 h-3 transition-transform duration-300 group-hover:rotate-180 ${
-                    location.pathname.startsWith("/solutions") ? "text-emerald-900" : "text-stone-800"
-                  }`}
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
+            <div className="hidden sm:flex flex-col space-y-0.5 md:space-y-1">
+              <span className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide text-stone-700 leading-none">
+                LUSH
+                <span
+                  style={{
+                    WebkitTextStroke: "1px #1c1917",
+                    color: "transparent",
+                  }}
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                </svg>
+                  WARE
+                </span>
+              </span>
 
-                <span className={`absolute -bottom-1.5 left-0 h-0.75  bg-emerald-500 transition-all duration-300 ${
-                  location.pathname.startsWith("/solutions") ? "w-full" : "w-0 group-hover:w-full"
-                }`}></span>
-              </div>
-              <div className="pointer-events-none absolute left-1/2 top-full -translate-x-1/2 pt-4 opacity-0 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0 translate-y-8">
-                <div className="w-[840px] overflow-hidden rounded-b-2xl bg-white border border-stone-100 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.08)]">
-                  
+              <span className="text-[8px] sm:text-[9px] md:text-[10px] tracking-tight md:tracking-tighter text-emerald-600 font-bold uppercase leading-none mt-0.5">
+                Hoisting Your Life to The Next Level
+              </span>
+            </div>
+          </Link>
+        </div>
 
-                  <div className="p-16">
+        {/* Center: Desktop Navigation */}
+        <div className="hidden md:flex items-center justify-center space-x-12">
+          <div className="relative group">
+            <div
+              className={`flex items-center gap-2 text-sm font-semibold tracking-widest uppercase transition-colors relative cursor-pointer ${
+                location.pathname.startsWith("/solutions")
+                  ? "text-emerald-900"
+                  : "text-stone-800 hover:text-emerald-700"
+              }`}
+            >
+              <span>Our Solutions</span>
 
+              {/* Chevron Icon */}
+              <svg
+                className={`w-3 h-3 transition-transform duration-300 group-hover:rotate-180 ${
+                  location.pathname.startsWith("/solutions")
+                    ? "text-emerald-900"
+                    : "text-stone-800"
+                }`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
 
-                    {/* Grid Layout for 10-12 Categories */}
-                    <nav className="grid grid-cols-2 gap-x-16 gap-y-10">
-                      {solutionLinks.map((item) => (
-                        <Link
-                          key={item.to}
-                          to={item.to}
-                          className="group/item relative flex flex-col space-y-2 border-l border-transparent pl-6 transition-all duration-500 hover:border-stone-900"
-                        >
-
-
-                          <div className="flex items-center justify-between">
-                            <span className={` text-[17px] tracking-wide font-medium transition-all duration-700 ${
-                              location.pathname === item.to 
-                                ? "text-stone-950 underline underline-offset-8 decoration-emerald-700" 
+              {/* Underline */}
+              <span
+                className={`absolute -bottom-1.5 left-0 h-[2px] bg-emerald-500 transition-all duration-300 ${
+                  location.pathname.startsWith("/solutions")
+                    ? "w-full"
+                    : "w-0 group-hover:w-full"
+                }`}
+              ></span>
+            </div>
+            <div className="pointer-events-none absolute left-1/2 top-full -translate-x-1/2 pt-4 opacity-0 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-y-0 translate-y-8">
+              <div className="w-[840px] overflow-hidden rounded-b-2xl bg-white border border-stone-100 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.08)]">
+                <div className="p-16">
+                  {/* Grid Layout for 10-12 Categories */}
+                  <nav className="grid grid-cols-2 gap-x-16 gap-y-10">
+                    {solutionLinks.map((item) => (
+                      <Link
+                        key={item.to}
+                        to={item.to}
+                        className="group/item relative flex flex-col space-y-0 border-l border-transparent pl-6 transition-all duration-500 hover:border-stone-900"
+                      >
+                        <div className="flex items-center justify-between">
+                          <span
+                            className={` text-[17px] tracking-wide font-medium transition-all duration-700 ${
+                              location.pathname === item.to
+                                ? "text-stone-950 underline underline-offset-8 decoration-emerald-700"
                                 : "text-stone-900 group-hover/item:text-stone-950 group-hover/item:translate-x-1"
-                            }`}>
-                              {item.name}
-                            </span>
-                            
-                            {/* Minimalist leaf-style or chevron icon */}
-                            <svg 
-                              className="w-4 h-4 text-stone-800 opacity-0 -translate-x-4 transition-all duration-500 group-hover/item:opacity-100 group-hover/item:translate-x-0" 
-                              fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                            >
-                              <path  strokeWidth="1" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                            </svg>
-                          </div>
-                          
+                            }`}
+                          >
+                            {item.name}
+                          </span>
 
-                        </Link>
-                      ))}
-                    </nav>
-
-
-                  </div>
+                          {/* Minimalist leaf-style or chevron icon */}
+                          <svg
+                            className="w-4 h-4 text-stone-800 opacity-0 -translate-x-4 transition-all duration-500 group-hover/item:opacity-100 group-hover/item:translate-x-0"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeWidth="1"
+                              d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                          </svg>
+                        </div>
+                      </Link>
+                    ))}
+                  </nav>
                 </div>
               </div>
             </div>
-
-            {links.map((link) => (
-              <Link 
-                key={link.name} 
-                to={link.to} 
-                className={`text-md font-medium tracking-wide transition-all duration-300 hover:text-emerald-600 relative group ${
-                  location.pathname === link.to ? "text-emerald-700" : "text-stone-800"
-                }`}
-              >
-                {link.name}
-                <span className={`absolute -bottom-1.5 left-0 h-0.75 bg-emerald-500 transition-all duration-300 ${
-                  location.pathname === link.to ? "w-full" : "w-0 group-hover:w-full"
-                }`}></span>
-              </Link>
-            ))}
           </div>
 
-          {/* Call to Action Button */}
-          <Link 
-            to="/contact" 
-            className="relative px-5 py-2 overflow-hidden group  hover:scale-105 bg-stone-900  rounded-full transition-all duration-500 hover:border-emerald-600"
+          {links.map((link) => (
+            <Link
+              key={link.name}
+              to={link.to}
+              className={`text-sm font-semibold tracking-widest uppercase text-stone-800 hover:text-emerald-700 transition-colors relative group ${
+                location.pathname === link.to
+                  ? "text-emerald-700"
+                  : "text-stone-800"
+              }`}
+            >
+              {link.name}
+              <span
+                className={`absolute -bottom-1.5 left-0 h-0.75 bg-emerald-500 transition-all duration-300 ${
+                  location.pathname === link.to
+                    ? "w-full"
+                    : "w-0 group-hover:w-full"
+                }`}
+              ></span>
+            </Link>
+          ))}
+        </div>
+
+        {/* Right: Call to Action Button */}
+        <div className="hidden md:flex justify-end">
+          <Link
+            to="/contact"
+            className="relative px-5 py-2 overflow-hidden group hover:scale-105 bg-stone-900 rounded-full transition-all duration-500 hover:border-emerald-600"
           >
             {/* The color layer that slides in */}
             <span className="absolute inset-0 w-0 h-full bg-emerald-600 transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:w-full"></span>
-            
+
             {/* The Text */}
-            <span className="relative z-10 text-[10px] font-bold tracking-[0.2em] uppercase  text-white transition-colors duration-500 ">
+            <span className="relative z-10 text-[10px] font-bold tracking-[0.2em] uppercase text-white transition-colors duration-500">
               Free Tech Consultation
             </span>
           </Link>
         </div>
 
         {/* Mobile Toggle */}
-        <button 
-          onClick={() => setOpen(!open)} 
+        <button
+          onClick={() => setOpen(!open)}
           className="md:hidden p-2 text-stone-900 hover:bg-stone-100 rounded-lg transition-colors"
         >
           <div className="w-6 h-5 relative flex flex-col justify-between">
-            <span className={`w-full h-0.5 bg-current transition-all ${open ? "rotate-45 translate-y-2" : ""}`}></span>
-            <span className={`w-full h-0.5 bg-current transition-all ${open ? "opacity-0" : ""}`}></span>
-            <span className={`w-full h-0.5 bg-current transition-all ${open ? "-rotate-45 -translate-y-2" : ""}`}></span>
+            <span
+              className={`w-full h-0.5 bg-current transition-all ${open ? "rotate-45 translate-y-2" : ""}`}
+            ></span>
+            <span
+              className={`w-full h-0.5 bg-current transition-all ${open ? "opacity-0" : ""}`}
+            ></span>
+            <span
+              className={`w-full h-0.5 bg-current transition-all ${open ? "-rotate-45 -translate-y-2" : ""}`}
+            ></span>
           </div>
         </button>
       </div>
 
       {/* Mobile Menu Sidebar */}
       {open && (
-        <div 
-          className="fixed inset-0 z-50 h-screen md:hidden" 
+        <div
+          className="fixed inset-0 z-50 h-screen md:hidden"
           onClick={() => setOpen(false)}
         >
           {/* Backdrop with blur */}
           <div className="absolute inset-0 bg-black/30 backdrop-blur-xl"></div>
-          
+
           {/* Sidebar */}
-          <div 
+          <div
             className={`absolute top-0 right-0 w-[82%] max-w-sm  rounded-bl-3xl bg-white shadow-2xl transform transition-all duration-500 ease-out ${
               open ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
             } overflow-y-auto`}
@@ -209,7 +239,6 @@ export default function Navbar() {
                       className="h-14 w-14  object-contain"
                     />
                   </div>
- 
                 </div>
                 <button
                   onClick={() => setOpen(false)}
@@ -247,7 +276,7 @@ export default function Navbar() {
                         }}
                         className="px-4 py-2 text-sm font-semibold text-stone-700 hover:text-emerald-600 hover:bg-emerald-50/60 rounded-xl transition-all duration-300"
                         style={{
-                          animation: `slideIn 0.5s ease-out ${0.1 + i * 0.08}s backwards`
+                          animation: `slideIn 0.5s ease-out ${0.1 + i * 0.08}s backwards`,
                         }}
                       >
                         {item.name}
@@ -265,15 +294,15 @@ export default function Navbar() {
                       setMobileSolutionsOpen(false);
                     }}
                     className="group px-4 py-3 text-stone-700 hover:text-emerald-600 hover:bg-emerald-50/60 rounded-xl transition-all duration-300 font-semibold relative overflow-hidden"
-                    style={{ 
-                      animation: `slideIn 0.5s ease-out ${0.2 + i * 0.1}s backwards`
+                    style={{
+                      animation: `slideIn 0.5s ease-out ${0.2 + i * 0.1}s backwards`,
                     }}
                   >
                     <span className="relative z-10 flex items-center justify-between">
-                      <span className="flex items-center">
-                        {link.name}
+                      <span className="flex items-center">{link.name}</span>
+                      <span className="text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                        →
                       </span>
-                      <span className="text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                     </span>
                   </Link>
                 ))}
@@ -287,7 +316,9 @@ export default function Navbar() {
                   className="group relative w-full overflow-hidden bg-stone-900 text-white rounded-full px-6 py-4 text-center font-bold tracking-wide transition-all duration-500 hover:shadow-[0_10px_30px_-10px_rgba(16,185,129,0.35)] inline-flex items-center justify-center"
                 >
                   <span className="absolute inset-0 w-0 h-full bg-emerald-600 transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:w-full"></span>
-                  <span className="relative z-10 text-[11px] font-bold tracking-[0.2em] uppercase text-white leading-none">Free Consultation</span>
+                  <span className="relative z-10 text-[11px] font-bold tracking-[0.2em] uppercase text-white leading-none">
+                    Free Consultation
+                  </span>
                 </Link>
               </div>
             </div>

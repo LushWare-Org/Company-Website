@@ -79,7 +79,8 @@ export default function HeroSection() {
   const navigate = useNavigate();
 
   return (
-    <section className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden">
+    <section className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden"
+    >
       <Swiper
         modules={[Autoplay, EffectFade, Navigation, Pagination]}
         effect="fade"
@@ -104,7 +105,10 @@ export default function HeroSection() {
         {heroSlides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div className="relative h-full w-full px-6 lg:px-20 flex flex-col justify-center z-10 overflow-hidden">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full items-center">
+              <div 
+                className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full items-center"
+
+              >
                 {/* Left Content */}
                 <div className="lg:col-span-7 md:mt-0 lg:mt-12 mt-80 flex flex-col">
                   <h1 className="flex flex-col gap-0 select-none mb-6">

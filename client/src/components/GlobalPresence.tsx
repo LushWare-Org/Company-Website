@@ -4,47 +4,45 @@ import { motion } from "framer-motion";
 
 export default function GlobalPresence() {
   return (
-    <section className="relative py-24 bg-white overflow-hidden selection:bg-emerald-100">
+    <section className="relative pt-24 pb-20 bg-white overflow-hidden selection:bg-emerald-100">
       <div className="max-w-7xl mx-auto px-8 md:px-0 lg:px-0">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
           {/* LEFT SIDE: EDITORIAL TEXT */}
           <div className="space-y-12 z-5  order-2 lg:order-1">
             <div className="space-y-6">
-
-
-                <div className="flex items-center gap-2 mb-4 ">
-                  <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
-                    UK & Sri Lanka Operations
-                  </div>
+              <div className="flex items-center gap-2 mb-4 ">
+                <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
+                  UK & Sri Lanka Operations
                 </div>
+              </div>
 
               {/* Headline */}
               <h2 className="text-5xl md:text-7xl font-medium text-slate-950 leading-[0.9] tracking-tight">
                 Working with the UK. <br />
-                <span className="text-emerald-600">
-                  Trusted in Sri Lanka.
-                </span>
+                <span className="text-emerald-600">Trusted in Sri Lanka.</span>
               </h2>
 
               {/* Core Message */}
               <p className="text-slate-800 font-medium leading-relaxed text-lg max-w-lg">
                 We deliver high-quality software solutions for businesses in the
-                <strong> United Kingdom</strong>, with a special focus on meeting UK
-                commercial, security, and compliance standards.
+                <strong> United Kingdom</strong>, with a special focus on
+                meeting UK commercial, security, and compliance standards.
               </p>
 
               <p className="text-slate-800 font-medium leading-relaxed text-lg max-w-lg">
-                Alongside our UK work, we also partner closely with 
-                <strong> Sri Lankan organizations</strong>, supporting local enterprises
-                with the same level of engineering excellence and reliability.
+                Alongside our UK work, we also partner closely with
+                <strong> Sri Lankan organizations</strong>, supporting local
+                enterprises with the same level of engineering excellence and
+                reliability.
               </p>
             </div>
 
             {/* Regional Focus */}
             <div className="flex flex-col gap-10">
               <div className="flex items-start gap-6">
-                <span className="font-serif italic text-2xl text-emerald-900">01</span>
+                <span className="font-serif italic text-2xl text-emerald-900">
+                  01
+                </span>
                 <div>
                   <h4 className="text-sm font-bold uppercase tracking-widest text-slate-900">
                     United Kingdom
@@ -56,7 +54,9 @@ export default function GlobalPresence() {
               </div>
 
               <div className="flex items-start gap-6">
-                <span className="font-serif italic text-2xl text-emerald-900">02</span>
+                <span className="font-serif italic text-2xl text-emerald-900">
+                  02
+                </span>
                 <div>
                   <h4 className="text-sm font-bold uppercase tracking-widest text-slate-900">
                     Sri Lanka
@@ -71,7 +71,6 @@ export default function GlobalPresence() {
 
           {/* RIGHT SIDE: THE INSTRUMENT MAP */}
           <div className="relative order-1 pr-4 lg:order-2">
-
             {/* TOP LEFT METADATA */}
             <div className="absolute top-8 left-8 z-30">
               <div className="flex items-center gap-2 mb-1">
@@ -98,7 +97,11 @@ export default function GlobalPresence() {
                   animate={{ scale: 1 }}
                   className="w-10 h-10 rounded-lg border-2 border-white shadow-lg overflow-hidden bg-white"
                 >
-                  <img src="https://flagcdn.com/w80/gb.png" className="w-full h-full object-cover" alt="UK" />
+                  <img
+                    src="https://flagcdn.com/w80/gb.png"
+                    className="w-full h-full object-cover"
+                    alt="UK"
+                  />
                 </motion.div>
                 <div className="w-px h-3 bg-emerald-800/40" />
               </div>
@@ -111,7 +114,11 @@ export default function GlobalPresence() {
                   transition={{ delay: 0.5 }}
                   className="w-10 h-10 rounded-lg border-2 border-white shadow-lg overflow-hidden bg-white"
                 >
-                  <img src="https://flagcdn.com/w80/lk.png" className="w-full h-full object-cover" alt="SL" />
+                  <img
+                    src="https://flagcdn.com/w80/lk.png"
+                    className="w-full h-full object-cover"
+                    alt="SL"
+                  />
                 </motion.div>
                 <div className="w-px h-3 bg-emerald-800/40" />
               </div>
@@ -135,7 +142,6 @@ export default function GlobalPresence() {
                 LNG: -0.1278 / 79.8612
               </p>
             </div>
-
           </div>
         </div>
       </div>
