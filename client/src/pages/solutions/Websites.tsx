@@ -99,115 +99,122 @@ const Websites: React.FC = () => {
         </div>
 
         {/* WebKit by Lushware - The Professional Archive */}
-        <section className="py-20 bg-[#F8F7F4]/80 selection:bg-emerald-900 selection:text-white font-sans">
-          <div className="max-w-[1700px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16">
-            {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 pb-10 border-b border-slate-200">
-              <div className="flex flex-col gap-3">
-                <span className="text-[11px] font-bold tracking-[0.35em] uppercase text-emerald-700">
-                  Template Collection
-                </span>
-                <h2 className="text-5xl sm:text-6xl md:text-6xl tracking-tight text-slate-900   leading-[1.05]">
-                  WebKit by{" "}
-                  <span className="not-italic   text-emerald-600">
-                    LushWare
-                  </span>
-                </h2>
-              </div>
-              <div className="md:max-w-xs lg:max-w-sm  py-1">
-                <p className="text-base sm:text-lg text-slate-700 leading-relaxed tracking-wide">
-                  Building efficient and scalable digital experiences with smart
-                  design and reliable performance.
-                </p>
-              </div>
-            </div>
-
-            {/* Template List */}
-            <div className="space-y-24 sm:space-y-32 lg:space-y-30">
+        <section className="py-20  selection:bg-emerald-900 rounded-3xl selection:text-white font-sans">
+          <div className="max-w-[1700px] mx-auto ">
+            {/* Template List — Tailwind Only */}
+            <div className="space-y-12 px-4 sm:px-6 lg:px-8">
               {webkitTemplates.map((template, index) => (
                 <div
                   key={template.id}
-                  className="group flex flex-col lg:flex-row items-start lg:items-center gap-10 md:gap-16 lg:gap-24"
+                  className="group relative border border-emerald-100 bg-gradient-to-br from-white to-emerald-50/60 rounded-3xl p-8 sm:p-10 overflow-hidden transition-all duration-500 hover:border-emerald-300 hover:shadow-[0_20px_60px_-12px_rgba(16,185,129,0.15)]"
                 >
-                  {/* Image Block */}
-                  <div
-                    className={`w-full lg:w-3/5 ${index % 2 !== 0 ? "lg:order-2" : "lg:order-1"}`}
-                  >
+                  {/* Top shimmer line */}
+                  <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-emerald-300/50 to-transparent" />
+
+                  <div className="flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-16">
+                    {/* ── Image Block ── */}
                     <div
-                      onClick={() => window.open(template.link, "_blank")}
-                      className="relative aspect-[16/9] cursor-pointer rounded-sm overflow-hidden bg-slate-100 shadow-xl group-hover:shadow-2xl transition-shadow duration-700"
+                      className={`w-full lg:w-[58%] ${index % 2 !== 0 ? "lg:order-2" : "lg:order-1"}`}
                     >
-                      <img
-                        src={template.image}
-                        alt={template.title}
-                        className="w-full h-full  transition-transform duration-[2.5s] ease-out "
-                      />
-                      {/* Overlay */}
-                      <div className="absolute inset-0 bg-emerald-950/0 group-hover:bg-emerald-950/5 transition-colors duration-500 flex items-center justify-center">
-                        <div className="bg-gray-900 p-5 border-2 border-white rounded-full shadow-2xl scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500">
+                      <div
+                        onClick={() => window.open(template.link, "_blank")}
+                        className="relative aspect-video cursor-pointer rounded-2xl overflow-hidden bg-emerald-50 shadow-md transition-all duration-500  group-hover:shadow-[0_20px_48px_-12px_rgba(16,185,129,0.2)]"
+                      >
+                        <img
+                          src={template.image}
+                          alt={template.title}
+                          className="w-full h-full  transition-transform duration-[2500ms] ease-out "
+                        />
+
+                        <div className="absolute inset-0 bg-emerald-950/0 group-hover:bg-emerald-950/5 transition-colors duration-500 flex items-center justify-center">
+                          <div className="bg-gray-900 p-5 border-2 border-white rounded-full shadow-2xl scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500">
+                            <svg
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              className="text-white"
+                            >
+                              <line x1="7" y1="17" x2="17" y2="7"></line>
+                              <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                          </div>
+                        </div>
+
+                        {/* Watermark number */}
+                        <div className="absolute bottom-3 right-4 text-[72px] font-black text-white/10 leading-none select-none pointer-events-none tracking-tighter">
+                          {String(index + 1).padStart(2, "0")}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* ── Text Block ── */}
+                    <div
+                      className={`w-full lg:w-[42%] space-y-6 ${index % 2 !== 0 ? "lg:order-1" : "lg:order-2"}`}
+                    >
+                      {/* Meta row */}
+                      <div className="flex items-center gap-3">
+                        <span className="text-[9px] font-bold tracking-[0.35em] uppercase text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full">
+                          Template
+                        </span>
+                        <div className="h-px flex-1 bg-gradient-to-r from-emerald-100 to-transparent" />
+                        <span className="text-[9px] font-semibold tracking-[0.3em] uppercase text-gray-400">
+                          {String(index + 1).padStart(2, "0")} /{" "}
+                          {String(webkitTemplates.length).padStart(2, "0")}
+                        </span>
+                      </div>
+
+                      {/* Title */}
+                      <h3 className="text-[clamp(26px,3.5vw,36px)] text-emerald-950 leading-[1.15] tracking-tight transition-colors duration-400 group-hover:text-emerald-800">
+                        {template.title}
+                      </h3>
+
+                      {/* Description */}
+                      <p className="text-[16px] leading-[1.8] text-gray-800  pl-[18px] border-l-2 border-emerald-100 group-hover:border-emerald-400 transition-colors duration-500">
+                        {template.description}
+                      </p>
+
+                      {/* Meta chips */}
+                      <div className="flex items-center gap-5 flex-wrap">
+                        <span className="inline-flex items-center gap-1.5 text-[10px] font-medium text-gray-500 tracking-wide">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                          Live Preview
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 text-[10px] font-medium text-gray-500 tracking-wide">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                          Interactive
+                        </span>
+                      </div>
+
+                      {/* CTA Button */}
+                      <div className="pt-1">
+                        <button
+                          onClick={() => window.open(template.link, "_blank")}
+                          className="group/btn cursor-pointer relative inline-flex items-center gap-3 px-7 py-3.5 bg-emerald-950 text-white text-[10px] font-bold tracking-[0.3em] uppercase rounded-full overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_-8px_rgba(6,78,59,0.4)]"
+                        >
+                          <span className="relative z-10">
+                            Enter Experience
+                          </span>
                           <svg
-                            width="24"
-                            height="24"
+                            className="relative z-10 w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
                             strokeWidth="2.5"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            className="text-white"
                           >
-                            <line x1="7" y1="17" x2="17" y2="7"></line>
-                            <polyline points="7 7 17 7 17 17"></polyline>
+                            <line x1="7" y1="17" x2="17" y2="7" />
+                            <polyline points="7 7 17 7 17 17" />
                           </svg>
-                        </div>
+                          {/* Hover fill */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-emerald-800 to-emerald-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
+                        </button>
                       </div>
-                      {/* Index Number Watermark */}
-                      <div className="absolute bottom-4 right-5 text-[72px] font-black text-white/10 leading-none select-none pointer-events-none">
-                        {String(index + 1).padStart(2, "0")}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Text Block */}
-                  <div
-                    className={`w-full lg:w-2/5 space-y-6 sm:space-y-7 ${index % 2 !== 0 ? "lg:order-1" : "lg:order-2"}`}
-                  >
-                    <div className="flex items-center gap-4">
-                      <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-slate-400">
-                        {String(index + 1).padStart(2, "0")} /{" "}
-                        {String(webkitTemplates.length).padStart(2, "0")}
-                      </span>
-                      <div className="h-px flex-1 bg-slate-200" />
-                    </div>
-
-                    <h3 className="text-3xl sm:text-4xl  text-slate-900 leading-tight group-hover:text-emerald-900 transition-colors duration-500">
-                      {template.title}
-                    </h3>
-
-                    <p className="text-slate-600 leading-relaxed text-base sm:text-lg border-l-2 border-slate-400 pl-5 group-hover:border-emerald-700 transition-colors duration-500">
-                      {template.description}
-                    </p>
-
-                    <div className="pt-2">
-                      <button
-                        onClick={() => window.open(template.link, "_blank")}
-                        className="group/btn relative cursor-pointer inline-flex items-center gap-4 px-8 py-4 bg-slate-900 text-white text-[11px] font-bold tracking-[0.4em] uppercase overflow-hidden"
-                      >
-                        <span className="relative z-10 transition-colors duration-500">
-                          Enter Experience
-                        </span>
-                        <svg
-                          className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                        >
-                          <line x1="7" y1="17" x2="17" y2="7"></line>
-                          <polyline points="7 7 17 7 17 17"></polyline>
-                        </svg>
-                        <div className="absolute inset-0 bg-emerald-800 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500" />
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -215,9 +222,7 @@ const Websites: React.FC = () => {
             </div>
 
             {/* Footer Strip */}
-            <div className="mt-12 pt-10 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
-  
-            </div>
+            <div className="mt-12 pt-10 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4"></div>
           </div>
         </section>
 
@@ -680,37 +685,6 @@ const Websites: React.FC = () => {
             ))}
           </div>
         </div>
-
-        {/* CTA SECTION WITH 3 BUTTONS */}
-        <section className="py-20 px-6 bg-gradient-to-r from-emerald-900 to-emerald-800 text-white text-center my-10">
-          <h2 className="text-3xl font-bold mb-4">
-            Ready to Build Your Website?
-          </h2>
-          <p className="max-w-2xl mx-auto text-emerald-100 mb-12 text-lg">
-            Transform your online presence with a professional, high-performance
-            website built for success.
-          </p>
-          <div className="flex flex-col md:flex-row gap-6 justify-center items-center max-w-4xl mx-auto">
-            <button
-              onClick={() => navigate("/templates/real-estate")}
-              className="bg-white hover:bg-emerald-50 text-emerald-900 font-semibold px-8 py-4 rounded-lg transition flex-1 md:flex-none"
-            >
-              Real Estate
-            </button>
-            <button
-              onClick={() => navigate("/templates/healthcare")}
-              className="bg-emerald-700 hover:bg-emerald-600 text-white font-semibold px-8 py-4 rounded-lg transition flex-1 md:flex-none"
-            >
-              Healthcare
-            </button>
-            <button
-              onClick={() => navigate("/templates/consultancy")}
-              className="border-2 border-white text-white hover:bg-white hover:text-emerald-900 font-semibold px-8 py-4 rounded-lg transition flex-1 md:flex-none"
-            >
-              Consultancy
-            </button>
-          </div>
-        </section>
       </div>
     </section>
   );
