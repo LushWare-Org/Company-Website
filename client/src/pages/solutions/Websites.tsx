@@ -125,10 +125,10 @@ const Websites: React.FC = () => {
                         />
 
                         <div className="absolute inset-0 bg-emerald-950/0 group-hover:bg-emerald-950/5 transition-colors duration-500 flex items-center justify-center">
-                          <div className="bg-gray-900 p-5 border-2 border-white rounded-full shadow-2xl scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500">
+                          <div className="bg-gray-900 p-8 border-2 border-white rounded-full shadow-2xl scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500">
                             <svg
-                              width="24"
-                              height="24"
+                              width="32"
+                              height="32"
                               viewBox="0 0 24 24"
                               fill="none"
                               stroke="currentColor"

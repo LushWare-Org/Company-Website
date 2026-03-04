@@ -131,24 +131,24 @@ export default function ProjectBasePage() {
           <div className="grid md:grid-cols-2 gap-0 mb-16 md:mb-20 border-y bg-white border-slate-200">
 
             {/* SECTION 1: THE CORE */}
-            <div className="group relative py-10 md:py-16 md:pr-16 border-b md:border-b-0 md:border-r border-slate-200">
+            <div className="group relative py-10 md:py-16 md:pr-16 border-b md:border-b-0 md:border-r border-slate-400">
               <div className="space-y-8 md:space-y-12">
 
                 <div className="space-y-5 md:space-y-6">
-                  <h4 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tighter leading-[0.95]">
+                  <h4 className="text-3xl md:text-5xl font-semibold text-slate-900 tracking-tighter leading-[0.95]">
                     What is <br />
                     <span className="text-slate-400 group-hover:text-emerald-600 transition-colors duration-500">
                       Lush Project Base?
                     </span>
                   </h4>
 
-                  <p className="text-slate-500 leading-relaxed text-base md:text-lg">
+                  <p className="text-slate-500 leading-relaxed text-base md:text-xl">
                     Lush Project Base is a hands-on environment where you contribute directly
                     to <span className="text-slate-900 font-medium">real software products</span>{" "}
                     that we continuously build and improve.
                   </p>
 
-                  <p className="text-slate-500 leading-relaxed text-base md:text-lg">
+                  <p className="text-slate-500 leading-relaxed text-base md:text-xl">
                     This is not traditional training. You learn by working on live projects,
                     gaining practical experience in real-world production environments.
                   </p>
@@ -177,20 +177,20 @@ export default function ProjectBasePage() {
               <div className="space-y-10 md:space-y-14">
 
                 <div className="space-y-6 md:space-y-8">
-                  <h4 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tighter leading-tight">
+                  <h4 className="text-3xl md:text-5xl  text-slate-900 tracking-tighter leading-tight">
                     Make Partner Of <br />
                     <span className="text-slate-900">A Legacy of Innovation & Success</span>
                   </h4>
 
                   <div className="space-y-5 md:space-y-6">
-                    <p className="text-slate-600 leading-relaxed text-base md:text-lg border-l-4 border-slate-900 pl-6 md:pl-8 group-hover/legacy:border-emerald-600 transition-colors duration-500">
+                    <p className="text-slate-600 leading-relaxed text-base md:text-xl border-l-4 border-slate-900 pl-6 md:pl-8 group-hover/legacy:border-emerald-600 transition-colors duration-500">
                       As <strong className="text-slate-900 font-black">LushWare ORG</strong>, we
                       continuously create new platforms that help the general public simplify
                       their daily lives, while consistently pushing boundaries and embracing
                       emerging technologies.
                     </p>
 
-                    <p className="text-slate-500 leading-relaxed pl-7 md:pl-9 text-base md:text-lg">
+                    <p className="text-slate-500 leading-relaxed pl-7 md:pl-9 text-base md:text-xl">
                       Our journey is driven by a commitment to excellence, a strong
                       customer-centric focus, and a passion for building cutting-edge
                       solutions that move both people and businesses forward.
@@ -206,8 +206,8 @@ export default function ProjectBasePage() {
         {/* PROGRAM PATHS */}
         <div id="active-programs" className="max-w-7xl mx-auto py-2 px-4 sm:px-6">
           <div className="text-center mb-10 md:mb-16">
-            <h1 className="text-4xl sm:text-5xl font-semibold tracking-tighter text-slate-900">
-              Active Programs<span className="text-emerald-600">.</span>
+            <h1 className="text-4xl sm:text-6xl  tracking-tighter text-slate-900">
+              Active <span className="text-emerald-600">Programs.</span>
             </h1>
           </div>
 
