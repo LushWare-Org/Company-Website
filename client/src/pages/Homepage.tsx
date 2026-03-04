@@ -279,76 +279,73 @@ export default function Homepage() {
         </div>
       </section>
 
-{/* WebKit by Lushway - Homepage Teaser Section */}
-<section
-  data-reveal
-  className="relative px-6 md:px-12 py-16 md:py-22 overflow-hidden bg-[#094a3b]"
->
-  {/* Creative Background Elements (Unchanged) */}
-  <div className="absolute inset-0 z-0 overflow-hidden">
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
-    <div className="absolute inset-0 opacity-[0.9] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-    <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent opacity-80" />
-  </div>
+      {/* WebKit by Lushway - Homepage Teaser Section */}
+      <section
+        data-reveal
+        className="relative px-6 md:px-12 py-16 md:py-22 overflow-hidden bg-[#094a3b]"
+      >
+        {/* Creative Background Elements (Unchanged) */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute inset-0 opacity-[0.9] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+          <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent opacity-80" />
+        </div>
 
-  <div className="max-w-7xl mx-auto relative z-10">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+            {/* LEFT SIDE: Topic / Heading */}
+            <div className="text-center md:text-left">
+              <h2 className="text-4xl sm:text-4xl md:text-7xl text-white tracking-tight leading-[1.15] md:leading-[1.1]">
+                Introducing <br /> WebKit
+                <span className="text-[#ffffff]">
+                  <br /> by <span className="text-amber-400 font-light">LushWare</span> 
+                </span>
+              </h2>
+            </div>
 
-      {/* LEFT SIDE: Topic / Heading */}
-      <div className="text-center md:text-left">
-        <h2 className="text-4xl sm:text-4xl md:text-7xl text-white tracking-tight leading-[1.15] md:leading-[1.1]">
-          Introducing <br /> WebKit
-          <span className="text-[#ffffff]">
-            <br /> by Lushware
-          </span>
-        </h2>
-      </div>
+            {/* RIGHT SIDE: Description & CTA */}
+            <div className="flex flex-col items-center md:items-start text-center md:text-left md:pl-12 border-l-0 md:border-l border-emerald-100">
+              <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed mb-8 md:mb-10 max-w-md md:max-w-none">
+                WebKit is our curated collection of ready-to-use website
+                templates, crafted for elite industries. Each template is
+                designed to
+                <span className="text-emerald-300 font-medium">
+                  {" "}
+                  elevate your digital presence{" "}
+                </span>
+                with the same precision and stability found in our bespoke
+                solutions.
+              </p>
 
-      {/* RIGHT SIDE: Description & CTA */}
-      <div className="flex flex-col items-center md:items-start text-center md:text-left md:pl-12 border-l-0 md:border-l border-emerald-100">
+              {/* Call-to-Action Button */}
+              <a
+                href="/solutions/websites"
+                className="group relative w-full sm:w-auto text-center px-8 py-4 bg-emerald-950/40 backdrop-blur-md border border-emerald-200/90 rounded-full overflow-hidden transition-all duration-500 hover:border-emerald-300 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)]"
+              >
+                <span className="relative z-10 text-emerald-50 font-medium tracking-wide flex items-center justify-center md:justify-start gap-3">
+                  Explore WebKit Templates
+                  <svg
+                    className="w-4 h-4 text-emerald-300 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M14 5l7 7-7 7"
+                    />
+                  </svg>
+                </span>
 
-        <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed mb-8 md:mb-10 max-w-md md:max-w-none">
-          WebKit is our curated collection of ready-to-use website
-          templates, crafted for elite industries. Each template is
-          designed to
-          <span className="text-emerald-300 font-medium">
-            {" "}
-            elevate your digital presence{" "}
-          </span>
-          with the same precision and stability found in our bespoke
-          solutions.
-        </p>
-
-        {/* Call-to-Action Button */}
-        <a
-          href="/solutions/websites"
-          className="group relative w-full sm:w-auto text-center px-8 py-4 bg-emerald-950/40 backdrop-blur-md border border-emerald-200/90 rounded-full overflow-hidden transition-all duration-500 hover:border-emerald-300 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)]"
-        >
-          <span className="relative z-10 text-emerald-50 font-medium tracking-wide flex items-center justify-center md:justify-start gap-3">
-            Explore WebKit Templates
-            <svg
-              className="w-4 h-4 text-emerald-300 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M14 5l7 7-7 7"
-              />
-            </svg>
-          </span>
-
-          {/* Button Shine Hover Effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-400/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-        </a>
-
-      </div>
-    </div>
-  </div>
-</section>
+                {/* Button Shine Hover Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-400/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <GlobalPresence />
 

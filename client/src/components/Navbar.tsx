@@ -73,10 +73,10 @@ export default function Navbar() {
         </div>
 
         {/* Center: Desktop Navigation */}
-        <div className="hidden md:flex items-center justify-center space-x-12">
+        <div className="hidden md:flex items-center justify-center space-x-11">
           <div className="relative group">
             <div
-              className={`flex items-center gap-2 text-sm font-semibold tracking-widest uppercase transition-colors relative cursor-pointer ${
+              className={`flex items-center gap-2 text-sm font-bold tracking-widest uppercase transition-colors relative cursor-pointer ${
                 location.pathname.startsWith("/solutions")
                   ? "text-emerald-900"
                   : "text-stone-800 hover:text-emerald-700"
@@ -159,7 +159,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               to={link.to}
-              className={`text-sm font-semibold tracking-widest uppercase text-stone-800 hover:text-emerald-700 transition-colors relative group ${
+              className={`text-sm font-bold tracking-widest uppercase text-stone-800 hover:text-emerald-700 transition-colors relative group ${
                 location.pathname === link.to
                   ? "text-emerald-700"
                   : "text-stone-800"
