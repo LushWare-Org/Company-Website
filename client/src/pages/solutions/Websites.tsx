@@ -100,11 +100,11 @@ const Websites: React.FC = () => {
         <section className="py-20  selection:bg-emerald-900 rounded-3xl selection:text-white font-sans">
           <div className="max-w-[1700px] mx-auto ">
             {/* Template List — Tailwind Only */}
-            <div className="space-y-12 px-4 sm:px-6 lg:px-8">
+            <div className="space-y-12 md:space-y-16 ">
               {webkitTemplates.map((template, index) => (
                 <div
                   key={template.id}
-                  className="group relative border border-emerald-100 bg-gradient-to-br from-white to-emerald-50/60 rounded-3xl p-8 sm:p-10 overflow-hidden transition-all duration-500 hover:border-emerald-300 hover:shadow-[0_20px_60px_-12px_rgba(16,185,129,0.15)]"
+                  className="group relative border border-slate-300 bg-gradient-to-br from-white to-emerald-50/60 rounded-3xl p-4 sm:px-6 sm:py-10 overflow-hidden transition-all duration-500 hover:border-emerald-300 hover:shadow-[0_20px_60px_-12px_rgba(16,185,129,0.15)]"
                 >
                   {/* Top shimmer line */}
                   <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-emerald-300/50 to-transparent" />
@@ -112,11 +112,11 @@ const Websites: React.FC = () => {
                   <div className="flex flex-col lg:flex-row items-start lg:items-center gap-10 lg:gap-16">
                     {/* ── Image Block ── */}
                     <div
-                      className={`w-full lg:w-[58%] ${index % 2 !== 0 ? "lg:order-2" : "lg:order-1"}`}
+                      className={`w-full lg:w-[90%] `}
                     >
                       <div
                         onClick={() => window.open(template.link, "_blank")}
-                        className="relative aspect-video cursor-pointer rounded-2xl overflow-hidden bg-emerald-50 shadow-md transition-all duration-500  group-hover:shadow-[0_20px_48px_-12px_rgba(16,185,129,0.2)]"
+                        className="relative aspect-video cursor-pointer rounded-lg overflow-hidden bg-emerald-50 shadow-md transition-all duration-500  group-hover:shadow-[0_20px_48px_-12px_rgba(16,185,129,0.2)]"
                       >
                         <img
                           src={template.image}
@@ -172,21 +172,11 @@ const Websites: React.FC = () => {
                       </h3>
 
                       {/* Description */}
-                      <p className="text-[16px] leading-[1.8] text-gray-800  pl-[18px] border-l-2 border-emerald-100 group-hover:border-emerald-400 transition-colors duration-500">
+                      <p className="text-[16px] leading-[1.8] text-gray-800   transition-colors duration-500">
                         {template.description}
                       </p>
 
-                      {/* Meta chips */}
-                      <div className="flex items-center gap-5 flex-wrap">
-                        <span className="inline-flex items-center gap-1.5 text-[10px] font-medium text-gray-500 tracking-wide">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                          Live Preview
-                        </span>
-                        <span className="inline-flex items-center gap-1.5 text-[10px] font-medium text-gray-500 tracking-wide">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                          Interactive
-                        </span>
-                      </div>
+
 
                       {/* CTA Button */}
                       <div className="pt-1">
