@@ -4,70 +4,76 @@ import { motion } from "framer-motion";
 
 export default function GlobalPresence() {
   return (
-    <section className="relative pt-24 pb-20 bg-white overflow-hidden selection:bg-emerald-100">
+    <section className="relative  py-28 bg-white overflow-hidden selection:bg-emerald-100">
       <div className="max-w-7xl mx-auto px-8 md:px-0 lg:px-0">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* LEFT SIDE: EDITORIAL TEXT */}
-          <div className="space-y-12 z-5  order-2 lg:order-1">
-            <div className="space-y-6">
-              <div className="flex items-center gap-2 mb-4 ">
-                <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
-                  UK & Sri Lanka Operations
-                </div>
-              </div>
+{/* LEFT SIDE: EDITORIAL TEXT */}
+<div className="space-y-10 md:space-y-12 z-5 order-2 lg:order-1 text-center lg:text-left">
 
-              {/* Headline */}
-              <h2 className="text-5xl md:text-7xl font-medium text-slate-950 leading-[0.9] tracking-tight">
-                Working with the UK. <br />
-                <span className="text-emerald-600">Trusted in Sri Lanka.</span>
-              </h2>
+  <div className="space-y-6">
 
-              {/* Core Message */}
-              <p className="text-slate-800 font-medium leading-relaxed text-lg max-w-lg">
-                We deliver high-quality software solutions for businesses in the
-                <strong> United Kingdom</strong>, with a special focus on
-                meeting UK commercial, security, and compliance standards.
-              </p>
+    {/* Badge */}
+    <div className="flex items-center justify-center lg:justify-start gap-2 mb-4">
+      <div className="px-2 py-1 bg-emerald-600 text-[9px] sm:text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
+        UK & Sri Lanka Operations
+      </div>
+    </div>
 
-              <p className="text-slate-800 font-medium leading-relaxed text-lg max-w-lg">
-                Alongside our UK work, we also partner closely with
-                <strong> Sri Lankan organizations</strong>, supporting local
-                enterprises with the same level of engineering excellence and
-                reliability.
-              </p>
-            </div>
+    {/* Headline */}
+    <h2 className="text-4xl sm:text-5xl md:text-7xl font-medium text-slate-950 leading-[1] md:leading-[0.9] tracking-tight">
+      Working with the UK. <br />
+      <span className="text-emerald-600">Trusted in Sri Lanka.</span>
+    </h2>
 
-            {/* Regional Focus */}
-            <div className="flex flex-col gap-10">
-              <div className="flex items-start gap-6">
-                <span className="font-serif italic text-2xl text-emerald-900">
-                  01
-                </span>
-                <div>
-                  <h4 className="text-sm font-bold uppercase tracking-widest text-slate-900">
-                    United Kingdom
-                  </h4>
-                  <p className="text-xs text-slate-800 font-mono mt-1">
-                    Primary Market · Enterprise & SME Clients
-                  </p>
-                </div>
-              </div>
+    {/* Core Message */}
+    <p className="text-slate-800 font-medium leading-relaxed text-base sm:text-lg max-w-lg mx-auto lg:mx-0">
+      We deliver high-quality software solutions for businesses in the
+      <strong> United Kingdom</strong>, with a special focus on
+      meeting UK commercial, security, and compliance standards.
+    </p>
 
-              <div className="flex items-start gap-6">
-                <span className="font-serif italic text-2xl text-emerald-900">
-                  02
-                </span>
-                <div>
-                  <h4 className="text-sm font-bold uppercase tracking-widest text-slate-900">
-                    Sri Lanka
-                  </h4>
-                  <p className="text-xs text-slate-800 font-mono mt-1">
-                    Regional Clients · Product Development & Support
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+    <p className="text-slate-800 font-medium leading-relaxed text-base sm:text-lg max-w-lg mx-auto lg:mx-0">
+      Alongside our UK work, we also partner closely with
+      <strong> Sri Lankan organizations</strong>, supporting local
+      enterprises with the same level of engineering excellence and
+      reliability.
+    </p>
+
+  </div>
+
+  {/* Regional Focus */}
+  <div className="flex flex-col gap-8 md:gap-10 pt-4">
+
+    <div className="flex items-start justify-center lg:justify-start gap-6 text-left">
+      <span className="font-serif italic text-xl sm:text-2xl text-emerald-900">
+        01
+      </span>
+      <div>
+        <h4 className="text-xs sm:text-sm font-bold uppercase tracking-widest text-slate-900">
+          United Kingdom
+        </h4>
+        <p className="text-[10px] sm:text-xs text-slate-800 font-mono mt-1">
+          Primary Market · Enterprise & SME Clients
+        </p>
+      </div>
+    </div>
+
+    <div className="flex items-start justify-center lg:justify-start gap-6 text-left">
+      <span className="font-serif italic text-xl sm:text-2xl text-emerald-900">
+        02
+      </span>
+      <div>
+        <h4 className="text-xs sm:text-sm font-bold uppercase tracking-widest text-slate-900">
+          Sri Lanka
+        </h4>
+        <p className="text-[10px] sm:text-xs text-slate-800 font-mono mt-1">
+          Regional Clients · Product Development & Support
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
 
           {/* RIGHT SIDE: THE INSTRUMENT MAP */}
           <div className="relative order-1 pr-4 lg:order-2">

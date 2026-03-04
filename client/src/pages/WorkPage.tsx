@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import WorkCard from "../components/WorkCard";
 
 const projects = [
-    {
+  {
     name: "Travel Booking Website",
     client: "Trip Sky Way",
     summary:
@@ -12,7 +12,7 @@ const projects = [
     image: "/work/TripSkyWay.jpg",
     link: "https://tripskyway.com/",
   },
-    {
+  {
     name: "Tour & Travel Website",
     client: "Holiday Vibes Tour",
     summary:
@@ -32,7 +32,7 @@ const projects = [
     image: "/work/yomaldives.png",
     link: "https://yomaldives.live/",
   },
-  
+
   {
     name: "Speedboat Ticket Booking System",
     client: "Dream Speed",
@@ -53,7 +53,7 @@ const projects = [
     image: "/work/islekeyholidays.png",
     link: "https://islekeyholidays.com/",
   },
-    {
+  {
     name: "Travel Agency Website",
     client: "Traveliccted",
     summary:
@@ -63,7 +63,7 @@ const projects = [
     image: "/work/Traveliccted.jpg",
     link: "https://traveliccted.com/",
   },
-    {
+  {
     name: "Travel E-Commerce Platform",
     client: "Crown Voyages",
     summary:
@@ -119,32 +119,24 @@ export default function WorkPage() {
   return (
     <section id="work" className="py-24 md:py-28 selection:bg-emerald-50 ">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="relative w-full py-16 mb-16 overflow-hidden border-b border-gray-300 group">
-          <div className="relative flex flex-col md:flex-row md:items-end justify-between gap-10">
-            {/* Headline Section */}
-            <div className="flex-1">
-              {/* Small Category Label */}
-
-              <div className="flex items-center  gap-2 mb-5 ">
-                <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
-                  Selected Works
-                </div>
-              </div>
-
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-950 tracking-tighter leading-none hero-line">
-                Our Projects{" "}
-                <span className="text-gray-500 font-light mx-1">— </span>
-                <span className="relative inline-block text-emerald-600">
-                  Showcasing Innovation
-                </span>
-              </h1>
-
-              <p className="mt-5 text-gray-800 text-lg md:text-xl max-w-2xl leading-relaxed">
-                A selection of our work demonstrating custom software solutions
-                for real-world challenges.
-              </p>
+        <div className="max-w-6xl mt-12 mx-auto text-center mb-20">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
+              Selected Works
             </div>
           </div>
+
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-[#0F172A] tracking-tight leading-[1.1] mb-6 hero-line">
+            Our Projects <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-800 via-emerald-500 to-emerald-800 hero-line">
+              Showcasing Innovation
+            </span>
+          </h1>
+
+          <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-4xl mx-auto hero-line">
+            A selection of our work demonstrating custom software solutions for
+            real-world challenges.
+          </p>
         </div>
 
         {/* 2-Column Grid */}

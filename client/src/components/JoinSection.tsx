@@ -38,7 +38,7 @@ export default function JoinSection() {
   const navigate = useNavigate();
 
   return (
-    <section data-reveal className=" px-4 py-16 overflow-hidden relative bg-white">
+    <section data-reveal className=" px-4 py-28  overflow-hidden relative bg-white">
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-100/50 rounded-full blur-[120px] pointer-events-none" />
         <div
