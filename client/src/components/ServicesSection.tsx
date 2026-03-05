@@ -512,7 +512,7 @@ export default function ServicesSection() {
           </div>
 
           {/* ── Service Cards ── */}
-          <div className="lg:w-2/3 space-y-8 sm:space-y-6 lg:space-y-10">
+          <div className="lg:w-2/3 space-y-8 sm:space-y-6 lg:space-y-14">
             {servicesData.map((service) => {
               const IconComponent =
                 iconMap[service.number as keyof typeof iconMap];

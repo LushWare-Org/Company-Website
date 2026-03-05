@@ -6,6 +6,7 @@ import GlobalPresence from "@/components/GlobalPresence";
 import HeroSection from "@/components/HeroSection";
 import JoinSection from "@/components/JoinSection";
 import ServicesSection from "@/components/ServicesSection";
+import WebKitSection from "@/components/WebKitSection";
 
 export default function Homepage() {
   const navigate = useNavigate();
@@ -68,22 +69,22 @@ export default function Homepage() {
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             {/* LEFT SIDE: CRM TEXT CONTENT */}
             <div className="lg:col-span-6">
-              <div className="space-y-8 md:space-y-10">
+              <div className="space-y-8 md:space-y-8">
                 {/* Badge */}
-                <div className="flex items-center justify-center lg:justify-start gap-2 mb-4 md:pl-2">
+                <div className="flex items-center justify-center lg:justify-start gap-2 mb-2 md:pl-2">
                   <div className="px-2 py-1 bg-emerald-600 text-[9px] sm:text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
                     Customer Relationship Management
                   </div>
                 </div>
 
                 {/* Headline */}
-                <h2 className="text-4xl sm:text-5xl md:text-7xl font-semibold text-stone-950 leading-[1.1] tracking-tight hero-line text-center lg:text-left">
+                <h2 className="text-4xl sm:text-5xl md:text-7xl font-semibold text-stone-950 leading-[1] tracking-tight hero-line text-center lg:text-left">
                   Transforming <br />
                   <span className="text-emerald-600">Client Relationships</span>
                 </h2>
 
                 {/* Description */}
-                <div className="space-y-6 text-slate-900 text-lg sm:text-xl font-medium leading-relaxed max-w-xl lg:max-w-2xl hero-line text-center lg:text-left">
+                <div className="space-y-4 text-slate-900 text-lg sm:text-xl font-medium leading-relaxed max-w-xl lg:max-w-2xl hero-line text-center lg:text-left">
                   <p>
                     Our Customer Relationship Management platform centralizes
                     <span className="text-emerald-800 font-semibold">
@@ -111,7 +112,7 @@ export default function Homepage() {
                 </div>
 
                 {/* Actions */}
-                <div className="pt-6 flex items-center justify-center lg:justify-start">
+                <div className=" flex items-center justify-center lg:justify-start">
                   <Link
                     to="/solutions/crm"
                     className="w-full sm:w-auto text-center px-8 sm:px-10 py-4 sm:py-5 bg-emerald-950 text-white rounded-full font-semibold text-[11px] sm:text-xs tracking-[0.2em] uppercase hover:bg-emerald-600 transition-all duration-700 shadow-[20px_20px_60px_rgba(6,78,59,0.1)]"
@@ -279,73 +280,7 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* WebKit by Lushway - Homepage Teaser Section */}
-      <section
-        data-reveal
-        className="relative px-6 md:px-12 py-16 md:py-22 overflow-hidden bg-[#094a3b]"
-      >
-        {/* Creative Background Elements (Unchanged) */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
-          <div className="absolute inset-0 opacity-[0.9] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-          <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent opacity-80" />
-        </div>
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-            {/* LEFT SIDE: Topic / Heading */}
-            <div className="text-center md:text-left">
-              <h2 className="text-4xl sm:text-4xl md:text-7xl text-white tracking-tight leading-[1.15] md:leading-[1.1]">
-                Introducing <br /> WebKit
-                <span className="text-[#ffffff]">
-                  <br /> by <span className="text-amber-400 font-light">LushWare</span> 
-                </span>
-              </h2>
-            </div>
-
-            {/* RIGHT SIDE: Description & CTA */}
-            <div className="flex flex-col items-center md:items-start text-center md:text-left md:pl-12 border-l-0 md:border-l border-emerald-100">
-              <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed mb-8 md:mb-10 max-w-md md:max-w-none">
-                WebKit is our curated collection of ready-to-use website
-                templates, crafted for elite industries. Each template is
-                designed to
-                <span className="text-emerald-300 font-medium">
-                  {" "}
-                  elevate your digital presence{" "}
-                </span>
-                with the same precision and stability found in our bespoke
-                solutions.
-              </p>
-
-              {/* Call-to-Action Button */}
-              <a
-                href="/solutions/websites"
-                className="group relative w-full sm:w-auto text-center px-8 py-4 bg-emerald-950/40 backdrop-blur-md border border-emerald-200/90 rounded-full overflow-hidden transition-all duration-500 hover:border-emerald-300 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)]"
-              >
-                <span className="relative z-10 text-emerald-50 font-medium tracking-wide flex items-center justify-center md:justify-start gap-3">
-                  Explore WebKit Templates
-                  <svg
-                    className="w-4 h-4 text-emerald-300 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M14 5l7 7-7 7"
-                    />
-                  </svg>
-                </span>
-
-                {/* Button Shine Hover Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-400/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <WebKitSection />
 
       <GlobalPresence />
 
@@ -355,7 +290,7 @@ export default function Homepage() {
       {/* Our Story Section */}
       <section
         data-reveal
-        className="relative px-10 md:px-0 py-12 md:py-22 overflow-hidden bg-[#094a3b]"
+        className="relative px-10 md:px-0 py-12 md:py-24 overflow-hidden bg-[#094a3b]"
       >
         {/* Creative Background Elements */}
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -405,12 +340,12 @@ export default function Homepage() {
               {/* Headline with a White-to-Emerald gradient */}
               <h2 className="text-3xl md:text-6xl font-semibold text-white tracking-tight leading-[1.1]">
                 The Vision Behind <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-100 via-emerald-200 to-emerald-100">
-                  LushWare ORG.
+                <span className="text-amber-400 font-light">
+                  LushWare.
                 </span>
               </h2>
 
-              <div className="pt-10 flex items-center gap-4">
+              <div className="pt-2 flex items-center gap-4">
                 <div className="flex flex-col items-center">
                   <div className="w-px h-10 bg-gradient-to-b from-emerald-400 to-transparent" />
                 </div>

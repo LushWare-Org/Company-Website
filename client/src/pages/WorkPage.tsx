@@ -118,6 +118,8 @@ export default function WorkPage() {
 
   return (
     <section id="work" className="py-24 md:py-28 selection:bg-emerald-50 ">
+
+      
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-6xl mt-12 mx-auto text-center mb-20">
           <div className="flex items-center justify-center gap-2 mb-4">
