@@ -132,20 +132,20 @@ export default function SolutionsPage() {
               style={{ transitionDelay: `${(index % 2) * 150}ms` }}
             >
               {/* IMAGE SIDE */}
-              <div className={`relative flex h-72 sm:h-96 md:h-[550px] items-center justify-center overflow-hidden bg-white p-6 sm:p-12 ${index % 2 === 1 ? 'md:order-last' : ''}`}>
+<div className={`relative flex h-72 sm:h-96 md:h-[450px] lg:h-[550px] items-center justify-center overflow-hidden bg-white p-6 sm:p-12 ${index % 2 === 1 ? 'md:order-last' : ''}`}>
 
-                <div className="absolute h-52 w-52 sm:h-80 sm:w-80 rounded-[3rem] sm:rounded-[4rem] bg-white border border-slate-100 scale-110 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)]" />
-                <div className="absolute h-52 w-52 sm:h-80 sm:w-80 rounded-[3rem] sm:rounded-[4rem] border-2 border-emerald-600/60 rotate-[25deg] scale-110" />
-                <div className="absolute top-16 right-12 sm:top-24 sm:right-20 z-0 h-16 w-16 sm:h-24 sm:w-24 rounded-3xl bg-emerald-50/40 backdrop-blur-md border border-white/50 shadow-sm rotate-12" />
+                <div className="absolute h-52 w-52 sm:h-72 sm:w-72 md:h-80 md:w-80 rounded-[3rem] sm:rounded-[4rem] bg-white border border-slate-100 scale-110 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.08)]" />
+                <div className="absolute h-52 w-52 sm:h-72 sm:w-72 md:h-80 md:w-80 rounded-[3rem] sm:rounded-[4rem] border-2 border-emerald-600/60 rotate-[25deg] scale-110" />
+                <div className="absolute top-16 right-12 sm:top-20 sm:right-16 md:top-24 md:right-20 z-0 h-14 w-14 sm:h-20 sm:w-20 md:h-24 md:w-24 rounded-3xl bg-emerald-50/40 backdrop-blur-md border border-white/50 shadow-sm rotate-12" />
 
-                <div className="relative z-10 flex flex-col items-center -translate-y-6 sm:-translate-y-12">
+                <div className="relative z-10 flex flex-col items-center -translate-y-6 sm:-translate-y-8 md:-translate-y-12">
                   <img
                     src={solution.image}
                     alt={solution.title}
-                    className=" sm:w-full sm:scale-125 md:w-[90%] md:scale-110 object-contain filter drop-shadow-[0_30px_50px_rgba(0,0,0,0.12)]"
+                    className="w-full sm:scale-110 md:scale-125 lg:w-[90%] lg:scale-110 object-contain filter drop-shadow-[0_30px_50px_rgba(0,0,0,0.12)]"
                   />
-                  <div className="absolute -bottom-10 sm:-bottom-16 h-8 sm:h-10 w-3/4 rounded-[100%] bg-emerald-600/50 blur-3xl opacity-100" />
-                  <div className="absolute -bottom-4 sm:-bottom-8 h-2 w-1/2 rounded-[100%] bg-emerald-950/20 blur-md opacity-100" />
+                  <div className="absolute -bottom-8 sm:-bottom-12 md:-bottom-16 h-6 sm:h-8 md:h-10 w-3/4 rounded-[100%] bg-emerald-600/50 blur-3xl opacity-100" />
+                  <div className="absolute -bottom-4 sm:-bottom-6 md:-bottom-8 h-2 w-1/2 rounded-[100%] bg-emerald-950/20 blur-md opacity-100" />
                 </div>
               </div>
 

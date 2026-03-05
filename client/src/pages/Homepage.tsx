@@ -69,22 +69,22 @@ export default function Homepage() {
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             {/* LEFT SIDE: CRM TEXT CONTENT */}
             <div className="lg:col-span-6">
-              <div className="space-y-8 md:space-y-8">
+              <div className="space-y-5 sm:space-y-6 md:space-y-8">
                 {/* Badge */}
                 <div className="flex items-center justify-center lg:justify-start gap-2 mb-2 md:pl-2">
-                  <div className="px-2 py-1 bg-emerald-600 text-[9px] sm:text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
+                  <div className="px-2 py-1 bg-emerald-600 text-[8px] sm:text-[9px] md:text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
                     Customer Relationship Management
                   </div>
                 </div>
 
                 {/* Headline */}
-                <h2 className="text-4xl sm:text-5xl md:text-7xl font-semibold text-stone-950 leading-[1] tracking-tight hero-line text-center lg:text-left">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-stone-950 leading-[1] tracking-tight hero-line text-center lg:text-left">
                   Transforming <br />
                   <span className="text-emerald-600">Client Relationships</span>
                 </h2>
 
                 {/* Description */}
-                <div className="space-y-4 text-slate-900 text-lg sm:text-xl font-medium leading-relaxed max-w-xl lg:max-w-2xl hero-line text-center lg:text-left">
+                <div className="space-y-3 md:space-y-4 text-slate-900 text-base sm:text-lg md:text-xl font-medium leading-relaxed max-w-xl lg:max-w-2xl hero-line text-center lg:text-left mx-auto lg:mx-0">
                   <p>
                     Our Customer Relationship Management platform centralizes
                     <span className="text-emerald-800 font-semibold">
@@ -104,18 +104,18 @@ export default function Homepage() {
                   {/* Quote */}
                   <div className="relative py-2 hero-line">
                     <div className="absolute left-0 top-0 h-full w-[1px] bg-emerald-400 hidden lg:block"></div>
-                    <p className="lg:pl-8 serif text-slate-800 text-base sm:text-lg">
-                      “One unified source of truth for every client, every
-                      interaction, and every opportunity.”
+                    <p className="lg:pl-8 serif text-slate-800 text-sm sm:text-base md:text-lg">
+                      "One unified source of truth for every client, every
+                      interaction, and every opportunity."
                     </p>
                   </div>
                 </div>
 
                 {/* Actions */}
-                <div className=" flex items-center justify-center lg:justify-start">
+                <div className="flex items-center justify-center lg:justify-start">
                   <Link
                     to="/solutions/crm"
-                    className="w-full sm:w-auto text-center px-8 sm:px-10 py-4 sm:py-5 bg-emerald-950 text-white rounded-full font-semibold text-[11px] sm:text-xs tracking-[0.2em] uppercase hover:bg-emerald-600 transition-all duration-700 shadow-[20px_20px_60px_rgba(6,78,59,0.1)]"
+                    className="w-full sm:w-auto text-center px-6 sm:px-8 md:px-10 py-3.5 sm:py-4 md:py-5 bg-emerald-950 text-white rounded-full font-semibold text-[10px] sm:text-[11px] md:text-xs tracking-[0.2em] uppercase hover:bg-emerald-600 transition-all duration-700 shadow-[20px_20px_60px_rgba(6,78,59,0.1)]"
                     style={{ color: "#ffffff" }}
                   >
                     Explore CRM Solution
@@ -290,60 +290,51 @@ export default function Homepage() {
       {/* Our Story Section */}
       <section
         data-reveal
-        className="relative px-10 md:px-0 py-12 md:py-20 overflow-hidden bg-emerald-700"
+        className="relative px-6 sm:px-10 md:px-8 py-10 sm:py-12 md:py-20 overflow-hidden bg-emerald-700"
       >
         {/* Creative Background Elements */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          {/* 1. Primary Emerald Wash - The "Royal" Glow (Softened for Dark Mode) */}
-
-          {/* 2. Carbon Fibre Texture Overlay - Slightly more visible on dark backgrounds */}
           <div className="absolute inset-0 opacity-[0.1] md:opacity-[0.3] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-
-          {/* 4. Top Border Fade - Now using a sharper, more luxurious gradient */}
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent opacity-80" />
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="text-left space-y-5">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="px-3 py-0.5 bg-white text-[10px] font-bold text-emerald-800 uppercase tracking-[0.2em] rounded-sm">
-                    Why Choose Us
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
+            {/* LEFT: Text — centered on mobile, left on md+ */}
+            <div className="text-center md:text-left space-y-4 sm:space-y-5 flex flex-col items-center md:items-start">
+              <div className="flex items-center gap-2 mb-2 sm:mb-4">
+                <div className="px-3 py-0.5 bg-white text-[10px] font-bold text-emerald-800 uppercase tracking-[0.2em] rounded-sm">
+                  Why Choose Us
                 </div>
+              </div>
 
-              {/* Headline with a White-to-Emerald gradient */}
-              <h2 className="text-3xl md:text-6xl  text-white tracking-tight ">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight">
                 The Vision Behind <br />
-                <span className="text-amber-400 ">
-                  LushWare.
-                </span>
+                <span className="text-amber-400">LushWare.</span>
               </h2>
 
-              <div className="pt-2 flex items-center gap-2">
-
+              <div className="pt-1 sm:pt-2 flex items-center gap-2">
                 <div className="space-y-1">
-                  <p className="text-[14px] font-bold text-white uppercase tracking-[0.2em]">
+                  <p className="text-[13px] sm:text-[14px] font-bold text-white uppercase tracking-[0.2em]">
                     The Journey Continues
                   </p>
-                  <p className="text-lg text-white  font-normal">
+                  <p className="text-base sm:text-lg text-white font-normal">
                     Evolving the standard of digital simplicity since 2020.
                   </p>
                 </div>
               </div>
             </div>
 
+            {/* RIGHT: Quote card */}
             <div className="relative group">
-              {/* Deep Emerald Glow */}
               <div className="absolute -inset-4 bg-emerald-500/10 rounded-3xl blur-2xl opacity-50 group-hover:opacity-100 transition-opacity" />
 
-              {/* Card: Darkened background with Emerald border */}
-              <div className="relative bg-[#064e3b]/40 backdrop-blur-xl border border-emerald-200 p-8 md:p-12 rounded-3xl shadow-2xl">
-                <span className="absolute -top-8 -left-2 text-9xl text-emerald-200 font-serif select-none">
+              <div className="relative bg-[#064e3b]/40 backdrop-blur-xl border border-emerald-200 p-6 sm:p-8 md:p-10 lg:p-12 rounded-3xl shadow-2xl">
+                <span className="absolute -top-6 sm:-top-8 -left-2 text-7xl sm:text-9xl text-emerald-200 font-serif select-none">
                   “
                 </span>
 
-                <p className="text-xl md:text-2xl text-white leading-relaxed font-light">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white leading-relaxed font-light">
                   At{" "}
                   <span className="font-semibold text-white">LushWare ORG</span>
                   , we design software that goes beyond solving problems— it{" "}
@@ -356,7 +347,6 @@ export default function Homepage() {
                     <span className="relative z-10 text-white font-medium">
                       modern global community
                     </span>
-                    {/* Highlight bar: Dark Emerald green glow */}
                     <span className="absolute bottom-1 left-0 w-full h-3 bg-emerald-500/20 -rotate-1" />
                   </span>
                   .
@@ -370,29 +360,30 @@ export default function Homepage() {
       {/* Join */}
       <JoinSection />
 
-      {/* Why Choose Us */}
+{/* Why Choose Us */}
       <section
         data-reveal
-        className="bg-[#ffffff] px-6 py-28 pt-10 relative overflow-hidden "
+        className="bg-[#ffffff] px-4 sm:px-6 py-16 sm:py-20 md:py-28 pt-8 sm:pt-10 relative overflow-hidden"
       >
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header Section */}
-          <div className="max-w-6xl mx-auto mb-20 border-b border-slate-300 pb-10">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-              <div className="max-w-2xl pl-4 md:pl-0">
-                <div className="flex items-center gap-2 mb-6">
+          <div className="max-w-6xl mx-auto mb-10 sm:mb-14 md:mb-20 border-b border-slate-300 pb-8 sm:pb-10">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 sm:gap-8">
+
+              <div className="max-w-2xl text-center md:text-left mx-auto md:mx-0">
+                <div className="flex items-center justify-center md:justify-start gap-2 mb-4 sm:mb-6">
                   <div className="px-2 py-0.5 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
                     Why Choose Us
                   </div>
                 </div>
-                <h2 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tighter leading-[0.95]">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tighter leading-[0.95]">
                   Our Unique <br />
                   <span className="text-emerald-600">Value Proposition.</span>
                 </h2>
               </div>
 
-              <div className="max-w-sm">
-                <p className="text-slate-700 font-medium text-lg leading-relaxed border-l-2 border-emerald-500/30 pl-6 py-2">
+              <div className="max-w-sm mx-auto md:mx-0">
+                <p className="text-slate-700 font-medium text-base sm:text-lg leading-relaxed border-l-2 border-emerald-500/30 pl-4 sm:pl-6 py-2 text-center md:text-left">
                   We prioritize stability and security at every layer, building
                   software architectures that remain
                   <span className="text-emerald-900 font-bold">
@@ -405,7 +396,7 @@ export default function Homepage() {
           </div>
 
           {/* Cards Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 px-4 lg:px-0 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
             {[
               {
                 num: "01",

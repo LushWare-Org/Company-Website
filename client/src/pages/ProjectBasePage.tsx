@@ -256,7 +256,7 @@ export default function ProjectBasePage() {
                 style={{ transitionDelay: `${(index % 2) * 150}ms` }}
               >
                 {/* Left Side: Index & Title */}
-                <div className="flex items-start gap-6 sm:gap-12 md:gap-20">
+                <div className="flex items-start gap-6 sm:gap-12 md:gap-8 lg:gap-20">
                   <span className="font-mono text-sm text-slate-400 group-hover:text-emerald-600 transition-colors duration-300 pt-1 shrink-0">
                     {String(index + 1).padStart(2, "0")}
                   </span>

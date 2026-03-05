@@ -5,7 +5,7 @@ const WhyChooseLushWare: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="w-full bg-[#ffffff] py-16 lg:py-32 overflow-hidden">
+    <section className="w-full bg-[#ffffff] py-16 md:py-38 lg:py-32 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6">
 
         {/* Main Grid: 12-Column System */}
@@ -49,11 +49,11 @@ const WhyChooseLushWare: React.FC = () => {
             </div>
           </div>
 
-          {/* TEXT CONTENT — order-2 on mobile (shows second), order-1 on desktop (shows first) */}
+{/* TEXT CONTENT — order-2 on mobile (shows second), order-1 on desktop (shows first) */}
           <div className="lg:col-span-6 lg:pr-12 z-10 order-2 lg:order-1">
-            <div className="space-y-6 sm:space-y-8">
+            <div className="space-y-10 sm:space-y-8 md:space-y-14 lg:space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left">
               {/* Label */}
-              <div className="flex items-center gap-2 mb-2 md:pl-2">
+              <div className="flex items-center gap-2 mb-2">
                 <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
                   Why LushWare?
                 </div>
@@ -64,7 +64,7 @@ const WhyChooseLushWare: React.FC = () => {
                 <span className="text-emerald-600">Focused on Results.</span>
               </h2>
 
-              <p className="max-w-xl text-base sm:text-lg lg:text-xl text-stone-700 leading-relaxed border-l-2 border-[#B89450] pl-4">
+              <p className="max-w-xl text-base sm:text-xl lg:text-xl text-stone-700 leading-relaxed border-l-2 border-[#B89450] pl-4 text-left">
                 At LushWare, we don't just build software — we solve business problems.
                 Our solutions are tailored to your goals, processes, and customers,
                 delivering measurable value through scalable, secure, and future-ready technology.

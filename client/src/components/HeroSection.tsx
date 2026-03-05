@@ -26,8 +26,8 @@ const heroSlides: HeroSlide[] = [
     description:
       "Powerful CRM platforms designed to strengthen customer engagement, automate workflows, and scale relationships.",
     image: "/hero3/crm2.jpg",
-    maxWidthClass: "lg:max-w-md",
-    aspectClass: "aspect-auto",
+    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
   },
   {
     id: "02",
@@ -37,8 +37,8 @@ const heroSlides: HeroSlide[] = [
     description:
       "Intelligent AI agents and chatbots that automate support, sales, and internal operations with precision.",
     image: "/hero3/ai2.jpg",
-    maxWidthClass: "lg:max-w-md",
-    aspectClass: "aspect-auto ",
+    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
   },
   {
     id: "03",
@@ -48,8 +48,8 @@ const heroSlides: HeroSlide[] = [
     description:
       "Streamline operations with BPM systems built for efficiency, visibility, and long-term growth.",
     image: "/hero3/bpm3.jpg",
-    maxWidthClass: "lg:max-w-md",
-    aspectClass: "aspect-auto lg:pt-2",
+    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto lg:pt-2",
   },
   {
     id: "04",
@@ -59,8 +59,8 @@ const heroSlides: HeroSlide[] = [
     description:
       "High-end corporate websites crafted to communicate trust, clarity, and brand authority.",
     image: "/hero3/web3.jpg",
-    maxWidthClass: "xl:max-w-2xl",
-    aspectClass: "aspect-auto",
+    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-xl xl:max-w-2xl",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
   },
   {
     id: "05",
@@ -70,8 +70,8 @@ const heroSlides: HeroSlide[] = [
     description:
       "Scalable iOS and Android applications engineered for performance and user experience.",
     image: "/hero3/app.jpg",
-    maxWidthClass: "lg:max-w-md",
-    aspectClass: "aspect-auto",
+    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
   },
 ];
 
@@ -79,8 +79,7 @@ export default function HeroSection() {
   const navigate = useNavigate();
 
   return (
-    <section className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden"
-    >
+    <section className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden">
       <Swiper
         modules={[Autoplay, EffectFade, Navigation, Pagination]}
         effect="fade"
@@ -104,13 +103,10 @@ export default function HeroSection() {
       >
         {heroSlides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="relative h-full w-full px-6 lg:px-20 flex flex-col justify-center z-10 overflow-hidden">
-              <div 
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full items-center"
-
-              >
+            <div className="relative h-full w-full px-6 md:px-16 lg:px-20 flex flex-col justify-center z-10 overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full items-center">
                 {/* Left Content */}
-                <div className="lg:col-span-7 md:mt-0 lg:mt-12 mt-80 flex flex-col">
+                <div className="lg:col-span-7 mt-[190px] md:mt-[140px] lg:mt-12 flex flex-col">
                   <h1 className="flex flex-col gap-0 select-none mb-6">
                     <span className="text-5xl md:text-7xl lg:text-[6.5rem] font-black text-emerald-600 sm:text-transparent uppercase leading-[0.8] tracking-tighter hero-line hero-stroke">
                       {slide.titleTop}

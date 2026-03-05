@@ -434,8 +434,8 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 ">
           {/* ── Sidebar / Header ── */}
-          <div className="lg:w-1/3 lg:sticky lg:top-48 h-fit ">
-            <div className="flex flex-col">
+          <div className="lg:w-1/3 lg:sticky lg:top-48 h-fit">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
               {/* Badge */}
               <div className="flex items-center gap-2 mb-4">
                 <div className="px-2 py-0.5 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
@@ -443,7 +443,7 @@ export default function ServicesSection() {
                 </div>
               </div>
 
-              {/* Heading — scales from mobile up */}
+              {/* Heading */}
               <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold text-slate-900 tracking-tighter leading-[0.8] mb-6 lg:mb-8">
                 Our Specialized Software <br className="hidden sm:block" />
                 <span className="relative">
@@ -467,7 +467,7 @@ export default function ServicesSection() {
                 </span>
               </h2>
 
-              <div className="mt-2 lg:mt-4 ">
+              <div className="mt-2 lg:mt-4">
                 <button
                   onClick={() => navigate("/solutions")}
                   className="group relative cursor-pointer overflow-hidden px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-stone-900 transition-all duration-500 hover:shadow-[0_10px_30px_-10px_rgba(16,185,129,0.3)]"
@@ -512,14 +512,14 @@ export default function ServicesSection() {
           </div>
 
           {/* ── Service Cards ── */}
-          <div className="lg:w-2/3 space-y-8 sm:space-y-6 lg:space-y-14">
+          <div className="lg:w-2/3 space-y-8 sm:space-y-6 lg:mt-0 md:mt-8 mt-4 px-0 md:px-12 lg:px-0 lg:space-y-14">
             {servicesData.map((service) => {
               const IconComponent =
                 iconMap[service.number as keyof typeof iconMap];
               return (
                 <div
                   key={service.number}
-                  className="group relative bg-white border border-slate-300 rounded-2xl sm:rounded-3xl transition-all duration-500 hover:-translate-y-1 hover:border-emerald-400 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] overflow-hidden"
+                  className="group relative bg-white border border-slate-300 rounded-2xl sm:rounded-3xl transition-all  duration-500 hover:-translate-y-1 hover:border-emerald-400 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] overflow-hidden"
                 >
                   <div className="p-8 sm:p-8 md:p-10 relative z-10">
                     {/* Mobile: stack icon + text vertically; md+: side by side */}

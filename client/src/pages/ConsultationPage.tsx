@@ -103,14 +103,14 @@ export default function ConsultationPageV15() {
     }
   };
   return (
-    <section id="consultation" className="scroll-mt-24 px-6 py-24 lg:py-40">
+    <section id="consultation" className="scroll-mt-24 px-6 md:px-8 lg:px-0 py-24 md:py-32 lg:py-40">
       <div className="mx-auto max-w-7xl">
 
 
         <div className="grid grid-cols-1 gap-20 lg:grid-cols-12">
           
           {/* LEFT: The Proposition (Column Span 5) */}
-          <div className="lg:col-span-5 px-4 md:px-0">
+          <div className="lg:col-span-5 px-4 md:px-8 lg:px-0">
             <h2 className="text-5xl font-medium tracking-tighter text-gray-900 sm:text-7xl leading-[1.05] hero-line">
               Book a free <br />
               <span className="text-emerald-600">consultancy.</span>
@@ -219,9 +219,9 @@ export default function ConsultationPageV15() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="relative rounded-[2rem] bg-white p-0.5 shadow-[0_2px_10px_rgba(0,0,0,0.02)] ring-1 ring-emerald-500">
+            <div className="relative rounded-[1rem] md:rounded-[1.5rem] lg:rounded-[2rem] bg-white p-0.5 shadow-[0_2px_10px_rgba(0,0,0,0.02)] ring-1 ring-emerald-500">
               
-              <form className="px-6 py-8 lg:p-16" onSubmit={handleSubmit}>
+              <form className="px-6 md:px-14 lg:px-16 py-8 lg:p-16" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2">
                   
                   {/* Field 01: First Name */}

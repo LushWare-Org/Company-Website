@@ -10,31 +10,21 @@ export default function WebKitSection() {
   ];
 
   return (
-    <section
+<section
       data-reveal
       className="relative overflow-hidden bg-emerald-700"
     >
       {/* ── Background atmosphere ── */}
         {/* Creative Background Elements */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          {/* 1. Primary Emerald Wash - The "Royal" Glow (Softened for Dark Mode) */}
-
-          {/* 2. Carbon Fibre Texture Overlay - Slightly more visible on dark backgrounds */}
           <div className="absolute inset-0 opacity-[0.1] md:opacity-[0.3] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-
-          {/* 4. Top Border Fade - Now using a sharper, more luxurious gradient */}
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent opacity-80" />
         </div>
 
-      {/* ══════════════════════════════════════════
-          MOBILE: Horizontal scroll card strip
-          DESKTOP: 3-D card fan (unchanged)
-      ══════════════════════════════════════════ */}
-
       {/* ── MOBILE CARD STRIP (hidden on md+) ── */}
-      <div className="relative z-10 mt-12 md:hidden">
+      <div className="relative z-10 mt-8 sm:mt-10 md:hidden">
         <div
-          className="flex gap-4 overflow-x-auto px-6 pb-4 snap-x snap-mandatory"
+          className="flex gap-3 sm:gap-4 overflow-x-auto px-4 sm:px-6 pb-4 snap-x snap-mandatory"
           style={{ scrollbarWidth: "none" }}
         >
           {templateImages.map((item, index) => (
@@ -48,7 +38,7 @@ export default function WebKitSection() {
                 delay: index * 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="flex-none w-[72vw] max-w-[280px] snap-center aspect-video cursor-pointer"
+              className="flex-none w-[78vw] sm:w-[68vw] max-w-[320px] snap-center aspect-video cursor-pointer"
             >
               <div className="relative w-full h-full overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-white/20 bg-emerald-950 group">
                 <img
@@ -63,8 +53,8 @@ export default function WebKitSection() {
         </div>
 
         {/* Scroll hint fade edges */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-emerald-800 to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-emerald-800 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-6 sm:w-8 bg-gradient-to-r from-emerald-800 to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-6 sm:w-8 bg-gradient-to-l from-emerald-800 to-transparent" />
       </div>
 
       {/* ── DESKTOP 3D CARD FAN (hidden on mobile) ── */}
@@ -113,20 +103,18 @@ export default function WebKitSection() {
         ))}
       </div>
 
-      {/* ══════════════════════════════════════════
-          CONTENT — heading + body
-      ══════════════════════════════════════════ */}
+      {/* ── CONTENT — heading + body ── */}
       <div
-        className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-16"
+        className="relative z-10 max-w-7xl mx-auto px-8 sm:px-10 md:px-12 lg:px-16"
         style={{
-          paddingTop: "clamp(32px, 5vw, 64px)",
-          paddingBottom: "clamp(48px, 7vw, 96px)",
+          paddingTop: "clamp(28px, 5vw, 64px)",
+          paddingBottom: "clamp(40px, 7vw, 96px)",
         }}
       >
         {/* Thin top rule */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent mb-8 md:mb-14" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent mb-6 sm:mb-8 md:mb-14" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 lg:gap-24 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-16 lg:gap-24 items-start">
 
           {/* ── LEFT: Heading ── */}
           <motion.div
@@ -134,13 +122,13 @@ export default function WebKitSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-3 sm:gap-4"
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-[1.15] md:leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[1.15] md:leading-[1.1]">
               Introducing <br /> WebKit
               <span className="text-[#ffffff]">
                 <br /> by{" "}
-                <span className="text-amber-400 ">LushWare</span>
+                <span className="text-amber-400">LushWare</span>
               </span>
             </h2>
           </motion.div>
@@ -151,11 +139,11 @@ export default function WebKitSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="flex flex-col justify-start gap-6 md:gap-8 md:pt-4 md:border-l-2 md:border-emerald-200/60 md:pl-10 lg:pl-14"
+            className="flex flex-col justify-start gap-5 sm:gap-6 md:gap-8 md:pt-4 md:border-l-2 md:border-emerald-200/60 md:pl-10 lg:pl-14"
           >
             <p
-              className="text-white leading-relaxed"
-              style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.15rem)" }}
+              className="text-white leading-relaxed text-sm sm:text-base"
+              style={{ fontSize: "clamp(0.875rem, 1.8vw, 1.15rem)" }}
             >
               WebKit is our curated collection of ready-to-use website
               templates, crafted for elite industries. Each template is
@@ -170,13 +158,13 @@ export default function WebKitSection() {
             {/* CTA */}
             <a
               href="/solutions/websites"
-              className="group relative self-start w-full sm:w-auto text-center sm:text-left px-8 py-4 bg-emerald-950/40 backdrop-blur-md border border-emerald-200/70 overflow-hidden transition-all duration-500 hover:border-emerald-300 hover:shadow-[0_0_36px_rgba(16,185,129,0.22)]"
+              className="group relative self-start w-full sm:w-auto text-center sm:text-left px-6 sm:px-8 py-3.5 sm:py-4 bg-emerald-950/40 backdrop-blur-md border border-emerald-200/70 overflow-hidden transition-all duration-500 hover:border-emerald-300 hover:shadow-[0_0_36px_rgba(16,185,129,0.22)]"
               style={{ borderRadius: "40px" }}
             >
-              <span className="relative z-10 text-emerald-50 font-medium tracking-wide flex items-center justify-center sm:justify-start gap-3 text-sm">
+              <span className="relative z-10 text-emerald-50 font-medium tracking-wide flex items-center justify-center sm:justify-start gap-2 sm:gap-3 text-xs sm:text-sm">
                 Explore WebKit Templates
                 <svg
-                  className="w-4 h-4 text-emerald-300 group-hover:translate-x-1.5 transition-transform duration-300"
+                  className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-300 group-hover:translate-x-1.5 transition-transform duration-300"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
