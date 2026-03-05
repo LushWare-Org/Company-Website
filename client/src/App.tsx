@@ -22,12 +22,16 @@ import RealEstatePage from './pages/templates/RealEstatePage'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Loading from './components/Loading'
+import { useLenis } from './hooks/useLenis'
 
 function App() {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
   const isAdminPage = location.pathname.startsWith('/admin') || location.pathname.startsWith('/dashboard');
   const isTemplatePage = location.pathname.startsWith('/templates');
+
+  // Initialize Lenis smooth scrolling globally
+  useLenis();
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 400);

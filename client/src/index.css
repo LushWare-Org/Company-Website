@@ -1,5 +1,40 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────
+   Lenis Smooth Scroll Optimization
+   ───────────────────────────────────────────────── */
+html {
+	/* Smooth scroll behavior is handled by Lenis */
+	scroll-behavior: auto;
+}
+
+html.lenis {
+	height: auto;
+}
+
+html.lenis body {
+	height: auto;
+}
+
+.lenis.lenis-smooth {
+	scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+	overflow: hidden;
+}
+
+.lenis iframe {
+	pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────
+   Root Styles
+   ───────────────────────────────────────────────── */
 :root {
 	font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 	line-height: 1.5;
