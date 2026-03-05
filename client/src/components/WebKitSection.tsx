@@ -12,23 +12,19 @@ export default function WebKitSection() {
   return (
     <section
       data-reveal
-      className="relative overflow-hidden bg-emerald-800"
+      className="relative overflow-hidden bg-emerald-700"
     >
       {/* ── Background atmosphere ── */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-emerald-500/10 rounded-full blur-[160px]" />
-        <div
-          className="absolute inset-0 opacity-[0.75]"
-          style={{
-            backgroundImage:
-              "url('https://www.transparenttextures.com/patterns/carbon-fibre.png')",
-          }}
-        />
-        {/* top fade */}
-        <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-[#094a3b] to-transparent" />
-        {/* bottom border line */}
-        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-400/40 to-transparent" />
-      </div>
+        {/* Creative Background Elements */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {/* 1. Primary Emerald Wash - The "Royal" Glow (Softened for Dark Mode) */}
+
+          {/* 2. Carbon Fibre Texture Overlay - Slightly more visible on dark backgrounds */}
+          <div className="absolute inset-0 opacity-[0.1] md:opacity-[0.3] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+
+          {/* 4. Top Border Fade - Now using a sharper, more luxurious gradient */}
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent opacity-80" />
+        </div>
 
       {/* ══════════════════════════════════════════
           MOBILE: Horizontal scroll card strip
@@ -158,13 +154,13 @@ export default function WebKitSection() {
             className="flex flex-col justify-start gap-6 md:gap-8 md:pt-4 md:border-l-2 md:border-emerald-200/60 md:pl-10 lg:pl-14"
           >
             <p
-              className="text-white/90 leading-relaxed"
+              className="text-white leading-relaxed"
               style={{ fontSize: "clamp(0.95rem, 1.8vw, 1.15rem)" }}
             >
               WebKit is our curated collection of ready-to-use website
               templates, crafted for elite industries. Each template is
               designed to{" "}
-              <span className="text-emerald-300 font-medium">
+              <span className="text-emerald-50 font-medium">
                 elevate your digital presence
               </span>{" "}
               with the same precision and stability found in our bespoke

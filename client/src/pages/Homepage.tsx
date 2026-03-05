@@ -290,15 +290,14 @@ export default function Homepage() {
       {/* Our Story Section */}
       <section
         data-reveal
-        className="relative px-10 md:px-0 py-12 md:py-24 overflow-hidden bg-[#094a3b]"
+        className="relative px-10 md:px-0 py-12 md:py-20 overflow-hidden bg-emerald-700"
       >
         {/* Creative Background Elements */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {/* 1. Primary Emerald Wash - The "Royal" Glow (Softened for Dark Mode) */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
 
           {/* 2. Carbon Fibre Texture Overlay - Slightly more visible on dark backgrounds */}
-          <div className="absolute inset-0 opacity-[0.9] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+          <div className="absolute inset-0 opacity-[0.1] md:opacity-[0.3] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
 
           {/* 4. Top Border Fade - Now using a sharper, more luxurious gradient */}
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent opacity-80" />
@@ -306,54 +305,28 @@ export default function Homepage() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="text-left space-y-6">
-              <div className="inline-flex items-center group cursor-default">
-                <div className="relative flex items-center">
-                  {/* Adjusted Ring Colors for Dark Mode */}
-                  <div className="w-6 h-6 rounded-full border border-emerald-300 flex items-center justify-center bg-emerald-950 group-hover:bg-emerald-900 transition-all">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="text-left space-y-5">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="px-3 py-0.5 bg-white text-[10px] font-bold text-emerald-800 uppercase tracking-[0.2em] rounded-sm">
+                    Why Choose Us
                   </div>
-
-                  <div className="w-6 h-px bg-emerald-400 group-hover:w-10 group-hover:bg-emerald-500 transition-all duration-500" />
                 </div>
-
-                <div className="pl-4 flex flex-col justify-center">
-                  <h4 className="text-[14px] font-bold text-emerald-50 uppercase tracking-wider flex items-center gap-2">
-                    Our Story
-                    <svg
-                      className="w-3 h-3 text-emerald-200 group-hover:text-emerald-300 group-hover:translate-x-1 transition-all"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="3"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </h4>
-                </div>
-              </div>
 
               {/* Headline with a White-to-Emerald gradient */}
-              <h2 className="text-3xl md:text-6xl  text-white tracking-tight leading-[1.1]">
+              <h2 className="text-3xl md:text-6xl  text-white tracking-tight ">
                 The Vision Behind <br />
                 <span className="text-amber-400 ">
                   LushWare.
                 </span>
               </h2>
 
-              <div className="pt-2 flex items-center gap-4">
-                <div className="flex flex-col items-center">
-                  <div className="w-px h-10 bg-gradient-to-b from-emerald-400 to-transparent" />
-                </div>
+              <div className="pt-2 flex items-center gap-2">
+
                 <div className="space-y-1">
-                  <p className="text-[12px] font-bold text-emerald-100 uppercase tracking-[0.2em]">
+                  <p className="text-[14px] font-bold text-white uppercase tracking-[0.2em]">
                     The Journey Continues
                   </p>
-                  <p className="text-md text-emerald-100  font-normal">
+                  <p className="text-lg text-white  font-normal">
                     Evolving the standard of digital simplicity since 2020.
                   </p>
                 </div>
@@ -486,7 +459,7 @@ export default function Homepage() {
                 </div>
 
                 {/* Headline */}
-                <h3 className="text-3xl sm:text-4xl md:text-6xl font-bold uppercase tracking-tight md:tracking-[-0.06em] text-slate-900 leading-[1] md:leading-[0.85]">
+                <h3 className="text-3xl sm:text-4xl md:text-6xl font-bold  tracking-tight md:tracking-[-0.06em] text-slate-900 leading-[1] md:leading-[0.85]">
                   <span>Systems We’re </span>
                   <span className="text-emerald-600">Building</span> Up.
                 </h3>

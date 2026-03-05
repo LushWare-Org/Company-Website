@@ -444,7 +444,7 @@ export default function ServicesSection() {
               </div>
 
               {/* Heading — scales from mobile up */}
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold text-slate-900 tracking-tighter leading-[0.9] mb-6 lg:mb-8">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold text-slate-900 tracking-tighter leading-[0.8] mb-6 lg:mb-8">
                 Our Specialized Software <br className="hidden sm:block" />
                 <span className="relative">
                   <span className="relative z-10 text-emerald-600">
