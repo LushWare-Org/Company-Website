@@ -223,12 +223,12 @@ export default function Navbar() {
 
           {/* Sidebar */}
           <div
-            className={`absolute top-0 right-0 w-[82%] max-w-sm  rounded-bl-3xl bg-white shadow-2xl transform transition-all duration-500 ease-out ${
+            className={`absolute top-0 right-0 h-full w-[82%] max-w-sm   bg-white shadow-2xl transform transition-all duration-500 ease-out ${
               open ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"
             } overflow-y-auto`}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex flex-col h-3/4">
+            <div className="flex flex-col h-full">
               {/* Header */}
               <div className="flex items-center justify-between px-6 pt-6 pb-5 border-b border-stone-100">
                 <div className="flex items-center gap-3">

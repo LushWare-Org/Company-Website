@@ -144,7 +144,7 @@ export default function WebKitSection() {
               Introducing <br /> WebKit
               <span className="text-[#ffffff]">
                 <br /> by{" "}
-                <span className="text-amber-400 font-light">LushWare</span>
+                <span className="text-amber-400 ">LushWare</span>
               </span>
             </h2>
           </motion.div>

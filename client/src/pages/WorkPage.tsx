@@ -75,7 +75,7 @@ const projects = [
   },
 
   {
-    name: "Travel Agency Website",
+    name: "Travel Agency Websites",
     client: "Holiday Life",
     summary:
       "We’re proud to showcase Holiday Life, a custom web application we developed for a travel agency.",

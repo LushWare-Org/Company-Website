@@ -338,9 +338,9 @@ export default function Homepage() {
               </div>
 
               {/* Headline with a White-to-Emerald gradient */}
-              <h2 className="text-3xl md:text-6xl font-semibold text-white tracking-tight leading-[1.1]">
+              <h2 className="text-3xl md:text-6xl  text-white tracking-tight leading-[1.1]">
                 The Vision Behind <br />
-                <span className="text-amber-400 font-light">
+                <span className="text-amber-400 ">
                   LushWare.
                 </span>
               </h2>
