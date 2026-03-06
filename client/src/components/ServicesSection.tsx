@@ -434,82 +434,94 @@ export default function ServicesSection() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 ">
           {/* ── Sidebar / Header ── */}
-          <div className="lg:w-1/3 lg:sticky lg:top-48 h-fit">
-            <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-              {/* Badge */}
-              <div className="flex items-center gap-2 mb-4">
-                <div className="px-2 py-0.5 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
-                  Our Services
-                </div>
-              </div>
+<div className="lg:w-1/3 lg:sticky lg:top-48 h-fit">
+  {/* Inject fonts to match Project Base theme */}
+  <style>{`
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
+    .svc-serif { font-family: 'DM Serif Display', serif; }
+    .svc-sans  { font-family: 'DM Sans', sans-serif; }
+    .svc-grid-dot {
+      background-image: radial-gradient(circle, #d1fae5 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .svc-sweep-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #059669;
+      transform: translateX(-101%);
+      transition: transform 0.45s cubic-bezier(0.85,0,0.15,1);
+      z-index: 0;
+    }
+    .svc-sweep-btn:hover::after { transform: translateX(0); }
+  `}</style>
 
-              {/* Heading */}
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold text-slate-900 tracking-tighter leading-[0.8] mb-6 lg:mb-8">
-                Our Specialized Software <br className="hidden sm:block" />
-                <span className="relative">
-                  <span className="relative z-10 text-emerald-600">
-                    Solutions.
-                  </span>
-                  <svg
-                    className="absolute -bottom-1 left-0 w-full h-0.5 text-emerald-300"
-                    viewBox="0 0 100 2"
-                    preserveAspectRatio="none"
-                  >
-                    <line
-                      x1="0"
-                      y1="1"
-                      x2="100"
-                      y2="1"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </span>
-              </h2>
+  <div className="relative flex flex-col items-center lg:items-start text-center lg:text-left">
 
-              <div className="mt-2 lg:mt-4">
-                <button
-                  onClick={() => navigate("/solutions")}
-                  className="group relative cursor-pointer overflow-hidden px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-stone-900 transition-all duration-500 hover:shadow-[0_10px_30px_-10px_rgba(16,185,129,0.3)]"
-                >
-                  <span className="absolute inset-0 w-0 h-full bg-emerald-700 transition-all duration-500 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:w-full" />
-                  <span className="relative z-10 flex items-center justify-center gap-3">
-                    <span className="text-sm font-medium tracking-wide text-white transition-colors duration-500">
-                      VIEW ALL SOLUTIONS
-                    </span>
-                    <div className="relative flex h-5 w-5 items-center justify-center overflow-hidden">
-                      <svg
-                        className="h-4 w-4 transform transition-all duration-500 text-white group-hover:translate-x-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2.5"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
-                      <svg
-                        className="absolute h-4 w-4 -translate-x-5 transform transition-all duration-500 text-white group-hover:translate-x-0"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2.5"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
-                    </div>
-                  </span>
-                </button>
-              </div>
-            </div>
-          </div>
+    {/* Dot grid background accent */}
+    <div className="svc-grid-dot absolute inset-0 -z-10 opacity-50 pointer-events-none rounded-xl" />
+
+    {/* Badge — matches Project Base pill style */}
+    <div className="flex items-center gap-3 mb-7">
+      <div className="h-px w-8 bg-emerald-600" />
+      <div className="px-3 py-1 border border-emerald-600 text-[10px] font-bold text-emerald-700 uppercase tracking-[0.22em] svc-sans">
+        Our Services
+      </div>
+      <div className="h-px w-8 bg-emerald-600" />
+    </div>
+
+    {/* Heading — DM Serif Display like Project Base */}
+    <h2 className="svc-serif text-5xl sm:text-6xl lg:text-6xl xl:text-7xl font-normal tracking-tight text-slate-900  mb-6 lg:mb-10">
+      Our Specialized{" "}
+      <span className=" text-slate-400">Software</span>
+      <br />
+      <span className="relative inline-block  text-emerald-600">
+        Solutions.
+        <svg
+          className="absolute -bottom-1 left-0 w-full"
+          viewBox="0 0 200 4"
+          preserveAspectRatio="none"
+          height="4"
+        >
+          <path
+            d="M0,2 Q50,0 100,2 T200,2"
+            stroke="#059669"
+            strokeWidth="1.5"
+            fill="none"
+            strokeLinecap="round"
+          />
+        </svg>
+      </span>
+    </h2>
+
+    {/* Subtle descriptor line */}
+    <p className="svc-sans text-slate-500 text-md font-light leading-relaxed mb-4 max-w-xs lg:max-w-none">
+      Tailored software built to move your business forward.
+    </p>
+
+    {/* CTA Button — sweep animation like Project Base */}
+    <button
+      onClick={() => navigate("/solutions")}
+      className="svc-sweep-btn svc-sans cursor-pointer group relative overflow-hidden h-12 px-9 bg-slate-900 transition-shadow duration-300 hover:shadow-[0_16px_48px_rgba(0,0,0,0.15)]"
+    >
+      <span className="relative z-10 flex items-center gap-2.5">
+        <span className="text-white text-[10px] font-bold uppercase tracking-[0.18em] whitespace-nowrap transition-colors duration-300">
+          View All Solutions
+        </span>
+        <svg
+          className="w-3.5 h-3.5 text-white transition-transform duration-500 group-hover:translate-x-1.5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="2.5"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </span>
+    </button>
+
+  </div>
+</div>
 
           {/* ── Service Cards ── */}
           <div className="lg:w-2/3 space-y-8 sm:space-y-6 lg:mt-0 md:mt-8 mt-4 px-0 md:px-12 lg:px-0 lg:space-y-14">

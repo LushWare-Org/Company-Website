@@ -16,6 +16,9 @@ type WorkCardProps = {
   ctaClassName?: string;
 };
 
+const dmSans = "'DM Sans', sans-serif";
+const dmSerif = "'DM Serif Display', serif";
+
 export default function WorkCard({
   project,
   index,
@@ -26,94 +29,92 @@ export default function WorkCard({
 }: WorkCardProps) {
   return (
     <div
-      className={`group flex flex-col bg-white transition-all duration-700 ${
+      style={{ transitionDelay: `${(index % 2) * 150}ms`, fontFamily: dmSans }}
+      className={`group relative border border-slate-100 bg-white overflow-hidden transition-all duration-500 hover:border-emerald-300 hover:shadow-[0_24px_64px_rgba(16,185,129,0.08)] ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
       } ${className ?? ""}`}
-      style={{ transitionDelay: `${(index % 2) * 150}ms` }}
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-gray-50 rounded-t-2xl border border-gray-100 mb-10 transition-all duration-700 group-hover:shadow-2xl group-hover:shadow-emerald-100 group-hover:border-emerald-200">
-        <a href={project.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
-          <img
-            src={project.image}
-            alt={project.name}
-            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-          />
+      {/* Emerald top accent on hover */}
+      <div className="absolute top-0 left-0 w-0 h-0.5 bg-emerald-500 group-hover:w-full transition-all duration-700" />
 
-          <div className="absolute inset-0 bg-emerald-950/0 group-hover:bg-emerald-950/5 transition-colors duration-500 flex items-center justify-center">
-            <div className="bg-gray-900 p-5 border-2 border-white rounded-full shadow-2xl scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-white"
-              >
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
+      <div className="flex flex-col  gap-8">
+
+        {/* Image block */}
+        <div className="w-full">
+          <div
+            onClick={() => window.open(project.link, "_blank")}
+            className="relative aspect-video cursor-pointer overflow-hidden bg-emerald-50 shadow-md transition-all duration-500 group-hover:shadow-[0_20px_48px_-12px_rgba(16,185,129,0.2)]"
+          >
+            <img
+              src={project.image}
+              alt={project.name}
+              className="w-full h-full object-cover transition-transform duration-[2500ms] ease-out"
+            />
+            <div className="absolute inset-0 bg-emerald-950/0 group-hover:bg-emerald-950/5 transition-colors duration-500 flex items-center justify-center">
+              <div className="bg-gray-900 p-8 border-2 border-white shadow-2xl scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7 7 17 7 17 17" />
+                </svg>
+              </div>
+            </div>
+            <div className="absolute bottom-3 right-4 text-[72px] font-black text-white/10 leading-none select-none pointer-events-none tracking-tighter">
+              {String(index + 1).padStart(2, "0")}
             </div>
           </div>
-        </a>
-      </div>
+        </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <div className="lg:col-span-12 space-y-5">
+        {/* Text block */}
+        <div className="w-full p-4 sm:px-6 sm:py-10 space-y-6">
+
+          {/* Meta row */}
           <div className="flex items-center gap-3">
-            <span className="text-[11px] font-bold uppercase tracking-widest bg-gray-800 text-white px-3 py-1 rounded-sm">
+            <div className="h-px w-6 bg-emerald-600" />
+            <span className="text-[9px] font-bold tracking-[0.3em] uppercase text-emerald-700 border border-emerald-300 px-3 py-1.5">
               {project.client}
             </span>
-            <span className="text-gray-600 font-mono text-[10px]">/ 0{index + 1}</span>
+            <div className="h-px flex-1 bg-slate-100" />
+            <span className="text-[9px] font-semibold tracking-[0.3em] uppercase text-slate-300 tabular-nums">
+              {String(index + 1).padStart(2, "0")}
+            </span>
           </div>
-          <h4 className="text-3xl font-bold text-gray-950 tracking-tight transition-colors group-hover:text-emerald-700">
-            {project.name}
-          </h4>
-          <p className="text-gray-900 text-base leading-relaxed ">{project.summary}</p>
-          <p className="text-gray-500 text-md leading-relaxed  ">{project.description}</p>
 
-          <div
-            className={`pt-2 flex ${ctaAlign === "center" ? "justify-center" : "justify-start"} ${
-              ctaClassName ?? ""
-            }`}
+          {/* Title — DM Serif Display */}
+          <h3
+            style={{ fontFamily: dmSerif }}
+            className="text-3xl md:text-4xl font-normal text-slate-900 leading-[1.1] tracking-tight group-hover:text-emerald-900 transition-colors duration-400"
           >
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                group/link 
-                inline-flex items-center gap-3 
-                text-[10px] font-bold uppercase tracking-[0.2em] 
-                !text-white bg-slate-800 
-                px-8 py-4
-                relative overflow-hidden
-                transition-all duration-300
-                hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-900/20
-                rounded-3xl
-              "
+            {project.name}
+          </h3>
+
+          {/* Summary */}
+          <p className="text-base leading-[1.8] text-slate-700 font-normal">
+            {project.summary}
+          </p>
+
+          {/* Description */}
+          <p className="text-base leading-[1.8] text-slate-500 font-light">
+            {project.description}
+          </p>
+
+          {/* CTA */}
+          <div className={`pt-1 flex  ${ctaAlign === "center" ? "justify-center" : "justify-start"} ${ctaClassName ?? ""}`}>
+            <button
+              onClick={() => window.open(project.link, "_blank")}
+              className="group/btn relative cursor-pointer inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white text-[10px] font-bold tracking-[0.2em] uppercase overflow-hidden transition-shadow duration-300 hover:shadow-[0_16px_48px_rgba(0,0,0,0.12)] active:scale-[0.98]"
             >
-              <span className="absolute inset-0 w-0 bg-emerald-600 transition-all duration-500 ease-out group-hover/link:w-full"></span>
-              <span className="relative z-10 block">Visit Platform</span>
+              <span className="relative z-10">Visit Platform</span>
               <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="relative z-10 transition-transform duration-700 group-hover/link:rotate-[360deg]"
+                className="relative z-10 w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
               >
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
               </svg>
-            </a>
+              <div className="absolute inset-0 bg-emerald-600 translate-x-[-101%] group-hover/btn:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.85,0,0.15,1)]" />
+            </button>
           </div>
+
         </div>
       </div>
     </div>

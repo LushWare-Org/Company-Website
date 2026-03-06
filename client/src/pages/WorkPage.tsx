@@ -117,48 +117,83 @@ export default function WorkPage() {
   }, []);
 
   return (
-    <section id="work" className="py-24 md:py-28 selection:bg-emerald-50 ">
 
-      
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="max-w-6xl mt-12 mx-auto text-center mb-20">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
-              Selected Works
-            </div>
-          </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-[#0F172A] tracking-tight leading-[1.1] mb-6 hero-line">
-            Our Projects <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-800 via-emerald-500 to-emerald-800 hero-line">
-              Showcasing Innovation
-            </span>
-          </h1>
+<section id="work" className="py-24 md:py-32  selection:bg-emerald-50">
+  <style>{`
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
 
-          <p className="text-lg sm:text-xl text-slate-600 font-medium max-w-4xl mx-auto hero-line">
-            A selection of our work demonstrating custom software solutions for
-            real-world challenges.
-          </p>
+    .works-root * { font-family: 'DM Sans', sans-serif; }
+    .works-serif  { font-family: 'DM Serif Display', serif; }
+
+    .works-fadeUp {
+      animation: wFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .works-fadeUp:nth-child(2) { animation-delay: 0.08s; }
+    .works-fadeUp:nth-child(3) { animation-delay: 0.16s; }
+
+    @keyframes wFadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Dot-grid background accent */
+    .works-dotgrid {
+      background-image: radial-gradient(circle, #d1fae5 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+  `}</style>
+
+  <div className="works-root mx-auto max-w-7xl px-6">
+
+    {/* ── HEADER ───────────────────────────────────── */}
+    <div className="relative max-w-6xl mt-12 mx-auto text-center mb-20 md:mb-28">
+
+      {/* Dot grid */}
+      <div className="works-dotgrid absolute inset-0 -z-10 opacity-50 pointer-events-none" />
+
+      {/* Label */}
+      <div className="works-fadeUp flex items-center justify-center gap-3 mb-7">
+        <div className="h-px w-8 bg-emerald-600" />
+        <div className="px-3 py-1 border border-emerald-600 text-[10px] font-bold text-emerald-700 uppercase tracking-[0.22em]">
+          Selected Works
         </div>
-
-        {/* 2-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-32">
-          {projects.map((project, index) => (
-            <div
-              key={project.name}
-              ref={(el) => {
-                projectRefs.current[index] = el;
-              }}
-            >
-              <WorkCard
-                project={project}
-                index={index}
-                isVisible={visibleProjects.has(index)}
-              />
-            </div>
-          ))}
-        </div>
+        <div className="h-px w-8 bg-emerald-600" />
       </div>
-    </section>
+
+      {/* Headline */}
+      <h1 className="works-fadeUp works-serif text-5xl sm:text-6xl lg:text-7xl font-normal text-slate-900 tracking-tight leading-[1.05] mb-7">
+        Our Projects <br />
+        <span className=" text-emerald-600">
+          Showcasing Innovation
+        </span>
+      </h1>
+
+      {/* Sub */}
+      <p className="works-fadeUp text-lg sm:text-xl text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
+        A selection of our work demonstrating custom software solutions for
+        real-world challenges.
+      </p>
+    </div>
+
+    {/* ── PROJECT GRID ─────────────────────────────── */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24 md:gap-y-32">
+      {projects.map((project, index) => (
+        <div
+          key={project.name}
+          ref={(el) => {
+            projectRefs.current[index] = el;
+          }}
+        >
+          <WorkCard
+            project={project}
+            index={index}
+            isVisible={visibleProjects.has(index)}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
   );
 }

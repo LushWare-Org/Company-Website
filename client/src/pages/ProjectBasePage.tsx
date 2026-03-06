@@ -55,168 +55,292 @@ export default function ProjectBasePage() {
   }, []);
 
   return (
-    <section id="project-base" className="scroll-mt-28 py-16">
-      <div className="mx-auto">
-        <div className="mt-10 md:mt-20 mx-auto">
-          {/* HEADER */}
-          <div className="mb-12 md:mb-20 max-w-7xl mx-auto px-4 sm:px-6 text-center relative">
-            <div className="flex items-center justify-center gap-2 mb-6 md:mb-8">
-              <div className="px-2 py-1 bg-emerald-600 text-[10px] font-bold text-white uppercase tracking-[0.2em] rounded-sm">
-                Project Base
+    <>
+      {/* Inject Google Font */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap');
+
+        .pb-root * { font-family: 'DM Sans', sans-serif; }
+        .pb-serif { font-family: 'DM Serif Display', serif; }
+
+        .pb-hero-line {
+          animation: pb-fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .pb-hero-line:nth-child(2) { animation-delay: 0.1s; }
+        .pb-hero-line:nth-child(3) { animation-delay: 0.2s; }
+        .pb-hero-line:nth-child(4) { animation-delay: 0.3s; }
+
+        @keyframes pb-fadeUp {
+          from { opacity: 0; transform: translateY(24px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .pb-grid-dot {
+          background-image: radial-gradient(circle, #d1fae5 1px, transparent 1px);
+          background-size: 28px 28px;
+        }
+
+        .pb-program-row::before {
+          content: '';
+          position: absolute;
+          left: 0; top: 0; bottom: 0;
+          width: 0;
+          background: #059669;
+          opacity: 0.06;
+          transition: width 0.5s cubic-bezier(0.16,1,0.3,1);
+        }
+        .pb-program-row:hover::before { width: 100%; }
+
+        .pb-sweep-btn::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: #059669;
+          transform: translateX(-101%);
+          transition: transform 0.45s cubic-bezier(0.85,0,0.15,1);
+          z-index: 0;
+        }
+        .pb-program-row:hover .pb-sweep-btn::after { transform: translateX(0); }
+
+        .pb-modal-animate {
+          animation: pb-modalIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        @keyframes pb-modalIn {
+          from { opacity: 0; transform: scale(0.96) translateY(12px); }
+          to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .pb-tag {
+          transition: background 0.25s, color 0.25s, border-color 0.25s;
+        }
+        .pb-tag:hover {
+          background: #ecfdf5;
+          border-color: #6ee7b7;
+          color: #065f46;
+        }
+      `}</style>
+
+      <section
+        id="project-base"
+        className="pb-root scroll-mt-28 py-16 "
+      >
+        <div className="mx-auto">
+          <div className="mt-10 md:mt-20 mx-auto">
+            {/* ── HEADER ─────────────────────────────────── */}
+            <div className="mb-12 md:mb-20 max-w-7xl mx-auto px-6 text-center relative">
+              {/* Dot grid accent */}
+              <div className="pb-grid-dot absolute inset-0 -z-10 opacity-60 pointer-events-none" />
+
+              <div className="pb-hero-line flex items-center justify-center gap-3 mb-7 md:mb-9">
+                <div className="h-px w-8 bg-emerald-600" />
+                <div className="px-3 py-1 border border-emerald-600 text-[10px] font-bold text-emerald-700 uppercase tracking-[0.22em]">
+                  Project Base
+                </div>
+                <div className="h-px w-8 bg-emerald-600" />
               </div>
-            </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 hero-line">
-              Become a{" "}
-              <span className="relative inline-block text-emerald-600">
-                Product Builder
-                <svg
-                  className="absolute -bottom-1 left-0 w-full h-1 text-emerald-300"
-                  viewBox="0 0 100 2"
-                  preserveAspectRatio="none"
-                >
-                  <line
-                    x1="0"
-                    y1="1"
-                    x2="100"
-                    y2="1"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                </svg>
-              </span>
-              ,
-              <br className="hidden md:block" />
-              not just a learner.
-            </h2>
 
-            <p className="mt-6 text-base sm:text-lg md:text-xl text-slate-800 max-w-3xl mx-auto leading-relaxed">
-              Choose a track and apply now. We align{" "}
-              <span className="text-emerald-600 font-semibold">
-                scope, timelines, and real outcomes
-              </span>{" "}
-              so your work actually ships.
-            </p>
-          </div>
-        </div>
-
-        {/* PRIMARY CTA HERO - FULL WIDTH */}
-        <div className="w-full mb-16 md:mb-28">
-          <div className="relative overflow-hidden bg-gradient-to-br from-emerald-700 via-emerald-800 to-emerald-900 border-t-4 border-emerald-400 p-8 sm:p-10 md:p-14 shadow-2xl flex flex-col items-center text-center">
-            {/* Decorative background */}
-            <div className="absolute inset-0 opacity-50 pointer-events-none">
-              <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-            </div>
-
-            <div className="relative z-10 max-w-5xl w-full">
-              <h3 className="text-3xl sm:text-4xl md:text-6xl font-serif font-medium tracking-tight text-white hero-line">
-                Build real products.{" "}
-                <span className="text-emerald-50 block md:inline">
-                  Work like an industry engineer.
+              <h2 className="pb-hero-line pb-serif text-5xl sm:text-6xl md:text-7xl font-normal tracking-tight text-slate-900 leading-[1.05]">
+                Become a{" "}
+                <span className="relative inline-block  text-emerald-600">
+                  Product Builder
+                  <svg
+                    className="absolute -bottom-1 left-0 w-full"
+                    viewBox="0 0 200 4"
+                    preserveAspectRatio="none"
+                    height="4"
+                  >
+                    <path
+                      d="M0,2 Q50,0 100,2 T200,2"
+                      stroke="#059669"
+                      strokeWidth="1.5"
+                      fill="none"
+                      strokeLinecap="round"
+                    />
+                  </svg>
                 </span>
-              </h3>
+                ,
+                <br className="hidden md:block" />
+                not just a learner.
+              </h2>
 
-              <p className="mt-5 text-white text-base sm:text-lg md:text-xl tracking-wide max-w-2xl mx-auto hero-line">
-                Collaborate with teams, solve real problems, and gain experience
-                that actually matters.
+              <p className="pb-hero-line mt-7 text-base sm:text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-light">
+                Choose a track and apply now. We align{" "}
+                <span className="text-emerald-600 font-semibold">
+                  scope, timelines, and real outcomes
+                </span>{" "}
+                so your work actually ships.
               </p>
+            </div>
+          </div>
 
-              <div className="mt-8 md:mt-10 hero-line">
-                <p className="text-white text-base sm:text-lg font-serif">
-                  "You don't learn by watching — you learn by building. Here,
-                  your work becomes part of real products."
-                </p>
+          {/* ── PRIMARY CTA HERO ───────────────────────── */}
+          <div className="w-full mb-16 md:mb-28">
+            <div className="relative overflow-hidden bg-emerald-600">
+              {/* Geometric accent lines */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full border border-white/10" />
+                <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full border border-white/10" />
+                <div className="absolute bottom-0 left-0 w-full h-px bg-white/10" />
+                <div className="absolute top-0 left-0 w-full h-px bg-white/20" />
+                {/* Subtle grid */}
+                <div
+                  className="absolute inset-0 opacity-[0.04]"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)",
+                    backgroundSize: "60px 60px",
+                  }}
+                />
               </div>
 
-              <div className="mt-10 md:mt-16 flex justify-center">
-                <button
-                  onClick={() => {
-                    const element = document.getElementById("active-programs");
-                    element?.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
-                  }}
-                  className="group relative px-8 sm:px-14 py-4 sm:py-5 bg-white text-emerald-900 hero-line font-bold uppercase tracking-[0.2em] text-xs transition-all duration-500 hover:bg-emerald-50 hover:tracking-[0.3em] shadow-[0_10px_40px_rgba(0,0,0,0.3)]"
-                >
-                  <span className="relative z-10">Start My Journey →</span>
-                  <div className="absolute inset-0 translate-x-2 translate-y-2 border border-emerald-400/50 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-300"></div>
-                </button>
+              <div className="relative z-10 max-w-5xl mx-auto px-8 sm:px-14 py-16 sm:py-20 md:py-24 flex flex-col items-center text-center">
+                <div className="inline-flex items-center gap-2 mb-8 px-3 py-1.5 rounded-full bg-white/10 border border-white/50 backdrop-blur-sm">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-200 animate-pulse" />
+                  <span className="text-white/90 text-[10px] font-semibold uppercase tracking-[0.2em]">
+                    Now Accepting Applications
+                  </span>
+                </div>
+
+                <h3 className="pb-serif text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-[1.1]">
+                  Build real products.{" "}
+                  <span className=" text-emerald-50 block md:inline">
+                    Work like an industry engineer.
+                  </span>
+                </h3>
+
+                <p className="mt-6 text-emerald-50 text-base sm:text-lg md:text-xl font-light max-w-xl mx-auto leading-relaxed">
+                  Collaborate with teams, solve real problems, and gain
+                  experience that actually matters.
+                </p>
+
+                <div className="mt-9 max-w-lg mx-auto border-l-2 border-white/30 pl-5 text-left">
+                  <p className="text-white/90 text-sm sm:text-base font-light  leading-relaxed">
+                    "You don't learn by watching — you learn by building. Here,
+                    your work becomes part of real products."
+                  </p>
+                </div>
+
+                <div className="mt-12 md:mt-14">
+                  <button
+                    onClick={() => {
+                      const element =
+                        document.getElementById("active-programs");
+                      element?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
+                    }}
+                    className="group relative  cursor-pointer inline-flex items-center gap-3 px-10 py-4 bg-white text-emerald-800 font-semibold text-sm uppercase tracking-[0.18em] overflow-hidden transition-all duration-300 hover:shadow-[0_20px_60px_rgba(0,0,0,0.25)] active:scale-[0.98]"
+                  >
+                    <span className="relative z-10 transition-colors duration-300 group-hover:text-white">
+                      Start My Journey
+                    </span>
+                    <svg
+                      className="relative z-10 w-4 h-4 transition-all duration-300 group-hover:translate-x-1 group-hover:text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                    <div className="absolute inset-0 bg-slate-900 translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-400 ease-[cubic-bezier(0.85,0,0.15,1)]" />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* TWO-COLUMN INFO SECTION */}
-        <div className="max-w-7xl mx-auto px-7 sm:px-6">
-          <div className="grid md:grid-cols-2 gap-0 mb-16 md:mb-20 border-y bg-white border-slate-200">
-            {/* SECTION 1: THE CORE */}
-            <div className="group relative py-10 md:py-16 md:pr-16 border-b md:border-b-0 md:border-r border-slate-400">
-              <div className="space-y-8 md:space-y-12">
-                <div className="space-y-5 md:space-y-6">
-                  <h4 className="text-3xl md:text-5xl font-semibold text-slate-900 tracking-tighter leading-[0.95]">
-                    What is <br />
-                    <span className="text-slate-400 group-hover:text-emerald-600 transition-colors duration-500">
-                      Lush Project Base?
+          {/* ── TWO-COLUMN INFO ────────────────────────── */}
+          <div className="max-w-7xl mx-auto bg-[#ffffff] px-6 sm:px-8">
+            <div className="grid md:grid-cols-2 gap-0 mb-16 md:mb-24">
+              {/* Col 1 */}
+              <div className="group py-12 md:py-16 md:pr-16 border-b md:border-b-0 md:border-r border-slate-200">
+                <div className="space-y-8">
+                  {/* Section label */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-px bg-emerald-600" />
+                    <span className="text-[12px] font-bold text-emerald-600 uppercase tracking-[0.2em]">
+                      The Platform
                     </span>
-                  </h4>
+                  </div>
 
-                  <p className="text-slate-500 leading-relaxed text-base md:text-xl">
-                    Lush Project Base is a hands-on environment where you
-                    contribute directly to{" "}
-                    <span className="text-slate-900 font-medium">
-                      real software products
-                    </span>{" "}
-                    that we continuously build and improve.
-                  </p>
+                  <div className="space-y-5">
+                    <h4 className="pb-serif text-4xl md:text-5xl font-normal text-slate-900 tracking-tight leading-[1.1]">
+                      What is{" "}
+                      <span className=" text-slate-500 group-hover:text-emerald-600 transition-colors duration-500">
+                        Lush Project Base?
+                      </span>
+                    </h4>
 
-                  <p className="text-slate-500 leading-relaxed text-base md:text-xl">
-                    This is not traditional training. You learn by working on
-                    live projects, gaining practical experience in real-world
-                    production environments.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 sm:gap-3">
-                  {[
-                    "Software Development Projects",
-                    "AI Research & Development",
-                    "Production-Level Experience",
-                  ].map((item) => (
-                    <span
-                      key={item}
-                      className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl bg-slate-50 border border-slate-200 text-[10px] font-bold uppercase tracking-widest text-slate-600 group-hover:border-emerald-200 transition-colors"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* SECTION 2: THE LEGACY */}
-            <div className="group/legacy relative py-10 md:py-16 md:pl-16 flex flex-col justify-between">
-              <div className="space-y-10 md:space-y-14">
-                <div className="space-y-6 md:space-y-8">
-                  <h4 className="text-3xl md:text-5xl  text-slate-900 tracking-tighter leading-tight">
-                    Make Partner Of <br />
-                    <span className="text-slate-900">
-                      A Legacy of Innovation & Success
-                    </span>
-                  </h4>
-
-                  <div className="space-y-5 md:space-y-6">
-                    <p className="text-slate-600 leading-relaxed text-base md:text-xl border-l-4 border-slate-900 pl-6 md:pl-8 group-hover/legacy:border-emerald-600 transition-colors duration-500">
-                      As{" "}
-                      <strong className="text-slate-900 font-black">
-                        LushWare ORG
-                      </strong>
-                      , we continuously create new platforms that help the
-                      general public simplify their daily lives, while
-                      consistently pushing boundaries and embracing emerging
-                      technologies.
+                    <p className="text-slate-500 leading-relaxed text-base md:text-lg font-light">
+                      Lush Project Base is a hands-on environment where you
+                      contribute directly to{" "}
+                      <span className="text-slate-900 font-medium">
+                        real software products
+                      </span>{" "}
+                      that we continuously build and improve.
                     </p>
 
-                    <p className="text-slate-500 leading-relaxed pl-7 md:pl-9 text-base md:text-xl">
+                    <p className="text-slate-500 leading-relaxed text-base md:text-lg font-light">
+                      This is not traditional training. You learn by working on
+                      live projects, gaining practical experience in real-world
+                      production environments.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {[
+                      "Software Development Projects",
+                      "AI Research & Development",
+                      "Production-Level Experience",
+                    ].map((item) => (
+                      <span
+                        key={item}
+                        className="pb-tag px-4 py-2 bg-white border border-slate-200 text-[11px] font-bold uppercase tracking-[0.15em] text-slate-500 cursor-default"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Col 2 */}
+              <div className="group/legacy py-12 md:py-16 md:pl-16">
+                <div className="space-y-8">
+                  {/* Section label */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-px bg-slate-300" />
+                    <span className="text-[12px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+                      Our Mission
+                    </span>
+                  </div>
+
+                  <h4 className="pb-serif text-4xl md:text-5xl font-normal text-slate-900 tracking-tight leading-[1.1]">
+                    Make Partner Of{" "}
+                    <span className="">A Legacy of Innovation & Success</span>
+                  </h4>
+
+                  <div className="space-y-5">
+                    <div className="relative pl-6 border-l-2 border-slate-900 group-hover/legacy:border-emerald-600 transition-colors duration-500">
+                      <p className="text-slate-600 leading-relaxed text-base md:text-lg font-light">
+                        As{" "}
+                        <strong className="text-slate-900 font-semibold">
+                          LushWare ORG
+                        </strong>
+                        , we continuously create new platforms that help the
+                        general public simplify their daily lives, while
+                        consistently pushing boundaries and embracing emerging
+                        technologies.
+                      </p>
+                    </div>
+
+                    <p className="text-slate-500 leading-relaxed pl-8 text-base md:text-lg font-light">
                       Our journey is driven by a commitment to excellence, a
                       strong customer-centric focus, and a passion for building
                       cutting-edge solutions that move both people and
@@ -227,115 +351,117 @@ export default function ProjectBasePage() {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* PROGRAM PATHS */}
-        <div
-          id="active-programs"
-          className="max-w-7xl mx-auto py-2 px-4 sm:px-6"
-        >
-          <div className="text-center mb-10 md:mb-16">
-            <h1 className="text-4xl sm:text-6xl  tracking-tighter text-slate-900">
-              Active <span className="text-emerald-600">Programs.</span>
-            </h1>
-          </div>
+          {/* ── ACTIVE PROGRAMS ────────────────────────── */}
+          <div
+            id="active-programs"
+            className="max-w-7xl mx-auto py-2 bg-[#ffffff] px-6 sm:px-8"
+          >
+            <div className="flex items-end justify-between mb-12 md:mb-16">
+              <h2 className="pb-serif text-5xl sm:text-6xl font-normal tracking-tight text-slate-900 leading-none">
+                Active <span className=" text-emerald-600">Programs.</span>
+              </h2>
 
-          <div className="border-t border-slate-400">
-            {programs.map((program, index) => (
-              <div
-                key={program.title}
-                ref={(el) => {
-                  programRefs.current[index] = el;
-                }}
-                onClick={() => setSelectedProgram(program)}
-                className={`group relative flex flex-col md:flex-row md:items-center justify-between py-8 sm:py-12 border-b border-slate-400 cursor-pointer transition-all duration-700 ${
-                  visiblePrograms.has(index)
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-12"
-                }`}
-                style={{ transitionDelay: `${(index % 2) * 150}ms` }}
-              >
-                {/* Left Side: Index & Title */}
-                <div className="flex items-start gap-6 sm:gap-12 md:gap-8 lg:gap-20">
-                  <span className="font-mono text-sm text-slate-400 group-hover:text-emerald-600 transition-colors duration-300 pt-1 shrink-0">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <div className="space-y-1 sm:space-y-2">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight transition-transform duration-500 group-hover:translate-x-2">
-                      {program.title}
-                    </h3>
-                    <p className="text-slate-600 text-xs sm:text-sm font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] group-hover:text-slate-600 transition-colors">
-                      {program.subtitle}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Right Side: Description & Button */}
-                <div className="mt-6 md:mt-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-12 ml-12 sm:ml-0">
-                  {/* Show description inline on mobile, hover on lg+ */}
-                  <p className="block lg:hidden text-slate-600 text-sm leading-relaxed max-w-xs">
-                    {program.description}
-                  </p>
-                  <p className="hidden lg:block text-slate-700 text-md leading-relaxed max-w-[280px] opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    {program.description}
-                  </p>
-
-                  {/* Sweep Button */}
-                  <button className="relative rounded-3xl h-12 sm:h-14 w-40 sm:w-52 bg-slate-900 overflow-hidden transition-all duration-300 group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] shrink-0">
-                    <div className="absolute inset-0 z-0 -translate-x-full bg-emerald-600 transition-transform duration-500 ease-[cubic-bezier(0.85,0,0.15,1)] group-hover:translate-x-0" />
-                    <div className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6">
-                      <span className="text-white text-[10px] sm:text-[11px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em]">
-                        Apply Now
-                      </span>
-                      <svg
-                        className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white transition-transform duration-500 group-hover:translate-x-2"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth="3"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </div>
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* MODAL */}
-      {selectedProgram &&
-        createPortal(
-          <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
-            {/* Backdrop */}
-            <div
-              className="fixed inset-0 bg-slate-900/40 backdrop-blur-md transition-all duration-500"
-              onClick={() => setSelectedProgram(null)}
-            />
-
-            {/* Modal — fixed overflow-y-scroll + overflow-hidden conflict */}
-            <div className="relative w-full max-w-2xl max-h-[94vh] overflow-y-auto bg-white shadow-2xl rounded-3xl animate-in fade-in zoom-in-95 duration-300">
-              <div className="p-6 sm:p-8 lg:p-14">
-                <InquiryForm
-                  inquiryType="project"
-                  topic={selectedProgram.title}
-                  project={selectedProgram.subtitle}
-                  onSuccess={() => setSelectedProgram(null)}
-                  onClose={() => setSelectedProgram(null)}
-                  showCloseButton={true}
-                />
+              <div className="hidden sm:flex items-center gap-2 text-slate-400 text-sm font-medium uppercase tracking-[0.15em]">
+                <span>{programs.length} tracks available</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               </div>
             </div>
-          </div>,
-          document.body,
-        )}
-    </section>
+
+            <div className="border-t border-slate-200">
+              {programs.map((program, index) => (
+                <div
+                  key={program.title}
+                  ref={(el) => {
+                    programRefs.current[index] = el;
+                  }}
+                  onClick={() => setSelectedProgram(program)}
+                  className={`pb-program-row group relative px-6 flex flex-col md:flex-row md:items-center justify-between py-9 sm:py-12 border-b border-slate-200 cursor-pointer transition-all duration-700 ${
+                    visiblePrograms.has(index)
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-12"
+                  }`}
+                  style={{ transitionDelay: `${(index % 2) * 150}ms` }}
+                >
+                  {/* Left */}
+                  <div className="flex items-start gap-8 sm:gap-14 md:gap-10 lg:gap-14">
+                    <span className="font-mono text-[11px] text-slate-300 group-hover:text-emerald-500 transition-colors duration-300 pt-1.5 shrink-0 tabular-nums">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+
+                    <div className="space-y-1.5">
+                      <h3 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight transition-transform duration-500 group-hover:translate-x-2">
+                        {program.title}
+                      </h3>
+                      <p className="text-slate-400 text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">
+                        {program.subtitle}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Right */}
+                  <div className="mt-6 md:mt-0 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-10 ml-14 sm:ml-0">
+                    <p className="block lg:hidden text-slate-600 text-md leading-relaxed max-w-sm font-light">
+                      {program.description}
+                    </p>
+                    <p className="hidden lg:block text-slate-600 text-md leading-relaxed max-w-[300px] font-light opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-2 group-hover:translate-x-0">
+                      {program.description}
+                    </p>
+
+                    {/* CTA Button */}
+                    <button className="pb-sweep-btn cursor-pointer relative shrink-0 h-12 sm:h-13 px-7 sm:px-9 bg-slate-900 overflow-hidden transition-shadow duration-300 group-hover:shadow-[0_16px_48px_rgba(0,0,0,0.12)]">
+                      <div className="relative z-10 flex items-center gap-2.5">
+                        <span className="text-white text-[10px] font-bold uppercase tracking-[0.18em] whitespace-nowrap">
+                          Apply Now
+                        </span>
+                        <svg
+                          className="w-3.5 h-3.5 text-white transition-transform duration-500 group-hover:translate-x-1.5"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"
+                          />
+                        </svg>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ── MODAL ──────────────────────────────────── */}
+        {selectedProgram &&
+          createPortal(
+            <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
+              <div
+                className="fixed inset-0 bg-slate-950/50 backdrop-blur-sm"
+                onClick={() => setSelectedProgram(null)}
+              />
+              <div className="pb-modal-animate relative w-full max-w-2xl max-h-[94vh] overflow-y-auto bg-white shadow-[0_40px_100px_rgba(0,0,0,0.2)]">
+                {/* Top accent bar */}
+                <div className="h-1 w-full bg-emerald-600" />
+                <div className="p-7 sm:p-10 lg:p-14">
+                  <InquiryForm
+                    inquiryType="project"
+                    topic={selectedProgram.title}
+                    project={selectedProgram.subtitle}
+                    onSuccess={() => setSelectedProgram(null)}
+                    onClose={() => setSelectedProgram(null)}
+                    showCloseButton={true}
+                  />
+                </div>
+              </div>
+            </div>,
+            document.body,
+          )}
+      </section>
+    </>
   );
 }

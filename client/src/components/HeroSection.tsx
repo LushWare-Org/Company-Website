@@ -106,8 +106,8 @@ export default function HeroSection() {
             <div className="relative h-full w-full px-6 md:px-16 lg:px-20 flex flex-col justify-center z-10 overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full items-center">
                 {/* Left Content */}
-                <div className="lg:col-span-7 mt-[190px] md:mt-[140px] lg:mt-12 flex flex-col">
-                  <h1 className="flex flex-col gap-0 select-none mb-6">
+                <div className="lg:col-span-7 mt-[190px] md:mt-[140px] lg:mt-12 flex flex-col md:items-center lg:items-start">
+                  <h1 className="flex flex-col gap-0 select-none mb-6 md:items-center lg:items-start md:text-center lg:text-left">
                     <span className="text-5xl md:text-7xl lg:text-[6.5rem] font-black text-emerald-600 sm:text-transparent uppercase leading-[0.8] tracking-tighter hero-line hero-stroke">
                       {slide.titleTop}
                     </span>
@@ -120,14 +120,14 @@ export default function HeroSection() {
                     </span>
                   </h1>
 
-                  <p className="text-xl font-medium text-stone-600 max-w-xl mb-8 mt-4 hero-line">
+                  <p className="text-xl font-medium text-stone-600 max-w-xl mb-8 mt-4 hero-line md:text-center lg:text-left md:mx-auto lg:mx-0">
                     {slide.description}
                   </p>
 
-                  <div className="flex flex-col md:flex-row lg:flex-col gap-6 w-full lg:w-max">
+                  <div className="flex flex-col md:flex-row lg:flex-col gap-6 w-full lg:w-max md:justify-center lg:justify-start">
                     <button
                       onClick={() => navigate("/contact")}
-                      className="group relative cursor-pointer rounded-full px-8 py-4 bg-stone-900 overflow-hidden lg:shadow-2xl shadow-none transition-all duration-500 hover:scale-105"
+                      className="group relative cursor-pointer rounded-xs px-8 py-4 bg-stone-900 overflow-hidden lg:shadow-2xl shadow-none transition-all duration-500 hover:scale-105"
                     >
                       <span className="relative z-10 text-[14px] font-bold tracking-[0.2em] uppercase text-white">
                         Start Your Project
@@ -156,7 +156,7 @@ export default function HeroSection() {
 
         {/* Custom Navigation Arrows */}
         <div className="absolute bottom-9 left-6 lg:left-20 z-20 flex gap-4">
-          <button className="custom-prev group cursor-pointer flex h-12 w-12 items-center justify-center rounded-full border border-stone-300 hover:border-stone-900 transition-all duration-300 bg-white/80 backdrop-blur-sm">
+          <button className="custom-prev group cursor-pointer flex h-12 w-12 items-center justify-center rounded-lg border border-stone-300 hover:border-stone-900 transition-all duration-300 bg-white/80 backdrop-blur-sm">
             <svg
               width="24"
               height="24"
@@ -173,7 +173,7 @@ export default function HeroSection() {
               />
             </svg>
           </button>
-          <button className="custom-next group cursor-pointer flex h-12 w-12 items-center justify-center rounded-full border border-stone-300 hover:border-stone-900 transition-all duration-300 bg-white/80 backdrop-blur-sm">
+          <button className="custom-next group cursor-pointer flex h-12 w-12 items-center justify-center rounded-lg border border-stone-300 hover:border-stone-900 transition-all duration-300 bg-white/80 backdrop-blur-sm">
             <svg
               width="24"
               height="24"
