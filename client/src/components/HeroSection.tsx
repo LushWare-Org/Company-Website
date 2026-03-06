@@ -26,8 +26,8 @@ const heroSlides: HeroSlide[] = [
     description:
       "Powerful CRM platforms designed to strengthen customer engagement, automate workflows, and scale relationships.",
     image: "/hero3/crm2.jpg",
-    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
-    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
+    maxWidthClass: "w-full px-4 sm:px-6  md:max-w-lg lg:max-w-md",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
   },
   {
     id: "02",
@@ -38,7 +38,7 @@ const heroSlides: HeroSlide[] = [
       "Intelligent AI agents and chatbots that automate support, sales, and internal operations with precision.",
     image: "/hero3/ai2.jpg",
     maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
-    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
   },
   {
     id: "03",
@@ -71,7 +71,7 @@ const heroSlides: HeroSlide[] = [
       "Scalable iOS and Android applications engineered for performance and user experience.",
     image: "/hero3/app.jpg",
     maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
-    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
   },
 ];
 
