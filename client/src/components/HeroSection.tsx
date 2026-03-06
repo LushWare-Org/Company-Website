@@ -25,9 +25,9 @@ const heroSlides: HeroSlide[] = [
     titleOutline: "Management.",
     description:
       "Powerful CRM platforms designed to strengthen customer engagement, automate workflows, and scale relationships.",
-    image: "/hero3/crm2.jpg",
-    maxWidthClass: "w-full px-4 sm:px-6  md:max-w-lg lg:max-w-md",
-    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
+    image: "/hero3/crm5.jpg",
+    maxWidthClass: "w-full px-4 sm:px-6  md:max-w-lg lg:max-w-lg",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
   },
   {
     id: "02",
@@ -36,9 +36,9 @@ const heroSlides: HeroSlide[] = [
     titleOutline: "Solutions.",
     description:
       "Intelligent AI agents and chatbots that automate support, sales, and internal operations with precision.",
-    image: "/hero3/ai2.jpg",
-    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
-    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
+    image: "/hero3/ai5.jpg",
+    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-lg",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
   },
   {
     id: "03",
@@ -47,8 +47,8 @@ const heroSlides: HeroSlide[] = [
     titleOutline: "Management.",
     description:
       "Streamline operations with BPM systems built for efficiency, visibility, and long-term growth.",
-    image: "/hero3/bpm3.jpg",
-    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
+    image: "/hero3/bpm5.jpg",
+    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-xl",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto lg:pt-2",
   },
   {
