@@ -1,0 +1,26 @@
+// Raw inner-SVG markup for each icon key, drawn as simple line icons
+// (rects, lines, circles, polylines) so they render reliably at any size.
+export const ICON_PATHS = {
+  realEstate: `<rect x="4" y="9" width="6" height="12"/><rect x="12" y="4" width="8" height="17"/><line x1="6" y1="12" x2="8" y2="12"/><line x1="6" y1="15" x2="8" y2="15"/><line x1="6" y1="18" x2="8" y2="18"/><line x1="15" y1="7" x2="17" y2="7"/><line x1="15" y1="10" x2="17" y2="10"/><line x1="15" y1="13" x2="17" y2="13"/><line x1="15" y1="16" x2="17" y2="16"/>`,
+  travel: `<circle cx="12" cy="12" r="9"/><polygon points="12,7 14.2,12 12,17 9.8,12"/>`,
+  consulting: `<rect x="3" y="8" width="18" height="12" rx="1.5"/><path d="M8.5 8V6a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2"/><line x1="3" y1="13.5" x2="21" y2="13.5"/>`,
+  healthcare: `<circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>`,
+  manufacturing: `<circle cx="12" cy="12" r="3.4"/><line x1="12" y1="2.5" x2="12" y2="5.5"/><line x1="12" y1="18.5" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5.5" y2="12"/><line x1="18.5" y1="12" x2="21.5" y2="12"/><line x1="5.1" y1="5.1" x2="7.2" y2="7.2"/><line x1="16.8" y1="16.8" x2="18.9" y2="18.9"/><line x1="5.1" y1="18.9" x2="7.2" y2="16.8"/><line x1="16.8" y1="7.2" x2="18.9" y2="5.1"/>`,
+  construction: `<line x1="4" y1="21" x2="4" y2="4"/><line x1="4" y1="4" x2="18" y2="4"/><line x1="18" y1="4" x2="18" y2="9"/><line x1="4" y1="10" x2="13" y2="10"/><line x1="13" y1="10" x2="13" y2="21"/><rect x="9.5" y="15.5" width="7" height="5.5"/>`,
+  infra: `<rect x="4" y="3.5" width="16" height="5" rx="1.2"/><rect x="4" y="9.5" width="16" height="5" rx="1.2"/><rect x="4" y="15.5" width="16" height="5" rx="1.2"/><line x1="7" y1="6" x2="7.01" y2="6"/><line x1="7" y1="12" x2="7.01" y2="12"/><line x1="7" y1="18" x2="7.01" y2="18"/>`,
+  data: `<ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/><path d="M4 11.5v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>`,
+  ops: `<path d="M4.5 12a7.5 7.5 0 0 1 13.6-4.3"/><path d="M19.5 12a7.5 7.5 0 0 1-13.6 4.3"/><polyline points="17.2 4.2 18.1 7.7 14.6 7.3"/><polyline points="6.8 19.8 5.9 16.3 9.4 16.7"/>`,
+  security: `<path d="M12 3.2l7 3v5.6c0 4.8-3.2 7.6-7 8.8-3.8-1.2-7-4-7-8.8V6.2l7-3z"/><path d="M9 12l2.2 2.2L15.5 9.8"/>`,
+  spark: `<path d="M12 3l1.8 5.6L19 10.4l-5.2 1.8L12 18l-1.8-5.8L5 10.4l5.2-1.8L12 3z"/>`,
+  eye: `<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>`,
+  chart: `<line x1="4" y1="20" x2="20" y2="20"/><rect x="6" y="12" width="3" height="8"/><rect x="11" y="7" width="3" height="13"/><rect x="16" y="10" width="3" height="10"/>`,
+  chip: `<rect x="7" y="7" width="10" height="10" rx="1.2"/><line x1="12" y1="2" x2="12" y2="7"/><line x1="12" y1="17" x2="12" y2="22"/><line x1="2" y1="12" x2="7" y2="12"/><line x1="17" y1="12" x2="22" y2="12"/><line x1="9.5" y1="9.5" x2="14.5" y2="14.5"/>`,
+  chain: `<rect x="3" y="8" width="8" height="8" rx="2.4"/><rect x="13" y="8" width="8" height="8" rx="2.4"/><line x1="11" y1="12" x2="13" y2="12"/>`,
+  layers: `<polygon points="12,3 21,8 12,13 3,8"/><polyline points="3,13 12,18 21,13"/><polyline points="3,17.5 12,22.5 21,17.5"/>`,
+  check: `<polyline points="4,12.5 9.5,18 20,6"/>`,
+  arrow: `<line x1="4" y1="12" x2="18" y2="12"/><polyline points="12,6 18,12 12,18"/>`,
+  coins: `<circle cx="9" cy="9" r="5.5"/><path d="M13.2 6.4A5.5 5.5 0 1 1 6.4 13.2"/>`,
+  rocket: `<path d="M12 2c3 2 5 6 4.6 11.2L12 18l-4.6-4.8C7 8 9 4 12 2z"/><circle cx="12" cy="9.5" r="1.6"/><path d="M8.5 15.5L6 21l3.2-1.6"/><path d="M15.5 15.5L18 21l-3.2-1.6"/>`,
+  building: `<rect x="4" y="3" width="16" height="18" rx="1"/><line x1="8" y1="7" x2="8" y2="7"/><line x1="8" y1="10.5" x2="16" y2="10.5"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="17.5" x2="12" y2="17.5"/>`,
+  handshake: `<path d="M3 12l4-4 4 3 3-3 4 4"/><path d="M7 11l4 4 3-3"/><path d="M3 12v4l3 3"/><path d="M21 12v4l-3 3"/>`
+}
