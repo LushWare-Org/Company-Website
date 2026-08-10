@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LushWare — Service Specializations & Packages</title>
     <meta name="description" content="LushWare capability map and engagement packages for founders, businesses, and partners." />
+    <meta name="theme-color" content="#f5f8f6" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1310" media="(prefers-color-scheme: dark)" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,6 +14,17 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="/lushware-logo.png" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('lushware-theme');
+          var theme = stored === 'light' || stored === 'dark'
+            ? stored
+            : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -1,12 +1,16 @@
 import { NavLink } from 'react-router-dom'
+import ThemeToggle from './ThemeToggle.jsx'
 
 export default function Header() {
   return (
     <header className="site-header">
       <div className="header-inner">
         <NavLink to="/" className="brand" aria-label="LushWare home">
-          <img src="/lushware-logo.png" alt="LushWare logo" />
+          <span className="brand-mark">
+            <img src="/lushware-logo.png" alt="LushWare logo" />
+          </span>
           <span className="brand-text">
+            <span className="name">LushWare</span>
             <span className="sub">Growth-engineered software</span>
           </span>
         </NavLink>
@@ -20,9 +24,13 @@ export default function Header() {
           </NavLink>
         </nav>
 
-        <NavLink to="/packages" className="header-cta">
-          Start a project
-        </NavLink>
+        <div className="header-actions">
+          <ThemeToggle />
+          <NavLink to="/packages" className="header-cta">
+            <span className="full">Start a project</span>
+            <span className="short">Start</span>
+          </NavLink>
+        </div>
       </div>
     </header>
   )
