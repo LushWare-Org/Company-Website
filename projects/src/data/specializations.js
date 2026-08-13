@@ -19,8 +19,8 @@ export const TABS = [
     appsLabel: 'Industry Applications',
     industries: [
       { key: 'realEstate', name: 'Real Estate', items: ['AI-powered Real Estate CRM', 'Property & Facility Management System', 'Real Estate Investment Management Platform', 'Smart Building Management System'] },
-      { key: 'travel', name: 'Travel & Hospitality', items: ['Travel Operations & Booking Platform', 'Hotel & Resort Management System', 'Destination Management Platform', 'Travel CRM & Customer Experience Platform'] },
-      { key: 'consulting', name: 'Business Consulting', items: ['Consulting Practice Management Platform', 'Business Assessment & Advisory Platform', 'Client Collaboration Portal', 'Executive Decision Dashboard'] },
+      { key: 'retail', name: 'Retail', items: ['Retail Order & Inventory Management Platform', 'Omnichannel POS & Commerce System', 'Warehouse & Fulfillment Management System', 'Retail Customer Loyalty Platform'] },
+      { key: 'engineering', name: 'Engineering', items: ['Engineering Project Management Platform', 'CAD & Design Collaboration System', 'Asset & Equipment Lifecycle Management', 'Engineering Resource Planning Platform'] },
       { key: 'healthcare', name: 'Healthcare', items: ['Hospital Management Platform', 'Patient Engagement Portal', 'Clinical Workflow Management System', 'Healthcare Analytics Platform'] },
       { key: 'manufacturing', name: 'Manufacturing', items: ['Manufacturing Execution System (MES)', 'Production Monitoring Platform', 'Quality Management System', 'Asset Management Platform'] },
       { key: 'construction', name: 'Construction', items: ['Construction Project Management Platform', 'Contractor Management System', 'Digital Site Management Platform', 'Equipment Management Platform'] }
@@ -46,8 +46,8 @@ export const TABS = [
     appsLabel: 'Industry Applications',
     industries: [
       { key: 'realEstate', name: 'Real Estate', items: ['AI Lead Qualification Agent', 'Property Recommendation Agent', 'Sales Follow-up Agent', 'Property Valuation Agent'] },
-      { key: 'travel', name: 'Travel & Hospitality', items: ['AI Travel Planner', 'Booking Assistant Agent', 'Hotel Concierge Agent', 'Revenue Optimization Agent'] },
-      { key: 'consulting', name: 'Business Consulting', items: ['Business Analysis Agent', 'Market Research Agent', 'Proposal & Report Generation Agent', 'Executive AI Assistant'] },
+      { key: 'retail', name: 'Retail', items: ['AI Shopping Assistant Agent', 'Inventory Replenishment Agent', 'Dynamic Pricing Agent', 'Customer Support Agent'] },
+      { key: 'engineering', name: 'Engineering', items: ['Engineering Design Review Agent', 'Project Scheduling Agent', 'Technical Documentation Agent', 'Compliance Checking Agent'] },
       { key: 'healthcare', name: 'Healthcare', items: ['Patient Support Agent', 'Clinical Documentation Agent', 'Appointment Scheduling Agent', 'Medical Knowledge Assistant'] },
       { key: 'manufacturing', name: 'Manufacturing', items: ['Production Optimization Agent', 'Maintenance Planning Agent', 'Quality Assurance Agent', 'Supply Chain Coordination Agent'] },
       { key: 'construction', name: 'Construction', items: ['Project Monitoring Agent', 'Site Safety Compliance Agent', 'Procurement Assistant Agent', 'Cost Estimation Agent'] }
@@ -73,8 +73,8 @@ export const TABS = [
     appsLabel: 'Industry Applications',
     industries: [
       { key: 'realEstate', name: 'Real Estate', items: ['Property Price Prediction Models', 'Buyer Recommendation Models', 'Lead Conversion Prediction', 'Rental Demand Forecasting'] },
-      { key: 'travel', name: 'Travel & Hospitality', items: ['Dynamic Pricing Models', 'Occupancy Forecasting', 'Customer Segmentation Models', 'Travel Recommendation Models'] },
-      { key: 'consulting', name: 'Business Consulting', items: ['Sales Forecasting Models', 'Customer Churn Prediction', 'Financial Forecasting Models', 'Business Risk Prediction'] },
+      { key: 'retail', name: 'Retail', items: ['Demand Forecasting Models', 'Product Recommendation Models', 'Customer Segmentation Models', 'Inventory Optimization Models'] },
+      { key: 'engineering', name: 'Engineering', items: ['Structural Load Prediction Models', 'Equipment Failure Prediction', 'Project Cost Estimation Models', 'Material Demand Forecasting'] },
       { key: 'healthcare', name: 'Healthcare', items: ['Disease Risk Prediction', 'Patient Readmission Prediction', 'Resource Demand Forecasting', 'Treatment Recommendation Models'] },
       { key: 'manufacturing', name: 'Manufacturing', items: ['Predictive Maintenance Models', 'Production Yield Prediction', 'Quality Defect Prediction', 'Demand Forecasting Models'] },
       { key: 'construction', name: 'Construction', items: ['Project Delay Prediction', 'Cost Overrun Prediction', 'Equipment Failure Prediction', 'Safety Risk Prediction'] }
@@ -109,8 +109,8 @@ export const TABS = [
         appsLabel: 'Industry Applications',
         industries: [
           { key: 'realEstate', name: 'Real Estate', items: ['AI Property Description Generator', 'Intelligent Document Analysis', 'Lease & Contract Review Assistant', 'Real Estate Knowledge Chatbot'] },
-          { key: 'travel', name: 'Travel & Hospitality', items: ['AI Itinerary Generator', 'Travel Assistant Chatbot', 'Multilingual Customer Support', 'Automated Quotation Generator'] },
-          { key: 'consulting', name: 'Business Consulting', items: ['AI Business Strategy Assistant', 'Automated Business Report Generator', 'Proposal Writing Assistant', 'Corporate Knowledge Assistant'] },
+          { key: 'retail', name: 'Retail', items: ['AI Product Description Generator', 'Retail Shopping Chatbot', 'Multilingual Customer Support', 'Automated Quotation Generator'] },
+          { key: 'engineering', name: 'Engineering', items: ['AI Technical Specification Generator', 'Engineering Report Assistant', 'Proposal Writing Assistant', 'Engineering Knowledge Assistant'] },
           { key: 'healthcare', name: 'Healthcare', items: ['Medical Documentation Assistant', 'Clinical Knowledge Search', 'Healthcare Chatbot', 'Medical Report Summarization'] }
         ]
       },
@@ -132,7 +132,7 @@ export const TABS = [
         appsLabel: 'Industry Applications',
         industries: [
           { key: 'realEstate', name: 'Real Estate', items: ['Property Inspection AI', 'Construction Progress Monitoring', 'Floor Plan Digitization', 'Smart Building Surveillance'] },
-          { key: 'travel', name: 'Travel & Hospitality', items: ['Hotel Room Inspection', 'Crowd Analytics', 'Facial Recognition Check-in', 'Visitor Flow Analysis'] },
+          { key: 'retail', name: 'Retail', items: ['Shelf & Planogram Compliance Monitoring', 'In-Store Customer Analytics', 'Self-Checkout Loss Prevention', 'Store Foot Traffic Analysis'] },
           { key: 'manufacturing', name: 'Manufacturing', items: ['Automated Quality Inspection', 'Defect Detection', 'Inventory Counting', 'Worker Safety Monitoring'] },
           { key: 'construction', name: 'Construction', items: ['Site Progress Tracking', 'PPE Compliance Detection', 'Equipment Monitoring', 'Drone-based Site Inspection'] }
         ]
@@ -155,8 +155,8 @@ export const TABS = [
         appsLabel: 'Industry Applications',
         industries: [
           { key: 'realEstate', name: 'Real Estate', items: ['Investment Decision Platform', 'Market Trend Forecasting', 'Property Portfolio Analytics', 'Sales Performance Dashboard'] },
-          { key: 'travel', name: 'Travel & Hospitality', items: ['Revenue Intelligence Platform', 'Occupancy Prediction Dashboard', 'Demand Forecasting', 'Customer Analytics Platform'] },
-          { key: 'consulting', name: 'Business Consulting', items: ['Executive Decision Support System', 'Financial Intelligence Dashboard', 'Strategic Planning Platform', 'Business Performance Analytics'] },
+          { key: 'retail', name: 'Retail', items: ['Retail Revenue Intelligence Platform', 'Demand & Stock Forecasting Dashboard', 'Store Performance Analytics', 'Customer Lifetime Value Platform'] },
+          { key: 'engineering', name: 'Engineering', items: ['Engineering Decision Support System', 'Project Cost Intelligence Dashboard', 'Resource Capacity Planning Platform', 'Engineering Performance Analytics'] },
           { key: 'manufacturing', name: 'Manufacturing', items: ['Production Analytics', 'Supply Chain Intelligence', 'Inventory Optimization', 'Capacity Planning Dashboard'] }
         ]
       },
@@ -178,7 +178,7 @@ export const TABS = [
         appsLabel: 'Industry Applications',
         industries: [
           { key: 'realEstate', name: 'Real Estate', items: ['Smart Building Edge Monitoring', 'Occupancy Detection', 'Energy Optimization', 'Security Monitoring'] },
-          { key: 'travel', name: 'Travel & Hospitality', items: ['Smart Hotel Room Automation', 'Visitor Counting Devices', 'Smart Parking Solutions', 'Edge-based Security Monitoring'] },
+          { key: 'retail', name: 'Retail', items: ['Smart Shelf & Stock Sensors', 'In-Store Visitor Counting Devices', 'Edge-based Loss Prevention', 'Smart POS Edge Devices'] },
           { key: 'manufacturing', name: 'Manufacturing', items: ['Edge Quality Inspection', 'Machine Health Monitoring', 'Predictive Equipment Maintenance', 'Factory Sensor Intelligence'] },
           { key: 'construction', name: 'Construction', items: ['Smart Safety Wearables', 'Equipment Monitoring Devices', 'Edge Surveillance Systems', 'Environmental Monitoring Sensors'] }
         ]
@@ -236,19 +236,19 @@ export const TABS = [
         ]
       },
       {
-        key: 'travel', name: 'Travel & Hospitality', items: [
-          { n: 'Blockchain Loyalty & Rewards Platform', d: 'Unified, transferable customer loyalty points across travel partners.' },
-          { n: 'Digital Traveler Identity', d: 'Secure identity verification for seamless bookings and hotel check-ins.' },
-          { n: 'Booking & Ticket Verification', d: 'Prevent fraud with immutable booking and ticket records.' },
-          { n: 'Travel Insurance Smart Contracts', d: 'Automatically process claims based on predefined travel events.' }
+        key: 'retail', name: 'Retail', items: [
+          { n: 'Blockchain Loyalty & Rewards Platform', d: 'Unified, transferable customer loyalty points across retail partners and brands.' },
+          { n: 'Product Authenticity Verification', d: 'Verify genuine products and combat counterfeiting at the point of sale.' },
+          { n: 'Retail Supply Chain Traceability', d: 'Track goods from manufacturer to shelf with an immutable, transparent record.' },
+          { n: 'Tokenized Gift Card & Rewards Platform', d: 'Issue and redeem digital gift cards and rewards as tradeable, secure tokens.' }
         ]
       },
       {
-        key: 'consulting', name: 'Business Consulting', items: [
-          { n: 'Digital Document Verification', d: 'Verify contracts, certificates, and business documents with immutable records.' },
-          { n: 'Smart Contract Solutions', d: 'Automate business agreements, approvals, and payment workflows.' },
-          { n: 'Supply Chain Traceability', d: 'Track products and assets with complete transparency from source to customer.' },
-          { n: 'Blockchain Strategy & Advisory', d: 'Design and implement enterprise blockchain solutions aligned with business goals.' }
+        key: 'engineering', name: 'Engineering', items: [
+          { n: 'Digital Document Verification', d: 'Verify contracts, certifications, and engineering documents with immutable records.' },
+          { n: 'Smart Contract Solutions', d: 'Automate project agreements, milestone approvals, and payment workflows.' },
+          { n: 'Engineering Supply Chain Traceability', d: 'Track components and materials with complete transparency from source to project.' },
+          { n: 'Blockchain Engineering Advisory', d: 'Design and implement enterprise blockchain solutions aligned with engineering operations.' }
         ]
       },
       {
