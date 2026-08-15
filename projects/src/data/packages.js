@@ -4,6 +4,7 @@ export const FOUNDER_PACKAGES = [
     tier: 'Tier 01',
     name: 'Foundation Partner',
     price: '$5,000',
+    budgetPercent: 20,
     equity: 20,
     tagline: 'For idea-stage founders who need a true technical co-building partner.',
     features: [
@@ -18,6 +19,7 @@ export const FOUNDER_PACKAGES = [
     tier: 'Tier 02',
     name: 'Build Partner',
     price: '$10,000',
+    budgetPercent: 40,
     equity: 10,
     featured: true,
     tagline: 'A balanced blend of cash and equity for founders with early traction.',
@@ -33,6 +35,7 @@ export const FOUNDER_PACKAGES = [
     tier: 'Tier 03',
     name: 'Growth Partner',
     price: '$20,000',
+    budgetPercent: 80,
     equity: 5,
     tagline: 'Mostly cash-funded, for founders who want to preserve most of their equity.',
     features: [

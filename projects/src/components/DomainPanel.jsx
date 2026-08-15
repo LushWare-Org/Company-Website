@@ -11,13 +11,17 @@ export default function DomainPanel({ data }) {
         <p>{data.intro}</p>
       </div>
 
-      <SectionLabel>Build Blueprint</SectionLabel>
-      <Stepper steps={data.steps} />
+      <div className="blueprint-split">
+        <div className="blueprint-col">
+          <SectionLabel>Build Blueprint</SectionLabel>
+          <Stepper steps={data.steps} />
+        </div>
 
-      <div className="spacer" />
-
-      <SectionLabel>{data.appsLabel}</SectionLabel>
-      <IndustryGrid industries={data.industries} />
+        <div className="industries-col">
+          <SectionLabel>{data.appsLabel}</SectionLabel>
+          <IndustryGrid industries={data.industries} />
+        </div>
+      </div>
     </div>
   )
 }

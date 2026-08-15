@@ -7,7 +7,12 @@ export default function FounderCard({ pkg }) {
       {pkg.featured && <span className="featured-badge">Most chosen</span>}
       <span className="price-card-tier mono">{pkg.tier}</span>
       <h4 className="price-card-name">{pkg.name}</h4>
-      <div className="price-card-price">{pkg.price}</div>
+      <div className="price-card-price-row">
+        <span className="price-card-price">{pkg.price}</span>
+        {pkg.budgetPercent && (
+          <span className="price-card-price-note">(Or {pkg.budgetPercent}% of the Estimated Budget)</span>
+        )}
+      </div>
       <p className="price-card-tagline">{pkg.tagline}</p>
 
       <EquityGauge value={pkg.equity} />
