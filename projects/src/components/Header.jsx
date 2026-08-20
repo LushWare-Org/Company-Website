@@ -40,7 +40,7 @@ export default function Header() {
 
         <div className="header-actions">
           <ThemeToggle />
-          <NavLink to="/packages" className="header-cta">
+          <NavLink to="https://calendly.com/lushware-net/30min" target="_blank" rel="noopener noreferrer" className="header-cta">
             <span className="full">Start a project</span>
             <span className="short">Start</span>
           </NavLink>

@@ -26,7 +26,7 @@ export default function FounderCard({ pkg }) {
         ))}
       </ul>
 
-      <button className="price-card-cta">
+      <button className="price-card-cta" onClick={() => window.open("https://calendly.com/lushware-net/30min", '_blank')}>
         Enquire about this tier
         <Icon name="arrow" />
       </button>

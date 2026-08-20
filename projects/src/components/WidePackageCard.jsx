@@ -10,7 +10,7 @@ export default function WidePackageCard({ pkg }) {
         <h4>{pkg.name}</h4>
         <div className="wide-card-price">{pkg.price}</div>
         <p className="wide-card-tagline">{pkg.tagline}</p>
-        <button className="price-card-cta">
+        <button className="price-card-cta" onClick={() => window.open("https://calendly.com/lushware-net/30min", '_blank')}>
           {pkg.icon === 'handshake' ? 'Start a partner conversation' : 'Request a proposal'}
           <Icon name="arrow" />
         </button>
