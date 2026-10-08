@@ -22,11 +22,14 @@ import RealEstatePage from './pages/templates/RealEstatePage'
 import { Routes, Route, useLocation } from 'react-router-dom'
 //import { useEffect, useState } from 'react'
 //import Loading from './components/Loading'
-import { useLenis } from './hooks/useLenis'
+//import { useLenis } from './hooks/useLenis'
 import ElectricalServices from './pages/solutions/ElectricalServices'
 import PlumbingServices from './pages/solutions/PlumbingServices'
 import HVACServices from './pages/solutions/HVACServices'
 import IoTProductDevelopment from './pages/solutions/IoTDevelopment'
+import ProductEngineering from './pages/solutions/ProductEngineering'
+import AIProcessOptimization from './pages/solutions/AIProcessOptimization'
+import AutonomousDecisionIntelligence from './pages/solutions/AutonomousDecisionIntelligence'
 
 function App() {
   //const [loading, setLoading] = useState(true);
@@ -35,7 +38,7 @@ function App() {
   const isTemplatePage = location.pathname.startsWith('/templates');
 
   // Initialize Lenis smooth scrolling globally
-  useLenis();
+  //useLenis();
 
   /*useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 500);
@@ -92,6 +95,9 @@ function App() {
           <Route path="/solutions/websites" element={<Websites />} />
           <Route path="/solutions/mobile-apps" element={<MobileApps />} />
           <Route path="/solutions/iot-product-development" element={<IoTProductDevelopment />} />
+          <Route path="/solutions/product-engineering" element={<ProductEngineering />} />
+          <Route path="/solutions/ai-process-optimization" element={<AIProcessOptimization />} />
+          <Route path="/solutions/autonomous-decision-intelligence" element={<AutonomousDecisionIntelligence />} />
           <Route path="/work" element={<WorkPage />} />
           <Route path="/project-base" element={<ProjectBasePage />} />
           <Route path="/contact" element={<ConsultationPage />} />

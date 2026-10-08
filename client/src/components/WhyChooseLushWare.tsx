@@ -68,20 +68,7 @@ const WhyChooseLushWare: React.FC = () => {
               A Technology Partner{" "}
               <span className="relative inline-block  text-emerald-600">
                 Focused on Results
-                <svg
-                  className="absolute -bottom-1 left-0 w-full"
-                  viewBox="0 0 200 4"
-                  preserveAspectRatio="none"
-                  height="4"
-                >
-                  <path
-                    d="M0,2 Q50,0 100,2 T200,2"
-                    stroke="#059669"
-                    strokeWidth="1.5"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </svg>
+   
               </span>
               .
             </h2>
@@ -158,23 +145,7 @@ const WhyChooseLushWare: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
-                  {[
-                    "Enterprise Ready",
-                    "Scalable Solutions",
-                    "Secure by Design",
-                    "Client-Focused",
-                    "On-Time Delivery",
-                    "24/7 Support",
-                  ].map((item) => (
-                    <span
-                      key={item}
-                      className="wlw-tag px-4 py-2 bg-white border border-slate-200 text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500 cursor-default"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
+
 
                 <div className="pt-2">
                   <button
