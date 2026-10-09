@@ -30,6 +30,8 @@ import IoTProductDevelopment from './pages/solutions/IoTDevelopment'
 import ProductEngineering from './pages/solutions/ProductEngineering'
 import AIProcessOptimization from './pages/solutions/AIProcessOptimization'
 import AutonomousDecisionIntelligence from './pages/solutions/AutonomousDecisionIntelligence'
+import Manufacturing from './pages/solutions/Manufacturing'
+import LogisticsSupplyChain from './pages/solutions/Logisticssupplychain'
 
 function App() {
   //const [loading, setLoading] = useState(true);
@@ -107,6 +109,8 @@ function App() {
           <Route path="/industries/hvac" element={<HVACServices />} />
           <Route path="/industries/plumbing" element={<PlumbingServices />} />
           <Route path="/industries/electrical" element={<ElectricalServices />} />  
+          <Route path="/industries/manufacturing" element={<Manufacturing />} />
+          <Route path="/industries/logistics-supply-chain" element={<LogisticsSupplyChain />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route 
             path="/admin/dashboard" 

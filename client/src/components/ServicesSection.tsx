@@ -1,10 +1,11 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface Service {
   number: string;
   title: string;
   desc: string;
   tags: string[];
+  to?: string;
   color: string;
 }
 
@@ -49,6 +50,38 @@ const servicesData: Service[] = [
     title: "AI Based Development",
     desc: "AI-powered tools and smart systems that help automate tasks, improve decisions, and boost efficiency.",
     tags: ["Gen AI", "Neural Workflows"],
+    color: "group-hover:text-emerald-600",
+  },
+  {
+    number: "07",
+    title: "AI-Driven Process Optimization",
+    desc: "Forecast, simulate, and optimize operations.",
+    tags: ["Forecasting", "Operational Optimization"],
+    to: "/solutions/ai-process-optimization",
+    color: "group-hover:text-emerald-600",
+  },
+  {
+    number: "08",
+    title: "Autonomous Decision Intelligence",
+    desc: "Governed systems that decide and act.",
+    tags: ["Decision Systems", "Governed Automation"],
+    to: "/solutions/autonomous-decision-intelligence",
+    color: "group-hover:text-emerald-600",
+  },
+  {
+    number: "13",
+    title: "IoT Product Development",
+    desc: "Connect devices and monitor them remotely.",
+    tags: ["Connected Devices", "Remote Monitoring"],
+    to: "/solutions/iot-product-development",
+    color: "group-hover:text-emerald-600",
+  },
+  {
+    number: "14",
+    title: "Product Engineering",
+    desc: "Device design, custom PCBs, and embedded systems.",
+    tags: ["Custom PCBs", "Embedded Systems"],
+    to: "/solutions/product-engineering",
     color: "group-hover:text-emerald-600",
   },
 ];
@@ -421,6 +454,10 @@ const iconMap = {
   "04": WebDevIcon,
   "05": CloudDevIcon,
   "06": AIDevIcon,
+  "07": ProductDevIcon,
+  "08": AIDevIcon,
+  "13": CloudDevIcon,
+  "14": CustomDevIcon,
 };
 
 export default function ServicesSection() {
@@ -431,10 +468,10 @@ export default function ServicesSection() {
       data-reveal
       className="bg-[#ffffff] px-6 sm:px-6 py-12 sm:py-16 lg:py-28 relative"
     >
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-32 ">
+      <div className="max-w-8xl px-0 lg:px-36 mx-auto relative z-10">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-12">
           {/* ── Sidebar / Header ── */}
-          <div className="lg:w-1/3 lg:sticky lg:top-48 h-fit">
+          <div className="lg:w-[45%] lg:sticky lg:top-64 h-fit">
             {/* Inject fonts to match Project Base theme */}
             <style>{`
     @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
@@ -470,31 +507,16 @@ export default function ServicesSection() {
               </div>
 
               {/* Heading */}
-              <h2 className="svc-serif text-4xl sm:text-6xl lg:text-6xl xl:text-7xl font-normal tracking-tight text-slate-900 mb-6 lg:mb-10">
-                Our Specialized <span className="text-slate-400">Software</span>
-                <br />
-                <span className="relative inline-block text-emerald-600">
-                  Solutions.
-                  <svg
-                    className="absolute -bottom-1 left-0 w-full"
-                    viewBox="0 0 200 4"
-                    preserveAspectRatio="none"
-                    height="4"
-                  >
-                    <path
-                      d="M0,2 Q50,0 100,2 T200,2"
-                      stroke="#059669"
-                      strokeWidth="1.5"
-                      fill="none"
-                      strokeLinecap="round"
-                    />
-                  </svg>
+              <h2 className="svc-serif text-4xl sm:text-6xl lg:text-5xl xl:text-[4.0rem] leading-[1.1] font-normal tracking-tight text-slate-900 mb-6 lg:mb-6">
+                <span className="svc-serif block lg:whitespace-nowrap">Our Specialized</span>
+                <span className="font-normal block lg:whitespace-nowrap text-emerald-600">
+                  Software Solutions.
                 </span>
               </h2>
 
               {/* Description */}
-              <p className="svc-sans text-slate-500 text-md font-light leading-relaxed mb-4 max-w-xs mx-auto lg:mx-0 lg:max-w-none">
-                Tailored software built to move your business forward.
+              <p className="svc-sans text-slate-700 text-lg font-light leading-relaxed mb-8 max-w-xs mx-auto lg:mx-0 lg:max-w-none">
+Tailored software solutions designed to streamline operations, solve complex business challenges, and accelerate growth through intelligent technology built around your unique goals.
               </p>
 
               {/* CTA Button */}
@@ -525,83 +547,82 @@ export default function ServicesSection() {
           </div>
 
           {/* ── Service Cards ── */}
-          <div className="lg:w-2/3 space-y-8 sm:space-y-6 lg:mt-0 md:mt-8 mt-4 px-0 md:px-12 lg:px-0 lg:space-y-14">
+          <div className="lg:w-[60%] space-y-8 sm:space-y-6 lg:mt-0 md:mt-8 mt-4 px-0 md:px-12 lg:px-0 lg:space-y-14">
             {servicesData.map((service) => {
               const IconComponent =
                 iconMap[service.number as keyof typeof iconMap];
-              return (
-                <div
-                  key={service.number}
-                  className="group relative bg-white border border-slate-300 rounded-2xl sm:rounded-3xl transition-all  duration-500 hover:-translate-y-1 hover:border-emerald-400 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] overflow-hidden"
-                >
-                  <div className="p-8 sm:p-8 md:p-10 relative z-10">
-                    {/* Mobile: stack icon + text vertically; md+: side by side */}
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8 lg:gap-14">
-                      {/* Icon + number row on mobile */}
-                      <div className="flex sm:flex-col items-center gap-4 sm:gap-0 flex-shrink-0">
-                        {/* Service number — visible on all sizes */}
-                        <span className="text-xs font-bold text-slate-300 tracking-widest sm:hidden">
+              const cardContent = (
+                <div className="p-8 sm:p-8 md:p-10 relative z-10">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8 lg:gap-14">
+                    <div className="flex sm:flex-col items-center gap-4 sm:gap-0 flex-shrink-0">
+                      <span className="text-xs font-bold text-slate-300 tracking-widest sm:hidden">
+                        {service.number}
+                      </span>
+                      {IconComponent && (
+                        <div className="relative flex-shrink-0">
+                          <div className="absolute inset-0 bg-emerald-500/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                          <div className="relative w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 text-emerald-600 transition-transform duration-500 group-hover:scale-110">
+                            <IconComponent />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="space-y-3 sm:space-y-4 flex-1 min-w-0">
+                      <div className="space-y-1">
+                        <span className="hidden sm:block text-xs font-bold text-slate-300 tracking-widest mb-1">
                           {service.number}
                         </span>
-
-                        {IconComponent && (
-                          <div className="relative flex-shrink-0">
-                            <div className="absolute inset-0 bg-emerald-500/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            {/* Smaller icon on mobile */}
-                            <div className="relative w-14 h-14 sm:w-20 sm:h-20 md:w-24 md:h-24 text-emerald-600 transition-transform duration-500 group-hover:scale-110">
-                              <IconComponent />
-                            </div>
-                          </div>
-                        )}
+                        <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-900 tracking-tight leading-tight">
+                          {service.title}
+                        </h3>
                       </div>
-
-                      {/* Text content */}
-                      <div className="space-y-3 sm:space-y-4 flex-1 min-w-0">
-                        <div className="space-y-1">
-                          {/* Number badge — hidden on mobile (shown inline above), visible sm+ */}
-                          <span className="hidden sm:block text-xs font-bold text-slate-300 tracking-widest mb-1">
-                            {service.number}
+                      <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+                        {service.desc}
+                      </p>
+                      <div className="flex flex-wrap gap-2 pt-1 sm:pt-3">
+                        {service.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-3 sm:px-4 py-1 sm:py-1.5 text-[9px] sm:text-[10px] uppercase tracking-wider rounded-full font-bold bg-slate-50 text-slate-500 border border-slate-200 transition-all duration-300 group-hover:bg-emerald-50 group-hover:border-emerald-100 group-hover:text-emerald-700"
+                          >
+                            {tag}
                           </span>
-                          <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-slate-900 tracking-tight leading-tight">
-                            {service.title}
-                          </h3>
-                        </div>
-
-                        <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-                          {service.desc}
-                        </p>
-
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-2 pt-1 sm:pt-3">
-                          {service.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-3 sm:px-4 py-1 sm:py-1.5 text-[9px] sm:text-[10px] uppercase tracking-wider rounded-full font-bold bg-slate-50 text-slate-500 border border-slate-200 transition-all duration-300 group-hover:bg-emerald-50 group-hover:border-emerald-100 group-hover:text-emerald-700"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Arrow — desktop only */}
-                      <div className="hidden lg:block self-center opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 flex-shrink-0">
-                        <svg
-                          className="w-6 h-6 text-emerald-500"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          />
-                        </svg>
+                        ))}
                       </div>
                     </div>
+
+                    <div className="hidden lg:block self-center opacity-0 -translate-x-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0 flex-shrink-0">
+                      <svg
+                        className="w-6 h-6 text-emerald-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </div>
                   </div>
+                </div>
+              );
+              const cardClassName = "group relative bg-white border border-slate-300 rounded-2xl sm:rounded-3xl transition-all duration-500 hover:-translate-y-1 hover:border-emerald-400 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] overflow-hidden";
+
+              return service.to ? (
+                <Link
+                  key={service.number}
+                  to={service.to}
+                  className={`${cardClassName} block w-full text-left`}
+                >
+                  {cardContent}
+                </Link>
+              ) : (
+                <div key={service.number} className={cardClassName}>
+                  {cardContent}
                 </div>
               );
             })}

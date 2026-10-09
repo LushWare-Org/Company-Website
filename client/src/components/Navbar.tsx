@@ -199,13 +199,13 @@ const menus: Record<MenuKey, MegaMenu> = {
           {
             // NOTE: keep your own route paths here if they differ
             name: "Manufacturing",
-            to: "/industries/plumbing",
+            to: "/industries/manufacturing",
             desc: "Production optimization and quality intelligence.",
             icon: icons.factory,
           },
           {
             name: "Logistics & Supply Chain",
-            to: "/industries/electrical",
+            to: "/industries/logistics-supply-chain",
             desc: "Route, fleet, and warehouse optimization.",
             icon: icons.truck,
           },
@@ -218,20 +218,12 @@ const menus: Record<MenuKey, MegaMenu> = {
         ],
       },
     ],
-    featured: {
-      eyebrow: "Industry expertise",
-      title: "One operational-AI platform, four industries.",
-      text: "See how the same capability is applied to the problems of your sector.",
-      cta: "Explore Solutions",
-      to: "/solutions",
-      secondary: { label: "Book a consultation", to: "/contact" },
-    },
   },
 };
 
 const links = [
-  { name: "Our Work", to: "/work" },
-  { name: "Project Base", to: "/project-base" },
+  { name: "Projects", to: "/work" },
+  { name: "Products", to: "/products" },
 ];
 
 /* ── Component ─────────────────────────────────────────────────── */
@@ -347,7 +339,7 @@ export default function Navbar() {
       >
         <div className="bg-white border-t border-stone-100 shadow-[0_30px_60px_-20px_rgba(28,25,23,0.35)]">
           <div
-            className="max-w-[1200px] mx-auto px-8 xl:px-12 py-10"
+            className="max-w-[1200px] mx-auto px-8 xl:px-12 pt-10 pb-16"
           >
             <div
               className="grid gap-x-10 gap-y-8"
@@ -375,7 +367,13 @@ export default function Navbar() {
                       {group.label}
                     </span>
                   </div>
-                  <ul className={`${cols === 1 ? "grid grid-cols-2 gap-x-6" : ""} space-y-6`}>
+                  <ul
+                    className={
+                      cols === 1
+                        ? "grid grid-cols-3 gap-x-6 gap-y-6"
+                        : "space-y-6"
+                    }
+                  >
                     {group.items.map((item) => {
                       const current = location.pathname === item.to;
                       return (
@@ -384,14 +382,14 @@ export default function Navbar() {
                             to={item.to}
                             tabIndex={on ? 0 : -1}
                             className={`group/item flex items-start gap-4 p-3 -mx-3 rounded-sm transition-colors duration-300 ${
-                              current ? "bg-emerald-50" : "hover:bg-stone-50"
+                              current ? "border-emerald-300 border-2" : "hover:bg-stone-50"
                             }`}
                           >
                             <span
                               className={`mt-0.5 w-10 h-10 shrink-0 flex rounded-lg items-center justify-center border transition-all duration-300 ${
                                 current
-                                  ? "border-emerald-600 bg-emerald-600 text-white"
-                                  : "border-stone-200 text-stone-500 group-hover/item:border-emerald-600 group-hover/item:bg-emerald-600 group-hover/item:text-white"
+                                  ? "text-emerald-600 border-stone-100 font-black"
+                                  : "border-stone-100 text-emerald-600 "
                               }`}
                             >
                               {item.icon}
@@ -469,10 +467,10 @@ export default function Navbar() {
   return (
     <nav
       onMouseLeave={closeMenu}
-      className={`fixed w-full z-50 transition-all duration-500 ${
+      className={`fixed w-full z-50 transition-[padding,background-color] duration-500 ${
         scrolled
-          ? "bg-white backdrop-blur-md py-3 shadow-sm sm:shadow-md lg:shadow-lg shadow-emerald-200/20"
-          : "bg-white py-4 lg:py-5"
+          ? "bg-white backdrop-blur-md py-4 shadow-[0_1px_2px_rgba(16,185,129,0.08)] sm:shadow-[0_4px_8px_rgba(16,185,129,0.1)] lg:shadow-[0_10px_18px_rgba(16,185,129,0.12)]"
+          : "bg-white border-b-2 border-emerald-50 py-4 lg:py-4"
       }`}
     >
       {/* Page dim while a mega menu is open */}
@@ -494,6 +492,7 @@ export default function Navbar() {
               <img src="/logo.jpeg" alt="LushWare" className="h-full w-full object-contain" />
             </div>
             <div className="hidden sm:flex flex-col space-y-0.5 md:space-y-1">
+              
               <span className="text-xl sm:text-2xl lg:text-3xl font-semibold tracking-wide text-stone-700 leading-none">
                 LUSH
                 <span style={{ WebkitTextStroke: "1px #1c1917", color: "transparent" }}>WARE</span>
@@ -507,7 +506,7 @@ export default function Navbar() {
 
         <div className="hidden lg:flex items-center justify-center space-x-8 xl:space-x-11">
           {trigger("services", "Services")}
-          {trigger("solutions", "Solutions")}
+          {trigger("solutions", "Industries")}
           {links.map((link) => (
             <Link
               key={link.name}

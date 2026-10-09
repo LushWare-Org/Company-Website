@@ -259,7 +259,7 @@ const AutonomousDecisionIntelligence: React.FC = () => {
           <div className="relative mb-10">
             <div className="relative overflow-hidden h-[250px] sm:h-[420px] md:h-[500px] lg:h-[550px] xl:h-[600px] w-full">
               <img
-                src="https://placehold.co/1600x900/062c1b/ecfdf5?text=Autonomous+Decision+Intelligence+Hero"
+                src="/hero4/autonomous-decision-intelligence.jpg"
                 alt="Autonomous decision intelligence"
                 className="w-full h-full object-cover object-top"
               />

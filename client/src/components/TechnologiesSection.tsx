@@ -46,7 +46,7 @@ const Logo: React.FC<{ tech: Tech }> = ({ tech }) => {
       alt={`${tech.name} logo`}
       loading="lazy"
       onError={() => setFailed(true)}
-      className="w-10 h-10 object-contain  opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+      className="w-12 h-12object-contain  opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
     />
   );
 };
@@ -72,22 +72,34 @@ const TechnologiesSection: React.FC = () => (
         </p>
       </div>
 
-      <div className="border border-slate-100 divide-y divide-slate-100">
+<div className="rounded-3xl border border-[#d2d2d7]/40 bg-[#f5f5f7] overflow-hidden shadow-xs divide-y divide-[#d2d2d7]/50">
         {groups.map((g) => (
-          <div key={g} className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-            <div className="lg:col-span-3 p-6 md:p-8 bg-slate-50/60 flex items-center">
-              <span className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500">{g}</span>
+          <div key={g} className="grid grid-cols-1 lg:grid-cols-12 bg-white">
+            {/* Apple Minimal Sidebar */}
+            <div className="lg:col-span-3 p-6 md:p-8 bg-white border-b lg:border-b-0 lg:border-r border-[#d2d2d7]/40 flex items-center justify-between lg:justify-start">
+              <span className="text-sm md:text-base font-semibold text-[#1d1d1f] tracking-tight">
+                {g}
+              </span>
+              <span className="text-[10px] font-medium text-[#86868b] bg-white px-2.5 py-1 rounded-full shadow-2xs">
+                {techs.filter((t) => t.group === g).length}
+              </span>
             </div>
-            <div className="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+
+            {/* Apple Clean Grid Cards */}
+            <div className="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 bg-[#e8e8ed]/40 gap-[1px]">
               {techs
                 .filter((t) => t.group === g)
                 .map((t) => (
                   <div
                     key={t.name}
-                    className="group flex flex-col items-center justify-center gap-3 p-6 border-l border-b border-slate-100 hover:bg-slate-50 transition-colors duration-500"
+                    className="group/item relative flex flex-col items-center justify-center gap-3 p-6 bg-white transition-all duration-300 hover:bg-[#fbfbfd] hover:shadow-inner"
                   >
-                    <Logo tech={t} />
-                    <span className="text-sm font-semibold text-slate-700 text-center">{t.name}</span>
+                    <div className="transform transition-transform duration-300 group-hover/item:scale-105">
+                      <Logo tech={t} />
+                    </div>
+                    <span className="text-sm font-medium text-[#1d1d1f] text-center tracking-tight">
+                      {t.name}
+                    </span>
                   </div>
                 ))}
             </div>

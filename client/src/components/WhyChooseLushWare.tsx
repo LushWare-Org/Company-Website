@@ -53,7 +53,7 @@ const WhyChooseLushWare: React.FC = () => {
       <section className="wlw-root w-full bg-white py-16 md:py-28 lg:py-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
           {/* ── HEADER ─────────────────────────────────── */}
-          <div className="mb-16 md:mb-24 text-center relative">
+          <div className="mb-12 md:mb-12 text-center relative">
             <div className="wlw-grid-dot absolute inset-0 -z-10 opacity-60 pointer-events-none" />
 
             <div className="wlw-hero-line flex items-center justify-center gap-3 mb-7">
@@ -80,32 +80,28 @@ const WhyChooseLushWare: React.FC = () => {
             <div className="lg:col-span-6 relative order-1 lg:order-2">
               <div className="relative aspect-[4/3] sm:aspect-[4/4] lg:aspect-square w-full">
                 {/* Accent Glow */}
-                <div className="absolute -top-10 -left-10 w-40 h-40 bg-emerald-50 rounded-full blur-3xl opacity-60 animate-pulse" />
 
-                {/* Main Image Frame */}
-                <div className="relative h-full w-full overflow-hidden shadow-[0_30px_60px_-10px_rgba(2,44,34,0.2)] lg:shadow-[0_50px_100px_-20px_rgba(2,44,34,0.2)]">
+                <div className="relative h-full w-full overflow-hidden ">
                   <img
-                    src="/solution/customer.jpg"
+                    src="/solution/whygirl.jpg"
                     alt="LushWare Business Outcomes"
-                    className="h-full w-full object-cover grayscale-[20%] contrast-125 hover:scale-105 transition-transform duration-1000"
+                    className="h-full w-full object-cover scale-105 transition-transform duration-1000"
                   />
 
-                  {/* Gradient Glass Layer */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-emerald-950/40 via-transparent to-white/10" />
 
                   {/* Overlay Info Card */}
-                  <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 p-4 sm:p-6 bg-white/10 backdrop-blur-md border border-white/20">
+                  <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 p-4 sm:p-6 bg-black/40 backdrop-blur-md border border-white/20">
                     <div className="flex justify-between items-center">
                       <div>
-                        <p className="text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest opacity-70">
+                        <p className="text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest ">
                           Project Capacity
                         </p>
                         <p className="text-white text-base sm:text-xl font-bold ">
                           Enterprise Ready
                         </p>
                       </div>
-                      <div className="h-8 w-8 sm:h-10 sm:w-10 border border-[#B89450] flex items-center justify-center flex-shrink-0">
-                        <div className="h-2 w-2 bg-[#B89450]" />
+                      <div className="h-8 w-8 sm:h-10 sm:w-10 border border-[#f3c062] flex items-center justify-center flex-shrink-0">
+                        <div className="h-2 w-2 bg-[#f3c062]" />
                       </div>
                     </div>
                   </div>
