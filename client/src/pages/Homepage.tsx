@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import WorkCard, { type WorkProject } from "../components/WorkCard";
 import ValueCard from "../components/ValueCard";
-import GlobalPresence from "@/components/GlobalPresence";
+//import GlobalPresence from "@/components/GlobalPresence";
 import HeroSection from "@/components/HeroSection";
 import JoinSection from "@/components/JoinSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -280,7 +280,7 @@ export default function Homepage() {
         </section>
 
         <WebKitSection />
-        <GlobalPresence />
+        {/* <GlobalPresence /> */}
         <ServicesSection />
 
         {/* ── OUR STORY ────────────────────────────── */}
@@ -448,7 +448,7 @@ export default function Homepage() {
 
             {/* WorkCards — untouched */}
             <div className="max-w-7xl mx-auto px-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-20">
+              <div className="grid grid-cols-1 md:grid-cols-1 gap-x-16 gap-y-20">
                 {featuredProjects.map((project, index) => (
                   <WorkCard
                     key={project.name}
@@ -488,103 +488,7 @@ export default function Homepage() {
         </section>
       </div>
 
-      {/* ── LUSH WEB DESIGNERS ───────────────────── */}
-      <section
-        data-reveal
-        className="lwd-root relative w-full bg-white py-24 sm:py-32 overflow-hidden"
-      >
-        <div
-          className="absolute inset-0 z-0 opacity-[0.19] grayscale hover:opacity-30 hover:grayscale-0 transition-all duration-1000"
-          style={{
-            backgroundImage: "url('/bg6.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            maskImage:
-              "linear-gradient(to bottom, transparent, black, transparent)",
-          }}
-        />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex flex-col items-center">
-            <div className="text-center">
-              {/* Label */}
-              <div className="flex items-center justify-center gap-3 mb-8">
-                <div className="h-px w-8 bg-slate-300" />
-                <span className="text-[10px] font-bold tracking-[0.22em] text-slate-400 uppercase">
-                  Sister Brand
-                </span>
-                <div className="h-px w-8 bg-slate-300" />
-              </div>
-
-              <h2 className="lwd-serif text-5xl sm:text-6xl md:text-7xl font-normal tracking-tight text-slate-900 leading-[1.0]">
-                Lush <span className=" text-emerald-600">Web</span>{" "}
-                <span
-                  className="text-transparent font-normal"
-                  style={{
-                    WebkitTextStroke: "2px #1c1917",
-                  }}
-                >
-                  Designers.
-                </span>
-              </h2>
-
-              <p className="mx-auto max-w-xl mt-5 text-lg sm:text-xl text-slate-500 font-light leading-relaxed">
-                Professional{" "}
-                <span className="text-slate-900 font-medium">
-                  website design
-                </span>{" "}
-                and{" "}
-                <span className="text-slate-900 font-medium">
-                  social media promotion
-                </span>{" "}
-                services for your business.
-              </p>
-
-              <div className="mt-10">
-                <button
-                  onClick={() =>
-                    window.open(
-                      "https://lushware.net/solutions/websites",
-                      "_blank",
-                    )
-                  }
-                  className="group cursor-pointer relative inline-flex items-center gap-3 px-12 py-4 bg-slate-900 text-white text-[11px] font-bold tracking-[0.2em] uppercase overflow-hidden transition-shadow duration-300 hover:shadow-[0_16px_48px_rgba(0,0,0,0.12)] active:scale-[0.98]"
-                >
-                  <span className="relative z-10">Explore Services</span>
-                  <span className="relative z-10 h-5 w-5 border border-white/20 flex items-center justify-center group-hover:border-white/40 transition-colors">
-                    <svg
-                      className="w-3 h-3 group-hover:translate-x-0.5 transition-transform"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={4}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                      />
-                    </svg>
-                  </span>
-                  <div className="absolute inset-0 bg-emerald-600 translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.85,0,0.15,1)]" />
-                </button>
-              </div>
-            </div>
-
-            <div className="mt-10 flex flex-wrap justify-center gap-x-12 gap-y-8 opacity-50">
-              <span className="lwd-serif text-slate-900 italic text-2xl">
-                Design.
-              </span>
-              <span className="lwd-serif text-slate-900 italic text-2xl">
-                Build.
-              </span>
-              <span className="lwd-serif text-slate-900 italic text-2xl">
-                Scale.
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

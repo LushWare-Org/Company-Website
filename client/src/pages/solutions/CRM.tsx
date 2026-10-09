@@ -641,8 +641,6 @@ const CRM: React.FC = () => {
                     key={index}
                     className="group relative bg-white p-8 md:p-10 border-b border-r border-slate-100 transition-all duration-500 cursor-pointer overflow-hidden hover:bg-slate-50"
                   >
-                    {/* Top accent sweep */}
-                    <div className="absolute top-0 left-0 w-0 h-0.5 bg-emerald-500 group-hover:w-full transition-all duration-700" />
 
                     {/* Index */}
                     <div className="flex items-center gap-3 mb-7">

@@ -190,6 +190,12 @@ const BPM: React.FC = () => {
                   desc: "Ensure smooth collaboration across teams while maintaining regulatory compliance.",
                   link: "Collaboration",
                 },
+                {
+                  num: "05",
+                  title: "CRM Integration",
+                  desc: "Connect workflows with your CRM to track leads, automate follow-ups, and improve customer relationships.",
+                  link: "CRM",
+                },
               ].map((item, index) => (
                 <ValueCard
                   key={index}

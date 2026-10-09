@@ -9,7 +9,7 @@ const projects = [
       "Trip Sky Way is a modern travel booking platform designed to help travelers discover destinations and plan seamless journeys.",
     description:
       "We developed a clean, responsive travel website focused on intuitive navigation, fast performance, and a streamlined booking experience tailored to modern travelers.",
-    image: "/work/TripSkyWay.jpg",
+    image: "/work2/TripSkyWay.jpg",
     link: "https://tripskyway.com/",
   },
   {
@@ -19,7 +19,7 @@ const projects = [
       "Holiday Vibes Tour is a travel website built to promote curated tours and immersive travel experiences.",
     description:
       "We crafted a vibrant and responsive platform that enables users to explore tour packages, view detailed itineraries, and make inquiries with ease.",
-    image: "/work/HolidayVibesTour.jpg",
+    image: "/work2/HolidayVibesTour.jpg",
     link: "https://holidayvibestour.com/",
   },
   {
@@ -29,7 +29,7 @@ const projects = [
       "Yomaldives, a B2B portal designed to help travel agents boost their revenue.",
     description:
       "This platform is a perfect example of how our bespoke software solutions can empower businesses and drive success. This project highlights our ability to deliver tailored software solutions that meet our clients’ specific business needs.",
-    image: "/work/yomaldives.png",
+    image: "/work2/yomaldives.jpg",
     link: "https://yomaldives.live/",
   },
 
@@ -40,7 +40,7 @@ const projects = [
       "We’re thrilled to showcase our latest project, the Dream Speed Speedboat Booking System. We developed this platform to help travelers effortlessly search routes, check availability, and book their island journeys in the Maldives.",
     description:
       "This project is a perfect example of our commitment to creating bespoke software that solves real-world challenges and enhances user experiences.",
-    image: "/work/dreamspeed.png",
+    image: "/work2/dreamspeed.jpg",
     link: "https://www.dreamspeedmaldives.com/",
   },
   {
@@ -50,7 +50,7 @@ const projects = [
       "We’re excited to showcase a project close to our hearts: IsleKey Holdings, an all-in-one web application for a travel agency.",
     description:
       "We built a platform that not only manages bookings but truly helps users “Experience Paradise” from the moment they land on the site. This project is a perfect example of our ability to create seamless, user-friendly solutions that elevate businesses and delight their customers.",
-    image: "/work/islekeyholidays.png",
+    image: "/work2/islekeyholidays.jpg",
     link: "https://islekeyholidays.com/",
   },
   {
@@ -60,7 +60,7 @@ const projects = [
       "Traveliccted is a travel-focused website built to showcase curated travel experiences and destination packages.",
     description:
       "This project highlights our ability to design engaging travel platforms that combine strong visual storytelling with user-friendly booking flows and conversion-focused layouts.",
-    image: "/work/Traveliccted.jpg",
+    image: "/work2/Traveliccted.jpg",
     link: "https://traveliccted.com/",
   },
   {
@@ -70,7 +70,7 @@ const projects = [
       "Crown Voyages is a powerful travel agency management system with automatic quotation generation designed to streamline operations.",
     description:
       "We developed a comprehensive platform that enables travel agencies to manage bookings, generate quotations automatically, handle clients, and optimize daily operations through a centralized system.",
-    image: "/work/CrownVoyages.jpg",
+    image: "/work2/CrownVoyages.jpg",
     link: "https://portal.crownvoyages.com/",
   },
 
@@ -81,7 +81,7 @@ const projects = [
       "We’re proud to showcase Holiday Life, a custom web application we developed for a travel agency.",
     description:
       "Our team worked to create a seamless, user-friendly platform that helps users find their dream holiday. This project is a testament to our commitment to building high-quality, impactful software solutions.",
-    image: "/work/holidaylife.jpg",
+    image: "/work2/holidaylife.jpg",
     link: "https://holidaylife.travel/",
   },
 ];
@@ -117,7 +117,7 @@ export default function WorkPage() {
   }, []);
 
   return (
-    <section id="work" className="py-24 md:py-32  selection:bg-emerald-50">
+    <section id="work" className="py-24 md:py-32  bg-[#ffffff] selection:bg-emerald-50">
       <style>{`
     @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
 
@@ -142,7 +142,7 @@ export default function WorkPage() {
     }
   `}</style>
 
-      <div className="works-root mx-auto max-w-7xl px-6">
+      <div className="works-root mx-auto max-w-7xl px-6 lg:px-0">
         {/* ── HEADER ───────────────────────────────────── */}
         <div className="relative max-w-6xl mt-12 mx-auto text-center mb-20 md:mb-28">
           {/* Dot grid */}
@@ -158,20 +158,20 @@ export default function WorkPage() {
           </div>
 
           {/* Headline */}
-          <h1 className="works-fadeUp works-serif text-5xl sm:text-6xl lg:text-7xl font-normal text-slate-900 tracking-tight leading-[1.05] mb-7">
-            Our Projects <br />
-            <span className=" text-emerald-600">Showcasing Innovation</span>
-          </h1>
+<h1 className="works-fadeUp works-serif text-5xl sm:text-6xl lg:text-7xl font-normal text-slate-900 tracking-tight leading-[1.05] mb-7 whitespace-nowrap">
+  Our Projects{" "}
+  <span className="text-emerald-600">Showcasing Innovation</span>
+</h1>
 
           {/* Sub */}
-          <p className="works-fadeUp text-lg sm:text-xl text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="works-fadeUp text-lg sm:text-xl text-slate-500 font-light max-w-4xl mx-auto leading-relaxed">
             A selection of our work demonstrating custom software solutions for
             real-world challenges.
           </p>
         </div>
 
         {/* ── PROJECT GRID ─────────────────────────────── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-24 md:gap-y-32">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-x-16 gap-y-24 md:gap-y-32">
           {projects.map((project, index) => (
             <div
               key={project.name}

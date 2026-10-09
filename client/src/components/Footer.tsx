@@ -213,19 +213,25 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 md:space-y-4">
               <li>
-                <AnimatedLink to="/industries/hvac">HVAC Services</AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/industries/plumbing">
-                  Plumbing Services
+                <AnimatedLink to="/industries/hvac">
+                  HVAC &amp; MEP Solutions
                 </AnimatedLink>
               </li>
               <li>
-                <AnimatedLink to="/industries/electrical">
-                  Electrical Services
+                <AnimatedLink to="/industries/manufacturing">
+                  Manufacturing
                 </AnimatedLink>
               </li>
-
+              <li>
+                <AnimatedLink to="/industries/logistics-supply-chain">
+                  Logistics &amp; Supply Chain
+                </AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink to="/solutions">
+                  Tourism &amp; Hospitality
+                </AnimatedLink>
+              </li>
             </ul>
           </div>
 

@@ -19,6 +19,30 @@ type HeroSlide = {
 
 const heroSlides: HeroSlide[] = [
   {
+    id: "07",
+    titleTop: "AI-Driven",
+    titleHighlight: "Process",
+    titleOutline: "Optimization.",
+    description:
+      "AI-powered operational intelligence that helps businesses understand what is happening, predict what comes next, and optimize complex operational decisions.",
+    image: "/hero3/ai-optimization.jpg",
+    maxWidthClass: "w-full px-4 mt-0 lg:mt-12 sm:px-6 md:max-w-lg lg:max-w-lg",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
+  },
+
+  {
+    id: "08",
+    titleTop: "Autonomous",
+    titleHighlight: "Decision",
+    titleOutline: "Intelligence.",
+    description:
+      "Intelligent decision systems that continuously observe operations, evaluate conditions, optimize actions, and adapt through real-time feedback.",
+    image: "/hero3/autonomous-decision.jpg",
+    maxWidthClass: "w-full px-4 lg:mt-12 mt-0 sm:px-6 md:max-w-lg lg:max-w-[30rem]",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
+  },
+  /*
+  {
     id: "01",
     titleTop: "Customer ",
     titleHighlight: "Relationship",
@@ -29,6 +53,7 @@ const heroSlides: HeroSlide[] = [
     maxWidthClass: "w-full px-4 sm:px-6  md:max-w-lg lg:max-w-lg",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
   },
+  */
   {
     id: "02",
     titleTop: "AI Agents &",
@@ -73,10 +98,21 @@ const heroSlides: HeroSlide[] = [
     maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
   },
-    {
+  {
+    id: "09",
+  titleTop: "Product",
+  titleHighlight: "Engineering",
+  titleOutline: "& Embedded Systems.",
+    description:
+      "From product design and PCB engineering to embedded systems and intelligent connected products.",
+    image: "/hero3/product-engineering.jpg",
+    maxWidthClass: "w-full px-4 lg:mt-12 mt-0 sm:px-6 md:max-w-lg lg:max-w-[30rem]",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
+  },
+  {
     id: "06",
-    titleTop: "IoT ",
-    titleHighlight: "Product",
+    titleTop: "IoT &",
+    titleHighlight: "Embedded Systems",
     titleOutline: "Development.",
     description:
       "Connected devices and custom-built software that turn physical hardware into intelligent, data-driven systems.",
