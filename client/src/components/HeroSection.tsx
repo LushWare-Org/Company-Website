@@ -15,6 +15,7 @@ type HeroSlide = {
   image: string;
   maxWidthClass: string;
   aspectClass: string;
+  titleSizeClass: string;
 };
 
 const heroSlides: HeroSlide[] = [
@@ -26,8 +27,9 @@ const heroSlides: HeroSlide[] = [
     description:
       "AI-powered operational intelligence that helps businesses understand what is happening, predict what comes next, and optimize complex operational decisions.",
     image: "/hero3/ai-optimization.jpg",
-    maxWidthClass: "w-full px-4 mt-0 lg:mt-12 sm:px-6 md:max-w-lg lg:max-w-lg",
+    maxWidthClass: "w-full px-4 mt-0 lg:mt-12 sm:px-6 md:max-w-lg lg:max-w-md",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
+    titleSizeClass: "text-5xl md:text-7xl lg:text-[6.4rem]",
   },
 
   {
@@ -38,8 +40,9 @@ const heroSlides: HeroSlide[] = [
     description:
       "Intelligent decision systems that continuously observe operations, evaluate conditions, optimize actions, and adapt through real-time feedback.",
     image: "/hero3/autonomous-decision.jpg",
-    maxWidthClass: "w-full px-4 lg:mt-12 mt-0 sm:px-6 md:max-w-lg lg:max-w-[30rem]",
+    maxWidthClass: "w-full px-4 lg:mt-16 mt-0 sm:px-6 md:max-w-lg lg:max-w-md",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
+    titleSizeClass: "text-5xl md:text-7xl lg:text-[6.4rem]",
   },
   /*
   {
@@ -52,6 +55,7 @@ const heroSlides: HeroSlide[] = [
     image: "/hero3/crm5.jpg",
     maxWidthClass: "w-full px-4 sm:px-6  md:max-w-lg lg:max-w-lg",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
+    titleSizeClass: "text-5xl md:text-7xl lg:text-[6rem]",
   },
   */
   {
@@ -62,8 +66,9 @@ const heroSlides: HeroSlide[] = [
     description:
       "Intelligent AI agents and chatbots that automate support, sales, and internal operations with precision.",
     image: "/hero3/ai5.jpg",
-    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-lg",
+    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:mt-4 mt-0 lg:max-w-lg",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
+    titleSizeClass: "text-5xl md:text-7xl lg:text-[6.5rem]",
   },
   {
     id: "03",
@@ -75,6 +80,7 @@ const heroSlides: HeroSlide[] = [
     image: "/hero3/bpm5.jpg",
     maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-xl",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto lg:pt-2",
+    titleSizeClass: "text-5xl md:text-7xl lg:text-[6.5rem]",
   },
   {
     id: "04",
@@ -86,6 +92,7 @@ const heroSlides: HeroSlide[] = [
     image: "/hero3/web3.jpg",
     maxWidthClass: "w-full px-4 sm:px-6 md:max-w-xl xl:max-w-2xl",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
+    titleSizeClass: "text-5xl md:text-7xl lg:text-[6.5rem]",
   },
   {
     id: "05",
@@ -97,6 +104,7 @@ const heroSlides: HeroSlide[] = [
     image: "/hero3/app.jpg",
     maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
+    titleSizeClass: "text-5xl md:text-7xl lg:text-[6.5rem]",
   },
   {
     id: "09",
@@ -106,19 +114,21 @@ const heroSlides: HeroSlide[] = [
     description:
       "From product design and PCB engineering to embedded systems and intelligent connected products.",
     image: "/hero3/product-engineering.jpg",
-    maxWidthClass: "w-full px-4 lg:mt-12 mt-0 sm:px-6 md:max-w-lg lg:max-w-[30rem]",
+    maxWidthClass: "w-full px-4 lg:mt-16 mt-0 sm:px-6 md:max-w-lg lg:max-w-md",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
+    titleSizeClass: "text-5xl md:text-7xl lg:text-[6.1rem]",
   },
   {
     id: "06",
-    titleTop: "IoT &",
-    titleHighlight: "Embedded Systems",
+    titleTop: "IoT & Embedded",
+    titleHighlight: " Systems",
     titleOutline: "Development.",
     description:
       "Connected devices and custom-built software that turn physical hardware into intelligent, data-driven systems.",
     image: "/hero3/iot5.jpg",
     maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-lg",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
+    titleSizeClass: "text-5xl md:text-7xl lg:text-[6.1rem]",
   },
 ];
 
@@ -155,14 +165,14 @@ export default function HeroSection() {
                 {/* Left Content */}
                 <div className="lg:col-span-7 lg:pt-12 flex flex-col md:items-center lg:items-start">
                   <h1 className="flex flex-col gap-0 select-none mb-6 md:items-center lg:items-start md:text-center lg:text-left">
-                    <span className="text-5xl md:text-7xl lg:text-[6.5rem] font-black text-emerald-600 sm:text-transparent uppercase leading-[0.8] tracking-tighter hero-line hero-stroke">
+                    <span className={`${slide.titleSizeClass} font-black text-emerald-600 sm:text-transparent uppercase leading-[0.8] tracking-tighter hero-line hero-stroke`}>
                       {slide.titleTop}
                     </span>
-                    <span className="text-5xl md:text-7xl lg:text-[6.5rem] font-black tracking-tighter text-stone-900 uppercase leading-[0.8] mb-1 hero-line">
+                    <span className={`${slide.titleSizeClass} font-black tracking-tighter text-stone-900 uppercase leading-[0.8] mb-1 hero-line`}>
                       {slide.titleHighlight}
                     </span>
 
-                    <span className="text-5xl md:text-7xl lg:text-[6.5rem] font-black text-emerald-600 uppercase leading-[0.8] tracking-tighter hero-line hero-stroke">
+                    <span className={`${slide.titleSizeClass} font-black text-emerald-600 uppercase leading-[0.8] tracking-tighter hero-line hero-stroke`}>
                       {slide.titleOutline}
                     </span>
                   </h1>

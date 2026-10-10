@@ -468,10 +468,10 @@ export default function ServicesSection() {
       data-reveal
       className="bg-[#ffffff] px-6 sm:px-6 py-12 sm:py-16 lg:py-28 relative"
     >
-      <div className="max-w-8xl px-0 lg:px-36 mx-auto relative z-10">
+      <div className="max-w-8xl px-0 lg:px-24 mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-12">
           {/* ── Sidebar / Header ── */}
-          <div className="lg:w-[45%] lg:sticky lg:top-64 h-fit">
+          <div className="lg:w-[45%] lg:sticky lg:top-50 h-fit">
             {/* Inject fonts to match Project Base theme */}
             <style>{`
     @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
