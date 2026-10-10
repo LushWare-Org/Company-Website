@@ -499,7 +499,7 @@ export default function Navbar() {
             className="flex flex-col items-start group"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            <div className="relative h-10 w-12 sm:h-11 sm:w-14 lg:h-12 lg:w-26">
+            <div className="relative h-10 w-12 sm:h-11 sm:w-14 lg:h-11 lg:w-24">
               <img
                 src="/logo2.jpg"
                 alt="LushWare"

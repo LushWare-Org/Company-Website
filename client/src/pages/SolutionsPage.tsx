@@ -651,18 +651,36 @@ export default function SolutionsPage() {
                   </span>
                 </p>
 
-                <div className="flex flex-wrap items-center gap-y-3 mb-10">
-                  {travelPipeline.map((s, i) => (
-                    <React.Fragment key={s}>
-                      <span className="px-4 py-2 text-xs sm:text-sm font-bold uppercase tracking-[0.12em] border border-emerald-600 text-emerald-700 bg-white">
-                        {s}
-                      </span>
-                      {i < travelPipeline.length - 1 && (
-                        <span className="mx-2 text-emerald-600">→</span>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </div>
+<div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-10">
+  {travelPipeline.map((s, i) => (
+    <React.Fragment key={s}>
+      <div className="group relative flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold uppercase tracking-[0.08em] transition-all duration-300 bg-white text-emerald-700 border border-emerald-600/30 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-emerald-600/60 hover:shadow-[0_6px_24px_rgba(0,0,0,0.06)]">
+        {/* Subtle top inner highlight for depth */}
+        <div className="absolute inset-x-0 top-0 h-[1px] rounded-t-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-transparent via-emerald-600/30 to-transparent" />
+
+        <span className="relative z-10 flex h-5 w-5 shrink-0 items-center justify-center rounded-md text-[10px] font-bold transition-transform duration-300 group-hover:scale-105 bg-emerald-600 text-white shadow-sm">
+          {i + 1}
+        </span>
+        <span className="relative z-10">{s}</span>
+      </div>
+
+      {i < travelPipeline.length - 1 && (
+        <div className="flex items-center px-1 transition-opacity duration-300 text-emerald-600/70">
+          <div className="h-[1px] w-3 sm:w-4 bg-emerald-600/40" />
+          <svg
+            className="w-3.5 h-3.5 -ml-0.5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2.5}
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </div>
+      )}
+    </React.Fragment>
+  ))}
+</div>
 
                 <div className="relative bg-[#062c1b] p-8 overflow-hidden">
                   <div className="absolute top-0 left-0 w-full h-0.5 bg-emerald-500/40" />
