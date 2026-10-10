@@ -144,31 +144,35 @@ export default function WorkPage() {
 
       <div className="works-root mx-auto max-w-7xl px-6 lg:px-0">
         {/* ── HEADER ───────────────────────────────────── */}
-        <div className="relative max-w-6xl mt-12 mx-auto text-center mb-20 md:mb-28">
-          {/* Dot grid */}
-          <div className="works-dotgrid absolute inset-0 -z-10 opacity-50 pointer-events-none" />
+<div className="relative w-full max-w-6xl mt-12 mx-auto text-center mb-16 sm:mb-20 md:mb-28 px-4 sm:px-6">
+  {/* Dot grid */}
+  <div className="works-dotgrid absolute inset-0 -z-10 opacity-50 pointer-events-none" />
 
-          {/* Label */}
-          <div className="works-fadeUp flex items-center justify-center gap-3 mb-7">
-            <div className="h-px w-8 bg-emerald-600" />
-            <div className="px-3 py-1 border border-emerald-600 text-[10px] font-bold text-emerald-700 uppercase tracking-[0.22em]">
-              Selected Works
-            </div>
-            <div className="h-px w-8 bg-emerald-600" />
-          </div>
+  {/* Label */}
+  <div className="works-fadeUp flex items-center justify-center gap-2 sm:gap-3 mb-6 sm:mb-7">
+    <div className="h-px w-5 sm:w-8 bg-emerald-600 shrink-0" />
 
-          {/* Headline */}
-<h1 className="works-fadeUp works-serif text-5xl sm:text-6xl lg:text-7xl font-normal text-slate-900 tracking-tight leading-[1.05] mb-7 whitespace-nowrap">
-  Our Projects{" "}
-  <span className="text-emerald-600">Showcasing Innovation</span>
-</h1>
+    <div className="px-2 sm:px-3 py-1 border border-emerald-600 text-[9px] sm:text-[10px] font-bold text-emerald-700 uppercase tracking-[0.16em] sm:tracking-[0.22em] whitespace-nowrap">
+      Selected Works
+    </div>
 
-          {/* Sub */}
-          <p className="works-fadeUp text-lg sm:text-xl text-slate-500 font-light max-w-4xl mx-auto leading-relaxed">
-            A selection of our work demonstrating custom software solutions for
-            real-world challenges.
-          </p>
-        </div>
+    <div className="h-px w-5 sm:w-8 bg-emerald-600 shrink-0" />
+  </div>
+
+  {/* Headline */}
+  <h1 className="works-fadeUp works-serif text-4xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-normal text-slate-900 tracking-tight leading-tight sm:leading-[1.05] mb-5 sm:mb-7">
+    Our Projects{" "}
+    <span className="text-emerald-600">
+      Showcasing Innovation
+    </span>
+  </h1>
+
+  {/* Sub */}
+  <p className="works-fadeUp text-sm sm:text-base md:text-lg lg:text-xl text-slate-500 font-light max-w-4xl mx-auto leading-relaxed">
+    A selection of our work demonstrating custom software solutions for
+    real-world challenges.
+  </p>
+</div>
 
         {/* ── PROJECT GRID ─────────────────────────────── */}
         <div className="grid grid-cols-1 md:grid-cols-1 gap-x-16 gap-y-24 md:gap-y-32">
