@@ -157,30 +157,58 @@ const LogisticsSupplyChain: React.FC = () => {
     "More resilient supply chains.",
   ];
 
-  const Chain = ({ steps, dark }: { steps: string[]; dark?: boolean }) => (
-    <div className="flex flex-wrap items-center gap-y-3">
-      {steps.map((s, i) => (
-        <React.Fragment key={s}>
+const Chain: React.FC<{ steps: string[]; dark?: boolean }> = ({ steps, dark }) => (
+  <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+    {steps.map((s, i) => (
+      <React.Fragment key={s}>
+        <div
+          className={`group relative flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold uppercase tracking-[0.08em] transition-all duration-300 ${
+            dark
+              ? "bg-[#141414] text-emerald-300 border border-emerald-500/30 shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:border-emerald-500/50 hover:bg-[#1a1a1a]"
+              : "bg-white text-emerald-700 border border-emerald-600/30 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-emerald-600/60 hover:shadow-[0_6px_24px_rgba(0,0,0,0.06)]"
+          }`}
+        >
+          {/* Subtle top inner highlight for depth */}
+          <div
+            className={`absolute inset-x-0 top-0 h-[1px] rounded-t-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+              dark ? "bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent" : "bg-gradient-to-r from-transparent via-emerald-600/30 to-transparent"
+            }`}
+          />
+
           <span
-            className={`px-4 py-2 text-xs sm:text-sm font-bold uppercase tracking-[0.12em] border ${
+            className={`relative z-10 flex h-5 w-5 shrink-0 items-center justify-center rounded-md text-[10px] font-bold transition-transform duration-300 group-hover:scale-105 ${
               dark
-                ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-300"
-                : "border-emerald-600 text-emerald-700 bg-white"
+                ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
+                : "bg-emerald-600 text-white shadow-sm"
             }`}
           >
-            {s}
+            {i + 1}
           </span>
-          {i < steps.length - 1 && (
-            <span
-              className={`mx-2 ${dark ? "text-emerald-500" : "text-emerald-600"}`}
+          <span className="relative z-10">{s}</span>
+        </div>
+
+        {i < steps.length - 1 && (
+          <div
+            className={`flex items-center px-1 transition-opacity duration-300 ${
+              dark ? "text-emerald-500/70" : "text-emerald-600/70"
+            }`}
+          >
+            <div className={`h-[1px] w-3 sm:w-4 ${dark ? "bg-emerald-500/40" : "bg-emerald-600/40"}`} />
+            <svg
+              className="w-3.5 h-3.5 -ml-0.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2.5}
             >
-              →
-            </span>
-          )}
-        </React.Fragment>
-      ))}
-    </div>
-  );
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        )}
+      </React.Fragment>
+    ))}
+  </div>
+);
 
   const gridBg = {
     backgroundImage:

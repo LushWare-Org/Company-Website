@@ -159,13 +159,7 @@ const AutonomousDecisionIntelligence: React.FC = () => {
   const decisionLoop = ["Observe", "Evaluate", "Decide", "Act", "Measure", "Adapt"];
   const agentLoop = ["Observe", "Understand", "Plan", "Simulate", "Decide", "Execute", "Verify"];
   const selfLoop = ["Observe", "Analyze", "Predict", "Optimize", "Act", "Measure", "Learn", "Re-optimize"];
-  const maturity = [
-    "Descriptive",
-    "Predictive",
-    "Prescriptive",
-    "Assisted Execution",
-    "Constrained Autonomy",
-  ];
+
   const optimizationPath = [
     "Manual optimization",
     "AI-assisted optimization",
@@ -180,26 +174,58 @@ const AutonomousDecisionIntelligence: React.FC = () => {
     ["Tourism & Hospitality", "Revenue optimization, demand forecasting, guest operations, transport/excursion optimization, resort operations"],
   ];
 
-  const LoopRow: React.FC<{ steps: string[]; dark?: boolean }> = ({ steps, dark }) => (
-    <div className="flex flex-wrap items-center gap-y-3">
-      {steps.map((s, i) => (
-        <React.Fragment key={s}>
+const LoopRow: React.FC<{ steps: string[]; dark?: boolean }> = ({ steps, dark }) => (
+  <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+    {steps.map((s, i) => (
+      <React.Fragment key={s}>
+        <div
+          className={`group relative flex items-center gap-3.5 px-4.5 py-3 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 ${
+            dark
+              ? "bg-[#141414] text-neutral-100 border border-white/[0.08] shadow-[0_4px_20px_rgba(0,0,0,0.4)] hover:border-white/[0.18] hover:bg-[#1a1a1a]"
+              : "bg-white text-neutral-900 border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-neutral-300 hover:shadow-[0_6px_24px_rgba(0,0,0,0.06)]"
+          }`}
+        >
+          {/* Subtle top inner highlight for depth */}
+          <div
+            className={`absolute inset-x-0 top-0 h-[1px] rounded-t-xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+              dark ? "bg-gradient-to-r from-transparent via-white/20 to-transparent" : "bg-gradient-to-r from-transparent via-neutral-400/30 to-transparent"
+            }`}
+          />
+
           <span
-            className={`px-4 py-2 text-xs sm:text-sm font-bold uppercase tracking-[0.12em] border ${
+            className={`relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-[11px] font-semibold transition-transform duration-300 group-hover:scale-105 ${
               dark
-                ? "border-emerald-500/30 bg-emerald-500/10 text-emerald-300"
-                : "border-emerald-600 text-emerald-700 bg-white"
+                ? "bg-white/[0.08] text-white border border-white/10"
+                : "bg-neutral-900 text-white shadow-sm"
             }`}
           >
-            {s}
+            {i + 1}
           </span>
-          {i < steps.length - 1 && (
-            <span className={`mx-2 ${dark ? "text-emerald-500" : "text-emerald-600"}`}>→</span>
-          )}
-        </React.Fragment>
-      ))}
-    </div>
-  );
+          <span className="relative z-10 tracking-tight">{s}</span>
+        </div>
+
+        {i < steps.length - 1 && (
+          <div
+            className={`flex items-center px-1 transition-opacity duration-300 ${
+              dark ? "text-neutral-400" : "text-neutral-800"
+            }`}
+          >
+            <div className={`h-[1px] w-3 sm:w-4 ${dark ? "bg-neutral-400" : "bg-neutral-800"}`} />
+            <svg
+              className="w-3.5 h-3.5 -ml-0.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        )}
+      </React.Fragment>
+    ))}
+  </div>
+);
 
   return (
     <>
@@ -440,66 +466,106 @@ const AutonomousDecisionIntelligence: React.FC = () => {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 mb-6 md:mb-10">
-                <div className="p-8 md:p-12 border border-slate-200 hover:border-emerald-400 transition-colors duration-500">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
-                    Agentic operations loop
-                  </p>
-                  <LoopRow steps={agentLoop} />
-                </div>
-                <div className="p-8 md:p-12 border border-slate-200 hover:border-emerald-400 transition-colors duration-500">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
-                    Self-optimization loop
-                  </p>
-                  <LoopRow steps={selfLoop} />
-                </div>
-              </div>
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8">
+    <div className="group relative p-8 md:p-12 rounded-[2rem] bg-slate-100/40 dark:bg-slate-900/80 backdrop-blur-3xl border border-slate-200/60 dark:border-slate-800/60 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 shadow-sm hover:shadow-2xl hover:shadow-emerald-500/5 transition-all duration-700 flex flex-col justify-between overflow-hidden">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none group-hover:bg-emerald-500/10 transition-all duration-700" />
+      <div>
+        <div className="flex items-center justify-between mb-8">
+          <span className="text-[11px] font-semibold tracking-wider uppercase text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">
+            Operations
+          </span>
+          <span className="text-xs font-medium text-slate-400 font-mono">01</span>
+        </div>
+        <h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white mb-3">
+          Agentic operations loop.
+        </h3>
+        <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base font-normal tracking-tight mb-8 max-w-md">
+          Continuous contextual analysis and execution tracking engineered for high-precision throughput.
+        </p>
+      </div>
+      <div className="pt-6 border-t border-slate-200/60 dark:border-slate-800/60">
+        <LoopRow steps={agentLoop} />
+      </div>
+    </div>
 
-              <div className="p-8 md:p-12 border border-slate-200 mb-6 md:mb-10">
-                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-6">
-                  Autonomy maturity model
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-5 border border-slate-100">
-                  {maturity.map((m, i) => (
-                    <div
-                      key={m}
-                      className="group p-6 md:p-8 border-b md:border-b-0 md:border-r last:border-r-0 border-slate-100 hover:bg-emerald-50 transition-colors duration-500"
-                    >
-                      <div className="flex items-center gap-3 mb-5">
-                        <span className="adi-serif text-xs italic text-slate-300 group-hover:text-emerald-600 transition-colors duration-500">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <div className="h-1 rounded-full bg-emerald-600" style={{ width: `${(i + 1) * 20}%` }} />
-                      </div>
-                      <h4 className="text-lg font-semibold text-slate-900 tracking-tight">{m}</h4>
-                    </div>
-                  ))}
-                </div>
-              </div>
+    <div className="group relative p-8 md:p-12 rounded-[2rem] bg-slate-100/40 dark:bg-slate-900/80 backdrop-blur-3xl border border-slate-200/60 dark:border-slate-800/60 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 shadow-sm hover:shadow-2xl hover:shadow-emerald-500/5 transition-all duration-700 flex flex-col justify-between overflow-hidden">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none group-hover:bg-emerald-500/10 transition-all duration-700" />
+      <div>
+        <div className="flex items-center justify-between mb-8">
+          <span className="text-[11px] font-semibold tracking-wider uppercase text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">
+            Adaptation
+          </span>
+          <span className="text-xs font-medium text-slate-400 font-mono">02</span>
+        </div>
+        <h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white mb-3">
+          Self-optimization loop.
+        </h3>
+        <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base font-normal tracking-tight mb-8 max-w-md">
+          Dynamic parameter tuning driven by real-time behavioral feedback models.
+        </p>
+      </div>
+      <div className="pt-6 border-t border-slate-200/60 dark:border-slate-800/60">
+        <LoopRow steps={selfLoop} />
+      </div>
+    </div>
+  </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10">
-                <div className="p-8 md:p-12 bg-emerald-800 text-white">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-emerald-300 mb-4">
-                    Hierarchy, not one giant agent
-                  </p>
-                  <div className="flex flex-wrap items-center gap-y-3">
-                    {agentChain.map((a, i) => (
-                      <React.Fragment key={a}>
-                        <span className="px-4 py-2 border border-emerald-400/40 bg-white/5 text-sm font-semibold">
-                          {a}
-                        </span>
-                        {i < agentChain.length - 1 && <span className="mx-2 text-emerald-300">→</span>}
-                      </React.Fragment>
-                    ))}
-                  </div>
-                </div>
-                <div className="p-8 md:p-12 border border-slate-200 hover:border-emerald-400 transition-colors duration-500">
-                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
-                    Optimization progression
-                  </p>
-                  <LoopRow steps={optimizationPath} />
-                </div>
-              </div>
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+    <div className="relative p-8 md:p-12 rounded-[2rem] bg-gradient-to-b from-emerald-950 via-emerald-900 to-slate-950 text-white border border-emerald-800/40 shadow-2xl flex flex-col justify-between overflow-hidden">
+      <div className="absolute -right-20 -top-20 w-80 h-80 bg-emerald-400/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="relative z-10">
+        <div className="flex items-center justify-between mb-8">
+          <span className="text-[11px] font-semibold tracking-wider uppercase text-emerald-300 bg-emerald-500/20 px-3 py-1 rounded-full border border-emerald-400/20">
+            Architecture
+          </span>
+          <span className="text-xs font-medium text-emerald-400/60 font-mono">03</span>
+        </div>
+        <h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-white mb-3">
+          Hierarchy, not one giant agent.
+        </h3>
+        <p className="text-emerald-100/90 text-sm md:text-base font-normal tracking-tight mb-8 max-w-md">
+          Structured modular delegation framework designed to prevent cognitive bottlenecks.
+        </p>
+      </div>
+      <div className="pt-6 border-t border-emerald-400/50 relative z-10">
+        <div className="flex flex-wrap items-center gap-y-3">
+          {agentChain.map((a, i) => (
+            <React.Fragment key={a}>
+              <span className="px-4 py-2.5 rounded-xl border border-emerald-200/30 bg-emerald-900/40 backdrop-blur-md text-sm font-medium tracking-wide shadow-sm text-emerald-50 hover:bg-emerald-800/60 transition-all duration-300">
+                {a}
+              </span>
+              {i < agentChain.length - 1 && (
+                <span className="mx-3 text-emerald-200/60 font-light text-lg">→</span>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div className="group relative p-8 md:p-12 rounded-[2rem] bg-slate-100/40 dark:bg-slate-900/80 backdrop-blur-3xl border border-slate-200/60 dark:border-slate-800/60 hover:border-emerald-500/40 dark:hover:border-emerald-500/40 shadow-sm hover:shadow-2xl hover:shadow-emerald-500/5 transition-all duration-700 flex flex-col justify-between overflow-hidden">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none group-hover:bg-emerald-500/10 transition-all duration-700" />
+      <div>
+        <div className="flex items-center justify-between mb-8">
+          <span className="text-[11px] font-semibold tracking-wider uppercase text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">
+            Progression
+          </span>
+          <span className="text-xs font-medium text-slate-400 font-mono">04</span>
+        </div>
+        <h3 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white mb-3">
+          Optimization progression.
+        </h3>
+        <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base font-normal tracking-tight mb-8 max-w-md">
+          Step-by-step milestones mapping out refinement cycles across system iterations.
+        </p>
+      </div>
+      <div className="pt-6 border-t border-slate-200/60 dark:border-slate-800/60">
+        <LoopRow steps={optimizationPath} />
+      </div>
+    </div>
+  </div>
+</div>
             </div>
           </section>
 
