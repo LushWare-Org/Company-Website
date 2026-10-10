@@ -265,13 +265,15 @@ export default function Navbar() {
 
   // Close mega menu with Escape
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setActiveMenu(null);
+    const onKey = (e: KeyboardEvent) =>
+      e.key === "Escape" && setActiveMenu(null);
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   const flat = (k: MenuKey) => menus[k].groups.flatMap((g) => g.items);
-  const isActive = (k: MenuKey) => flat(k).some((i) => i.to === location.pathname);
+  const isActive = (k: MenuKey) =>
+    flat(k).some((i) => i.to === location.pathname);
 
   const openMenu = (k: MenuKey) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -293,7 +295,9 @@ export default function Navbar() {
         onMouseEnter={() => openMenu(k)}
         onClick={() => (on ? setActiveMenu(null) : openMenu(k))}
         className={`relative flex items-center gap-2 text-sm font-bold tracking-widest uppercase transition-colors cursor-pointer ${
-          on || isActive(k) ? "text-emerald-800" : "text-stone-800 hover:text-emerald-700"
+          on || isActive(k)
+            ? "text-emerald-800"
+            : "text-stone-800 hover:text-emerald-700"
         }`}
       >
         <span>{label}</span>
@@ -303,7 +307,12 @@ export default function Navbar() {
           stroke="currentColor"
           viewBox="0 0 24 24"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M19 9l-7 7-7-7"
+          />
         </svg>
         <span
           className={`absolute -bottom-1.5 left-0 h-0.5 bg-emerald-500 transition-all duration-300 ${
@@ -329,7 +338,9 @@ export default function Navbar() {
           on ? "pointer-events-auto" : "pointer-events-none"
         }`}
         style={{
-          clipPath: on ? "inset(0 -60px -80px -60px)" : "inset(0 -60px 100% -60px)",
+          clipPath: on
+            ? "inset(0 -60px -80px -60px)"
+            : "inset(0 -60px 100% -60px)",
           opacity: on ? 1 : 0,
           willChange: "clip-path, opacity",
           transition: on
@@ -338,9 +349,7 @@ export default function Navbar() {
         }}
       >
         <div className="bg-white border-t border-stone-100 shadow-[0_30px_60px_-20px_rgba(28,25,23,0.35)]">
-          <div
-            className="max-w-[1200px] mx-auto px-8 xl:px-12 pt-10 pb-16"
-          >
+          <div className="max-w-[1200px] mx-auto px-8 xl:px-12 pt-10 pb-16">
             <div
               className="grid gap-x-10 gap-y-8"
               style={{
@@ -382,7 +391,9 @@ export default function Navbar() {
                             to={item.to}
                             tabIndex={on ? 0 : -1}
                             className={`group/item flex items-start gap-4 p-3 -mx-3 rounded-sm transition-colors duration-300 ${
-                              current ? "border-emerald-300 border-2" : "hover:bg-stone-50"
+                              current
+                                ? "border-emerald-300 border-2"
+                                : "hover:bg-stone-50"
                             }`}
                           >
                             <span
@@ -412,45 +423,45 @@ export default function Navbar() {
 
               {/* Featured card (optional per menu) */}
               {menu.featured && (
-              <div
-                className="relative overflow-hidden bg-[#062c1b] p-7 flex flex-col motion-reduce:!transition-none"
-                style={{
-                  opacity: on ? 1 : 0,
-                  transform: on ? "translateY(0)" : "translateY(-14px)",
-                  transition: on
-                    ? `opacity 600ms ease-out ${160 + cols * 70}ms, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) ${160 + cols * 70}ms`
-                    : "opacity 200ms ease-in, transform 200ms ease-in",
-                }}
-              >
-                <div className="absolute top-0 left-0 w-full h-0.5 bg-emerald-500/50" />
-                <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
-                <p className="relative text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400 mb-3">
-                  {menu.featured.eyebrow}
-                </p>
-                <h4 className="relative font-['DM_Serif_Display'] text-2xl text-white leading-tight mb-3">
-                  {menu.featured.title}
-                </h4>
-                <p className="relative text-sm text-emerald-100/80 font-light leading-relaxed mb-6">
-                  {menu.featured.text}
-                </p>
-                <Link
-                  to={menu.featured.to}
-                  tabIndex={on ? 0 : -1}
-                  className="relative mt-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-[0.2em] px-5 py-3 transition-colors"
+                <div
+                  className="relative overflow-hidden bg-[#062c1b] p-7 flex flex-col motion-reduce:!transition-none"
+                  style={{
+                    opacity: on ? 1 : 0,
+                    transform: on ? "translateY(0)" : "translateY(-14px)",
+                    transition: on
+                      ? `opacity 600ms ease-out ${160 + cols * 70}ms, transform 700ms cubic-bezier(0.22, 1, 0.36, 1) ${160 + cols * 70}ms`
+                      : "opacity 200ms ease-in, transform 200ms ease-in",
+                  }}
                 >
-                  {menu.featured.cta}
-                  <span aria-hidden>→</span>
-                </Link>
-                {menu.featured.secondary && (
+                  <div className="absolute top-0 left-0 w-full h-0.5 bg-emerald-500/50" />
+                  <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
+                  <p className="relative text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400 mb-3">
+                    {menu.featured.eyebrow}
+                  </p>
+                  <h4 className="relative font-['DM_Serif_Display'] text-2xl text-white leading-tight mb-3">
+                    {menu.featured.title}
+                  </h4>
+                  <p className="relative text-sm text-emerald-100/80 font-light leading-relaxed mb-6">
+                    {menu.featured.text}
+                  </p>
                   <Link
-                    to={menu.featured.secondary.to}
+                    to={menu.featured.to}
                     tabIndex={on ? 0 : -1}
-                    className="relative mt-4 text-center text-xs text-emerald-200/80 hover:text-white underline-offset-4 hover:underline transition-colors"
+                    className="relative mt-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-[0.2em] px-5 py-3 transition-colors"
                   >
-                    {menu.featured.secondary.label}
+                    {menu.featured.cta}
+                    <span aria-hidden>→</span>
                   </Link>
-                )}
-              </div>
+                  {menu.featured.secondary && (
+                    <Link
+                      to={menu.featured.secondary.to}
+                      tabIndex={on ? 0 : -1}
+                      className="relative mt-4 text-center text-xs text-emerald-200/80 hover:text-white underline-offset-4 hover:underline transition-colors"
+                    >
+                      {menu.featured.secondary.label}
+                    </Link>
+                  )}
+                </div>
               )}
             </div>
           </div>
@@ -469,8 +480,8 @@ export default function Navbar() {
       onMouseLeave={closeMenu}
       className={`fixed w-full z-50 transition-[padding,background-color] duration-500 ${
         scrolled
-          ? "bg-white backdrop-blur-md py-4 shadow-[0_1px_2px_rgba(16,185,129,0.08)] sm:shadow-[0_4px_8px_rgba(16,185,129,0.1)] lg:shadow-[0_10px_18px_rgba(16,185,129,0.12)]"
-          : "bg-white border-b-2 border-emerald-50 py-4 lg:py-4"
+          ? "bg-white backdrop-blur-md py-3 shadow-[0_1px_2px_rgba(16,185,129,0.08)] sm:shadow-[0_4px_8px_rgba(16,185,129,0.1)] lg:shadow-[0_10px_18px_rgba(16,185,129,0.12)]"
+          : "bg-white border-b-2 border-emerald-50 py-4 lg:py-3"
       }`}
     >
       {/* Page dim while a mega menu is open */}
@@ -485,21 +496,15 @@ export default function Navbar() {
         <div className="flex justify-start">
           <Link
             to="/"
-            className="flex items-center group"
+            className="flex flex-col items-start group"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            <div className="relative h-10 w-12 sm:h-11 sm:w-14 lg:h-12 lg:w-18 rounded-xl mr-0 md:mr-2">
-              <img src="/logo.jpeg" alt="LushWare" className="h-full w-full object-contain" />
-            </div>
-            <div className="hidden sm:flex flex-col space-y-0.5 md:space-y-1">
-              
-              <span className="text-xl sm:text-2xl lg:text-3xl font-semibold tracking-wide text-stone-700 leading-none">
-                LUSH
-                <span style={{ WebkitTextStroke: "1px #1c1917", color: "transparent" }}>WARE</span>
-              </span>
-              <span className="text-[7px] sm:text-[8px] lg:text-[10px] tracking-tight lg:tracking-tighter text-emerald-600 font-bold uppercase leading-none">
-                Business Operations on Autopilot
-              </span>
+            <div className="relative h-10 w-12 sm:h-11 sm:w-14 lg:h-12 lg:w-26">
+              <img
+                src="/logo2.jpg"
+                alt="LushWare"
+                className="h-full w-full object-contain"
+              />
             </div>
           </Link>
         </div>
@@ -513,13 +518,17 @@ export default function Navbar() {
               to={link.to}
               onMouseEnter={closeMenu}
               className={`text-sm font-bold tracking-widest uppercase whitespace-nowrap hover:text-emerald-700 transition-colors relative group ${
-                location.pathname === link.to ? "text-emerald-700" : "text-stone-800"
+                location.pathname === link.to
+                  ? "text-emerald-700"
+                  : "text-stone-800"
               }`}
             >
               {link.name}
               <span
                 className={`absolute -bottom-1.5 left-0 h-0.5 bg-emerald-500 transition-all duration-300 ${
-                  location.pathname === link.to ? "w-full" : "w-0 group-hover:w-full"
+                  location.pathname === link.to
+                    ? "w-full"
+                    : "w-0 group-hover:w-full"
                 }`}
               />
             </Link>
@@ -557,9 +566,15 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           <div className="w-6 h-5 relative flex flex-col justify-between">
-            <span className={`w-full h-0.5 bg-current transition-all duration-300 ${open ? "rotate-45 translate-y-2.25" : ""}`} />
-            <span className={`w-full h-0.5 bg-current transition-all duration-300 ${open ? "opacity-0 scale-x-0" : ""}`} />
-            <span className={`w-full h-0.5 bg-current transition-all duration-300 ${open ? "-rotate-45 -translate-y-2.25" : ""}`} />
+            <span
+              className={`w-full h-0.5 bg-current transition-all duration-300 ${open ? "rotate-45 translate-y-2.25" : ""}`}
+            />
+            <span
+              className={`w-full h-0.5 bg-current transition-all duration-300 ${open ? "opacity-0 scale-x-0" : ""}`}
+            />
+            <span
+              className={`w-full h-0.5 bg-current transition-all duration-300 ${open ? "-rotate-45 -translate-y-2.25" : ""}`}
+            />
           </div>
         </button>
       </div>
@@ -570,7 +585,10 @@ export default function Navbar() {
 
       {/* ── MOBILE DRAWER ─────────────────────────── */}
       {open && (
-        <div className="fixed inset-0 z-50 h-screen lg:hidden" onClick={closeMobile}>
+        <div
+          className="fixed inset-0 z-50 h-screen lg:hidden"
+          onClick={closeMobile}
+        >
           <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-sm" />
           <div
             className="absolute top-0 right-0 h-full w-[82%] max-w-xs sm:max-w-sm md:max-w-xl sm:p-4 bg-white shadow-2xl overflow-y-auto"
@@ -597,12 +615,18 @@ export default function Navbar() {
                 {(["services", "solutions"] as MenuKey[]).map((k, idx) => (
                   <div key={k}>
                     <button
-                      onClick={() => setMobileSection((p) => (p === k ? null : k))}
+                      onClick={() =>
+                        setMobileSection((p) => (p === k ? null : k))
+                      }
                       className="nb-sans w-full group px-4 py-3.5 text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/60 transition-all duration-300 font-bold text-[10px] sm:text-lg uppercase tracking-[0.18em] text-left"
-                      style={{ animation: `slideIn 0.4s ease-out ${idx * 0.08}s backwards` }}
+                      style={{
+                        animation: `slideIn 0.4s ease-out ${idx * 0.08}s backwards`,
+                      }}
                     >
                       <span className="flex items-center justify-between">
-                        <span>{k === "services" ? "Services" : "Solutions"}</span>
+                        <span>
+                          {k === "services" ? "Services" : "Solutions"}
+                        </span>
                         <span
                           className={`text-emerald-600 transition-transform duration-300 text-base leading-none ${
                             mobileSection === k ? "rotate-45" : ""
@@ -626,9 +650,13 @@ export default function Navbar() {
                                 to={item.to}
                                 onClick={closeMobile}
                                 className="nb-sans group/sub px-4 py-3 text-[11px] sm:text-lg font-medium text-slate-500 hover:text-emerald-700 hover:bg-emerald-50/40 transition-all duration-300 flex items-center gap-3"
-                                style={{ animation: `slideIn 0.4s ease-out ${0.05 + i * 0.06}s backwards` }}
+                                style={{
+                                  animation: `slideIn 0.4s ease-out ${0.05 + i * 0.06}s backwards`,
+                                }}
                               >
-                                <span className="text-emerald-600 shrink-0">{item.icon}</span>
+                                <span className="text-emerald-600 shrink-0">
+                                  {item.icon}
+                                </span>
                                 <span>{item.name}</span>
                               </Link>
                             ))}
@@ -653,7 +681,9 @@ export default function Navbar() {
                         ? "text-emerald-700 bg-emerald-50/60"
                         : "text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/60"
                     }`}
-                    style={{ animation: `slideIn 0.4s ease-out ${0.15 + i * 0.1}s backwards` }}
+                    style={{
+                      animation: `slideIn 0.4s ease-out ${0.15 + i * 0.1}s backwards`,
+                    }}
                   >
                     {link.name}
                   </Link>
