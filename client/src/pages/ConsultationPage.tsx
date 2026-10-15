@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import {
   ArrowUpRight,
   Linkedin,
-  Twitter,
   CheckCircle2,
   Instagram,
   Facebook,
