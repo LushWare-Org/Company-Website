@@ -163,8 +163,36 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 md:space-y-4">
               <li>
+                <AnimatedLink to="/solutions/ai-process-optimization">
+                  AI-Driven Process Optimization
+                </AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink to="/solutions/autonomous-decision-intelligence">
+                  Autonomous Decision Intelligence
+                </AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink to="/solutions/ai-agents">
+                  AI Agents & Chatbots
+                </AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink to="/solutions/bpm">
+                  Business Process Management
+                </AnimatedLink>
+              </li>
+            </ul>
+          </div>
+
+          <div className="space-y-5 md:space-y-6">
+            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">
+              Services
+            </h4>
+            <ul className="space-y-3 md:space-y-4">
+              <li>
                 <AnimatedLink to="/solutions/websites">
-                  Web Development
+                  Business & Corporate Websites
                 </AnimatedLink>
               </li>
               <li>
@@ -173,36 +201,14 @@ export default function Footer() {
                 </AnimatedLink>
               </li>
               <li>
-                <AnimatedLink to="/solutions/crm">CRM Systems</AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/solutions/bpm">
-                  Business Process Management
+                <AnimatedLink to="/solutions/iot-product-development">
+                  IoT Product Development
                 </AnimatedLink>
               </li>
               <li>
-                <AnimatedLink to="/solutions/ai-agents">AI Agents</AnimatedLink>
-              </li>
-              
-            </ul>
-          </div>
-
-          <div className="space-y-5 md:space-y-6">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">
-              Company
-            </h4>
-            <ul className="space-y-3 md:space-y-4">
-              <li>
-                <AnimatedLink to="/">About Us</AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/work">Our Work</AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/project-base">Join Our Team</AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/contact">Contact Us</AnimatedLink>
+                <AnimatedLink to="/solutions/product-engineering">
+                  Product Engineering & Embedded Systems
+                </AnimatedLink>
               </li>
             </ul>
           </div>
@@ -245,11 +251,6 @@ export default function Footer() {
                   name: "Instagram",
                   icon: Instagram,
                   href: "https://www.instagram.com/lush_ware_org/",
-                },
-                {
-                  name: "Twitter / X",
-                  icon: Twitter,
-                  href: "https://twitter.com/lushware",
                 },
                 {
                   name: "LinkedIn",

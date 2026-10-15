@@ -440,10 +440,9 @@ export default function Homepage() {
           </div>
         </section>
 
-        {/* ── SOFTWARE PRODUCTS ────────────────────── */}
-        <section data-reveal className="bg-white px-4 md:px-0 py-24 relative">
+        ── SOFTWARE PRODUCTS ──────────────────────
+        {/* <section data-reveal className="bg-white px-4 md:px-0 py-24 relative">
           <div className="max-w-7xl mx-auto relative z-10">
-            {/* Header */}
             <div className="max-w-7xl mx-auto px-6 mb-24">
               <div className="pt-8">
                 <div className="max-w-5xl mx-auto text-center px-4">
@@ -463,7 +462,6 @@ export default function Homepage() {
               </div>
             </div>
 
-            {/* WorkCards — untouched */}
             <div className="max-w-7xl mx-auto px-6">
               <div className="grid grid-cols-1 md:grid-cols-1 gap-x-16 gap-y-20">
                 {featuredProjects.map((project, index) => (
@@ -478,7 +476,6 @@ export default function Homepage() {
               </div>
             </div>
 
-            {/* Footer CTA */}
             <div className="mt-24 mb-2 flex flex-col items-center">
               <button
                 onClick={() => navigate("/work")}
@@ -502,7 +499,7 @@ export default function Homepage() {
               </button>
             </div>
           </div>
-        </section>
+        </section> */}
       </div>
 
 

@@ -16,6 +16,7 @@ type HeroSlide = {
   maxWidthClass: string;
   aspectClass: string;
   titleSizeClass: string;
+  path: string;
 };
 
 const heroSlides: HeroSlide[] = [
@@ -30,6 +31,7 @@ const heroSlides: HeroSlide[] = [
     maxWidthClass: "w-full px-4 mt-0 lg:mt-12 sm:px-6 md:max-w-lg lg:max-w-md",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
     titleSizeClass: "text-5xl md:text-7xl lg:text-[6.4rem]",
+    path: "/solutions/ai-process-optimization",
   },
 
   {
@@ -43,6 +45,7 @@ const heroSlides: HeroSlide[] = [
     maxWidthClass: "w-full px-4 lg:mt-16 mt-0 sm:px-6 md:max-w-lg lg:max-w-md",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
     titleSizeClass: "text-5xl md:text-7xl lg:text-[6.4rem]",
+    path: "/solutions/autonomous-decision-intelligence",
   },
   /*
   {
@@ -69,6 +72,7 @@ const heroSlides: HeroSlide[] = [
     maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:mt-4 mt-0 lg:max-w-lg",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
     titleSizeClass: "text-5xl md:text-7xl lg:text-[6.5rem]",
+    path: "/solutions/ai-agents"
   },
   {
     id: "03",
@@ -81,6 +85,7 @@ const heroSlides: HeroSlide[] = [
     maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-xl",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto lg:pt-2",
     titleSizeClass: "text-5xl md:text-7xl lg:text-[6.5rem]",
+    path: "/solutions/bpm"
   },
   {
     id: "04",
@@ -93,6 +98,7 @@ const heroSlides: HeroSlide[] = [
     maxWidthClass: "w-full px-4 sm:px-6 md:max-w-xl xl:max-w-2xl",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
     titleSizeClass: "text-5xl md:text-7xl lg:text-[6.5rem]",
+    path: "/solutions/websites"
   },
   {
     id: "05",
@@ -105,6 +111,7 @@ const heroSlides: HeroSlide[] = [
     maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
     titleSizeClass: "text-5xl md:text-7xl lg:text-[6.5rem]",
+    path: "/solutions/mobile-apps"
   },
   {
     id: "09",
@@ -117,6 +124,7 @@ const heroSlides: HeroSlide[] = [
     maxWidthClass: "w-full px-4 lg:mt-16 mt-0 sm:px-6 md:max-w-lg lg:max-w-md",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
     titleSizeClass: "text-5xl md:text-7xl lg:text-[6.1rem]",
+    path: "/solutions/product-engineering"
   },
   {
     id: "06",
@@ -129,6 +137,7 @@ const heroSlides: HeroSlide[] = [
     maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-lg",
     aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-auto",
     titleSizeClass: "text-5xl md:text-7xl lg:text-[6.1rem]",
+    path: "/solutions/iot-product-development"
   },
 ];
 
@@ -181,7 +190,18 @@ export default function HeroSection() {
                     {slide.description}
                   </p>
 
-                  <div className="flex flex-col md:flex-row lg:flex-col gap-6 w-full lg:w-max md:justify-center lg:justify-start">
+                  <div className="flex flex-row gap-4 w-full lg:w-max md:justify-center lg:justify-start">
+                    {/* Learn More Button */}
+                    <button
+                      onClick={() => navigate(slide.path)}
+                      className="group relative cursor-pointer rounded-md px-8 py-4 bg-white border border-black overflow-hidden transition-all duration-500 hover:scale-105"
+                    >
+                      <span className="relative z-10 text-[14px] font-bold tracking-[0.2em] uppercase text-black transition-colors duration-500 group-hover:text-white">
+                        Learn More
+                      </span>
+                      <div className="absolute inset-0 bg-emerald-600 translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:translate-y-0"></div>
+                    </button>
+                    {/* Start Your Project Button */}
                     <button
                       onClick={() => navigate("/contact")}
                       className="group relative cursor-pointer rounded-xs px-8 py-4 bg-stone-900 overflow-hidden lg:shadow-2xl shadow-none transition-all duration-500 hover:scale-105"
