@@ -1,15 +1,13 @@
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import WorkCard, { type WorkProject } from "../components/WorkCard";
+import { Link } from "react-router-dom";
+//import WorkCard, { type WorkProject } from "../components/WorkCard";
 import ValueCard from "../components/ValueCard";
-//import GlobalPresence from "@/components/GlobalPresence";
 import HeroSection from "@/components/HeroSection";
 import JoinSection from "@/components/JoinSection";
 import ServicesSection from "@/components/ServicesSection";
 import WebKitSection from "@/components/WebKitSection";
 
 export default function Homepage() {
-  const navigate = useNavigate();
 
   useEffect(() => {
     const elements = Array.from(document.querySelectorAll("[data-reveal]"));
@@ -32,28 +30,28 @@ export default function Homepage() {
     return () => observer.disconnect();
   }, []);
 
-  const featuredProjects: WorkProject[] = [
-    {
-      name: "All-in-one Travel Agency Web Application",
-      client: "Islekey Holidays",
-      summary:
-        "Islekey Holidays is a unified platform for travel agencies to manage bookings, inventory, and customer journeys.",
-      description:
-        "We delivered a scalable system that centralizes B2B/B2C workflows, improving operations and customer experiences.",
-      image: "/work2/islekeyholidays.jpg",
-      link: "https://islekeyholidays.com/",
-    },
-    {
-      name: "Speedboat Ticket Booking System",
-      client: "Dream Speed",
-      summary:
-        "A real-time ticketing platform for maritime travel with live route availability and instant booking.",
-      description:
-        "Built to handle vessel capacity, passenger validation, and fast checkouts across busy routes.",
-      image: "/work2/dreamspeed.jpg",
-      link: "https://www.dreamspeedmaldives.com/",
-    },
-  ];
+  // const featuredProjects: WorkProject[] = [
+  //   {
+  //     name: "All-in-one Travel Agency Web Application",
+  //     client: "Islekey Holidays",
+  //     summary:
+  //       "Islekey Holidays is a unified platform for travel agencies to manage bookings, inventory, and customer journeys.",
+  //     description:
+  //       "We delivered a scalable system that centralizes B2B/B2C workflows, improving operations and customer experiences.",
+  //     image: "/work2/islekeyholidays.jpg",
+  //     link: "https://islekeyholidays.com/",
+  //   },
+  //   {
+  //     name: "Speedboat Ticket Booking System",
+  //     client: "Dream Speed",
+  //     summary:
+  //       "A real-time ticketing platform for maritime travel with live route availability and instant booking.",
+  //     description:
+  //       "Built to handle vessel capacity, passenger validation, and fast checkouts across busy routes.",
+  //     image: "/work2/dreamspeed.jpg",
+  //     link: "https://www.dreamspeedmaldives.com/",
+  //   },
+  // ];
 
   return (
     <>

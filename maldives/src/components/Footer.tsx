@@ -3,8 +3,6 @@ import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
-  FaXTwitter,
-  FaYoutube,
 } from "react-icons/fa6";
 
 const solutionLinks = [
@@ -64,8 +62,6 @@ function Footer() {
                 { Icon: FaLinkedinIn, href: "https://www.linkedin.com/company/lushware", label: "LinkedIn" },
                 { Icon: FaInstagram, href: "https://www.instagram.com/lush_ware_org/", label: "Instagram" },
                 { Icon: FaFacebookF, href: "https://web.facebook.com/lushware/", label: "Facebook" },
-                { Icon: FaXTwitter, href: "#", label: "Twitter" },
-                { Icon: FaYoutube, href: "#", label: "YouTube" },
               ].map(({ Icon, href, label }) => (
                 <a
                   key={label}
@@ -178,4 +174,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Footer;
