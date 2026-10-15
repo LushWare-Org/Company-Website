@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import {
   Facebook,
-  Twitter,
   Linkedin,
   ArrowUpRight,
   Globe,
