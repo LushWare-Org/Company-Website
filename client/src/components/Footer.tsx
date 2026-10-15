@@ -87,7 +87,7 @@ export default function Footer() {
                     </span>
                   </span>
                   <span className="text-[8px] sm:text-[9px] md:text-[10px] tracking-tight md:tracking-tighter text-emerald-600 font-bold uppercase leading-none mt-0.5">
-                    Hoisting Your Life to The Next Level
+                    Business Operations on Autopilot
                   </span>
                 </div>
               </Link>

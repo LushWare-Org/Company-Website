@@ -438,8 +438,8 @@ export default function Homepage() {
           </div>
         </section>
 
-        ── SOFTWARE PRODUCTS ──────────────────────
-        {/* <section data-reveal className="bg-white px-4 md:px-0 py-24 relative">
+        {/*── SOFTWARE PRODUCTS ──────────────────────
+        <section data-reveal className="bg-white px-4 md:px-0 py-24 relative">
           <div className="max-w-7xl mx-auto relative z-10">
             <div className="max-w-7xl mx-auto px-6 mb-24">
               <div className="pt-8">
