@@ -2,11 +2,11 @@ import { useEffect, useRef } from "react";
 import {
   ArrowUpRight,
   Linkedin,
-  Twitter,
   CheckCircle2,
   Instagram,
   Facebook,
   Mail,
+  Phone,
 } from "lucide-react";
 
 const CALENDLY_URL = "https://calendly.com/lushware-net";
@@ -28,11 +28,6 @@ const socials = [
     href: "https://www.linkedin.com/company/lushware",
     icon: <Linkedin size={20} strokeWidth={1.5} />,
     label: "LinkedIn",
-  },
-  {
-    href: "https://twitter.com/lushware",
-    icon: <Twitter size={20} strokeWidth={1.5} />,
-    label: "Twitter",
   },
   {
     href: "https://www.instagram.com/lush_ware_org/",
@@ -189,30 +184,19 @@ export default function ConsultationPageV15() {
 
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4">
-                    Global Contact
+                    Contact
                   </p>
-                  <div className="space-y-5">
-                    <div className="flex items-center gap-4">
-                      <div className="w-8 h-8 rounded-sm overflow-hidden flex-shrink-0 ring-1 ring-slate-200">
-                        <img
-                          src="https://flagcdn.com/lk.svg"
-                          alt="SL Flag"
-                          className="w-full h-full object-cover scale-150"
-                        />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-[9px] uppercase font-bold text-slate-400 tracking-wider">
-                          Sri Lanka
-                        </span>
-                        <a
-                          href="tel:+94716430053"
-                          className="text-[17px] font-medium text-slate-900 hover:text-emerald-600 transition-colors tracking-tight"
-                        >
-                          +94 71 643 0053
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  <a
+                    href="tel:+94716430053"
+                    className="group inline-flex items-center gap-2 text-xl font-medium text-slate-900 hover:text-emerald-600 transition-colors"
+                  >
+                    <Phone size={18} className="text-emerald-600" />
+                    +94 71 643 0053
+                    <ArrowUpRight
+                      size={16}
+                      className="opacity-0 group-hover:opacity-100 transition-all"
+                    />
+                  </a>
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -221,9 +205,9 @@ export default function ConsultationPageV15() {
                       key={index}
                       href={social.href}
                       aria-label={social.label}
-                      className="group relative p-2.5 rounded-full transition-all duration-500 hover:bg-emerald-50"
+                      className="group relative p-2.5 rounded-full transition-all duration-500 hover:bg-emerald-50 target:_blank"
                     >
-                      <div className="relative z-10 text-slate-500 group-hover:text-emerald-600 transition-colors duration-300">
+                      <div className="relative z-10 text-slate-500 group-hover:text-emerald-600 transition-colors duration-300 target:_blank">
                         {social.icon}
                       </div>
                       <div className="absolute inset-0 rounded-full bg-emerald-600/0 opacity-0 group-hover:opacity-10 group-hover:scale-110 transition-all duration-500 ease-out" />

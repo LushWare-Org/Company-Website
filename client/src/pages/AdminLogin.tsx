@@ -47,7 +47,7 @@ export default function AdminLogin() {
           <div className="flex items-start gap-8">
             <div className="w-px h-24 bg-gray-200"></div>
             <p className="text-xl text-gray-500 font-medium leading-tight">
-              Hosting Your Life to  <span className="text-gray-900 underline decoration-2 decoration-emerald-500 underline-offset-8">The Next Level.</span> 
+              Business Operations  <span className="text-gray-900 underline decoration-2 decoration-emerald-500 underline-offset-8">on Autopilot.</span> 
             </p>
           </div>
         </div>
