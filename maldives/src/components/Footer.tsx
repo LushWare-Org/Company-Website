@@ -151,9 +151,9 @@ function Footer() {
         {/* Lower Utility Strip */}
         <div className="py-6 sm:py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#f2f4f6]/70 font-medium">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-4 sm:gap-x-6 gap-y-2 font-label tracking-wider text-center">
-            <span>MALE', MALDIVES</span>
+            <span>MALDIVES</span>
             <span className="hidden md:inline text-white/20">&bull;</span>
-            <span>COLOMBO, SRI LANKA</span>
+            <span>SRI LANKA</span>
           </div>
 
           <p className="font-label tracking-wide order-last md:order-none text-center">
