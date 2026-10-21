@@ -38,6 +38,7 @@ function App() {
   const location = useLocation();
   const isAdminPage = location.pathname.startsWith('/admin') || location.pathname.startsWith('/dashboard');
   const isTemplatePage = location.pathname.startsWith('/templates');
+  const isContactPage = location.pathname === '/contact';
 
   // Initialize Lenis smooth scrolling globally
   //useLenis();
@@ -88,6 +89,22 @@ function App() {
       {!isAdminPage && !isTemplatePage && <WhatsAppButton />}
       
       <main className="relative z-10">
+        <div
+          aria-hidden={!isContactPage}
+          inert={!isContactPage}
+          style={isContactPage ? undefined : {
+            position: 'fixed',
+            top: 0,
+            left: '-10000px',
+            width: '100%',
+            height: '100vh',
+            overflow: 'hidden',
+            visibility: 'hidden',
+            pointerEvents: 'none',
+          }}
+        >
+          <ConsultationPage />
+        </div>
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/solutions" element={<SolutionsPage />} />
@@ -102,7 +119,6 @@ function App() {
           <Route path="/solutions/autonomous-decision-intelligence" element={<AutonomousDecisionIntelligence />} />
           <Route path="/work" element={<WorkPage />} />
           <Route path="/project-base" element={<ProjectBasePage />} />
-          <Route path="/contact" element={<ConsultationPage />} />
           <Route path="/templates/consultancy" element={<ConsultancyPage />} />
           <Route path="/templates/healthcare" element={<HealthcarePage />} />
           <Route path="/templates/real-estate" element={<RealEstatePage />} />

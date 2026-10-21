@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 declare global {
@@ -24,7 +24,6 @@ const CALENDLY_PUBLIC_URL = "https://calendly.com/lushware-net";
 
 function ContactPage() {
   const calendlyRef = useRef<HTMLDivElement>(null);
-  const [isCalendlyLoading, setIsCalendlyLoading] = useState(true);
 
   useEffect(() => {
     const container = calendlyRef.current;
@@ -37,10 +36,6 @@ function ContactPage() {
         url: CALENDLY_URL,
         parentElement: container,
       });
-      // Give the iframe a moment to paint before removing the skeleton
-      window.setTimeout(() => {
-        if (!cancelled) setIsCalendlyLoading(false);
-      }, 800);
     };
 
     if (window.Calendly) {
@@ -56,9 +51,6 @@ function ContactPage() {
         document.body.appendChild(script);
       }
       script.addEventListener("load", initWidget);
-      script.addEventListener("error", () => {
-        if (!cancelled) setIsCalendlyLoading(false);
-      });
     }
 
     return () => {
@@ -145,19 +137,6 @@ function ContactPage() {
 
             {/* Calendly Widget */}
             <div className="relative px-2 py-4 sm:px-4 md:px-6 md:py-6">
-              {isCalendlyLoading && (
-                <div
-                  className="absolute inset-4 z-10 flex flex-col items-center justify-center gap-4 rounded-2xl bg-white"
-                  role="status"
-                  aria-live="polite"
-                >
-                  <div className="h-10 w-10 animate-spin rounded-full border-4 border-primary/20 border-t-primary" />
-                  <p className="text-sm font-medium text-on-surface-variant">
-                    Loading available times...
-                  </p>
-                </div>
-              )}
-
               <div
                 ref={calendlyRef}
                 className="w-full"
