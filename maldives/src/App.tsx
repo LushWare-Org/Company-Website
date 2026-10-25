@@ -1,5 +1,5 @@
 import { useLayoutEffect } from 'react'
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Footer from './components/Footer'
 import FloatingActions from './components/FloatingActions'
 import Navbar from './components/Navbar'
@@ -11,6 +11,11 @@ import PropertyManagementSystemPage from './pages/PropertyManagementSystemPage'
 import LushHotelCloudPage from './pages/LushHotelCloudPage'
 import ServicesPage from './pages/ServicesPage'
 import TravelCrmPage from './pages/TravelCrmPage'
+import NotFoundPage from './pages/NotFoundPage'
+import Seo from './seo/Seo'
+
+// True while prerendering in Node (scripts/prerender.mjs).
+const isPrerender = typeof window === 'undefined'
 //import { useLenis } from './hooks/useLenis'
 
 function App() {
@@ -26,6 +31,7 @@ function App() {
 
   return (
     <div className='min-h-screen bg-[#ffffff]'>
+      <Seo />
       <Navbar />
       <div
         aria-hidden={!isContactPage}
@@ -41,7 +47,9 @@ function App() {
           pointerEvents: 'none',
         }}
       >
-        <ContactPage />
+        {/* Kept mounted in the browser so Calendly preloads; prerendered only on /contact
+            so its copy isn't duplicated as hidden content on every static page. */}
+        {(!isPrerender || isContactPage) && <ContactPage />}
       </div>
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -52,7 +60,7 @@ function App() {
         <Route path="/contact" element={null} />
         <Route path="/travel-crm" element={<TravelCrmPage />} />
         <Route path="/services" element={<ServicesPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <FloatingActions />
       <Footer />

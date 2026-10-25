@@ -42,7 +42,7 @@ const slides = [
     title: "Property Management, Perfected for Travel Agencies",
     description:
       "A refined PMS built for the Maldives' most prestigious travel agencies — unify reservations, villas and guest data in one command centre.",
-    image: "/hero/property.jpg",
+    image: "/hero/property.webp",
     ctaLink: "/real-estate-control",
     ctaLabel: "Explore the PMS",
   },
@@ -53,7 +53,7 @@ const slides = [
     title: "Modern Speedboat Ticketing & Operations for the Maldives",
     description:
       "Coordinate transfers, crews and island logistics in real time — purpose-built dispatch engineered for the Maldives' fastest-moving fleets.",
-    image: "/hero/boat.jpg",
+    image: "/hero/boat.webp",
     ctaLink: "/viduvaru",
     ctaLabel: "See Speedboat Dispatch",
   },
@@ -64,7 +64,7 @@ const slides = [
     title: "Simplify Every Aspect of Your Guest House Operations",
     description:
       "Sync front desk, housekeeping, invoicing and channel managers into one calm, cloud-hosted workspace built for multi-property teams.",
-    image: "/hero/hotel.jpg",
+    image: "/hero/hotel.webp",
     ctaLink: "/hotelcloud",
     ctaLabel: "Explore Guest House Suite",
   },

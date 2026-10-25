@@ -25,7 +25,7 @@ function LandingHeroSection() {
       <div className="absolute inset-0 z-0">
         <img
           className="h-full w-full object-cover brightness-[0.85]"
-          src="/bg222.jpg"
+          src="/bg222.webp"
           alt="Maldives Horizon"
           loading="eager"
         />

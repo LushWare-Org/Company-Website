@@ -399,12 +399,12 @@ function LandingPage() {
                       className={`relative w-full overflow-hidden 
           aspect-[1] 
           sm:aspect-[3/4] 
-          md:${
+          ${
             index % 3 === 0
-              ? "aspect-[3/4]"
+              ? "md:aspect-[3/4]"
               : index % 2 === 0
-                ? "aspect-square"
-                : "aspect-[4/5]"
+                ? "md:aspect-square"
+                : "md:aspect-[4/5]"
           }`}
                     >
                       {/* Base Image: Grayscale to Color Transition */}

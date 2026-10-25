@@ -1,0 +1,5 @@
+/* Imported after index.css so Tailwind's preflight/utilities keep the same
+   cascade position the runtime CDN stylesheet had (appended last in <head>). */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

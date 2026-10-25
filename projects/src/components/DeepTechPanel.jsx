@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Icon from './Icon.jsx'
 import DomainPanel from './DomainPanel.jsx'
+import { subtabPath } from '../seo/routes.js'
 
-export default function DeepTechPanel({ data }) {
-  const [activeSub, setActiveSub] = useState(data.subtabs[0].id)
-  const active = data.subtabs.find((s) => s.id === activeSub)
+export default function DeepTechPanel({ data, activeSub }) {
+  const active = activeSub ?? data.subtabs[0]
 
   return (
     <div className="panel-content">
@@ -16,14 +16,15 @@ export default function DeepTechPanel({ data }) {
 
       <div className="subtabs">
         {data.subtabs.map((st) => (
-          <button
+          <Link
             key={st.id}
-            className={'subtab-btn' + (activeSub === st.id ? ' active' : '')}
-            onClick={() => setActiveSub(st.id)}
+            to={subtabPath(data, st)}
+            className={'subtab-btn' + (active.id === st.id ? ' active' : '')}
+            aria-current={active.id === st.id ? 'page' : undefined}
           >
             <Icon name={st.icon} />
             {st.label}
-          </button>
+          </Link>
         ))}
       </div>
 

@@ -1,15 +1,18 @@
-export default function TabNav({ tabs, activeId, onChange }) {
+import { Link } from 'react-router-dom'
+import { tabPath } from '../seo/routes.js'
+
+export default function TabNav({ tabs, activeId }) {
   return (
     <nav className="tabnav" aria-label="Service domains">
       {tabs.map((tab) => (
-        <button
+        <Link
           key={tab.id}
+          to={tabPath(tab)}
           className={'tab-btn' + (activeId === tab.id ? ' active' : '')}
-          onClick={() => onChange(tab.id)}
-          aria-current={activeId === tab.id ? 'true' : undefined}
+          aria-current={activeId === tab.id ? 'page' : undefined}
         >
           <span className="n">{tab.num}</span> {tab.label}
-        </button>
+        </Link>
       ))}
     </nav>
   )

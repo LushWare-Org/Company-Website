@@ -6,6 +6,7 @@ import Icon from './Icon.jsx'
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
+  const onSpecializations = location.pathname === '/' || location.pathname.startsWith('/specializations')
 
   useEffect(() => setMenuOpen(false), [location.pathname])
 
@@ -30,7 +31,7 @@ export default function Header() {
         </NavLink>
 
         <nav className="page-nav" aria-label="Primary">
-          <NavLink to="/" end className={({ isActive }) => 'page-nav-link' + (isActive ? ' active' : '')}>
+          <NavLink to="/" className={() => 'page-nav-link' + (onSpecializations ? ' active' : '')}>
             Specializations
           </NavLink>
           <NavLink to="/packages" className={({ isActive }) => 'page-nav-link' + (isActive ? ' active' : '')}>
@@ -58,7 +59,7 @@ export default function Header() {
 
       {menuOpen && (
         <nav className="mobile-nav" aria-label="Primary mobile">
-          <NavLink to="/" end className={({ isActive }) => 'page-nav-link' + (isActive ? ' active' : '')}>
+          <NavLink to="/" className={() => 'page-nav-link' + (onSpecializations ? ' active' : '')}>
             Specializations
           </NavLink>
           <NavLink to="/packages" className={({ isActive }) => 'page-nav-link' + (isActive ? ' active' : '')}>

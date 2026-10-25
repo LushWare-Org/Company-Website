@@ -5,7 +5,7 @@ import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import App from './App.tsx'
 
-export { ROUTES, NOT_FOUND_SEO, SITE_URL, renderHeadTags } from './seo/routes'
+export { ROUTES, NOT_FOUND_SEO, SITE_URL, ROBOTS_DISALLOW, renderHeadTags } from './seo/routes'
 
 export function render(url: string): string {
   return renderToString(

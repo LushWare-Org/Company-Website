@@ -1,6 +1,7 @@
 export const TABS = [
   {
     id: 'scalable',
+    slug: 'scalable-systems',
     num: '01',
     label: 'Scalable Systems',
     icon: 'infra',
@@ -28,6 +29,7 @@ export const TABS = [
   },
   {
     id: 'agentic',
+    slug: 'agentic-ai',
     num: '02',
     label: 'Agentic AI',
     icon: 'spark',
@@ -55,6 +57,7 @@ export const TABS = [
   },
   {
     id: 'ml',
+    slug: 'ml-models',
     num: '03',
     label: 'ML Models',
     icon: 'chart',
@@ -82,6 +85,7 @@ export const TABS = [
   },
   {
     id: 'deeptech',
+    slug: 'deep-tech',
     num: '04',
     label: 'Deep Tech',
     icon: 'layers',
@@ -93,6 +97,7 @@ export const TABS = [
     subtabs: [
       {
         id: 'genai',
+        slug: 'generative-ai-nlp',
         label: 'Generative AI & NLP',
         icon: 'spark',
         eyebrow: 'Deep Tech 4A',
@@ -116,6 +121,7 @@ export const TABS = [
       },
       {
         id: 'cv',
+        slug: 'computer-vision',
         label: 'Computer Vision',
         icon: 'eye',
         eyebrow: 'Deep Tech 4B',
@@ -139,6 +145,7 @@ export const TABS = [
       },
       {
         id: 'predictive',
+        slug: 'predictive-analytics',
         label: 'Predictive & Decision Support',
         icon: 'chart',
         eyebrow: 'Deep Tech 4C',
@@ -162,6 +169,7 @@ export const TABS = [
       },
       {
         id: 'edge',
+        slug: 'edge-ai-tinyml',
         label: 'Edge AI & TinyML',
         icon: 'chip',
         eyebrow: 'Deep Tech 4D',
@@ -185,6 +193,7 @@ export const TABS = [
       },
       {
         id: 'mlops',
+        slug: 'mlops-ai-governance',
         label: 'MLOps & AI Governance',
         icon: 'infra',
         eyebrow: 'Deep Tech 4E',
@@ -210,6 +219,7 @@ export const TABS = [
   },
   {
     id: 'blockchain',
+    slug: 'blockchain-web3',
     num: '05',
     label: 'Blockchain & Web3',
     icon: 'chain',

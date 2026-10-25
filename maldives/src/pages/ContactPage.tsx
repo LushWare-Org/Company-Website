@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 declare global {
   interface Window {
@@ -23,6 +23,8 @@ const CALENDLY_PUBLIC_URL = "https://calendly.com/lushware-net";
 
 
 function ContactPage() {
+  // This page stays mounted (hidden) on every route; it is only the page <h1> on /contact.
+  const Heading = useLocation().pathname === "/contact" ? "h1" : "h2";
   const calendlyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -72,7 +74,7 @@ function ContactPage() {
             <span className="text-balance">Partner with us</span>
           </span>
 
-          <h1 className="mt-6 font-headline text-5xl font-extrabold tracking-tight text-on-surface leading-[1.2] xs:text-4xl sm:mt-8 sm:text-5xl sm:leading-[1.15] md:text-6xl lg:text-7xl">
+          <Heading className="mt-6 font-headline text-5xl font-extrabold tracking-tight text-on-surface leading-[1.2] xs:text-4xl sm:mt-8 sm:text-5xl sm:leading-[1.15] md:text-6xl lg:text-7xl">
             <span className="block text-balance">Let's Scale Your</span>
             <span className="mt-1 block sm:mt-2">
               <span className="bg-gradient-to-r from-primary via-primary/90 to-primary-container bg-clip-text text-transparent drop-shadow-sm">
@@ -80,7 +82,7 @@ function ContactPage() {
               </span>{" "}
               <span className="text-on-surface">Together</span>
             </span>
-          </h1>
+          </Heading>
 
           <p className="mx-auto mt-4 max-w-xs text-sm leading-relaxed text-on-surface-variant font-medium xs:max-w-sm sm:mt-6 sm:max-w-2xl sm:text-lg md:text-xl">
             Transform your Maldivian hospitality experience with digital

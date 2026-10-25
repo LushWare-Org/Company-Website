@@ -13,9 +13,12 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const distDir = path.join(root, 'dist')
 const ssrDir = path.join(root, 'dist-ssr')
 
-const { render, ROUTES, NOT_FOUND_SEO, SITE_URL, renderHeadTags } = await import(
+const { render, ROUTES, NOT_FOUND_SEO, SITE_URL, ROBOTS_DISALLOW = [], PLACEHOLDER_SITE_URL, renderHeadTags } = await import(
   pathToFileURL(path.join(ssrDir, 'entry-server.js')).href
 )
+if (PLACEHOLDER_SITE_URL && SITE_URL === PLACEHOLDER_SITE_URL) {
+  console.warn(`\n⚠ SITE_URL is still the placeholder ${SITE_URL} — set VITE_SITE_URL to the real domain, or canonicals and the sitemap will point at the wrong site.\n`)
+}
 
 const template = fs.readFileSync(path.join(distDir, 'index.html'), 'utf-8')
 if (!template.includes('<!--seo-head-->') || !template.includes('<div id="root"></div>')) {
@@ -72,11 +75,10 @@ fs.writeFileSync(
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
 )
 
-// robots.txt — templates stay crawlable so their noindex tag is honoured.
-fs.writeFileSync(
-  path.join(distDir, 'robots.txt'),
-  `User-agent: *\nAllow: /\nDisallow: /admin\n\nSitemap: ${SITE_URL}/sitemap.xml\n`,
-)
+// robots.txt — noindex pages stay crawlable (unless listed in ROBOTS_DISALLOW)
+// so search engines can see their noindex tag.
+const disallow = ROBOTS_DISALLOW.map((p) => `Disallow: ${p}\n`).join('')
+fs.writeFileSync(path.join(distDir, 'robots.txt'), `User-agent: *\nAllow: /\n${disallow}\nSitemap: ${SITE_URL}/sitemap.xml\n`)
 
 fs.rmSync(ssrDir, { recursive: true, force: true })
 

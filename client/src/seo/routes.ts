@@ -5,6 +5,8 @@
 export const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://lushware.net').replace(/\/$/, '')
 export const SITE_NAME = 'LushWare'
 export const DEFAULT_OG_IMAGE = '/og-image.jpg'
+/** Paths blocked in robots.txt. */
+export const ROBOTS_DISALLOW = ['/admin']
 
 export const ORGANIZATION = {
   name: 'LushWare',

@@ -9,7 +9,7 @@ const projects = [
       "Trip Sky Way is a modern travel booking platform designed to help travelers discover destinations and plan seamless journeys.",
     description:
       "We built a responsive travel platform with intuitive navigation, fast performance, and seamless booking experiences tailored for modern travelers worldwide.",
-    image: "/work/TripSkyWay.jpg",
+    image: "/work/TripSkyWay.webp",
     link: "https://tripskyway.com/",
   },
   {
@@ -19,7 +19,7 @@ const projects = [
       "Holiday Vibes Tour is a travel website built to promote curated tours and immersive travel experiences.",
     description:
       "We created a vibrant platform enabling users to explore curated tour packages, detailed itineraries, and easily connect with travel experts seamlessly.",
-    image: "/work/HolidayVibesTour.jpg",
+    image: "/work/HolidayVibesTour.webp",
     link: "https://holidayvibestour.com/",
   },
   {
@@ -29,7 +29,7 @@ const projects = [
       "Yomaldives, a B2B portal designed to help travel agents boost their revenue.",
     description:
       "We delivered a tailored B2B platform empowering travel agents to streamline operations, increase revenue, and efficiently manage bookings with ease daily.",
-    image: "/work/yomaldives.png",
+    image: "/work/yomaldives.webp",
     link: "https://yomaldives.live/",
   },
 
@@ -40,7 +40,7 @@ const projects = [
       "We're thrilled to showcase our latest project, the Dream Speed Speedboat Booking System. We developed this platform to help travelers effortlessly search routes, check availability, and book their island journeys in the Maldives.",
     description:
       "This project reflects our commitment to building bespoke platforms that simplify bookings, optimize operations, and deliver seamless experiences for travelers globally.",
-    image: "/work/dreamspeed.png",
+    image: "/work/dreamspeed.webp",
     link: "https://www.dreamspeedmaldives.com/",
   },
   {
@@ -50,7 +50,7 @@ const projects = [
       "We're excited to showcase a project close to our hearts: IsleKey Holdings, an all-in-one web application for a travel agency.",
     description:
       "We developed a comprehensive platform that streamlines bookings, enhances user experiences, and empowers travel agencies to manage operations efficiently and grow.",
-    image: "/work/islekeyholidays.png",
+    image: "/work/islekeyholidays.webp",
     link: "https://islekeyholidays.com/",
   },
   {
@@ -60,7 +60,7 @@ const projects = [
       "Traveliccted is a travel-focused website built to showcase curated travel experiences and destination packages.",
     description:
       "This project highlights our ability to create engaging platforms with strong storytelling, seamless navigation, and conversion-focused designs for travel businesses worldwide.",
-    image: "/work/Traveliccted.jpg",
+    image: "/work/Traveliccted.webp",
     link: "https://traveliccted.com/",
   },
   {
