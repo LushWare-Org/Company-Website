@@ -38,7 +38,7 @@ export default function Homepage() {
   //       "Islekey Holidays is a unified platform for travel agencies to manage bookings, inventory, and customer journeys.",
   //     description:
   //       "We delivered a scalable system that centralizes B2B/B2C workflows, improving operations and customer experiences.",
-  //     image: "/work2/islekeyholidays.jpg",
+  //     image: "/work2/islekeyholidays.webp",
   //     link: "https://islekeyholidays.com/",
   //   },
   //   {

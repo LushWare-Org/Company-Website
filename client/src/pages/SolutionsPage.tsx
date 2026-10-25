@@ -19,28 +19,28 @@ const solutions: Solution[] = [
     subtitle: "Online Ticket Booking for Boat Services",
     description:
       "Self-service bookings, capacity management, e-ticketing, and boarding validation designed for marine transport.",
-    image: "/solution/boat.png",
+    image: "/solution/boat.webp",
   },
   {
     title: "Lush Hotel Cloud",
     subtitle: "Hotel Internal Management System",
     description:
       "A centralized cloud suite for reservations, housekeeping, inventory, and finance, built for multi-property operations.",
-    image: "/solution/hotel.png",
+    image: "/solution/hotel.webp",
   },
   {
     title: "Property Management System",
     subtitle: "Unified property oversight",
     description:
       "Digital workflows for property listings, maintenance tracking, tenant relations, and revenue oversight.",
-    image: "/solution/realstate.png",
+    image: "/solution/realstate.webp",
   },
   {
     title: "Travel Agency CRM System",
     subtitle: "Lead-to-trip lifecycle",
     description:
       "Automate inquiries, itineraries, payments, and post-trip follow-ups with a CRM tuned for travel teams.",
-    image: "/solution/travel.png",
+    image: "/solution/travel.webp",
   },
 ];
 
@@ -406,7 +406,7 @@ export default function SolutionsPage() {
                   {/* MAIN IMAGE CONTAINER */}
                   <div className="relative z-20 pt-4 px-2 lg:px-8 md:px-10 sm:px-8">
                     <img
-                      src="/Industry/travelhero-Photoroom.png"
+                      src="/Industry/travelhero-Photoroom.webp"
                       alt="Tourism and hospitality management system"
                       className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.12)] brightness-[1.02] contrast-[1.02]"
                     />

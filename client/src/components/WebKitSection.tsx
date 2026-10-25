@@ -7,7 +7,7 @@ export default function WebKitSection() {
   const templateImages = [
     {
       id: 4,
-      image: "/templates/img/res.png",
+      image: "/templates/img/res.webp",
       x: "-62%",
       y: "-8%",
       rotateX: 8,
@@ -17,7 +17,7 @@ export default function WebKitSection() {
     },
     {
       id: 2,
-      image: "/templates/img/cons.png",
+      image: "/templates/img/cons.webp",
       x: "-32%",
       y: "12%",
       rotateX: 4,
@@ -27,7 +27,7 @@ export default function WebKitSection() {
     },
     {
       id: 1,
-      image: "/templates/img/travel.png",
+      image: "/templates/img/travel.webp",
       x: "0%",
       y: "0%",
       rotateX: 0,
@@ -37,7 +37,7 @@ export default function WebKitSection() {
     },
     {
       id: 3,
-      image: "/templates/img/medi.png",
+      image: "/templates/img/medi.webp",
       x: "32%",
       y: "12%",
       rotateX: 4,
@@ -47,7 +47,7 @@ export default function WebKitSection() {
     },
     {
       id: 5,
-      image: "/templates/img/real.png",
+      image: "/templates/img/real.webp",
       x: "62%",
       y: "-8%",
       rotateX: 8,

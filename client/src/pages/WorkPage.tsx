@@ -9,7 +9,7 @@ const projects = [
       "Trip Sky Way is a modern travel booking platform designed to help travelers discover destinations and plan seamless journeys.",
     description:
       "We developed a clean, responsive travel website focused on intuitive navigation, fast performance, and a streamlined booking experience tailored to modern travelers.",
-    image: "/work2/TripSkyWay.jpg",
+    image: "/work2/TripSkyWay.webp",
     link: "https://tripskyway.com/",
   },
   {
@@ -29,7 +29,7 @@ const projects = [
       "Yomaldives, a B2B portal designed to help travel agents boost their revenue.",
     description:
       "This platform is a perfect example of how our bespoke software solutions can empower businesses and drive success. This project highlights our ability to deliver tailored software solutions that meet our clients’ specific business needs.",
-    image: "/work2/yomaldives.jpg",
+    image: "/work2/yomaldives.webp",
     link: "https://yomaldives.live/",
   },
 
@@ -50,7 +50,7 @@ const projects = [
       "We’re excited to showcase a project close to our hearts: IsleKey Holdings, an all-in-one web application for a travel agency.",
     description:
       "We built a platform that not only manages bookings but truly helps users “Experience Paradise” from the moment they land on the site. This project is a perfect example of our ability to create seamless, user-friendly solutions that elevate businesses and delight their customers.",
-    image: "/work2/islekeyholidays.jpg",
+    image: "/work2/islekeyholidays.webp",
     link: "https://islekeyholidays.com/",
   },
   {
@@ -60,7 +60,7 @@ const projects = [
       "Traveliccted is a travel-focused website built to showcase curated travel experiences and destination packages.",
     description:
       "This project highlights our ability to design engaging travel platforms that combine strong visual storytelling with user-friendly booking flows and conversion-focused layouts.",
-    image: "/work2/Traveliccted.jpg",
+    image: "/work2/Traveliccted.webp",
     link: "https://traveliccted.com/",
   },
   {
@@ -70,7 +70,7 @@ const projects = [
       "Crown Voyages is a powerful travel agency management system with automatic quotation generation designed to streamline operations.",
     description:
       "We developed a comprehensive platform that enables travel agencies to manage bookings, generate quotations automatically, handle clients, and optimize daily operations through a centralized system.",
-    image: "/work2/CrownVoyages.jpg",
+    image: "/work2/CrownVoyages.webp",
     link: "https://portal.crownvoyages.com/",
   },
 
@@ -81,7 +81,7 @@ const projects = [
       "We’re proud to showcase Holiday Life, a custom web application we developed for a travel agency.",
     description:
       "Our team worked to create a seamless, user-friendly platform that helps users find their dream holiday. This project is a testament to our commitment to building high-quality, impactful software solutions.",
-    image: "/work2/holidaylife.jpg",
+    image: "/work2/holidaylife.webp",
     link: "https://holidaylife.travel/",
   },
 ];

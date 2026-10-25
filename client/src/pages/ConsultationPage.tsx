@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import {
   ArrowUpRight,
   Linkedin,
@@ -90,6 +91,8 @@ function CalendlyEmbed() {
 }
 
 export default function ConsultationPageV15() {
+  // This page stays mounted (hidden) on every route; it is only the page <h1> on /contact.
+  const Heading = useLocation().pathname === "/contact" ? "h1" : "h2";
   return (
     <>
       <style>{`
@@ -133,10 +136,10 @@ export default function ConsultationPageV15() {
                 </div>
               </div>
 
-              <h2 className="consult-fadeUp consult-serif text-5xl sm:text-6xl lg:text-7xl font-normal text-slate-900 tracking-tight leading-[1.05]">
+              <Heading className="consult-fadeUp consult-serif text-5xl sm:text-6xl lg:text-7xl font-normal text-slate-900 tracking-tight leading-[1.05]">
                 Book a free <br />
                 <span className="text-emerald-600">consultancy.</span>
-              </h2>
+              </Heading>
 
               <p className="consult-fadeUp mt-8 text-lg md:text-xl text-slate-500 font-light leading-relaxed max-w-md">
                 Pick a time that suits you and talk with our team directly.

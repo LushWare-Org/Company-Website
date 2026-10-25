@@ -98,7 +98,7 @@ const AIAgents: React.FC = () => {
   <div className="relative overflow-hidden h-[250px] sm:h-[420px] md:h-[500px] lg:h-[550px] xl:h-[600px] w-full">
     
     <img
-      src="/hero4/ainew2.jpg"
+      src="/hero4/ainew2.webp"
       alt="Enterprise Interface"
       className="w-full h-full object-cover object-top"
     />

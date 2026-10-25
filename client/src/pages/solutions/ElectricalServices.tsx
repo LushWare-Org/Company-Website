@@ -299,7 +299,7 @@ export default function ElectricServices() {
                     {/* MAIN IMAGE CONTAINER */}
                     <div className="relative z-20 pt-4 px-0 lg:px-14 md:px-16 sm:px-4 animate-float">
                       <img
-                        src="/Industry/elechero-Photoroom.png"
+                        src="/Industry/elechero-Photoroom.webp"
                         alt="Electrical services software"
                         className="w-full h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.15)] brightness-[1.01] contrast-[1.01]"
                       />

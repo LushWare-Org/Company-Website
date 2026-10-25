@@ -20,7 +20,8 @@ Run these from inside the relevant app directory (`client/`, `maldives/`, `proje
 ```bash
 npm install        # per-app, run inside each directory you touch
 npm run dev         # client, maldives, projects: Vite dev server (default port 5173)
-npm run build        # client, maldives: `tsc -b && vite build` (type-checks then builds)
+npm run build        # client: type-check, vite build, SSR build, then scripts/prerender.mjs (static HTML per route, sitemap, robots)
+npm run build        # maldives: `tsc -b && vite build` (type-checks then builds)
 npm run build        # projects: `vite build` only (no TS project references)
 npm run lint         # client, maldives: eslint . (flat config, TS + react-hooks + react-refresh)
 npm run preview       # client, maldives, projects: preview the production build
@@ -43,6 +44,9 @@ Both are independent Vite apps with parallel structure (`src/{components,pages,h
 - `maldives` is plain CSS (no Tailwind dependency at all). It's a single-brand landing site with a handful of routes (`/`, `/viduvaru`, `/hotelcloud`, `/our-work`, `/real-estate-control`, `/contact`, `/travel-crm`, `/services`) and a catch-all redirect to `/`.
 - Both use Lenis for smooth scroll, wired through a local `useLenis` hook.
 
+### client SEO / prerendering
+`client/src/seo/routes.ts` is the single source of truth for per-route title, description, noindex, sitemap and JSON-LD. **Adding a route to `App.tsx` requires adding it to `ROUTES` too**, or it builds as a 404. `<Seo />` swaps `[data-seo]` head tags on client navigation; `scripts/prerender.mjs` renders each route through `src/entry-server.tsx` (`renderToString` + `StaticRouter`) at build time. The browser still mounts with `createRoot` (not hydration), so code that reads `window` must do so in effects or behind `typeof window` checks. `scripts/optimize-images.mjs` converts large referenced images in `public/` to WebP.
+
 ### Inquiry flow (client + maldives → server)
 `inquiryService.ts` in each frontend POSTs to `${VITE_API_URL}/api/inquiries` with a shared `InquiryFormData` shape covering three `inquiryType` variants — `solution`, `project`, `consultation` — each with its own required/optional fields (see validation branches in `submitInquiry`). It has an in-flight de-dupe guard (keyed on `email::inquiryType`) and a 10s `AbortController` timeout. The server (`server/controllers/inquiryController.js` via `server/models/Inquiry.js`) persists to MongoDB and fires admin/user emails asynchronously — the API responds before email delivery finishes, so `emailStatus.adminNotification`/`userConfirmation` can be `"processing"` on a successful response, not just `"sent"`/`"failed"`.
 
@@ -56,4 +60,4 @@ Single Express app (`server/index.js`) exporting the app for Vercel's Node serve
 Separate, simpler app — JSX not TSX, React 18 (older than client/maldives's React 19), no backend calls. `src/pages/Home.jsx` renders a tab-driven capability map: `TABS` from `src/data/specializations.js` drives `TabNav.jsx`, and the active tab renders either `DomainPanel.jsx` or `DeepTechPanel.jsx`. `src/pages/Packages.jsx` is the separate packages/pricing page. Content copy lives entirely in `src/data/`, kept separate from the presentational components in `src/components/`. Styling is one hand-written `src/index.css` using CSS custom properties for theming (`ThemeToggle.jsx` toggles light/dark), with shared "pill tab" styles (`.tabnav`/`.tab-btn`) reused for the top nav, subtabs, and audience switches.
 
 ### Deployment
-`client`, `maldives`, and `server` each have their own `vercel.json` and deploy as separate Vercel projects (`server`'s uses the legacy `builds`/`routes` format for the serverless function; `client`/`maldives` just SPA-rewrite everything to `index.html`). `projects/` currently has no `vercel.json`.
+`client`, `maldives`, and `server` each have their own `vercel.json` and deploy as separate Vercel projects (`server`'s uses the legacy `builds`/`routes` format for the serverless function; `maldives` SPA-rewrites everything to `index.html`; `client` serves prerendered `dist/<route>.html` files via `cleanUrls` with a real `404.html`). `projects/` currently has no `vercel.json`.

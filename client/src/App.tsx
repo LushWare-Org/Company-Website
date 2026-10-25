@@ -32,6 +32,11 @@ import AIProcessOptimization from './pages/solutions/AIProcessOptimization'
 import AutonomousDecisionIntelligence from './pages/solutions/AutonomousDecisionIntelligence'
 import Manufacturing from './pages/solutions/Manufacturing'
 import LogisticsSupplyChain from './pages/solutions/Logisticssupplychain'
+import NotFoundPage from './pages/NotFoundPage'
+import Seo from './seo/Seo'
+
+// True while prerendering in Node (scripts/prerender.mjs).
+const isPrerender = typeof window === 'undefined'
 
 function App() {
   //const [loading, setLoading] = useState(true);
@@ -84,6 +89,7 @@ function App() {
       </div>
 
       {/* 3. CONTENT LAYOUT */}
+      <Seo />
       {!isAdminPage && !isTemplatePage && <Navbar />}
       <ScrollToTop />
       {!isAdminPage && !isTemplatePage && <WhatsAppButton />}
@@ -103,7 +109,9 @@ function App() {
             pointerEvents: 'none',
           }}
         >
-          <ConsultationPage />
+          {/* Kept mounted in the browser so Calendly preloads; prerendered only on /contact
+              so its copy isn't duplicated as hidden content on every static page. */}
+          {(!isPrerender || isContactPage) && <ConsultationPage />}
         </div>
         <Routes>
           <Route path="/" element={<Homepage />} />
@@ -134,8 +142,10 @@ function App() {
               <ProtectedRoute>
                 <AdminDashboard />
               </ProtectedRoute>
-            } 
+            }
           />
+          <Route path="/contact" element={null} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
 

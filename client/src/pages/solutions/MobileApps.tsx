@@ -92,7 +92,7 @@ const MobileApps: React.FC = () => {
           <div className="relative mb-10">
             <div className="relative overflow-hidden h-[250px] sm:h-[420px] md:h-[500px] lg:h-[550px] xl:h-[600px] w-full">
               <img
-                src="/hero4/appnew2.jpg"
+                src="/hero4/appnew2.webp"
                 alt="Enterprise Interface"
                 className="w-full h-full object-cover object-top"
               />

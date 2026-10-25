@@ -33,7 +33,7 @@ const Websites: React.FC = () => {
       title: "Healthcare Website",
       description:
         "A modern healthcare platform designed for clinics and medical centers, featuring appointment scheduling, doctor profiles, service pages, and patient-focused user experience.",
-      image: "/templates/img/medi.png",
+      image: "/templates/img/medi.webp",
       link: "/templates/healthcare",
     },
     {
@@ -41,7 +41,7 @@ const Websites: React.FC = () => {
       title: "Real Estate Website",
       description:
         "A high-performance real estate solution with dynamic property listings, advanced search filters, detailed property pages, and integrated lead capture forms for agents.",
-      image: "/templates/img/real.png",
+      image: "/templates/img/real.webp",
       link: "/templates/real-estate",
     },
 
@@ -50,7 +50,7 @@ const Websites: React.FC = () => {
       title: "TravelODB Management System",
       description:
         "A complete travel management platform with tour package displays, booking functionality, itinerary pages, and seamless user navigation for travel agencies.",
-      image: "/templates/img/travel.png",
+      image: "/templates/img/travel.webp",
       link: "https://tour-eaz-travel-platform-mnrc.vercel.app/",
     },
     {
@@ -58,7 +58,7 @@ const Websites: React.FC = () => {
       title: "Restaurant Website",
       description:
         "An elegant restaurant website featuring interactive menus, online reservations, event promotions, and a visually immersive dining experience.",
-      image: "/templates/img/res.png",
+      image: "/templates/img/res.webp",
       link: "https://blackpepper-five.vercel.app/",
     },
     {
@@ -66,7 +66,7 @@ const Websites: React.FC = () => {
       title: "Consultancy Firm Website",
       description:
         "A professional corporate website tailored for consulting firms, designed to build authority, showcase expertise, highlight case studies, and convert visitors into clients.",
-      image: "/templates/img/cons.png",
+      image: "/templates/img/cons.webp",
       link: "/templates/consultancy",
     },
   ];

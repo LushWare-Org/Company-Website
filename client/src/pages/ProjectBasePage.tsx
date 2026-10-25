@@ -139,7 +139,7 @@ export default function ProjectBasePage() {
                 <div className="h-px w-8 bg-emerald-600" />
               </div>
 
-              <h2 className="pb-hero-line pb-serif text-5xl sm:text-6xl md:text-7xl font-normal tracking-tight text-slate-900 leading-[1.05]">
+              <h1 className="pb-hero-line pb-serif text-5xl sm:text-6xl md:text-7xl font-normal tracking-tight text-slate-900 leading-[1.05]">
                 Become a{" "}
                 <span className="relative inline-block  text-emerald-600">
                   Product Builder
@@ -161,7 +161,7 @@ export default function ProjectBasePage() {
                 ,
                 <br className="hidden md:block" />
                 not just a learner.
-              </h2>
+              </h1>
 
               <p className="pb-hero-line mt-7 text-base sm:text-lg md:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-light">
                 Choose a track and apply now. We align{" "}

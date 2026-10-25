@@ -167,13 +167,16 @@ export default function HeroSection() {
         }}
         className="h-full w-full hero-swiper"
       >
-        {heroSlides.map((slide) => (
+        {heroSlides.map((slide, index) => {
+          // Only the first slide carries the page <h1>; the rest are h2.
+          const Heading = index === 0 ? "h1" : "h2";
+          return (
           <SwiperSlide key={slide.id}>
             <div className="relative h-full w-full px-6 md:px-16 lg:px-20 flex flex-col justify-start lg:justify-center pt-20 sm:pt-24 md:pt-28 lg:pt-0 z-10 overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full items-center">
                 {/* Left Content */}
                 <div className="lg:col-span-7 lg:pt-12 flex flex-col md:items-center lg:items-start">
-                  <h1 className="flex flex-col gap-0 select-none mb-6 md:items-center lg:items-start md:text-center lg:text-left">
+                  <Heading className="flex flex-col gap-0 select-none mb-6 md:items-center lg:items-start md:text-center lg:text-left">
                     <span className={`${slide.titleSizeClass} font-black text-emerald-600 sm:text-transparent uppercase leading-[0.8] tracking-tighter hero-line hero-stroke`}>
                       {slide.titleTop}
                     </span>
@@ -184,7 +187,7 @@ export default function HeroSection() {
                     <span className={`${slide.titleSizeClass} font-black text-emerald-600 uppercase leading-[0.8] tracking-tighter hero-line hero-stroke`}>
                       {slide.titleOutline}
                     </span>
-                  </h1>
+                  </Heading>
 
                   <p className="text-xl font-medium text-stone-600 max-w-xl mb-8 mt-4 hero-line md:text-center lg:text-left md:mx-auto lg:mx-0">
                     {slide.description}
@@ -229,7 +232,8 @@ export default function HeroSection() {
               </div>
             </div>
           </SwiperSlide>
-        ))}
+          );
+        })}
 
         {/* Custom Navigation Arrows */}
         <div className="absolute bottom-9 left-6 lg:left-20 z-20 flex gap-4">
