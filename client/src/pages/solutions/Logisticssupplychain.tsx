@@ -3,6 +3,8 @@ import QuestionItem from "../../components/QuestionItem";
 import WhyChooseLushWare from "../../components/WhyChooseLushWare";
 import ValueCard from "../../components/ValueCard";
 import { useNavigate } from "react-router-dom";
+import MarketFitSection from "../../components/MarketFitSection";
+import { MARKETS } from "../../data/markets";
 
 const LogisticsSupplyChain: React.FC = () => {
   const navigate = useNavigate();
@@ -13,6 +15,16 @@ const LogisticsSupplyChain: React.FC = () => {
       question: "How is this different from our existing planning tools?",
       answer:
         "Traditional planning is static. We add prediction, optimization under real-world constraints, and continuous re-optimization, so routes, inventory and priorities adapt as conditions change.",
+    },
+    {
+      question: "Do you work with manufacturers and supply chain companies globally?",
+      answer:
+        "Yes. We work with plants, warehouses and logistics operators across Europe, North America, the Middle East and Asia-Pacific, delivering remotely and planning on-site visits per phase when installation is needed.",
+    },
+    {
+      question: "Can it integrate with SAP or our existing ERP?",
+      answer:
+        "Yes. We integrate with ERPs such as SAP S/4HANA, Microsoft Dynamics 365, Oracle NetSuite and Odoo, and read machine data from PLC and SCADA systems through OPC UA, Modbus or MQTT.",
     },
     {
       question: "Can you optimize routes under real-world constraints?",
@@ -261,10 +273,10 @@ const Chain: React.FC<{ steps: string[]; dark?: boolean }> = ({ steps, dark }) =
             </h1>
 
             <p className="lsc-fadeUp text-lg md:text-xl text-slate-500 font-light max-w-3xl mx-auto leading-relaxed">
-              Make supply chains predictive, adaptive and continuously
-              optimized. We build AI and optimization systems that help
-              organizations predict disruptions, optimize logistics decisions
-              and continuously adapt operations to changing conditions.
+              Supply chain and logistics software for global operators. We build
+              AI and optimization systems that help organizations predict
+              disruptions, optimize logistics decisions and continuously adapt
+              operations to changing conditions.
             </p>
           </div>
 
@@ -720,6 +732,15 @@ const Chain: React.FC<{ steps: string[]; dark?: boolean }> = ({ steps, dark }) =
           </section>
 
           <WhyChooseLushWare />
+
+          {/* ── TARGET MARKET ─────────────────────────── */}
+          <MarketFitSection
+            market={MARKETS.industrial}
+            related={{
+              text: "Need tighter control inside the warehouse?",
+              links: [{ label: "Warehouse management system", to: "/solutions/warehouse-management" }],
+            }}
+          />
 
           {/* ── FAQ ──────────────────────────────────── */}
           <div className="max-w-7xl mx-auto pt-8">

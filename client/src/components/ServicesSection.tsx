@@ -521,7 +521,7 @@ Tailored software solutions designed to streamline operations, solve complex bus
 
               {/* CTA Button */}
               <button
-                onClick={() => navigate("/solutions")}
+                onClick={() => navigate("/industries/tourism-hospitality")}
                 className="svc-sweep-btn svc-sans cursor-pointer group relative overflow-hidden h-12 px-9 bg-slate-900 transition-shadow duration-300 hover:shadow-[0_16px_48px_rgba(0,0,0,0.15)]"
               >
                 <span className="relative z-10 flex items-center gap-2.5">

@@ -3,6 +3,8 @@ import QuestionItem from "../../components/QuestionItem";
 import WhyChooseLushWare from "../../components/WhyChooseLushWare";
 import ValueCard from "../../components/ValueCard";
 import { useNavigate } from "react-router-dom";
+import MarketFitSection from "../../components/MarketFitSection";
+import { MARKETS } from "../../data/markets";
 
 const Manufacturing: React.FC = () => {
   const navigate = useNavigate();
@@ -13,6 +15,16 @@ const Manufacturing: React.FC = () => {
       question: "What does AI for manufacturing actually do?",
       answer:
         "It predicts machine failures, optimizes production schedules and resources, detects quality problems early, and reduces energy and material waste, all using your real production data.",
+    },
+    {
+      question: "Do you work with manufacturers and supply chain companies globally?",
+      answer:
+        "Yes. We work with plants, warehouses and logistics operators across Europe, North America, the Middle East and Asia-Pacific, delivering remotely and planning on-site visits per phase when installation is needed.",
+    },
+    {
+      question: "Can it integrate with SAP or our existing ERP?",
+      answer:
+        "Yes. We integrate with ERPs such as SAP S/4HANA, Microsoft Dynamics 365, Oracle NetSuite and Odoo, and read machine data from PLC and SCADA systems through OPC UA, Modbus or MQTT.",
     },
     {
       question: "Can this work with our existing MES, SCADA, and ERP?",
@@ -279,11 +291,10 @@ const Chain: React.FC<{ steps: string[]; dark?: boolean }> = ({ steps, dark }) =
             </h1>
 
             <p className="mfg-fadeUp text-lg md:text-xl text-slate-500 font-light max-w-3xl mx-auto leading-relaxed">
-              Build factories that can predict, optimize and continuously
-              improve themselves. We build AI-powered industrial systems that
-              help manufacturers understand production in real time, predict
-              failures, optimize decisions and create progressively
-              self-optimizing operations.
+              Manufacturing software for plants worldwide. We build AI-powered
+              industrial systems that help manufacturers understand production in
+              real time, predict failures, optimize decisions and create
+              progressively self-optimizing operations.
             </p>
           </div>
 
@@ -747,6 +758,18 @@ const Chain: React.FC<{ steps: string[]; dark?: boolean }> = ({ steps, dark }) =
           </section>
 
           <WhyChooseLushWare />
+
+          {/* ── TARGET MARKET ─────────────────────────── */}
+          <MarketFitSection
+            market={MARKETS.industrial}
+            related={{
+              text: "Start with one high-value use case:",
+              links: [
+                { label: "Predictive maintenance", to: "/solutions/predictive-maintenance" },
+                { label: "OEE monitoring", to: "/solutions/oee-monitoring" },
+              ],
+            }}
+          />
 
           {/* ── FAQ ──────────────────────────────────── */}
           <div className="max-w-7xl mx-auto pt-8">

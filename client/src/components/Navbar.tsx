@@ -114,6 +114,34 @@ const icons = {
       <circle cx="12" cy="10" r="3" />
     </Icon>
   ),
+  wrench: (
+    <Icon>
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+    </Icon>
+  ),
+  building: (
+    <Icon>
+      <rect x="4" y="2" width="16" height="20" rx="2" />
+      <path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01" />
+    </Icon>
+  ),
+  gauge: (
+    <Icon>
+      <path d="m12 14 4-4" />
+      <path d="M3.34 19a10 10 0 1 1 17.32 0" />
+    </Icon>
+  ),
+  warehouse: (
+    <Icon>
+      <path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z" />
+      <path d="M6 18h12M6 14h12M6 10h12" />
+    </Icon>
+  ),
+  code: (
+    <Icon>
+      <path d="m16 18 6-6-6-6M8 6l-6 6 6 6" />
+    </Icon>
+  ),
 };
 
 /* ── Menu content ──────────────────────────────────────────────── */
@@ -146,6 +174,12 @@ const menus: Record<MenuKey, MegaMenu> = {
       {
         label: "Software & Digital",
         items: [
+          {
+            name: "Custom Software Development",
+            to: "/custom-software-development",
+            desc: "A dedicated team for CRMs, web apps and automation.",
+            icon: icons.code,
+          },
           {
             name: "Business Process Management",
             to: "/solutions/bpm",
@@ -191,10 +225,16 @@ const menus: Record<MenuKey, MegaMenu> = {
         label: "Industries We Serve",
         items: [
           {
-            name: "HVAC & MEP Solutions",
-            to: "/industries/hvac",
-            desc: "Building twins, predictive maintenance, technician dispatch.",
-            icon: icons.wind,
+            name: "Field Service Trades",
+            to: "/industries/field-service",
+            desc: "HVAC, plumbing and electrical contractors in the US, Canada, AU & NZ.",
+            icon: icons.wrench,
+          },
+          {
+            name: "Commercial HVAC & MEP",
+            to: "/industries/commercial-hvac-mep",
+            desc: "MEP projects, AMC and PPM for Europe, the Middle East and Asia.",
+            icon: icons.building,
           },
           {
             // NOTE: keep your own route paths here if they differ
@@ -211,9 +251,44 @@ const menus: Record<MenuKey, MegaMenu> = {
           },
           {
             name: "Tourism & Hospitality",
-            to: "/solutions",
-            desc: "Revenue, demand forecasting, and resort operations.",
+            to: "/industries/tourism-hospitality",
+            desc: "Tour operators, DMCs and hotels in the EU, APAC, GCC and South Asia.",
             icon: icons.pin,
+          },
+        ],
+      },
+      {
+        label: "Popular Solutions",
+        items: [
+          {
+            name: "HVAC / MEP Service Software",
+            to: "/solutions/hvac-mep-service-software",
+            desc: "Dispatch, maintenance agreements and building twins.",
+            icon: icons.wind,
+          },
+          {
+            name: "Predictive Maintenance",
+            to: "/solutions/predictive-maintenance",
+            desc: "Condition monitoring and failure prediction.",
+            icon: icons.optimize,
+          },
+          {
+            name: "OEE Monitoring",
+            to: "/solutions/oee-monitoring",
+            desc: "Real-time availability, performance and quality.",
+            icon: icons.gauge,
+          },
+          {
+            name: "Warehouse Management",
+            to: "/solutions/warehouse-management",
+            desc: "Inventory, pick and pack, and shipping.",
+            icon: icons.warehouse,
+          },
+          {
+            name: "Travel Agency Software",
+            to: "/solutions/travel-agency-software",
+            desc: "Quotes, bookings, suppliers and travel CRM.",
+            icon: icons.globe,
           },
         ],
       },

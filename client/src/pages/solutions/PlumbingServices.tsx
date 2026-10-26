@@ -4,12 +4,24 @@ import QuestionItem from "@/components/QuestionItem";
 import ValueCard from "@/components/ValueCard";
 import InquiryForm from "@/components/InquiryForm";
 import SolutionTopicStepper from "@/components/SolutionTopicStepper";
+import MarketFitSection from "@/components/MarketFitSection";
+import { MARKETS } from "@/data/markets";
 
 const faqItems = [
   {
     question: "How can software help plumbing service businesses?",
     answer:
       "Custom software helps plumbing companies streamline job dispatching, track service history per property, manage quotes and invoices, and maintain strong customer relationships — all in one platform.",
+  },
+  {
+    question: "Do you work with plumbing businesses in the US, Canada, Australia and New Zealand?",
+    answer:
+      "Yes. We build for trade contractors in all four markets, with quotes, invoices and taxes in USD, CAD, AUD or NZD, and meetings scheduled in your local time zone.",
+  },
+  {
+    question: "Can it sync with QuickBooks, Xero or MYOB?",
+    answer:
+      "Yes. We build two-way accounting integrations so customers, invoices and payments flow into the accounting system you already use, without double entry.",
   },
   {
     question: "Can the system manage emergency call-outs and urgent jobs?",
@@ -173,19 +185,19 @@ export default function PlumbingServices() {
                   </div>
 
                   <h1 className="pl-serif text-5xl sm:text-6xl md:text-8xl xl:text-7xl font-normal text-slate-950 leading-[0.8]  mb-8">
-                    Precision <br />
-                    <span className="text-emerald-600">Plumbing</span>
+                    Plumbing <br />
+                    <span className="text-emerald-600">Business</span>
                     <br />
                     <span className="text-slate-900 pl-serif">
-                      Management.
+                      Software.
                     </span>
                   </h1>
 
                   <div className="flex gap-6 items-start justify-center lg:justify-start">
                     <div className="w-1 h-20 bg-emerald-600 mt-2 hidden sm:block lg:block" />
                     <p className="text-lg md:text-3xl lg:text-lg text-slate-600 lg:max-w-md max-w-xl leading-relaxed">
-                      Purpose-built software for plumbing contractors.
-                      Seamlessly manage{" "}
+                      Purpose-built software for plumbing contractors in the
+                      US, Canada, Australia and New Zealand. Seamlessly manage{" "}
                       <span className="text-emerald-700 font-medium">
                         jobs, quotes, inventory, and customers
                       </span>{" "}
@@ -475,6 +487,15 @@ export default function PlumbingServices() {
               />
             </div>
           </div>
+
+          {/* TARGET MARKET */}
+          <MarketFitSection
+            market={MARKETS.trades}
+            related={{
+              text: "Running plumbing alongside HVAC or electrical crews?",
+              links: [{ label: "Field service software", to: "/industries/field-service" }],
+            }}
+          />
 
           {/* FAQ */}
           <div className="max-w-7xl mx-auto px-6 pt-4">

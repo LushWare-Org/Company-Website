@@ -13,7 +13,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const distDir = path.join(root, 'dist')
 const ssrDir = path.join(root, 'dist-ssr')
 
-const { render, ROUTES, NOT_FOUND_SEO, SITE_URL, ROBOTS_DISALLOW = [], PLACEHOLDER_SITE_URL, renderHeadTags } = await import(
+const { render, ROUTES, NOT_FOUND_SEO, SITE_URL, ROBOTS_DISALLOW = [], REDIRECTS = [], PLACEHOLDER_SITE_URL, renderHeadTags } = await import(
   pathToFileURL(path.join(ssrDir, 'entry-server.js')).href
 )
 if (PLACEHOLDER_SITE_URL && SITE_URL === PLACEHOLDER_SITE_URL) {
@@ -54,6 +54,18 @@ for (const route of ROUTES) {
 }
 fs.writeFileSync(path.join(distDir, '404.html'), buildPage(NOT_FOUND_SEO, '/__not-found__'))
 
+// Moved pages: an instant meta refresh, which Google treats as a permanent
+// redirect when the host can't send a 301 (prefer a server-side 301 as well).
+for (const { from, to } of REDIRECTS) {
+  const target = `${SITE_URL}${to}`
+  const file = path.join(distDir, outFile(from))
+  fs.mkdirSync(path.dirname(file), { recursive: true })
+  fs.writeFileSync(
+    file,
+    `<!doctype html>\n<html lang="en">\n<head>\n<meta charset="UTF-8" />\n<title>Moved</title>\n<link rel="canonical" href="${target}" />\n<meta name="robots" content="noindex, follow" />\n<meta http-equiv="refresh" content="0; url=${to}" />\n</head>\n<body><a href="${to}">This page has moved.</a></body>\n</html>\n`,
+  )
+}
+
 // sitemap.xml
 const today = new Date().toISOString().slice(0, 10)
 const urls = ROUTES.filter((r) => !r.noindex && r.sitemap !== false)
@@ -82,7 +94,9 @@ fs.writeFileSync(path.join(distDir, 'robots.txt'), `User-agent: *\nAllow: /\n${d
 
 fs.rmSync(ssrDir, { recursive: true, force: true })
 
-console.log(`Prerendered ${ROUTES.length} routes + 404.html, sitemap.xml (${urls.split('<url>').length - 1} URLs), robots.txt`)
+console.log(
+  `Prerendered ${ROUTES.length} routes + 404.html${REDIRECTS.length ? ` + ${REDIRECTS.length} redirect(s)` : ''}, sitemap.xml (${urls.split('<url>').length - 1} URLs), robots.txt`,
+)
 if (failures.length) {
   console.warn(`\n⚠ ${failures.length} route(s) fell back to client-only rendering:\n  ${failures.join('\n  ')}`)
 }

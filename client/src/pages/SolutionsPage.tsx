@@ -4,6 +4,8 @@ import { createPortal } from "react-dom";
 import InquiryForm from "../components/InquiryForm";
 import QuestionItem from "../components/QuestionItem";
 import SolutionTopicStepper from "../components/SolutionTopicStepper";
+import MarketFitSection from "../components/MarketFitSection";
+import { MARKETS } from "../data/markets";
 
 type Solution = {
   title: string;
@@ -162,6 +164,21 @@ const faqItems = [
     question: "What are LushWare's Tourism & Hospitality Solutions?",
     answer:
       "A combination of ready-to-deploy platforms (booking, hotel management, property management and travel CRM) and an intelligence layer that predicts demand, optimizes resources, improves revenue, simulates scenarios and automates operational decisions.",
+  },
+  {
+    question: "Which markets do you build tourism software for?",
+    answer:
+      "We build for tour operators, DMCs, travel agencies and hotels in the European Union, Asia Pacific, the Middle East (GCC) and South Asia (Sri Lanka, India and the Maldives), with multi-language guest communications, multi-currency pricing and meetings in your local time zone.",
+  },
+  {
+    question: "Can it handle GDPR and payment rules for European guests?",
+    answer:
+      "Yes. Guest data handling follows GDPR consent and retention rules, and payment flows support Strong Customer Authentication (PSD2), SEPA and major cards.",
+  },
+  {
+    question: "Can guests book and message us in their own language and apps?",
+    answer:
+      "Yes. Itineraries and guest communications can run in English, German, French, Japanese, Korean and Chinese, with messaging over WhatsApp, LINE, KakaoTalk or WeChat and payments by WeChat Pay or Alipay.",
   },
   {
     question: "How can these solutions improve our hospitality operations?",
@@ -363,9 +380,10 @@ export default function SolutionsPage() {
                 <div className="sol-fadeUp flex gap-6 items-start justify-center lg:justify-start">
                   <div className="w-1 h-20 bg-emerald-600 mt-2 hidden sm:block lg:block" />
                   <p className="text-lg md:text-2xl lg:text-lg text-slate-600 lg:max-w-md max-w-xl leading-relaxed">
-                    Transform complex hospitality operations into intelligent,
-                    adaptive systems that predict demand, optimize resources,
-                    improve revenue, and automate operational decisions.
+                    Booking, travel CRM and operations software for tour operators,
+                    DMCs and hotels in Europe, Asia Pacific, the GCC and South Asia —
+                    predicting demand, optimizing resources, improving revenue and
+                    automating operational decisions.
                   </p>
                 </div>
 
@@ -877,6 +895,18 @@ export default function SolutionsPage() {
               ))}
           </div>
         </div>
+
+        {/* ── TARGET MARKET ─────────────────────────── */}
+        <MarketFitSection
+          market={MARKETS.tourism}
+          related={{
+            text: "Running a travel agency, or a guest house or speedboat operation in the Maldives?",
+            links: [
+              { label: "Travel agency software", to: "/solutions/travel-agency-software" },
+              { label: "LushWare Maldives", to: "https://mv.lushware.net" },
+            ],
+          }}
+        />
 
         {/* ── FAQ ──────────────────────────────────── */}
         <div className="mt-20 sm:mt-32 lg:px-0 px-1 max-w-7xl mx-auto">

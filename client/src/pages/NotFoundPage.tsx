@@ -12,7 +12,7 @@ export default function NotFoundPage() {
         <Link to="/" className="px-6 py-3 bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition-colors">
           Back to home
         </Link>
-        <Link to="/solutions" className="px-6 py-3 border border-slate-300 text-slate-900 text-sm font-semibold hover:border-emerald-600 transition-colors">
+        <Link to="/industries/tourism-hospitality" className="px-6 py-3 border border-slate-300 text-slate-900 text-sm font-semibold hover:border-emerald-600 transition-colors">
           Explore solutions
         </Link>
       </div>

@@ -4,12 +4,24 @@ import QuestionItem from "@/components/QuestionItem";
 import ValueCard from "@/components/ValueCard";
 import InquiryForm from "@/components/InquiryForm";
 import SolutionTopicStepper from "@/components/SolutionTopicStepper";
+import MarketFitSection from "@/components/MarketFitSection";
+import { MARKETS } from "@/data/markets";
 
 const faqItems = [
   {
     question: "How can software help electrical service businesses?",
     answer:
       "Custom software helps electrical contractors manage service calls, electrician scheduling, compliance documentation, and customer relationships — all in one place without manual admin overhead.",
+  },
+  {
+    question: "Do you work with electrical businesses in the US, Canada, Australia and New Zealand?",
+    answer:
+      "Yes. We build for trade contractors in all four markets, with quotes, invoices and taxes in USD, CAD, AUD or NZD, and meetings scheduled in your local time zone.",
+  },
+  {
+    question: "Can it sync with QuickBooks, Xero or MYOB?",
+    answer:
+      "Yes. We build two-way accounting integrations so customers, invoices and payments flow into the accounting system you already use, without double entry.",
   },
   {
     question:
@@ -230,16 +242,17 @@ export default function ElectricServices() {
                   </div>
 
                   <h1 className="elec-hero-line elec-serif text-5xl sm:text-6xl md:text-8xl xl:text-7xl font-normal text-slate-950 leading-[0.8] tracking-wide mb-8">
-                    Electric <br />
-                    <span className="text-emerald-600">Services</span>
+                    Electrical <br />
+                    <span className="text-emerald-600">Contractor</span>
                     <br />
-                    <span className="text-slate-900 elec-serif">Systems.</span>
+                    <span className="text-slate-900 elec-serif">Software.</span>
                   </h1>
 
                   <div className="elec-hero-line flex gap-6 items-start justify-center lg:justify-start">
                     <div className="w-1 h-20 bg-emerald-600 mt-2 hidden sm:block lg:block" />
                     <p className="text-lg md:text-3xl lg:text-lg text-slate-600 lg:max-w-md max-w-xl leading-relaxed">
-                      Purpose-built software for electrical contractors. Master{" "}
+                      Purpose-built software for electrical contractors in the US,
+                      Canada, Australia and New Zealand. Master{" "}
                       <span className="text-emerald-700 font-medium">
                         crew management, compliance, and cash flow
                       </span>{" "}
@@ -529,6 +542,15 @@ export default function ElectricServices() {
               />
             </div>
           </div>
+
+          {/* TARGET MARKET */}
+          <MarketFitSection
+            market={MARKETS.trades}
+            related={{
+              text: "Running electrical alongside HVAC or plumbing crews?",
+              links: [{ label: "Field service software", to: "/industries/field-service" }],
+            }}
+          />
 
           {/*  FAQ  */}
           <div className="max-w-7xl mx-auto px-6 pt-4">

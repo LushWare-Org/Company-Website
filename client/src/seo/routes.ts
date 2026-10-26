@@ -2,11 +2,19 @@
 // Used at runtime by <Seo /> (client-side navigation) and at build time by
 // scripts/prerender.mjs (static HTML, sitemap.xml, robots.txt).
 
+import { MARKETS, type MarketId } from '../data/markets'
+
 export const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://lushware.net').replace(/\/$/, '')
 export const SITE_NAME = 'LushWare'
 export const DEFAULT_OG_IMAGE = '/og-image.jpg'
 /** Paths blocked in robots.txt. */
 export const ROBOTS_DISALLOW = ['/admin']
+/** Moved pages: prerendered as instant redirects (also add a 301 in nginx). */
+export const REDIRECTS = [
+  { from: '/solutions', to: '/industries/tourism-hospitality' },
+  { from: '/industries/hvac', to: '/solutions/hvac-mep-service-software' },
+  { from: '/industries/commercial-mep', to: '/industries/commercial-hvac-mep' },
+]
 
 export const ORGANIZATION = {
   name: 'LushWare',
@@ -31,30 +39,161 @@ export type RouteSeo = {
   prerenderBody?: boolean
   /** schema.org Service type for solution/industry pages. */
   service?: string
+  /** Target market (src/data/markets.ts); drives schema.org areaServed. Default: worldwide. */
+  market?: MarketId
   priority?: number
   changefreq?: 'weekly' | 'monthly' | 'yearly'
   breadcrumb?: { name: string; path: string }[]
 }
 
-const solutions = { name: 'Solutions', path: '/solutions' }
-const industries = { name: 'Industries', path: '/solutions' }
+const fieldService = { name: 'Field Service Software', path: '/industries/field-service' }
+const manufacturing = { name: 'Manufacturing', path: '/industries/manufacturing' }
+const logistics = { name: 'Logistics & Supply Chain', path: '/industries/logistics-supply-chain' }
+const tourism = { name: 'Tourism & Hospitality', path: '/industries/tourism-hospitality' }
+const customSoftware = { name: 'Custom Software Development', path: '/custom-software-development' }
 
 export const ROUTES: RouteSeo[] = [
   {
     path: '/',
     title: 'LushWare — Business Operations on Autopilot',
     description:
-      'LushWare builds CRM, AI agents, business process automation, websites, mobile apps and IoT solutions that put your business operations on autopilot.',
+      'LushWare builds field service software for trades, MEP and maintenance platforms, manufacturing and supply chain AI, tourism systems and custom software for growing businesses worldwide.',
     priority: 1.0,
     changefreq: 'weekly',
   },
+
+  // ── Trades: US / Canada / Australia / New Zealand ─────────────────────
   {
-    path: '/solutions',
-    title: 'Intelligent Operations Solutions | LushWare',
+    path: '/industries/field-service',
+    title: 'Field Service Software for HVAC, Plumbing & Electrical Contractors | LushWare',
     description:
-      'Explore LushWare solutions: CRM, AI agents, BPM, websites, mobile apps, IoT, AI process optimization and autonomous decision intelligence for growing businesses.',
+      'Scheduling, dispatch, quoting, invoicing and service agreements for trade contractors in the US, Canada, Australia and New Zealand. Syncs with QuickBooks, Xero and MYOB.',
+    service: 'Field Service Management Software',
+    market: 'trades',
     priority: 0.9,
-    changefreq: 'monthly',
+  },
+  {
+    path: '/solutions/hvac-mep-service-software',
+    title: 'HVAC / MEP Service Software — Dispatch, Maintenance & Invoicing | LushWare',
+    description:
+      'HVAC and MEP service software for heating, cooling and building services contractors in the US, Canada, Australia and NZ: scheduling, dispatch, maintenance agreements, refrigerant records, quotes and invoices.',
+    service: 'HVAC and MEP Field Service Software',
+    market: 'trades',
+    breadcrumb: [fieldService],
+    priority: 0.8,
+  },
+  {
+    path: '/industries/plumbing',
+    title: 'Plumbing Business Software — Dispatch, Quotes & Invoicing | LushWare',
+    description:
+      'Plumbing software for contractors in the US, Canada, Australia and NZ: emergency call-out dispatch, on-site quotes, invoicing, van stock and customer management.',
+    service: 'Plumbing Field Service Software',
+    market: 'trades',
+    breadcrumb: [fieldService],
+    priority: 0.8,
+  },
+  {
+    path: '/industries/electrical',
+    title: 'Electrical Contractor Software — Jobs, Compliance & Billing | LushWare',
+    description:
+      'Software for electrical contractors in the US, Canada, Australia and NZ: crew scheduling, compliance certificates, quoting, milestone billing and accounting sync.',
+    service: 'Electrical Contractor Software',
+    market: 'trades',
+    breadcrumb: [fieldService],
+    priority: 0.8,
+  },
+
+  // ── Commercial HVAC / MEP: Europe, Middle East, East & South Asia ─────
+  {
+    path: '/industries/commercial-hvac-mep',
+    title: 'Commercial HVAC & MEP Software — Projects, AMC & PPM | LushWare',
+    description:
+      'Commercial HVAC & MEP software for contractors and FM providers in Europe, the Middle East, East Asia and South Asia: project control, AMC management, PPM scheduling and BIM/BMS integration.',
+    service: 'Commercial HVAC and MEP Project and Maintenance Software',
+    market: 'commercialMep',
+    priority: 0.9,
+  },
+
+  // ── Manufacturing & supply chain: global ──────────────────────────────
+  {
+    path: '/industries/manufacturing',
+    title: 'Manufacturing Software — AI, IoT & Smart Factory Solutions | LushWare',
+    description:
+      'AI-powered manufacturing software for global plants: real-time production monitoring, predictive maintenance, quality intelligence and digital twins integrated with your ERP.',
+    service: 'Manufacturing Operations Software',
+    market: 'industrial',
+    priority: 0.8,
+  },
+  {
+    path: '/solutions/predictive-maintenance',
+    title: 'Predictive Maintenance Software — Condition Monitoring & AI | LushWare',
+    description:
+      'Predict equipment failures before they stop production. Condition monitoring, remaining useful life estimates and automatic work orders in SAP PM, Maximo or your CMMS.',
+    service: 'Predictive Maintenance Software',
+    market: 'industrial',
+    breadcrumb: [manufacturing],
+    priority: 0.8,
+  },
+  {
+    path: '/solutions/oee-monitoring',
+    title: 'OEE Monitoring Software — Real-Time Production Tracking | LushWare',
+    description:
+      'Automatic OEE from your machines: live availability, performance and quality, downtime reason codes, micro-stop detection and shift reports across lines and plants.',
+    service: 'OEE Monitoring Software',
+    market: 'industrial',
+    breadcrumb: [manufacturing],
+    priority: 0.8,
+  },
+  {
+    path: '/industries/logistics-supply-chain',
+    title: 'Logistics & Supply Chain Software — Visibility & Optimization | LushWare',
+    description:
+      'Supply chain software for global operators: real-time visibility, fleet and route optimization, warehouse intelligence, demand forecasting and supply chain digital twins.',
+    service: 'Logistics and Supply Chain Software',
+    market: 'industrial',
+    priority: 0.8,
+  },
+  {
+    path: '/solutions/warehouse-management',
+    title: 'Custom Warehouse Management System (WMS) | LushWare',
+    description:
+      'A WMS built around your warehouse: barcode and RFID receiving, real-time inventory, pick and pack, carrier labels and integration with SAP, Dynamics, NetSuite or Odoo.',
+    service: 'Warehouse Management System Development',
+    market: 'industrial',
+    breadcrumb: [logistics],
+    priority: 0.8,
+  },
+
+  // ── Tourism: Europe, Asia Pacific, GCC, South Asia ────────────────────
+  {
+    path: '/industries/tourism-hospitality',
+    title: 'Tourism & Hospitality Software for Tour Operators, DMCs & Hotels | LushWare',
+    description:
+      'Booking, travel CRM, hotel and property management with AI demand forecasting for tour operators, DMCs and hotels in Europe, Asia Pacific, the Middle East and South Asia (GCC, Sri Lanka, India, Maldives).',
+    service: 'Tourism and Hospitality Software',
+    market: 'tourism',
+    priority: 0.8,
+  },
+  {
+    path: '/solutions/travel-agency-software',
+    title: 'Travel Agency Software — Quotes, Bookings & Travel CRM | LushWare',
+    description:
+      'Travel agency software for agencies and tour operators in Europe, Asia Pacific, the Middle East and South Asia: itinerary quotes, bookings, supplier contracts, payments, B2B agent portals and travel CRM.',
+    service: 'Travel Agency Software',
+    market: 'tourism',
+    breadcrumb: [tourism],
+    priority: 0.8,
+  },
+
+  // ── Global SMBs: custom projects ──────────────────────────────────────
+  {
+    path: '/custom-software-development',
+    title: 'Custom Software Development for Small & Mid-Sized Businesses | LushWare',
+    description:
+      'Offshore custom software development for growing businesses worldwide: custom CRMs, web apps, mobile apps and AI automation. No upfront payment — we build first.',
+    service: 'Custom Software Development',
+    market: 'smb',
+    priority: 0.9,
   },
   {
     path: '/solutions/crm',
@@ -62,7 +201,8 @@ export const ROUTES: RouteSeo[] = [
     description:
       'Build stronger customer relationships with intelligent CRM solutions — custom CRM development, automation, integrations and analytics tailored to your business.',
     service: 'CRM Development',
-    breadcrumb: [solutions],
+    market: 'smb',
+    breadcrumb: [customSoftware],
     priority: 0.8,
   },
   {
@@ -71,7 +211,8 @@ export const ROUTES: RouteSeo[] = [
     description:
       'Automate, engage and optimize with AI. LushWare designs AI agents and AI chatbots that handle customer conversations, qualify leads and automate repetitive work.',
     service: 'AI Agent Development',
-    breadcrumb: [solutions],
+    market: 'smb',
+    breadcrumb: [customSoftware],
     priority: 0.8,
   },
   {
@@ -80,7 +221,8 @@ export const ROUTES: RouteSeo[] = [
     description:
       'Streamline operations with business process management software — workflow automation, approvals, and real-time visibility for operational excellence.',
     service: 'Business Process Management Software',
-    breadcrumb: [solutions],
+    market: 'smb',
+    breadcrumb: [customSoftware],
     priority: 0.8,
   },
   {
@@ -89,7 +231,8 @@ export const ROUTES: RouteSeo[] = [
     description:
       'Build a strong digital presence with professional, fast, SEO-ready business and corporate websites designed to convert visitors into customers.',
     service: 'Website Development',
-    breadcrumb: [solutions],
+    market: 'smb',
+    breadcrumb: [customSoftware],
     priority: 0.8,
   },
   {
@@ -98,16 +241,18 @@ export const ROUTES: RouteSeo[] = [
     description:
       'Transform your business with intelligent mobile apps. LushWare designs and builds iOS and Android applications for customers, staff and field teams.',
     service: 'Mobile Application Development',
-    breadcrumb: [solutions],
+    market: 'smb',
+    breadcrumb: [customSoftware],
     priority: 0.8,
   },
+
+  // ── Engineering & AI capabilities ─────────────────────────────────────
   {
     path: '/solutions/iot-product-development',
     title: 'IoT Product Development Services | LushWare',
     description:
       'Connect devices and achieve operational excellence with end-to-end IoT product development — sensors, connectivity, cloud platforms and dashboards.',
     service: 'IoT Product Development',
-    breadcrumb: [solutions],
     priority: 0.8,
   },
   {
@@ -116,7 +261,6 @@ export const ROUTES: RouteSeo[] = [
     description:
       'From concept to market-ready hardware: product engineering, embedded systems, PCB design and firmware development, done properly.',
     service: 'Product Engineering',
-    breadcrumb: [solutions],
     priority: 0.8,
   },
   {
@@ -125,7 +269,6 @@ export const ROUTES: RouteSeo[] = [
     description:
       'See what is happening and know what to do next. AI process optimization that adds five layers of operational intelligence to your existing operations.',
     service: 'AI Process Optimization',
-    breadcrumb: [solutions],
     priority: 0.8,
   },
   {
@@ -134,54 +277,9 @@ export const ROUTES: RouteSeo[] = [
     description:
       'Operations that decide, act and keep improving. Autonomous decision intelligence that moves your business step by step towards self-running operations.',
     service: 'Decision Intelligence',
-    breadcrumb: [solutions],
     priority: 0.8,
   },
-  {
-    path: '/industries/hvac',
-    title: 'HVAC & MEP Software Solutions | LushWare',
-    description:
-      'Tailored software for HVAC and MEP contractors — job scheduling, dispatch, quoting, invoicing and customer management in one platform for every MEP trade.',
-    service: 'HVAC Field Service Software',
-    breadcrumb: [industries],
-    priority: 0.8,
-  },
-  {
-    path: '/industries/plumbing',
-    title: 'Plumbing Business Software | LushWare',
-    description:
-      'Tailored software for plumbing businesses — job scheduling, dispatch, quoting, invoicing and customer management built for plumbing contractors.',
-    service: 'Plumbing Field Service Software',
-    breadcrumb: [industries],
-    priority: 0.8,
-  },
-  {
-    path: '/industries/electrical',
-    title: 'Electrical Contractor Software | LushWare',
-    description:
-      'Tailored software for electrical contractors — scheduling, dispatch, quoting, invoicing and customer management for your trades business.',
-    service: 'Electrical Contractor Software',
-    breadcrumb: [industries],
-    priority: 0.8,
-  },
-  {
-    path: '/industries/manufacturing',
-    title: 'Intelligent Operations for Manufacturing | LushWare',
-    description:
-      'Intelligence for every stage of production — manufacturing software, IoT monitoring, predictive maintenance and AI-driven operational insights.',
-    service: 'Manufacturing Operations Software',
-    breadcrumb: [industries],
-    priority: 0.8,
-  },
-  {
-    path: '/industries/logistics-supply-chain',
-    title: 'Logistics & Supply Chain Software | LushWare',
-    description:
-      'Intelligent operations for logistics and supply chain — real-time visibility, tracking, optimization and AI insights across the entire supply chain.',
-    service: 'Logistics and Supply Chain Software',
-    breadcrumb: [industries],
-    priority: 0.8,
-  },
+
   {
     path: '/work',
     title: 'Our Work — Projects & Case Studies | LushWare',
@@ -290,11 +388,11 @@ export function getStructuredData(route: RouteSeo): object[] {
       description: route.description,
       url: absoluteUrl(route.path),
       provider: org,
-      areaServed: 'Worldwide',
+      areaServed: route.market ? MARKETS[route.market].areaServed : 'Worldwide',
     })
   }
   if (route.path !== '/' && !route.noindex) {
-    const trail = [{ name: 'Home', path: '/' }, ...(route.breadcrumb ?? []), { name: route.title.split(' | ')[0], path: route.path }]
+    const trail = [{ name: 'Home', path: '/' }, ...(route.breadcrumb ?? []), { name: route.title.split(/ [|—] /)[0], path: route.path }]
     data.push({
       '@type': 'BreadcrumbList',
       itemListElement: trail.map((t, i) => ({

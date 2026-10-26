@@ -4,12 +4,34 @@ import QuestionItem from "@/components/QuestionItem";
 import ValueCard from "@/components/ValueCard";
 import InquiryForm from "@/components/InquiryForm";
 import SolutionTopicStepper from "@/components/SolutionTopicStepper";
+import MarketFitSection from "@/components/MarketFitSection";
+import { MARKETS } from "@/data/markets";
 
 const faqItems = [
   {
     question: "How can software help HVAC and MEP service businesses?",
     answer:
       "Custom software helps HVAC, electrical, and plumbing companies manage service requests, technician scheduling, maintenance contracts, compliance records, and customer relationships more efficiently while reducing manual work.",
+  },
+  {
+    question: "Do you work with HVAC businesses in the US, Canada, Australia and New Zealand?",
+    answer:
+      "Yes. We build for trade contractors in all four markets, with quotes, invoices and taxes in USD, CAD, AUD or NZD, and meetings scheduled in your local time zone.",
+  },
+  {
+    question: "Can it sync with QuickBooks, Xero or MYOB?",
+    answer:
+      "Yes. We build two-way accounting integrations so customers, invoices and payments flow into the accounting system you already use, without double entry.",
+  },
+  {
+    question: "Can it keep refrigerant handling records?",
+    answer:
+      "Yes. Technician certifications such as EPA 608 (US) or ARCtick licences (Australia) are stored with expiry reminders, and refrigerant added or recovered is logged against each job and unit.",
+  },
+  {
+    question: "We run large commercial MEP projects — is this the right page?",
+    answer:
+      "For commercial HVAC & MEP project delivery, AMC and PPM contracts, see our commercial HVAC & MEP software at lushware.net/industries/commercial-hvac-mep.",
   },
   {
     question: "Can one system cover HVAC, electrical, and plumbing work?",
@@ -363,8 +385,8 @@ export default function HVACServices() {
                   </div>
 
                   <h1 className="hvac-hero-line hvac-serif text-5xl sm:text-6xl md:text-8xl xl:text-7xl font-normal text-slate-950 leading-[0.8]  mb-8">
-                    HVAC &amp; MEP <br />
-                    <span className="text-emerald-600">Solutions</span>
+                    HVAC / MEP <br />
+                    <span className="text-emerald-600">Service Software</span>
                     <br />
                     <span className="text-slate-900 hvac-serif">
                       Architected.
@@ -374,12 +396,12 @@ export default function HVACServices() {
                   <div className="hvac-hero-line flex gap-6 items-start justify-center lg:justify-start">
                     <div className="w-1 h-20 bg-emerald-600 mt-2 hidden sm:block lg:block" />
                     <p className="text-lg md:text-3xl lg:text-lg text-slate-600 lg:max-w-md max-w-xl leading-relaxed">
-                      Smart software built for HVAC, electrical, and plumbing
-                      enterprises. Seamlessly manage{" "}
+                      Field service software for HVAC contractors in the US,
+                      Canada, Australia and New Zealand. Seamlessly manage{" "}
                       <span className="text-emerald-700 font-medium">
-                        jobs, crews, compliance, and maintenance contracts
+                        jobs, technicians, maintenance agreements, and invoices
                       </span>{" "}
-                      across every MEP trade.
+                      — then add predictive maintenance and building twins.
                     </p>
                   </div>
 
@@ -435,7 +457,7 @@ export default function HVACServices() {
                     <div className="relative z-20 pt-4 px-0 lg:px-14 md:px-16 sm:px-4 animate-float">
                       <img
                         src="/Industry/hvachero-Photoroom.webp"
-                        alt="HVAC and MEP service software"
+                        alt="HVAC and MEP service software for heating, cooling and building services contractors"
                         className="w-full h-auto object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.15)] brightness-[1.01] contrast-[1.01]"
                       />
                     </div>
@@ -471,7 +493,7 @@ export default function HVACServices() {
                     <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full bg-white/10 border border-black/60">
                       <div className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
                       <span className="text-black text-[12px] font-bold uppercase tracking-[0.2em]">
-                        HVAC &amp; MEP Software Experts
+                        HVAC Software Experts
                       </span>
                     </div>
 
@@ -599,13 +621,13 @@ export default function HVACServices() {
               <div className="flex items-center justify-center gap-3 mb-6">
                 <div className="h-px w-8 bg-emerald-600" />
                 <span className="px-3 py-1 border border-emerald-600 text-[10px] font-bold tracking-[0.22em] text-emerald-700 uppercase">
-                  MEP Trades
+                  HVAC, Plumbing &amp; Electrical
                 </span>
                 <div className="h-px w-8 bg-emerald-600" />
               </div>
               <h2 className="hvac-serif text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-slate-900 leading-[1.05] mb-5">
                 One platform,{" "}
-                <span className="text-emerald-600">every MEP trade.</span>
+                <span className="text-emerald-600">every trade.</span>
               </h2>
               <p className="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
                 Mechanical, electrical, and plumbing teams share one core system
@@ -958,13 +980,22 @@ export default function HVACServices() {
             </div>
           </div>
 
+          {/* ── TARGET MARKET ─────────────────────────── */}
+          <MarketFitSection
+            market={MARKETS.trades}
+            related={{
+              text: "Delivering commercial HVAC & MEP projects or AMC/PPM contracts in Europe, the Middle East or Asia?",
+              links: [{ label: "Commercial HVAC & MEP software", to: "/industries/commercial-hvac-mep" }],
+            }}
+          />
+
           {/* ── FAQ ──────────────────────────────────── */}
           <div className="max-w-7xl mx-auto px-6 pt-4">
             <div className="text-center mb-14">
               <div className="flex items-center justify-center gap-3 mb-6">
                 <div className="h-px w-8 bg-emerald-600" />
                 <span className="px-3 py-1 border border-emerald-600 text-[10px] font-bold tracking-[0.22em] text-emerald-700 uppercase">
-                  HVAC &amp; MEP Software
+                  HVAC / MEP Service Software
                 </span>
                 <div className="h-px w-8 bg-emerald-600" />
               </div>
@@ -1008,8 +1039,8 @@ export default function HVACServices() {
               <div className="p-6 sm:p-8 lg:p-14">
                 <InquiryForm
                   inquiryType="solution"
-                  topic="HVAC & MEP Services"
-                  industry="HVAC & MEP Services"
+                  topic="HVAC / MEP Service Software"
+                  industry="HVAC / MEP"
                   onSuccess={() => setShowInquiryForm(false)}
                   onClose={() => setShowInquiryForm(false)}
                   showCloseButton={true}

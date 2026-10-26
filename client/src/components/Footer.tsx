@@ -181,6 +181,26 @@ export default function Footer() {
                   Business Process Management
                 </AnimatedLink>
               </li>
+              <li>
+                <AnimatedLink to="/solutions/predictive-maintenance">
+                  Predictive Maintenance
+                </AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink to="/solutions/oee-monitoring">
+                  OEE Monitoring
+                </AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink to="/solutions/warehouse-management">
+                  Warehouse Management
+                </AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink to="/solutions/travel-agency-software">
+                  Travel Agency Software
+                </AnimatedLink>
+              </li>
             </ul>
           </div>
 
@@ -189,6 +209,11 @@ export default function Footer() {
               Services
             </h4>
             <ul className="space-y-3 md:space-y-4">
+              <li>
+                <AnimatedLink to="/custom-software-development">
+                  Custom Software Development
+                </AnimatedLink>
+              </li>
               <li>
                 <AnimatedLink to="/solutions/websites">
                   Business & Corporate Websites
@@ -218,8 +243,28 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 md:space-y-4">
               <li>
-                <AnimatedLink to="/industries/hvac">
-                  HVAC &amp; MEP Solutions
+                <AnimatedLink to="/industries/field-service">
+                  Field Service Trades
+                </AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink to="/solutions/hvac-mep-service-software">
+                  HVAC / MEP Service Software
+                </AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink to="/industries/plumbing">
+                  Plumbing Software
+                </AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink to="/industries/electrical">
+                  Electrical Contractor Software
+                </AnimatedLink>
+              </li>
+              <li>
+                <AnimatedLink to="/industries/commercial-hvac-mep">
+                  Commercial HVAC &amp; MEP
                 </AnimatedLink>
               </li>
               <li>
@@ -233,7 +278,7 @@ export default function Footer() {
                 </AnimatedLink>
               </li>
               <li>
-                <AnimatedLink to="/solutions">
+                <AnimatedLink to="/industries/tourism-hospitality">
                   Tourism &amp; Hospitality
                 </AnimatedLink>
               </li>
