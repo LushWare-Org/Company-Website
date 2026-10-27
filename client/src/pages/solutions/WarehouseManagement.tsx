@@ -1,26 +1,13 @@
 import IndustryLanding, { type LandingContent } from "@/components/IndustryLanding";
-import { MARKETS } from "@/data/markets";
+import { warehouseOutline } from "@/data/outlines/industrial";
 
 const content: LandingContent = {
   eyebrow: "Warehouse Management",
-  title: { lead: "Warehouse Management", highlight: "System (WMS)", tail: "Built Around Your Flow." },
+  title: { lead: "Custom Warehouse", highlight: "Management System", tail: "(WMS) Built Around Your Flow." },
   intro:
     "Receiving, put-away, picking, packing and shipping with real-time stock accuracy — a custom WMS that fits your warehouse layout, carriers and ERP instead of the other way round.",
   tags: ["Inventory Accuracy", "Barcode & RFID", "Pick & Pack", "Multi-Warehouse", "ERP & Carrier Integration"],
   image: { src: "/hero4/logistics-supply-chain.jpg", alt: "Warehouse and supply chain management dashboard" },
-  challenge: {
-    heading: "Stock you can't find is stock you don't have.",
-    text:
-      "Spreadsheets and generic ERP inventory modules break down as order volumes grow — leading to mis-picks, phantom stock and late shipments.",
-    items: [
-      "Inventory counts that never match the system",
-      "Mis-picks and wrong shipments",
-      "Slow, paper-based receiving",
-      "No real-time view across warehouses",
-      "Manual carrier booking and label printing",
-      "Peak-season volume the team can't keep up with",
-    ],
-  },
   capabilities: {
     heading: "Every pallet, carton and unit,",
     highlight: "accounted for.",
@@ -59,7 +46,6 @@ const content: LandingContent = {
       },
     ],
   },
-  market: MARKETS.industrial,
   related: {
     heading: "Related solutions",
     items: [
@@ -68,34 +54,7 @@ const content: LandingContent = {
       { name: "Business Process Management", desc: "Automate approvals and workflows around your operations.", to: "/solutions/bpm" },
     ],
   },
-  faq: [
-    {
-      question: "What does a warehouse management system do?",
-      answer:
-        "A WMS controls stock movements inside the warehouse — receiving, put-away, storage, picking, packing and shipping — and keeps inventory accurate in real time by location, lot and serial number.",
-    },
-    {
-      question: "Why build a custom WMS instead of buying one?",
-      answer:
-        "Packaged WMS products are priced for large operations and force their own processes. A custom WMS fits your layout, product rules and integrations, and you only adopt it once it fits.",
-    },
-    {
-      question: "Can it integrate with our ERP and e-commerce platforms?",
-      answer:
-        "Yes. We integrate with ERPs such as SAP, Microsoft Dynamics 365, Oracle NetSuite and Odoo, as well as e-commerce platforms, marketplaces and EDI trading partners.",
-    },
-    {
-      question: "Does it support barcode scanners and RFID?",
-      answer:
-        "Yes. The system works with handheld scanners, mobile phones and fixed RFID readers, and prints GS1-compliant labels.",
-    },
-    {
-      question: "Can it manage multiple warehouses in different countries?",
-      answer:
-        "Yes. Multi-warehouse, multi-currency and multi-language operation is built in, with transfers and stock visibility across every site.",
-    },
-  ],
-  inquiry: { topic: "Warehouse Management System", industry: "Logistics & Supply Chain" },
+  outline: warehouseOutline,
 };
 
 export default function WarehouseManagement() {

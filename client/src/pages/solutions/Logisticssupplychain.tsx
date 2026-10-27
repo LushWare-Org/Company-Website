@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import QuestionItem from "../../components/QuestionItem";
 import WhyChooseLushWare from "../../components/WhyChooseLushWare";
 import ValueCard from "../../components/ValueCard";
 import { useNavigate } from "react-router-dom";
-import MarketFitSection from "../../components/MarketFitSection";
-import { MARKETS } from "../../data/markets";
+import { OutlineClose, OutlineProblems, WhoItsFor } from "@/components/PageOutline";
+import { logisticsOutline } from "@/data/outlines/industrial";
 
 const LogisticsSupplyChain: React.FC = () => {
   const navigate = useNavigate();
@@ -20,11 +19,6 @@ const LogisticsSupplyChain: React.FC = () => {
       question: "Do you work with manufacturers and supply chain companies globally?",
       answer:
         "Yes. We work with plants, warehouses and logistics operators across Europe, North America, the Middle East and Asia-Pacific, delivering remotely and planning on-site visits per phase when installation is needed.",
-    },
-    {
-      question: "Can it integrate with SAP or our existing ERP?",
-      answer:
-        "Yes. We integrate with ERPs such as SAP S/4HANA, Microsoft Dynamics 365, Oracle NetSuite and Odoo, and read machine data from PLC and SCADA systems through OPC UA, Modbus or MQTT.",
     },
     {
       question: "Can you optimize routes under real-world constraints?",
@@ -268,9 +262,11 @@ const Chain: React.FC<{ steps: string[]; dark?: boolean }> = ({ steps, dark }) =
             </div>
 
             <h1 className="lsc-fadeUp lsc-serif text-5xl sm:text-6xl lg:text-7xl font-normal text-slate-900 tracking-tight leading-[1.05] mb-7">
-              Intelligent Operations for <br />
-              <span className="text-emerald-600">Logistics & Supply Chain</span>
+              Logistics & Supply Chain Software <br />
+              <span className="text-emerald-600">for Visibility & Optimization</span>
             </h1>
+
+            <WhoItsFor text={logisticsOutline.whoFor} className="lsc-fadeUp text-center" />
 
             <p className="lsc-fadeUp text-lg md:text-xl text-slate-500 font-light max-w-3xl mx-auto leading-relaxed">
               Supply chain and logistics software for global operators. We build
@@ -396,6 +392,9 @@ const Chain: React.FC<{ steps: string[]; dark?: boolean }> = ({ steps, dark }) =
               ))}
             </div>
           </div>
+
+          {/* ── PROBLEMS, IN THEIR WORDS ─────────────── */}
+          <OutlineProblems outline={logisticsOutline} />
 
           {/* ── THE CHALLENGE ────────────────────────── */}
           <section className="bg-white py-16 md:py-24 px-0">
@@ -733,49 +732,15 @@ const Chain: React.FC<{ steps: string[]; dark?: boolean }> = ({ steps, dark }) =
 
           <WhyChooseLushWare />
 
-          {/* ── TARGET MARKET ─────────────────────────── */}
-          <MarketFitSection
-            market={MARKETS.industrial}
-            related={{
+          {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
+          <OutlineClose
+            outline={logisticsOutline}
+            faq={faqItems}
+            marketRelated={{
               text: "Need tighter control inside the warehouse?",
               links: [{ label: "Warehouse management system", to: "/solutions/warehouse-management" }],
             }}
           />
-
-          {/* ── FAQ ──────────────────────────────────── */}
-          <div className="max-w-7xl mx-auto pt-8">
-            <div className="text-center mb-14">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="h-px w-8 bg-emerald-600" />
-                <span className="px-3 py-1 border border-emerald-600 text-[10px] font-bold tracking-[0.22em] text-emerald-700 uppercase">
-                  Logistics FAQ
-                </span>
-                <div className="h-px w-8 bg-emerald-600" />
-              </div>
-
-              <h2 className="lsc-serif text-4xl md:text-5xl font-normal text-slate-900 tracking-tight mb-5 leading-tight">
-                Intelligent Operations for{" "}
-                <span className="text-emerald-600">
-                  Logistics & Supply Chain
-                </span>
-              </h2>
-
-              <p className="text-lg text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
-                Common questions about forecasting, routing, inventory
-                optimization and adaptive logistics.
-              </p>
-            </div>
-
-            <div>
-              {faqItems.map((item, index) => (
-                <QuestionItem
-                  key={`${item.question}-${index}`}
-                  question={item.question}
-                  answer={item.answer}
-                />
-              ))}
-            </div>
-          </div>
         </div>
       </section>
     </>

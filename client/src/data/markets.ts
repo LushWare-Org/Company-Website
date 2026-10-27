@@ -4,6 +4,8 @@
 
 export type MarketId = 'trades' | 'commercialMep' | 'industrial' | 'tourism' | 'smb'
 
+export type Faq = { question: string; answer: string }
+
 export type Market = {
   id: MarketId
   /** Short badge, e.g. "US · Canada · Australia · New Zealand". */
@@ -16,6 +18,10 @@ export type Market = {
   integrations: string[]
   localPractice: string[]
   currencyAndHours: string[]
+  /** Time zones named in calls to action ("we cover … hours"). */
+  hours: string
+  /** Buyer FAQ — price, setup time, data location, integrations — for a product name. */
+  buyerFaq: (product: string) => Faq[]
 }
 
 export const MARKETS: Record<MarketId, Market> = {
@@ -43,6 +49,29 @@ export const MARKETS: Record<MarketId, Market> = {
       'USD, CAD, AUD and NZD pricing, quotes and invoices',
       'Imperial and metric units',
       'Meetings booked in your local time zone, with written progress updates every working day',
+    ],
+    hours: 'EST, CST, MST, PST, AEST and NZST',
+    buyerFaq: (product) => [
+      {
+        question: `How much does ${product} cost?`,
+        answer:
+          'There is no upfront build fee and no per-technician licence. We build the first version around your workflow first; if it fits, you move to a managed monthly plan in USD, CAD, AUD or NZD, sized to your users and modules, that includes hosting, updates and support. You get a written quote after a free discovery call.',
+      },
+      {
+        question: 'How long does setup take?',
+        answer:
+          'A focused first version typically takes a few weeks to a few months, depending on how many modules you need. We import your customers, equipment and price book, train your office team and technicians, and can run alongside your current system until you are ready to switch.',
+      },
+      {
+        question: 'Where is our data stored?',
+        answer:
+          'In the cloud region you choose, such as the United States, Canada or Australia, or in your own cloud account. Your customer and job data stays yours, and you can export it at any time.',
+      },
+      {
+        question: 'Which tools does it integrate with?',
+        answer:
+          'QuickBooks Online, Xero and MYOB for accounting; Stripe and Square for payments; Google Business Profile and Local Services Ads for leads; plus SMS and email. If another tool you rely on has an API, we can usually connect it too.',
+      },
     ],
   },
 
@@ -88,6 +117,29 @@ export const MARKETS: Record<MarketId, Market> = {
       'English / Arabic bilingual reports and right-to-left interfaces on request',
       'Our Sri Lanka base (UTC+5:30) overlaps Gulf and South Asian working days, European afternoons and East Asian mornings',
     ],
+    hours: 'GST (Gulf), CET, IST, SGT and JST',
+    buyerFaq: (product) => [
+      {
+        question: `How much does ${product} cost?`,
+        answer:
+          'There is no upfront build fee. We build the first version around your contracts and projects; if it fits, you continue on a managed plan in your currency (EUR, AED, SAR, QAR, INR and others), sized to your sites, users and modules, covering hosting, updates and support. You get a written quote after a discovery session.',
+      },
+      {
+        question: 'How long does setup take?',
+        answer:
+          'A focused first version typically takes a few weeks to a few months. We roll out by contract or site, importing asset registers, AMC contracts and PPM schedules from your spreadsheets or current CAFM so teams start with live data.',
+      },
+      {
+        question: 'Where is our data stored?',
+        answer:
+          'In the cloud region you need for data residency, for example the UAE, Saudi Arabia, the EU or India, or in your own cloud tenancy. Access is role-based per client, site and subcontractor.',
+      },
+      {
+        question: 'Which systems does it integrate with?',
+        answer:
+          'SAP, Oracle, Microsoft Dynamics 365 and Odoo for finance; Revit, Navisworks and Autodesk Construction Cloud for BIM data; BACnet and Modbus building management systems; and existing CAFM or CMMS platforms through APIs and data exports.',
+      },
+    ],
   },
 
   industrial: {
@@ -114,6 +166,29 @@ export const MARKETS: Record<MarketId, Market> = {
       'Multi-currency, multi-language and multi-unit by design',
       'Phased delivery per site, so one plant proves value before rollout',
       'Remote-first delivery with on-site visits planned per phase',
+    ],
+    hours: 'CET, GST, IST, SGT and EST',
+    buyerFaq: (product) => [
+      {
+        question: `How much does ${product} cost?`,
+        answer:
+          'We start with a scoped pilot on one line, site or warehouse, with no upfront build fee. Once it proves value, you continue on a managed plan in your currency, sized to your sites, assets and users, covering hosting, model upkeep and support. You get a written quote after a discovery session.',
+      },
+      {
+        question: 'How long does setup take?',
+        answer:
+          'A focused pilot typically takes a few weeks to a few months: connecting machine and ERP data, configuring dashboards and proving results against real events. Further lines and sites then follow the same template.',
+      },
+      {
+        question: 'Where is our data stored?',
+        answer:
+          'In the cloud region you choose (EU, North America, Middle East or Asia-Pacific) or in your own cloud tenancy. Machine data can be pre-processed on an edge gateway on site so only what is needed leaves the plant.',
+      },
+      {
+        question: 'Which systems does it integrate with?',
+        answer:
+          'SAP S/4HANA, Microsoft Dynamics 365, Oracle NetSuite and Odoo; PLCs and SCADA over OPC UA, Modbus and MQTT; IoT sensors; and barcode, RFID and EDI (EDIFACT / ANSI X12) partner messaging.',
+      },
     ],
   },
 
@@ -154,6 +229,29 @@ export const MARKETS: Record<MarketId, Market> = {
       'Seasonal and peak-period demand forecasting per source market',
       'Meetings booked in your local time zone',
     ],
+    hours: 'CET, GST, Maldives (MVT), IST, SGT and AEST',
+    buyerFaq: (product) => [
+      {
+        question: `How much does ${product} cost?`,
+        answer:
+          'There is no upfront build fee. We build the first version around your products and booking flow; if it fits, you continue on a managed plan in EUR, USD, AED, INR, LKR or your own currency, sized to your users, properties and modules, covering hosting, updates and support.',
+      },
+      {
+        question: 'How long does setup take?',
+        answer:
+          'A focused first version typically takes a few weeks to a few months. We import your contracts, rates, products and customers, and plan go-live and staff training around your season rather than in the middle of it.',
+      },
+      {
+        question: 'Where is guest data stored?',
+        answer:
+          'In the cloud region you choose. For businesses selling to EU guests we can host in the EU with GDPR-ready consent, retention and access rules; you can also use your own cloud account.',
+      },
+      {
+        question: 'Which channels and tools does it integrate with?',
+        answer:
+          'Booking.com, Expedia and Agoda channels; Amadeus and Sabre GDS; card, SEPA, UPI, WeChat Pay, Alipay and regional gateways; WhatsApp, LINE, KakaoTalk and WeChat messaging; and your accounting system.',
+      },
+    ],
   },
 
   smb: {
@@ -180,6 +278,29 @@ export const MARKETS: Record<MarketId, Market> = {
       'Quotes in your currency',
       'Weekly demos and written progress updates',
       'Our Sri Lanka base (UTC+5:30) gives same-day overlap with Europe, the Middle East and Asia-Pacific',
+    ],
+    hours: 'EST, GMT, CET, GST, IST and AEST',
+    buyerFaq: (product) => [
+      {
+        question: `How much does ${product} cost?`,
+        answer:
+          'It depends on scope. We start with a short discovery session to define the first version, then build it without an upfront payment. If it fits your business, you continue on a managed pay-as-you-go plan in your currency that covers hosting, updates and support.',
+      },
+      {
+        question: 'How long does it take to build?',
+        answer:
+          'A focused first version typically takes a few weeks to a few months. We deliver in short increments with weekly demos, so you see working software early and can steer priorities.',
+      },
+      {
+        question: 'Where is our data stored?',
+        answer:
+          'In the cloud region you choose, such as North America, Europe, the Middle East or Asia-Pacific, or in your own cloud account. Data handling follows GDPR-aligned practices, and your data can be exported at any time.',
+      },
+      {
+        question: 'Can it integrate with the tools we already use?',
+        answer:
+          'Yes. We regularly integrate QuickBooks, Xero, Zoho Books and Odoo; Stripe, PayPal and regional payment gateways; Google Workspace and Microsoft 365; WhatsApp Business, email and SMS; and existing databases.',
+      },
     ],
   },
 }

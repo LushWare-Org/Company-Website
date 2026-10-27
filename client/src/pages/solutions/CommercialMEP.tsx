@@ -1,5 +1,5 @@
 import IndustryLanding, { type LandingContent } from "@/components/IndustryLanding";
-import { MARKETS } from "@/data/markets";
+import { commercialMepOutline } from "@/data/outlines/commercialMep";
 
 const content: LandingContent = {
   eyebrow: "Commercial HVAC & MEP",
@@ -8,21 +8,6 @@ const content: LandingContent = {
     "Project delivery, AMC and PPM contract management, and facility maintenance in one platform for commercial HVAC, mechanical, electrical and plumbing contractors across Europe, the Middle East, East Asia and South Asia.",
   tags: ["MEP Project Management", "AMC Management", "PPM Scheduling", "CAFM / CMMS", "BIM & BMS Integration"],
   image: { src: "/Industry/electrical.jpg", alt: "Commercial HVAC and MEP engineer on a building services project" },
-  challenge: {
-    heading: "Projects and maintenance contracts run on disconnected systems.",
-    text:
-      "Commercial HVAC and MEP contractors juggle project delivery, subcontractors, AMC renewals and PPM evidence across spreadsheets, email and separate CAFM tools — and margin leaks at every handover.",
-    items: [
-      "AMC renewals and SLA penalties tracked manually",
-      "PPM visits without auditable evidence",
-      "Variations and retentions lost between project and finance",
-      "Subcontractor progress invisible until it is late",
-      "Commissioning records scattered across files",
-      "BMS alarms that never reach the maintenance team",
-      "Multi-site reporting rebuilt every month",
-      "Snag lists and handover documents chased by email",
-    ],
-  },
   capabilities: {
     heading: "From design handover to",
     highlight: "decades of maintenance.",
@@ -61,7 +46,6 @@ const content: LandingContent = {
       },
     ],
   },
-  market: MARKETS.commercialMep,
   marketRelated: {
     text: "Running a residential or light-commercial service business in North America or Australasia?",
     links: [{ label: "Field service software", to: "/industries/field-service" }],
@@ -74,39 +58,7 @@ const content: LandingContent = {
       { name: "IoT Product Development", desc: "Sensors, gateways and dashboards to connect building systems.", to: "/solutions/iot-product-development" },
     ],
   },
-  faq: [
-    {
-      question: "What is commercial HVAC & MEP project management software?",
-      answer:
-        "It is software that helps HVAC, mechanical, electrical and plumbing contractors plan and control commercial projects — scope, cost, variations, subcontractors, progress and handover — instead of tracking them in spreadsheets.",
-    },
-    {
-      question: "Can it manage AMC (annual maintenance contracts) and PPM schedules?",
-      answer:
-        "Yes. AMC scope, asset registers, SLA timers and renewals are managed in one place, and PPM visits are scheduled automatically with mobile checklists, readings and photos as evidence.",
-    },
-    {
-      question: "Do you work with HVAC and MEP contractors in the Middle East, Europe and Asia?",
-      answer:
-        "Yes. We build for contractors and FM providers across the GCC, the European Union, East Asia and South Asia, with multi-currency billing and bilingual English/Arabic reports on request. Our Sri Lanka base overlaps the Gulf and South Asian working day.",
-    },
-    {
-      question: "Can it integrate with our ERP, BIM models or BMS?",
-      answer:
-        "Yes. We integrate with ERP systems such as SAP, Oracle, Microsoft Dynamics 365 and Odoo, import asset data from BIM models, and connect to building management systems over BACnet or Modbus.",
-    },
-    {
-      question: "Will it replace our existing CAFM or CMMS?",
-      answer:
-        "It can, but it does not have to. Many clients start by connecting their existing CAFM/CMMS and adding the project, contract or intelligence layer they are missing.",
-    },
-    {
-      question: "Do we need to pay before development starts?",
-      answer:
-        "No. We build the solution first. If it fits your business, you adopt it as a fully managed pay-as-you-go service that includes hosting, updates and support.",
-    },
-  ],
-  inquiry: { topic: "Commercial HVAC & MEP Software", industry: "Commercial HVAC & MEP / Facilities Management" },
+  outline: commercialMepOutline,
 };
 
 export default function CommercialMEP() {

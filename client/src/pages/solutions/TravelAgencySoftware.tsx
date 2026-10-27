@@ -1,5 +1,5 @@
 import IndustryLanding, { type LandingContent } from "@/components/IndustryLanding";
-import { MARKETS } from "@/data/markets";
+import { travelAgencyOutline } from "@/data/outlines/tourism";
 
 const content: LandingContent = {
   eyebrow: "Travel Agency Software",
@@ -8,19 +8,6 @@ const content: LandingContent = {
     "Quotes, itineraries, bookings, supplier contracts, payments and follow-ups in one system for travel agencies and tour operators across Europe, Asia Pacific, the Middle East and South Asia.",
   tags: ["Automatic Quotations", "Itinerary Builder", "Booking Management", "B2B Agent Portal", "Travel CRM"],
   image: { src: "/solution/travel.webp", alt: "Travel agency software for quotes, itineraries and bookings" },
-  challenge: {
-    heading: "Every quote is rebuilt by hand.",
-    text:
-      "Most agencies still copy rates from supplier sheets into documents, chase payments by email and track inquiries in inboxes, so response times slip and margins are hard to see.",
-    items: [
-      "Quotes assembled manually from supplier rate sheets",
-      "Inquiries lost across email, WhatsApp and phone",
-      "No single view of bookings, payments and suppliers",
-      "Supplier contracts and allotments tracked in spreadsheets",
-      "Multi-currency pricing and markups calculated by hand",
-      "No follow-up after the trip, so repeat business is left to chance",
-    ],
-  },
   capabilities: {
     heading: "One system for the whole",
     highlight: "trip lifecycle.",
@@ -59,7 +46,6 @@ const content: LandingContent = {
       },
     ],
   },
-  market: MARKETS.tourism,
   marketRelated: {
     text: "Running a guest house, speedboat operation or travel agency in the Maldives?",
     links: [{ label: "LushWare Maldives", to: "https://mv.lushware.net" }],
@@ -72,39 +58,7 @@ const content: LandingContent = {
       { name: "AI Agents & AI Chatbots", desc: "Answer traveller inquiries and qualify leads around the clock.", to: "/solutions/ai-agents" },
     ],
   },
-  faq: [
-    {
-      question: "What is travel agency software?",
-      answer:
-        "Travel agency software manages the work behind every trip — inquiries, quotations, itineraries, bookings, supplier contracts, payments and client follow-up — in one system instead of spreadsheets and email.",
-    },
-    {
-      question: "Can it generate quotations automatically?",
-      answer:
-        "Yes. Quotes are built from your contracted supplier rates with your markups, taxes and currency applied, and sent as branded PDF or web itineraries.",
-    },
-    {
-      question: "Does it support B2B agents and partners?",
-      answer:
-        "Yes. A B2B portal lets partner agents search availability, see net rates, book and download vouchers, with commission rules and credit limits per agent.",
-    },
-    {
-      question: "Which markets do you work with?",
-      answer:
-        "We build for travel agencies and tour operators in the European Union, Asia Pacific, the Middle East (GCC) and South Asia, including Sri Lanka, India and the Maldives, with multi-currency pricing and meetings in your time zone.",
-    },
-    {
-      question: "Can it connect to Booking.com, Expedia or a GDS?",
-      answer:
-        "Yes. We integrate with channel managers and OTAs such as Booking.com, Expedia and Agoda, and with GDS providers such as Amadeus and Sabre where your agency has access.",
-    },
-    {
-      question: "Do we need to pay before development starts?",
-      answer:
-        "No. We build the solution first. If it fits your agency, you adopt it as a fully managed pay-as-you-go service that includes hosting, updates and support.",
-    },
-  ],
-  inquiry: { topic: "Travel Agency Software", industry: "Tourism & Hospitality" },
+  outline: travelAgencyOutline,
 };
 
 export default function TravelAgencySoftware() {

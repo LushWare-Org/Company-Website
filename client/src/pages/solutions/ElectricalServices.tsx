@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import QuestionItem from "@/components/QuestionItem";
 import ValueCard from "@/components/ValueCard";
 import InquiryForm from "@/components/InquiryForm";
 import SolutionTopicStepper from "@/components/SolutionTopicStepper";
-import MarketFitSection from "@/components/MarketFitSection";
-import { MARKETS } from "@/data/markets";
+import { OutlineClose, OutlineProblems, WhoItsFor } from "@/components/PageOutline";
+import { electricalOutline } from "@/data/outlines/trades";
 
 const faqItems = [
   {
@@ -19,30 +18,10 @@ const faqItems = [
       "Yes. We build for trade contractors in all four markets, with quotes, invoices and taxes in USD, CAD, AUD or NZD, and meetings scheduled in your local time zone.",
   },
   {
-    question: "Can it sync with QuickBooks, Xero or MYOB?",
-    answer:
-      "Yes. We build two-way accounting integrations so customers, invoices and payments flow into the accounting system you already use, without double entry.",
-  },
-  {
     question:
       "Can the system handle electrical job compliance and safety records?",
     answer:
       "Yes. The platform can store and manage compliance certificates, safety inspection records, and permit tracking so your business stays audit-ready at all times.",
-  },
-  {
-    question: "Does the system support quoting and project-based work?",
-    answer:
-      "Yes. From small residential callouts to large commercial projects, the system handles digital quoting, scope tracking, milestone billing, and final invoicing.",
-  },
-  {
-    question: "Can electrical companies manage multiple crews and job sites?",
-    answer:
-      "Yes. Multi-crew dispatch, job site assignment, and real-time status updates are all supported — giving project managers complete visibility across every active site.",
-  },
-  {
-    question: "Do I need to pay before development starts?",
-    answer:
-      "No. We first build the solution based on your requirements. If it fits your business needs, you can then use it as a managed pay-as-you-go software service.",
   },
 ];
 
@@ -248,6 +227,8 @@ export default function ElectricServices() {
                     <span className="text-slate-900 elec-serif">Software.</span>
                   </h1>
 
+                  <WhoItsFor text={electricalOutline.whoFor} className="elec-hero-line text-center lg:text-left" />
+
                   <div className="elec-hero-line flex gap-6 items-start justify-center lg:justify-start">
                     <div className="w-1 h-20 bg-emerald-600 mt-2 hidden sm:block lg:block" />
                     <p className="text-lg md:text-3xl lg:text-lg text-slate-600 lg:max-w-md max-w-xl leading-relaxed">
@@ -331,6 +312,9 @@ export default function ElectricServices() {
             {/* STEPS */}
             <SolutionTopicStepper steps={steps} threshold={0.5} />
           </div>
+
+          {/* ── PROBLEMS, IN THEIR WORDS ─────────────── */}
+          <OutlineProblems outline={electricalOutline} />
 
           {/*  COVER IMAGE BANNER  */}
           <div
@@ -543,44 +527,15 @@ export default function ElectricServices() {
             </div>
           </div>
 
-          {/* TARGET MARKET */}
-          <MarketFitSection
-            market={MARKETS.trades}
-            related={{
+          {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
+          <OutlineClose
+            outline={electricalOutline}
+            faq={faqItems}
+            marketRelated={{
               text: "Running electrical alongside HVAC or plumbing crews?",
               links: [{ label: "Field service software", to: "/industries/field-service" }],
             }}
           />
-
-          {/*  FAQ  */}
-          <div className="max-w-7xl mx-auto px-6 pt-4">
-            <div className="text-center mb-14">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="h-px w-8 bg-emerald-600" />
-                <span className="px-3 py-1 border border-emerald-600 text-[10px] font-bold tracking-[0.22em] text-emerald-700 uppercase">
-                  Electrical Software
-                </span>
-                <div className="h-px w-8 bg-emerald-600" />
-              </div>
-              <h2 className="elec-serif text-4xl md:text-5xl font-normal text-slate-900 tracking-tight mb-5 leading-tight">
-                Frequently Asked{" "}
-                <span className="text-emerald-600">Q &amp; A</span>
-              </h2>
-              <p className="text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed">
-                Everything you need to know about custom software for your
-                electrical contracting business.
-              </p>
-            </div>
-            <div>
-              {faqItems.map((item, index) => (
-                <QuestionItem
-                  key={`${item.question}-${index}`}
-                  question={item.question}
-                  answer={item.answer}
-                />
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 

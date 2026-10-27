@@ -1,7 +1,8 @@
 import React from "react";
-import QuestionItem from "../../components/QuestionItem";
 import WhyChooseLushWare from "../../components/WhyChooseLushWare";
 import ValueCard from "../../components/ValueCard";
+import { OutlineClose, OutlineProblems, WhoItsFor } from "@/components/PageOutline";
+import { websitesOutline } from "@/data/outlines/smb";
 
 const Websites: React.FC = () => {
   const faqItems = [
@@ -120,11 +121,13 @@ const Websites: React.FC = () => {
         </div>
 
         <h1 className="cw-fadeUp cw-serif text-5xl sm:text-6xl lg:text-7xl font-normal text-slate-900 tracking-tight leading-[1.05] mb-7">
-          Build a Strong Digital Presence <br />
+          Business & Corporate <br />
           <span className=" text-emerald-600">
-            With Professional Websites
+            Website Development
           </span>
         </h1>
+
+        <WhoItsFor text={websitesOutline.whoFor} className="cw-fadeUp text-center" />
 
         <p className="cw-fadeUp text-lg sm:text-xl text-slate-500 font-light max-w-3xl mx-auto leading-relaxed">
           LushWare designs websites that not only look amazing but also drive
@@ -218,6 +221,9 @@ const Websites: React.FC = () => {
           <div className="mt-12 pt-10 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4" />
         </div>
       </section>
+
+      {/* ── PROBLEMS, IN THEIR WORDS ─────────────── */}
+      <OutlineProblems outline={websitesOutline} />
 
       {/* ── BENEFITS BENTO ───────────────────────── */}
       <section className="bg-white py-16 md:py-20 px-0">
@@ -497,38 +503,8 @@ const Websites: React.FC = () => {
 
       <WhyChooseLushWare />
 
-      {/* ── FAQ ──────────────────────────────────── */}
-      <div className="max-w-7xl mx-auto pt-8">
-        <div className="text-center mb-14">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="h-px w-8 bg-emerald-600" />
-            <span className="px-3 py-1 border border-emerald-600 text-[10px] font-bold tracking-[0.22em] text-emerald-700 uppercase">
-              Web Solutions
-            </span>
-            <div className="h-px w-8 bg-emerald-600" />
-          </div>
-
-          <h2 className="cw-serif text-4xl md:text-5xl font-normal text-slate-900 tracking-tight mb-5 leading-tight">
-            Business & Corporate{" "}
-            <span className=" text-emerald-600">Websites</span>
-          </h2>
-
-          <p className="text-lg text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
-            Modern, mobile-friendly websites designed to strengthen your
-            brand, improve visibility, and convert visitors into customers.
-          </p>
-        </div>
-
-        <div>
-          {faqItems.map((item, index) => (
-            <QuestionItem
-              key={`${item.question}-${index}`}
-              question={item.question}
-              answer={item.answer}
-            />
-          ))}
-        </div>
-      </div>
+      {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
+      <OutlineClose outline={websitesOutline} faq={faqItems} />
 
     </div>
   </section>

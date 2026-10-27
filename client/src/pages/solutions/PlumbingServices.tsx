@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import QuestionItem from "@/components/QuestionItem";
 import ValueCard from "@/components/ValueCard";
 import InquiryForm from "@/components/InquiryForm";
 import SolutionTopicStepper from "@/components/SolutionTopicStepper";
-import MarketFitSection from "@/components/MarketFitSection";
-import { MARKETS } from "@/data/markets";
+import { OutlineClose, OutlineProblems, WhoItsFor } from "@/components/PageOutline";
+import { plumbingOutline } from "@/data/outlines/trades";
 
 const faqItems = [
   {
@@ -19,29 +18,9 @@ const faqItems = [
       "Yes. We build for trade contractors in all four markets, with quotes, invoices and taxes in USD, CAD, AUD or NZD, and meetings scheduled in your local time zone.",
   },
   {
-    question: "Can it sync with QuickBooks, Xero or MYOB?",
-    answer:
-      "Yes. We build two-way accounting integrations so customers, invoices and payments flow into the accounting system you already use, without double entry.",
-  },
-  {
-    question: "Can the system manage emergency call-outs and urgent jobs?",
-    answer:
-      "Yes. The dispatch system supports priority flagging for emergency jobs, instantly notifying the nearest available plumber and updating the customer in real time.",
-  },
-  {
     question: "Does the system support job quoting and invoicing?",
     answer:
       "Yes. Technicians can generate quotes on-site from mobile devices, convert approved quotes to jobs, and issue invoices automatically on completion.",
-  },
-  {
-    question: "Can we track parts, inventory, and supplier orders?",
-    answer:
-      "Yes. The platform can include parts tracking, low-stock alerts, and supplier order management so your vans are always stocked for the job.",
-  },
-  {
-    question: "Do I need to pay before development starts?",
-    answer:
-      "No. We first build the solution based on your requirements. If it fits your business needs, you can then use it as a managed pay-as-you-go software service.",
   },
 ];
 
@@ -193,6 +172,8 @@ export default function PlumbingServices() {
                     </span>
                   </h1>
 
+                  <WhoItsFor text={plumbingOutline.whoFor} className="text-center lg:text-left" />
+
                   <div className="flex gap-6 items-start justify-center lg:justify-start">
                     <div className="w-1 h-20 bg-emerald-600 mt-2 hidden sm:block lg:block" />
                     <p className="text-lg md:text-3xl lg:text-lg text-slate-600 lg:max-w-md max-w-xl leading-relaxed">
@@ -275,6 +256,9 @@ export default function PlumbingServices() {
           <div className="-mt-38 sm:mt-0 md:-mt-38 lg:mt-0">
             <SolutionTopicStepper steps={steps} threshold={0.4} />
           </div>
+
+          {/* ── PROBLEMS, IN THEIR WORDS ─────────────── */}
+          <OutlineProblems outline={plumbingOutline} />
 
           {/*  COVER IMAGE BANNER  */}
           <div
@@ -488,44 +472,15 @@ export default function PlumbingServices() {
             </div>
           </div>
 
-          {/* TARGET MARKET */}
-          <MarketFitSection
-            market={MARKETS.trades}
-            related={{
+          {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
+          <OutlineClose
+            outline={plumbingOutline}
+            faq={faqItems}
+            marketRelated={{
               text: "Running plumbing alongside HVAC or electrical crews?",
               links: [{ label: "Field service software", to: "/industries/field-service" }],
             }}
           />
-
-          {/* FAQ */}
-          <div className="max-w-7xl mx-auto px-6 pt-4">
-            <div className="text-center mb-14">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="h-px w-8 bg-emerald-600" />
-                <span className="px-3 py-1 border border-emerald-600 text-[10px] font-bold tracking-[0.22em] text-emerald-700 uppercase">
-                  Plumbing Software
-                </span>
-                <div className="h-px w-8 bg-emerald-600" />
-              </div>
-              <h2 className="pl-serif text-4xl md:text-5xl font-normal text-slate-900 tracking-tight mb-5 leading-tight">
-                Frequently Asked{" "}
-                <span className="text-emerald-600">Q &amp; A</span>
-              </h2>
-              <p className="text-xl text-slate-500  max-w-2xl mx-auto leading-relaxed">
-                Everything you need to know about adopting custom software for
-                your plumbing business.
-              </p>
-            </div>
-            <div>
-              {faqItems.map((item, index) => (
-                <QuestionItem
-                  key={`${item.question}-${index}`}
-                  question={item.question}
-                  answer={item.answer}
-                />
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 

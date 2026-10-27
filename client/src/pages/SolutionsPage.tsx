@@ -2,10 +2,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import InquiryForm from "../components/InquiryForm";
-import QuestionItem from "../components/QuestionItem";
 import SolutionTopicStepper from "../components/SolutionTopicStepper";
-import MarketFitSection from "../components/MarketFitSection";
-import { MARKETS } from "../data/markets";
+import { OutlineClose, OutlineProblems, WhoItsFor } from "@/components/PageOutline";
+import { tourismOutline } from "@/data/outlines/tourism";
 
 type Solution = {
   title: string;
@@ -212,11 +211,6 @@ const faqItems = [
     answer:
       "Absolutely. We use industry-standard security measures including encryption, access controls, compliance with data protection regulations, and regular security audits to protect sensitive guest and business data.",
   },
-  {
-    question: "How long does implementation typically take?",
-    answer:
-      "Timelines vary with your needs and complexity, typically from a few weeks to a few months. Our team provides guided onboarding and training to ensure smooth adoption.",
-  },
 ];
 
 const travelSteps = [
@@ -369,13 +363,15 @@ export default function SolutionsPage() {
                 </div>
 
                 <h1 className="sol-fadeUp sol-serif text-5xl sm:text-6xl md:text-8xl xl:text-7xl font-normal text-slate-950 leading-[0.9]  mb-8">
-                  Intelligent <br />
-                  <span className="text-emerald-600">Operations</span>
+                  Tourism & Hospitality <br />
+                  <span className="text-emerald-600">Software</span>
                   <br />
                   <span className="text-slate-900 sol-serif">
-                    for Hospitality.
+                    for Tour Operators & Hotels.
                   </span>
                 </h1>
+
+                <WhoItsFor text={tourismOutline.whoFor} className="sol-fadeUp text-center lg:text-left" />
 
                 <div className="sol-fadeUp flex gap-6 items-start justify-center lg:justify-start">
                   <div className="w-1 h-20 bg-emerald-600 mt-2 hidden sm:block lg:block" />
@@ -441,6 +437,9 @@ export default function SolutionsPage() {
           <div className="-mt-38 sm:mt-0 md:-mt-38 lg:mt-0">
             <SolutionTopicStepper steps={travelSteps} />
           </div>
+
+          {/* ── PROBLEMS, IN THEIR WORDS ─────────────── */}
+          <OutlineProblems outline={tourismOutline} />
 
           {/* ── INTRO + THE CHALLENGE ────────────────── */}
           <section className="bg-white py-16 md:py-24 px-0">
@@ -896,10 +895,11 @@ export default function SolutionsPage() {
           </div>
         </div>
 
-        {/* ── TARGET MARKET ─────────────────────────── */}
-        <MarketFitSection
-          market={MARKETS.tourism}
-          related={{
+        {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
+        <OutlineClose
+          outline={tourismOutline}
+          faq={faqItems}
+          marketRelated={{
             text: "Running a travel agency, or a guest house or speedboat operation in the Maldives?",
             links: [
               { label: "Travel agency software", to: "/solutions/travel-agency-software" },
@@ -907,39 +907,6 @@ export default function SolutionsPage() {
             ],
           }}
         />
-
-        {/* ── FAQ ──────────────────────────────────── */}
-        <div className="mt-20 sm:mt-32 lg:px-0 px-1 max-w-7xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16">
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className="h-px w-8 bg-emerald-600" />
-              <span className="px-3 py-1 border border-emerald-600 text-[10px] font-bold tracking-[0.22em] text-emerald-700 uppercase">
-                Tourism & Hospitality FAQ
-              </span>
-              <div className="h-px w-8 bg-emerald-600" />
-            </div>
-
-            <h3 className="sol-serif text-4xl md:text-5xl font-normal text-slate-900 tracking-tight mb-4 leading-tight">
-              Frequently Asked{" "}
-              <span className=" text-emerald-600">Questions</span>
-            </h3>
-
-            <p className="text-slate-500 font-light max-w-2xl text-base sm:text-lg mx-auto leading-relaxed">
-              Clear answers to common questions about our tourism and
-              hospitality solutions.
-            </p>
-          </div>
-
-          <div>
-            {faqItems.map((item, index) => (
-              <QuestionItem
-                key={`${item.question}-${index}`}
-                question={item.question}
-                answer={item.answer}
-              />
-            ))}
-          </div>
-        </div>
 
         {/* ── MODAL ──────────────────────────────────── */}
         {selectedSolution &&

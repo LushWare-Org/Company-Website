@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import QuestionItem from "@/components/QuestionItem";
 import ValueCard from "@/components/ValueCard";
 import InquiryForm from "@/components/InquiryForm";
 import SolutionTopicStepper from "@/components/SolutionTopicStepper";
-import MarketFitSection from "@/components/MarketFitSection";
-import { MARKETS } from "@/data/markets";
+import { OutlineClose, OutlineProblems, WhoItsFor } from "@/components/PageOutline";
+import { hvacOutline } from "@/data/outlines/trades";
 
 const faqItems = [
   {
@@ -17,21 +16,6 @@ const faqItems = [
     question: "Do you work with HVAC businesses in the US, Canada, Australia and New Zealand?",
     answer:
       "Yes. We build for trade contractors in all four markets, with quotes, invoices and taxes in USD, CAD, AUD or NZD, and meetings scheduled in your local time zone.",
-  },
-  {
-    question: "Can it sync with QuickBooks, Xero or MYOB?",
-    answer:
-      "Yes. We build two-way accounting integrations so customers, invoices and payments flow into the accounting system you already use, without double entry.",
-  },
-  {
-    question: "Can it keep refrigerant handling records?",
-    answer:
-      "Yes. Technician certifications such as EPA 608 (US) or ARCtick licences (Australia) are stored with expiry reminders, and refrigerant added or recovered is logged against each job and unit.",
-  },
-  {
-    question: "We run large commercial MEP projects — is this the right page?",
-    answer:
-      "For commercial HVAC & MEP project delivery, AMC and PPM contracts, see our commercial HVAC & MEP software at lushware.net/industries/commercial-hvac-mep.",
   },
   {
     question: "Can one system cover HVAC, electrical, and plumbing work?",
@@ -67,11 +51,6 @@ const faqItems = [
     question: "Can we track technicians in real time?",
     answer:
       "Yes. The platform includes technician tracking, job status updates, and mobile access for field teams so dispatchers always have full visibility.",
-  },
-  {
-    question: "Do I need to pay before development starts?",
-    answer:
-      "No. We first build the solution based on your requirements. If it fits your business needs, you can then use it as a managed pay-as-you-go software service.",
   },
 ];
 
@@ -389,9 +368,11 @@ export default function HVACServices() {
                     <span className="text-emerald-600">Service Software</span>
                     <br />
                     <span className="text-slate-900 hvac-serif">
-                      Architected.
+                      for Contractors.
                     </span>
                   </h1>
+
+                  <WhoItsFor text={hvacOutline.whoFor} className="hvac-hero-line text-center lg:text-left" />
 
                   <div className="hvac-hero-line flex gap-6 items-start justify-center lg:justify-start">
                     <div className="w-1 h-20 bg-emerald-600 mt-2 hidden sm:block lg:block" />
@@ -474,6 +455,9 @@ export default function HVACServices() {
           <div className="-mt-38 sm:mt-0 md:-mt-38 lg:mt-0">
             <SolutionTopicStepper steps={steps} threshold={0.45} />
           </div>
+
+          {/* ── PROBLEMS, IN THEIR WORDS ─────────────── */}
+          <OutlineProblems outline={hvacOutline} />
 
           {/*  COVER IMAGE BANNER  */}
           <div
@@ -980,47 +964,15 @@ export default function HVACServices() {
             </div>
           </div>
 
-          {/* ── TARGET MARKET ─────────────────────────── */}
-          <MarketFitSection
-            market={MARKETS.trades}
-            related={{
+          {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
+          <OutlineClose
+            outline={hvacOutline}
+            faq={faqItems}
+            marketRelated={{
               text: "Delivering commercial HVAC & MEP projects or AMC/PPM contracts in Europe, the Middle East or Asia?",
               links: [{ label: "Commercial HVAC & MEP software", to: "/industries/commercial-hvac-mep" }],
             }}
           />
-
-          {/* ── FAQ ──────────────────────────────────── */}
-          <div className="max-w-7xl mx-auto px-6 pt-4">
-            <div className="text-center mb-14">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="h-px w-8 bg-emerald-600" />
-                <span className="px-3 py-1 border border-emerald-600 text-[10px] font-bold tracking-[0.22em] text-emerald-700 uppercase">
-                  HVAC / MEP Service Software
-                </span>
-                <div className="h-px w-8 bg-emerald-600" />
-              </div>
-
-              <h2 className="hvac-serif text-4xl md:text-5xl font-normal text-slate-900 tracking-tight mb-5 leading-tight">
-                Frequently Asked{" "}
-                <span className="text-emerald-600">Q &amp; A</span>
-              </h2>
-
-              <p className="text-xl text-slate-500  max-w-2xl mx-auto leading-relaxed">
-                Everything you need to know about adopting custom software for
-                your HVAC, electrical, or plumbing business.
-              </p>
-            </div>
-
-            <div>
-              {faqItems.map((item, index) => (
-                <QuestionItem
-                  key={`${item.question}-${index}`}
-                  question={item.question}
-                  answer={item.answer}
-                />
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 

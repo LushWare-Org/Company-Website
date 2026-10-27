@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
-import QuestionItem from "@/components/QuestionItem";
 import InquiryForm from "@/components/InquiryForm";
-import MarketFitSection, { type MarketRelated } from "@/components/MarketFitSection";
-import type { Market } from "@/data/markets";
+import type { MarketRelated } from "@/components/MarketFitSection";
+import { OutlineClose, OutlineProblems, WhoItsFor } from "@/components/PageOutline";
+import type { PageOutline } from "@/data/outlines/types";
 
 export type LandingContent = {
   eyebrow: string;
@@ -13,18 +13,16 @@ export type LandingContent = {
   intro: string;
   tags: string[];
   image: { src: string; alt: string };
-  challenge: { heading: string; text: string; items: string[] };
   capabilities: {
     heading: string;
     highlight: string;
     intro: string;
     items: { title: string; desc: string; points: string[] }[];
   };
-  market: Market;
   marketRelated?: MarketRelated;
   related: { heading: string; items: { name: string; desc: string; to: string }[] };
-  faq: { question: string; answer: string }[];
-  inquiry: { topic: string; industry: string };
+  /** Standard SEO outline: who it's for, problems, features, proof, guide, FAQ, CTA. */
+  outline: PageOutline;
 };
 
 const steps = [
@@ -105,7 +103,7 @@ export default function IndustryLanding({ content: c }: { content: LandingConten
                   <div className="h-[1px] w-12 bg-emerald-200" />
                 </div>
 
-                <h1 className="il-fadeUp il-serif text-5xl sm:text-6xl xl:text-7xl font-normal text-slate-950 leading-[0.95] mb-8">
+                <h1 className="il-fadeUp il-serif text-5xl sm:text-6xl xl:text-7xl font-normal text-slate-950 leading-[0.95] mb-6">
                   {c.title.lead} <br />
                   <span className="text-emerald-600">{c.title.highlight}</span>
                   {c.title.tail && (
@@ -115,6 +113,8 @@ export default function IndustryLanding({ content: c }: { content: LandingConten
                     </>
                   )}
                 </h1>
+
+                <WhoItsFor text={c.outline.whoFor} className="il-fadeUp" />
 
                 <div className="il-fadeUp flex gap-6 items-start">
                   <div className="w-1 h-20 bg-emerald-600 mt-2 hidden sm:block" />
@@ -156,24 +156,8 @@ export default function IndustryLanding({ content: c }: { content: LandingConten
           </div>
         </div>
 
-        {/* ── THE CHALLENGE ────────────────────────── */}
-        <div className="max-w-7xl mx-auto px-6 mb-20 md:mb-28">
-          <div className="grid lg:grid-cols-12 border border-slate-200">
-            <div className="lg:col-span-5 bg-[#062c1b] text-white p-8 md:p-12 flex flex-col justify-center">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-emerald-400 mb-4">The Challenge</p>
-              <h2 className="il-serif text-3xl md:text-4xl leading-tight mb-5">{c.challenge.heading}</h2>
-              <p className="text-emerald-100/80 leading-relaxed">{c.challenge.text}</p>
-            </div>
-            <ul className="lg:col-span-7 grid sm:grid-cols-2 gap-px bg-slate-200">
-              {c.challenge.items.map((item) => (
-                <li key={item} className="flex gap-3 bg-white p-5 md:p-6 text-slate-700 leading-relaxed hover:bg-emerald-50/60 transition-colors duration-300">
-                  <span className="mt-2.5 w-1.5 h-1.5 shrink-0 rounded-full bg-emerald-600" />
-                  <span className="text-base font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        {/* ── PROBLEMS, IN THEIR WORDS ─────────────── */}
+        <OutlineProblems outline={c.outline} />
 
         {/* ── CAPABILITIES ─────────────────────────── */}
         <div className="max-w-7xl mx-auto px-6 mb-20 md:mb-28">
@@ -208,9 +192,6 @@ export default function IndustryLanding({ content: c }: { content: LandingConten
             ))}
           </div>
         </div>
-
-        {/* ── TARGET MARKET ────────────────────────── */}
-        <MarketFitSection market={c.market} related={c.marketRelated} />
 
         {/* ── HOW WE WORK ──────────────────────────── */}
         <div className="max-w-7xl mx-auto px-6 mb-20 md:mb-28">
@@ -252,20 +233,8 @@ export default function IndustryLanding({ content: c }: { content: LandingConten
           </div>
         </div>
 
-        {/* ── FAQ ──────────────────────────────────── */}
-        <div className="max-w-7xl mx-auto px-6 pt-4">
-          <div className="text-center mb-14">
-            <Badge>{c.eyebrow} FAQ</Badge>
-            <h2 className="il-serif text-4xl md:text-5xl font-normal text-slate-900 tracking-tight mb-5 leading-tight">
-              Frequently Asked <span className="text-emerald-600">Q &amp; A</span>
-            </h2>
-          </div>
-          <div>
-            {c.faq.map((item, index) => (
-              <QuestionItem key={`${item.question}-${index}`} question={item.question} answer={item.answer} />
-            ))}
-          </div>
-        </div>
+        {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
+        <OutlineClose outline={c.outline} marketRelated={c.marketRelated} />
       </section>
 
       {/* ── INQUIRY FORM MODAL ── */}
@@ -280,8 +249,8 @@ export default function IndustryLanding({ content: c }: { content: LandingConten
               <div className="p-6 sm:p-8 lg:p-14">
                 <InquiryForm
                   inquiryType="solution"
-                  topic={c.inquiry.topic}
-                  industry={c.inquiry.industry}
+                  topic={c.outline.inquiry.topic}
+                  industry={c.outline.inquiry.industry}
                   onSuccess={() => setShowInquiryForm(false)}
                   onClose={() => setShowInquiryForm(false)}
                   showCloseButton={true}

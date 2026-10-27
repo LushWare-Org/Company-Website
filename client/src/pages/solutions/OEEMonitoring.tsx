@@ -1,26 +1,13 @@
 import IndustryLanding, { type LandingContent } from "@/components/IndustryLanding";
-import { MARKETS } from "@/data/markets";
+import { oeeOutline } from "@/data/outlines/industrial";
 
 const content: LandingContent = {
   eyebrow: "OEE Monitoring",
-  title: { lead: "OEE Monitoring", highlight: "& Production Tracking", tail: "in Real Time." },
+  title: { lead: "OEE Monitoring", highlight: "Software", tail: "for Real-Time Production Tracking." },
   intro:
     "Measure availability, performance and quality on every machine and line automatically — and see exactly where capacity is lost, shift by shift.",
   tags: ["OEE Dashboards", "Downtime Tracking", "Machine Connectivity", "Shift Reports", "MES Lite"],
   image: { src: "/hero4/iot2.jpg", alt: "Engineer connecting machines for real-time OEE monitoring" },
-  challenge: {
-    heading: "You can't improve what you only measure at the end of the shift.",
-    text:
-      "Manual production logs arrive late, hide micro-stops and argue about the numbers. Without trustworthy OEE, improvement projects target the wrong losses.",
-    items: [
-      "OEE calculated by hand in spreadsheets",
-      "Micro-stops and slow cycles never recorded",
-      "Downtime reasons guessed after the fact",
-      "Scrap and rework tracked separately from output",
-      "No comparison between lines, shifts or plants",
-      "Older machines with no data connection",
-    ],
-  },
   capabilities: {
     heading: "Automatic OEE from",
     highlight: "the machine itself.",
@@ -59,7 +46,6 @@ const content: LandingContent = {
       },
     ],
   },
-  market: MARKETS.industrial,
   related: {
     heading: "Related solutions",
     items: [
@@ -68,34 +54,7 @@ const content: LandingContent = {
       { name: "AI Process Optimization", desc: "Forecast, simulate and optimize operations with AI.", to: "/solutions/ai-process-optimization" },
     ],
   },
-  faq: [
-    {
-      question: "What is OEE?",
-      answer:
-        "Overall Equipment Effectiveness (OEE) multiplies availability, performance and quality into one score that shows how much of a machine's planned production time is truly productive.",
-    },
-    {
-      question: "Can you connect older machines without PLCs?",
-      answer:
-        "Yes. We retrofit sensors and edge gateways to capture cycles, run states and power draw from legacy equipment, so every machine is measured the same way.",
-    },
-    {
-      question: "Is this a full MES?",
-      answer:
-        "It covers the most valuable MES functions — OEE, downtime, work orders and output tracking — without the cost of a full MES. It can integrate with an existing MES or ERP if you have one.",
-    },
-    {
-      question: "Can operators enter downtime reasons?",
-      answer:
-        "Yes. Operators pick reason codes on a shop-floor tablet when a stop is detected, which makes downtime analysis accurate instead of estimated.",
-    },
-    {
-      question: "Do you support multiple plants in different countries?",
-      answer:
-        "Yes. Dashboards roll up across sites with multi-language, multi-unit and role-based access for plant and group management.",
-    },
-  ],
-  inquiry: { topic: "OEE Monitoring", industry: "Manufacturing" },
+  outline: oeeOutline,
 };
 
 export default function OEEMonitoring() {

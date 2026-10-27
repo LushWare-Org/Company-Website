@@ -1,8 +1,9 @@
 import React from "react";
-import QuestionItem from "../../components/QuestionItem";
 import WhyChooseLushWare from "../../components/WhyChooseLushWare";
 import ValueCard from "../../components/ValueCard";
 import { useNavigate } from "react-router-dom";
+import { OutlineClose, OutlineProblems, WhoItsFor } from "@/components/PageOutline";
+import { crmOutline } from "@/data/outlines/smb";
 
 const CRM: React.FC = () => {
   const navigate = useNavigate();
@@ -22,11 +23,6 @@ const CRM: React.FC = () => {
       question: "Is CRM suitable for small businesses?",
       answer:
         "Yes. CRM systems are scalable and can be tailored to suit small businesses, growing startups, and large enterprises.",
-    },
-    {
-      question: "Can the CRM be customized and integrated with other systems?",
-      answer:
-        "Yes. CRM solutions can be customized to match business workflows and integrate seamlessly with existing tools such as email, accounting, and marketing platforms.",
     },
     {
       question: "Is customer data secure in the CRM?",
@@ -80,11 +76,13 @@ const CRM: React.FC = () => {
             </div>
 
             <h1 className="crm-fadeUp crm-serif text-5xl sm:text-6xl lg:text-7xl font-normal text-slate-900 tracking-tight leading-[1.05] mb-7">
-              Build Stronger Relationships <br />
+              Custom CRM Development <br />
               <span className=" text-emerald-600">
-                With Intelligent CRM Solutions
+                for Growing Businesses
               </span>
             </h1>
+
+            <WhoItsFor text={crmOutline.whoFor} className="crm-fadeUp text-center" />
 
             <p className="crm-fadeUp text-lg md:text-xl text-slate-500 font-light max-w-3xl mx-auto leading-relaxed">
               Customer Relationship Management (CRM) is a centralized system
@@ -139,6 +137,9 @@ const CRM: React.FC = () => {
               </div>
             </div>
           </div>
+
+          {/* ── PROBLEMS, IN THEIR WORDS ─────────────── */}
+          <OutlineProblems outline={crmOutline} />
 
           {/* ── VALUE CARDS ──────────────────────────── */}
           <div className="max-w-7xl mx-auto lg:px-0">
@@ -680,38 +681,8 @@ const CRM: React.FC = () => {
 
           <WhyChooseLushWare />
 
-          {/* ── FAQ ──────────────────────────────────── */}
-          <div className="max-w-7xl mx-auto pt-8">
-            <div className="text-center mb-14">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="h-px w-8 bg-emerald-600" />
-                <span className="px-3 py-1 border border-emerald-600 text-[10px] font-bold tracking-[0.22em] text-emerald-700 uppercase">
-                  CRM FAQ
-                </span>
-                <div className="h-px w-8 bg-emerald-600" />
-              </div>
-
-              <h3 className="crm-serif text-4xl md:text-5xl font-normal text-slate-900 tracking-tight mb-5 leading-tight">
-                Frequently Asked{" "}
-                <span className=" text-emerald-600">Questions</span>
-              </h3>
-
-              <p className="text-lg md:text-xl text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
-                Clear answers to the most common questions about CRM platforms
-                and how they help your business grow.
-              </p>
-            </div>
-
-            <div>
-              {faqItems.map((item, index) => (
-                <QuestionItem
-                  key={`${item.question}-${index}`}
-                  question={item.question}
-                  answer={item.answer}
-                />
-              ))}
-            </div>
-          </div>
+          {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
+          <OutlineClose outline={crmOutline} faq={faqItems} />
         </div>
       </section>
     </>

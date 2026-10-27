@@ -1,8 +1,9 @@
 import React from "react";
-import QuestionItem from "../../components/QuestionItem";
 import WhyChooseLushWare from "../../components/WhyChooseLushWare";
 import ValueCard from "../../components/ValueCard";
 import { useNavigate } from "react-router-dom";
+import { OutlineClose, OutlineProblems, WhoItsFor } from "@/components/PageOutline";
+import { aiAgentsOutline } from "@/data/outlines/smb";
 
 const AIAgents: React.FC = () => {
   const navigate = useNavigate();
@@ -22,11 +23,6 @@ const AIAgents: React.FC = () => {
       question: "How do AI solutions benefit my business?",
       answer:
         "AI Agents and Chatbots help streamline operations, enhance customer experience, automate repetitive tasks, and provide insights through data-driven intelligence.",
-    },
-    {
-      question: "Can AI Agents integrate with existing systems?",
-      answer:
-        "Yes. Our AI solutions can integrate seamlessly with CRM platforms, websites, mobile apps, and other business tools to enhance your workflows.",
     },
     {
       question: "Is my data secure with AI solutions?",
@@ -80,11 +76,13 @@ const AIAgents: React.FC = () => {
             </div>
 
             <h1 className="ai-fadeUp ai-serif text-5xl sm:text-6xl lg:text-7xl font-normal text-slate-900 tracking-tight leading-[1.05] mb-7">
-              Automate, Engage, <br />
+              AI Agents & AI Chatbots <br />
               <span className=" text-emerald-600">
-                & Optimize with AI
+                for Business
               </span>
             </h1>
+
+            <WhoItsFor text={aiAgentsOutline.whoFor} className="ai-fadeUp text-center" />
 
             <p className="ai-fadeUp text-lg md:text-xl text-slate-500 font-light max-w-3xl mx-auto leading-relaxed">
               Harness the power of AI Agents and Chatbots to automate tasks,
@@ -136,6 +134,9 @@ const AIAgents: React.FC = () => {
   </div>
 </div>
 
+
+          {/* ── PROBLEMS, IN THEIR WORDS ─────────────── */}
+          <OutlineProblems outline={aiAgentsOutline} />
 
           {/* ── BUSINESS IMPACT + VALUE CARDS ────────── */}
           <div className="max-w-7xl py-4 pb-20 md:pb-28 mx-auto">
@@ -328,38 +329,8 @@ const AIAgents: React.FC = () => {
 
           <WhyChooseLushWare />
 
-          {/* ── FAQ ──────────────────────────────────── */}
-          <div className="max-w-7xl mx-auto pt-8">
-            <div className="text-center mb-14">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="h-px w-8 bg-emerald-600" />
-                <span className="px-3 py-1 border border-emerald-600 text-[10px] font-bold tracking-[0.22em] text-emerald-700 uppercase">
-                  AI Solutions
-                </span>
-                <div className="h-px w-8 bg-emerald-600" />
-              </div>
-
-              <h2 className="ai-serif text-4xl md:text-5xl font-normal text-slate-900 tracking-tight mb-5 leading-tight">
-                AI Agents &{" "}
-                <span className=" text-emerald-600">AI Chatbots</span>
-              </h2>
-
-              <p className="text-lg text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
-                Automate customer interactions, enhance support, and streamline
-                operations using intelligent AI-powered agents and chatbots.
-              </p>
-            </div>
-
-            <div>
-              {faqItems.map((item, index) => (
-                <QuestionItem
-                  key={`${item.question}-${index}`}
-                  question={item.question}
-                  answer={item.answer}
-                />
-              ))}
-            </div>
-          </div>
+          {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
+          <OutlineClose outline={aiAgentsOutline} faq={faqItems} />
 
         </div>
       </section>

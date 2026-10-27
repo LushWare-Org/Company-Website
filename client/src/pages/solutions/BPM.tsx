@@ -1,8 +1,9 @@
 import React from "react";
-import QuestionItem from "../../components/QuestionItem";
 import WhyChooseLushWare from "../../components/WhyChooseLushWare";
 import ValueCard from "../../components/ValueCard";
 import { useNavigate } from "react-router-dom";
+import { OutlineClose, OutlineProblems, WhoItsFor } from "@/components/PageOutline";
+import { bpmOutline } from "@/data/outlines/smb";
 
 const BPM: React.FC = () => {
   const navigate = useNavigate();
@@ -17,11 +18,6 @@ const BPM: React.FC = () => {
       question: "How does BPM benefit my business?",
       answer:
         "BPM increases operational efficiency, reduces errors, enhances collaboration, and provides insights to continuously optimize workflows.",
-    },
-    {
-      question: "Can BPM integrate with existing systems?",
-      answer:
-        "Yes. BPM platforms can seamlessly integrate with ERP, CRM, HR, and other enterprise systems to unify data and workflows.",
     },
     {
       question: "Is BPM suitable for small businesses?",
@@ -88,11 +84,13 @@ const BPM: React.FC = () => {
             </div>
 
             <h1 className="bpm-fadeUp bpm-serif text-5xl sm:text-6xl lg:text-7xl font-normal text-slate-900 tracking-tight leading-[1.05] mb-7">
-              Streamline Operations & <br />
+              Business Process Management <br />
               <span className=" text-emerald-600">
-                Achieve Operational Excellence
+                (BPM) Software
               </span>
             </h1>
+
+            <WhoItsFor text={bpmOutline.whoFor} className="bpm-fadeUp text-center" />
 
             <p className="bpm-fadeUp text-lg md:text-xl text-slate-500 font-light max-w-3xl mx-auto leading-relaxed">
               Business Process Management (BPM) software helps organizations
@@ -144,6 +142,9 @@ const BPM: React.FC = () => {
     </div>
   </div>
 </div>
+
+          {/* ── PROBLEMS, IN THEIR WORDS ─────────────── */}
+          <OutlineProblems outline={bpmOutline} />
 
           {/* ── BUSINESS IMPACT + VALUE CARDS ────────── */}
           <div className="max-w-7xl mx-auto mb-20 md:mb-28">
@@ -334,38 +335,8 @@ const BPM: React.FC = () => {
 
           <WhyChooseLushWare />
 
-          {/* ── FAQ ──────────────────────────────────── */}
-          <div className="max-w-7xl mx-auto pt-8">
-            <div className="text-center mb-14">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="h-px w-8 bg-emerald-600" />
-                <span className="px-3 py-1 border border-emerald-600 text-[10px] font-bold tracking-[0.22em] text-emerald-700 uppercase">
-                  BPM Solutions
-                </span>
-                <div className="h-px w-8 bg-emerald-600" />
-              </div>
-
-              <h2 className="bpm-serif text-4xl md:text-5xl font-normal text-slate-900 tracking-tight mb-5 leading-tight">
-                Business Process Management{" "}
-                <span className=" text-emerald-600">Software</span>
-              </h2>
-
-              <p className="text-lg text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
-                Improve efficiency, optimize workflows, and gain visibility into
-                your business processes with scalable BPM solutions.
-              </p>
-            </div>
-
-            <div>
-              {faqItems.map((item, index) => (
-                <QuestionItem
-                  key={`${item.question}-${index}`}
-                  question={item.question}
-                  answer={item.answer}
-                />
-              ))}
-            </div>
-          </div>
+          {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
+          <OutlineClose outline={bpmOutline} faq={faqItems} />
 
         </div>
       </section>
