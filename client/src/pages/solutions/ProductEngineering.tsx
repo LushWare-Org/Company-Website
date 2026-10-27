@@ -5,42 +5,12 @@ import ValueCard from "../../components/ValueCard";
 import TechnologiesSection from "../../components/TechnologiesSection";
 import CapabilityBlock from "../../components/CapabilityBlock";
 import { useNavigate } from "react-router-dom";
+import { getRouteFaq } from "../../data/faq";
 
 const ProductEngineering: React.FC = () => {
   const navigate = useNavigate();
 
-  const faqItems = [
-    {
-      question: "What is End-to-End Product Engineering?",
-      answer:
-        "It covers the full journey of a physical product: concept, architecture, prototyping, PCB and firmware design, compliance, and the transition to mass manufacturing, all handled by one engineering team.",
-    },
-    {
-      question: "Can you take our prototype to mass production?",
-      answer:
-        "Yes. We apply Design for Manufacturing (DFM), optimize your Bill of Materials, source components, and manage the hand-off from prototype to volume production so you keep your time to market.",
-    },
-    {
-      question: "Will the hardware pass CE, FCC, and RoHS certification?",
-      answer:
-        "We design with compliance in mind from day one, including EMI/EMC mitigation, high-voltage isolation, and testing strategies, so the product is engineered to pass certification without costly redesign cycles.",
-    },
-    {
-      question: "Can low-cost hardware deliver precise measurements?",
-      answer:
-        "Yes. By combining well-designed analog signal chains with Digital Signal Processing and sensor fusion, we reach high-precision results in noisy environments while keeping unit costs low.",
-    },
-    {
-      question: "Which microcontrollers and wireless protocols do you work with?",
-      answer:
-        "We develop firmware for STM32, ESP32, and Nordic nRF platforms, with Wi-Fi, BLE, and LoRaWAN connectivity, and secure hardware-to-cloud communication over MQTT and IoT platforms.",
-    },
-    {
-      question: "Do you also build the cloud and mobile apps?",
-      answer:
-        "Yes. We build the web backend, dashboards, and Android/iOS apps (including Bluetooth integration) so your device, cloud, and users work as one system.",
-    },
-  ];
+  const faqItems = getRouteFaq("/solutions/product-engineering");
 
   const capabilities = [
     {

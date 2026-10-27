@@ -46,14 +46,6 @@ const content: LandingContent = {
       },
     ],
   },
-  related: {
-    heading: "Related solutions",
-    items: [
-      { name: "Logistics & Supply Chain", desc: "Visibility, fleet and route optimization across the supply chain.", to: "/industries/logistics-supply-chain" },
-      { name: "OEE Monitoring", desc: "Real-time production tracking for the plant feeding your warehouse.", to: "/solutions/oee-monitoring" },
-      { name: "Business Process Management", desc: "Automate approvals and workflows around your operations.", to: "/solutions/bpm" },
-    ],
-  },
   outline: warehouseOutline,
 };
 

@@ -6,6 +6,11 @@ const InquirySchema = new mongoose.Schema({
   lastName: { type: String, trim: true, default: "" },
   email: { type: String, required: true, trim: true, lowercase: true },
   country: { type: String, trim: true, default: null },
+  // Lead reporting: ISO 3166-1 alpha-2 country code, landing page and that
+  // page's target market (client/src/data/markets.ts ids: trades, commercialMep, ...).
+  countryCode: { type: String, trim: true, uppercase: true, maxlength: 2, default: null },
+  sourcePath: { type: String, trim: true, maxlength: 200, default: null },
+  market: { type: String, trim: true, maxlength: 40, default: null },
   budget: { type: String, trim: true, default: null },
   whatsapp: { type: String, trim: true, default: null },
   inquiryType: { 
@@ -39,6 +44,8 @@ const InquirySchema = new mongoose.Schema({
 // Index for faster queries
 InquirySchema.index({ email: 1, inquiryType: 1 });
 InquirySchema.index({ status: 1 });
+InquirySchema.index({ market: 1, createdAt: -1 });
+InquirySchema.index({ countryCode: 1 });
 InquirySchema.index({ createdAt: -1 });
 
 module.exports = mongoose.model("Inquiry", InquirySchema);

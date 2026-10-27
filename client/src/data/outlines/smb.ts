@@ -3,6 +3,7 @@ import type { PageOutline } from './types'
 // Small and mid-sized businesses worldwide: custom software projects.
 
 export const customSoftwareOutline: PageOutline = {
+  path: '/custom-software-development',
   market: 'smb',
   product: 'custom software development',
   whoFor:
@@ -79,6 +80,13 @@ export const customSoftwareOutline: PageOutline = {
       },
     ],
   },
+  related: [
+    '/solutions/ai-agents',
+    '/solutions/bpm',
+    '/solutions/websites',
+    '/solutions/mobile-apps',
+    '/work',
+  ],
   faq: [
     {
       question: 'Do you work with businesses outside Sri Lanka?',
@@ -104,53 +112,8 @@ export const customSoftwareOutline: PageOutline = {
 
 const smbDemo = (heading: string, intro: string, steps: string[]): PageOutline['proof'] => ({ kind: 'demo', heading, intro, steps })
 
-export const crmOutline: PageOutline = {
-  market: 'smb',
-  product: 'custom CRM development',
-  whoFor: 'Built for sales-led small and mid-sized businesses worldwide whose pipeline no longer fits a generic CRM.',
-  problems: {
-    heading: 'What sales teams tell us',
-    intro: 'Owners and sales managers describe the same problems before they ask for a CRM built around them.',
-    items: [
-      { quote: 'Leads go cold in someone\'s inbox.', detail: 'Inquiries from the website, WhatsApp and phone are not tracked, so follow-ups are missed.' },
-      { quote: 'Our CRM is a fancy spreadsheet nobody updates.', detail: 'The generic CRM does not match your sales stages, so the team works around it.' },
-      { quote: 'I can\'t forecast this month\'s revenue.', detail: 'Pipeline data is incomplete, so forecasts are guesses.' },
-      { quote: 'Quotes and invoices are in another system.', detail: 'Sales and finance retype the same customer details.' },
-      { quote: 'We pay for seats people barely use.', detail: 'Per-user CRM pricing rises with every hire.' },
-      { quote: 'When a salesperson leaves, their customers leave with them.', detail: 'History lives in personal email and phones, not in the company\'s system.' },
-    ],
-  },
-  features: {
-    heading: 'CRM features, in sales language',
-    intro: 'Your stages, your fields, your reports.',
-    items: [
-      { term: 'Pipeline board', feature: 'Deals moved through your own stages, with values, probabilities and next steps.' },
-      { term: 'Lead capture', feature: 'Website forms, WhatsApp, email and calls logged automatically as leads with source tracking.' },
-      { term: 'Follow-up reminders', feature: 'Tasks and automated sequences so no lead goes cold.' },
-      { term: 'Quotes to invoices', feature: 'Quotes generated from the deal and synced to QuickBooks, Xero or Zoho Books when won.' },
-      { term: 'Customer timeline', feature: 'Every email, call, message, order and ticket for a customer in one place.' },
-      { term: 'Sales dashboards', feature: 'Forecast, win rate, activity and revenue by rep, product and channel.' },
-    ],
-  },
-  proof: smbDemo(
-    'See a CRM shaped around your pipeline',
-    'A walkthrough of a sample CRM configured with your sales stages, so you can see how leads, deals and follow-ups would work for your team.',
-    [
-      'A website inquiry and a WhatsApp message arrive and become leads with their source recorded.',
-      'The lead is assigned, a follow-up sequence starts and the deal moves through your stages.',
-      'A quote is generated from the deal; when it is accepted, the invoice syncs to accounting.',
-      'The sales dashboard updates forecast and win rate in real time.',
-    ],
-  ),
-  faq: [],
-  cta: {
-    heading: 'Stop losing leads between inboxes',
-    text: 'Show us your sales process and we will map it into a CRM your team will actually use.',
-  },
-  inquiry: { topic: 'CRM Solutions', industry: 'CRM' },
-}
-
 export const aiAgentsOutline: PageOutline = {
+  path: '/solutions/ai-agents',
   market: 'smb',
   product: 'an AI agent or chatbot',
   whoFor: 'Built for small and mid-sized businesses worldwide that want AI to answer customers, qualify leads and handle repetitive work.',
@@ -188,7 +151,34 @@ export const aiAgentsOutline: PageOutline = {
       'A complex request is handed to a team member with the full conversation attached.',
     ],
   ),
-  faq: [],
+  related: [
+    '/custom-software-development',
+    '/solutions/bpm',
+    '/industries/tourism-hospitality',
+    '/solutions/ai-process-optimization',
+  ],
+  faq: [
+    {
+      question: 'What are AI Agents?',
+      answer:
+        'AI Agents are autonomous software programs that can perform tasks, make decisions, and interact with users or systems based on artificial intelligence algorithms.',
+    },
+    {
+      question: 'What are AI Chatbots?',
+      answer:
+        'AI Chatbots are intelligent conversational agents that understand user inputs and provide automated responses, improving engagement and customer support.',
+    },
+    {
+      question: 'How do AI solutions benefit my business?',
+      answer:
+        'AI Agents and Chatbots help streamline operations, enhance customer experience, automate repetitive tasks, and provide insights through data-driven intelligence.',
+    },
+    {
+      question: 'Is my data secure with AI solutions?',
+      answer:
+        'Absolutely. We implement strict security protocols and compliance measures to protect all business and customer data handled by our AI systems.',
+    },
+  ],
   cta: {
     heading: 'Give your team their hours back',
     text: 'Tell us which questions or tasks take the most time and we will show you what an AI agent can take off your plate.',
@@ -197,6 +187,7 @@ export const aiAgentsOutline: PageOutline = {
 }
 
 export const bpmOutline: PageOutline = {
+  path: '/solutions/bpm',
   market: 'smb',
   product: 'BPM software',
   whoFor: 'Built for operations teams in small and mid-sized businesses worldwide that run approvals and workflows on email and spreadsheets.',
@@ -234,7 +225,33 @@ export const bpmOutline: PageOutline = {
       'The completed request is logged with a full audit trail, and cycle time appears in the dashboard.',
     ],
   ),
-  faq: [],
+  related: [
+    '/custom-software-development',
+    '/solutions/ai-agents',
+    '/solutions/ai-process-optimization',
+  ],
+  faq: [
+    {
+      question: 'What is Business Process Management (BPM)?',
+      answer:
+        'BPM is a systematic approach to improving and automating business processes, ensuring efficiency, transparency, and alignment with organizational goals.',
+    },
+    {
+      question: 'How does BPM benefit my business?',
+      answer:
+        'BPM increases operational efficiency, reduces errors, enhances collaboration, and provides insights to continuously optimize workflows.',
+    },
+    {
+      question: 'Is BPM suitable for small businesses?',
+      answer:
+        'Absolutely. BPM solutions are scalable and can be tailored to small businesses, growing startups, and large enterprises.',
+    },
+    {
+      question: 'How does BPM ensure process optimization?',
+      answer:
+        'BPM provides monitoring, analytics, and reporting tools that help identify bottlenecks, track KPIs, and continuously improve business processes.',
+    },
+  ],
   cta: {
     heading: 'Unstick your slowest process',
     text: 'Tell us which approval or workflow causes the most delays and we will show you how it would run automated.',
@@ -243,6 +260,7 @@ export const bpmOutline: PageOutline = {
 }
 
 export const websitesOutline: PageOutline = {
+  path: '/solutions/websites',
   market: 'smb',
   product: 'a business website',
   whoFor: 'Built for small and mid-sized businesses worldwide that need a fast, professional website that brings in customers.',
@@ -276,7 +294,33 @@ export const websitesOutline: PageOutline = {
     intro: 'Live websites we have designed and built for clients.',
     projects: ['tripskyway', 'holidayvibes', 'traveliccted'],
   },
-  faq: [],
+  related: [
+    '/custom-software-development',
+    '/industries/tourism-hospitality',
+    '/solutions/mobile-apps',
+  ],
+  faq: [
+    {
+      question: 'What is a corporate website?',
+      answer:
+        'A corporate website is a digital platform representing a business online, providing information, services, and engagement opportunities for clients, partners, and stakeholders.',
+    },
+    {
+      question: 'How does a business website benefit my company?',
+      answer:
+        'It increases brand visibility, strengthens credibility, generates leads, provides customer engagement channels, and allows your business to reach a global audience.',
+    },
+    {
+      question: 'Can my website be mobile-friendly?',
+      answer:
+        'Absolutely. All websites we design are responsive and optimized for mobile devices, ensuring an excellent user experience on smartphones and tablets.',
+    },
+    {
+      question: 'Do you provide SEO and performance optimization?',
+      answer:
+        'Yes. Our websites follow SEO best practices, fast loading speeds, and modern web standards to help your business rank higher and perform better online.',
+    },
+  ],
   cta: {
     heading: 'Turn your website into your best salesperson',
     text: 'Send us your current site, or tell us about your business, and we will propose a website built to bring in inquiries.',
@@ -285,6 +329,7 @@ export const websitesOutline: PageOutline = {
 }
 
 export const mobileAppsOutline: PageOutline = {
+  path: '/solutions/mobile-apps',
   market: 'smb',
   product: 'a mobile app',
   whoFor: 'Built for businesses worldwide that need iOS and Android apps for their customers, staff or field teams.',
@@ -322,7 +367,28 @@ export const mobileAppsOutline: PageOutline = {
       'An app update is released to both iOS and Android from one codebase.',
     ],
   ),
-  faq: [],
+  related: [
+    '/custom-software-development',
+    '/industries/field-service',
+    '/solutions/warehouse-management',
+  ],
+  faq: [
+    {
+      question: 'What is Mobile App Development?',
+      answer:
+        'Mobile app development involves designing, building, and deploying applications for mobile devices on iOS and Android platforms, ensuring seamless user experiences and business value.',
+    },
+    {
+      question: 'How can mobile apps benefit my business?',
+      answer:
+        'Mobile apps increase accessibility for customers, improve engagement, streamline business processes, and enable data-driven decisions through real-time interactions.',
+    },
+    {
+      question: 'Can LushWare build apps for both iOS and Android?',
+      answer:
+        'Yes, we create native and cross-platform mobile applications tailored to your business needs, ensuring high performance and security across devices.',
+    },
+  ],
   cta: {
     heading: 'Put your business in your customers\' pockets',
     text: 'Tell us who will use the app and what they need to do, and we will scope a first version for iOS and Android.',

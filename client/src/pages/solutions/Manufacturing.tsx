@@ -9,38 +9,6 @@ const Manufacturing: React.FC = () => {
   const navigate = useNavigate();
   const [activeSolution, setActiveSolution] = useState(0);
 
-  const faqItems = [
-    {
-      question: "What does AI for manufacturing actually do?",
-      answer:
-        "It predicts machine failures, optimizes production schedules and resources, detects quality problems early, and reduces energy and material waste, all using your real production data.",
-    },
-    {
-      question: "Do you work with manufacturers and supply chain companies globally?",
-      answer:
-        "Yes. We work with plants, warehouses and logistics operators across Europe, North America, the Middle East and Asia-Pacific, delivering remotely and planning on-site visits per phase when installation is needed.",
-    },
-    {
-      question: "Can this work with our existing MES, SCADA, and ERP?",
-      answer:
-        "Yes. We integrate through IoT, edge, and streaming layers such as MQTT/Kafka with MES, SCADA, and ERP, so AI operates as part of the factory rather than as an isolated analytics application.",
-    },
-    {
-      question: "What is a factory digital twin?",
-      answer:
-        "A computational representation of your manufacturing operation. It combines real-time production data with simulation and optimization so you can evaluate decisions, like a machine failure or a new line, before they affect the physical operation.",
-    },
-    {
-      question: "Will AI take control of production on its own?",
-      answer:
-        "Only within the limits you define. Autonomy is progressive: from recommendations, to human-approved actions, to automated decisions inside defined constraints and human oversight.",
-    },
-    {
-      question: "Which types of manufacturing do you support?",
-      answer:
-        "Discrete manufacturing, process manufacturing, industrial facilities, and smart factory programs, each with solutions tailored to its environment.",
-    },
-  ];
 
   const challenges = [
     "Unplanned machine downtime",
@@ -761,7 +729,6 @@ const Chain: React.FC<{ steps: string[]; dark?: boolean }> = ({ steps, dark }) =
           {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
           <OutlineClose
             outline={manufacturingOutline}
-            faq={faqItems}
             marketRelated={{
               text: "Start with one high-value use case:",
               links: [

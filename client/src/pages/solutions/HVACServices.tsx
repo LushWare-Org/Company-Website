@@ -6,53 +6,6 @@ import SolutionTopicStepper from "@/components/SolutionTopicStepper";
 import { OutlineClose, OutlineProblems, WhoItsFor } from "@/components/PageOutline";
 import { hvacOutline } from "@/data/outlines/trades";
 
-const faqItems = [
-  {
-    question: "How can software help HVAC and MEP service businesses?",
-    answer:
-      "Custom software helps HVAC, electrical, and plumbing companies manage service requests, technician scheduling, maintenance contracts, compliance records, and customer relationships more efficiently while reducing manual work.",
-  },
-  {
-    question: "Do you work with HVAC businesses in the US, Canada, Australia and New Zealand?",
-    answer:
-      "Yes. We build for trade contractors in all four markets, with quotes, invoices and taxes in USD, CAD, AUD or NZD, and meetings scheduled in your local time zone.",
-  },
-  {
-    question: "Can one system cover HVAC, electrical, and plumbing work?",
-    answer:
-      "Yes. The platform is built around a shared core of jobs, customers, technicians, and billing, with trade-specific modules on top, so mixed MEP teams work from a single system instead of three separate tools.",
-  },
-  {
-    question: "Can the system handle job scheduling and dispatch?",
-    answer:
-      "Yes. Smart scheduling tools assign technicians, estimate job duration, and optimize routes for faster service delivery. Multi-crew dispatch and job-site assignment are supported for larger projects.",
-  },
-  {
-    question: "Can it manage emergency call-outs and urgent jobs?",
-    answer:
-      "Yes. Emergency jobs can be flagged as priority, instantly routed to the nearest available technician, and the customer is updated in real time.",
-  },
-  {
-    question: "Does it support recurring maintenance services?",
-    answer:
-      "Yes. Preventive maintenance contracts and recurring service schedules are managed, tracked, and reminded to customers automatically.",
-  },
-  {
-    question: "Can we manage compliance certificates and safety records?",
-    answer:
-      "Yes. The platform stores compliance certificates, safety inspection records, and permit tracking so your business stays audit-ready at all times.",
-  },
-  {
-    question: "Can we handle quoting, invoicing, parts, and supplier orders?",
-    answer:
-      "Yes. Technicians can create quotes on-site from mobile devices, convert approved quotes to jobs, and invoice on completion. Parts tracking, low-stock alerts, and supplier orders keep vans and sites stocked.",
-  },
-  {
-    question: "Can we track technicians in real time?",
-    answer:
-      "Yes. The platform includes technician tracking, job status updates, and mobile access for field teams so dispatchers always have full visibility.",
-  },
-];
 
 const benefits = [
   {
@@ -967,7 +920,6 @@ export default function HVACServices() {
           {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
           <OutlineClose
             outline={hvacOutline}
-            faq={faqItems}
             marketRelated={{
               text: "Delivering commercial HVAC & MEP projects or AMC/PPM contracts in Europe, the Middle East or Asia?",
               links: [{ label: "Commercial HVAC & MEP software", to: "/industries/commercial-hvac-mep" }],

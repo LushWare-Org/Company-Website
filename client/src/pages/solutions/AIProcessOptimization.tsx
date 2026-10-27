@@ -4,42 +4,12 @@ import WhyChooseLushWare from "../../components/WhyChooseLushWare";
 import ValueCard from "../../components/ValueCard";
 import CapabilityBlock, { type Capability } from "../../components/CapabilityBlock";
 import { useNavigate } from "react-router-dom";
+import { getRouteFaq } from "../../data/faq";
 
 const AIProcessOptimization: React.FC = () => {
   const navigate = useNavigate();
 
-  const faqItems = [
-    {
-      question: "What is AI-Driven Process Optimization?",
-      answer:
-        "It uses operational AI, simulation, and mathematical optimization to help you understand what is happening across your operations, predict what is likely to happen, and decide what to do next.",
-    },
-    {
-      question: "How is this different from building a machine learning model?",
-      answer:
-        "A model only predicts. We go further and solve for the best feasible operational decision given your objectives and constraints, using optimization techniques such as constraint programming, MILP/LP, scheduling, and routing.",
-    },
-    {
-      question: "What is a digital twin and why would I need one?",
-      answer:
-        "A digital twin is a computational representation of your real operation. It lets management test 'what if' scenarios, such as a machine failure, a demand spike, or a delayed shipment, before they happen in the real world.",
-    },
-    {
-      question: "Can this connect to the systems we already use?",
-      answer:
-        "Yes. We integrate AI with ERP, CRM, PMS, WMS, CMMS, BMS, SCADA/MES, IoT platforms, fleet systems, and booking platforms, so you get AI connected to your operations rather than another isolated demo.",
-    },
-    {
-      question: "Which industries do you serve?",
-      answer:
-        "Our initial verticals are HVAC & MEP, Manufacturing, Logistics & Supply Chain, and Tourism & Hospitality, all built on the same operational-AI capability.",
-    },
-    {
-      question: "How do you keep models reliable after launch?",
-      answer:
-        "We build the data and AI infrastructure behind the models: telemetry pipelines, data quality checks, MLOps, model monitoring, drift detection, and AI observability.",
-    },
-  ];
+  const faqItems = getRouteFaq("/solutions/ai-process-optimization");
 
   const capabilities: Capability[] = [
     {

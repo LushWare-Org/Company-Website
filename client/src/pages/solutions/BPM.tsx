@@ -8,28 +8,6 @@ import { bpmOutline } from "@/data/outlines/smb";
 const BPM: React.FC = () => {
   const navigate = useNavigate();
 
-  const faqItems = [
-    {
-      question: "What is Business Process Management (BPM)?",
-      answer:
-        "BPM is a systematic approach to improving and automating business processes, ensuring efficiency, transparency, and alignment with organizational goals.",
-    },
-    {
-      question: "How does BPM benefit my business?",
-      answer:
-        "BPM increases operational efficiency, reduces errors, enhances collaboration, and provides insights to continuously optimize workflows.",
-    },
-    {
-      question: "Is BPM suitable for small businesses?",
-      answer:
-        "Absolutely. BPM solutions are scalable and can be tailored to small businesses, growing startups, and large enterprises.",
-    },
-    {
-      question: "How does BPM ensure process optimization?",
-      answer:
-        "BPM provides monitoring, analytics, and reporting tools that help identify bottlenecks, track KPIs, and continuously improve business processes.",
-    },
-  ];
 
   return (
     <>
@@ -336,7 +314,7 @@ const BPM: React.FC = () => {
           <WhyChooseLushWare />
 
           {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
-          <OutlineClose outline={bpmOutline} faq={faqItems} />
+          <OutlineClose outline={bpmOutline} />
 
         </div>
       </section>

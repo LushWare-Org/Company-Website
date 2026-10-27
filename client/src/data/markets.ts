@@ -4,16 +4,25 @@
 
 export type MarketId = 'trades' | 'commercialMep' | 'industrial' | 'tourism' | 'smb'
 
-export type Faq = { question: string; answer: string }
+import type { Faq } from './faq'
+
+/** EU member states (ISO 3166-1 alpha-2). */
+const EU = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE']
+/** Gulf Cooperation Council states. */
+const GCC = ['AE', 'SA', 'QA', 'KW', 'OM', 'BH']
 
 export type Market = {
   id: MarketId
+  /** Market name for menus, footer columns and lead reports. */
+  label: string
   /** Short badge, e.g. "US · Canada · Australia · New Zealand". */
   badge: string
+  /** Compact region label for menus and footer columns, e.g. "US · CA · AU · NZ". */
+  shortRegions: string
   heading: string
   intro: string
   regions: string[]
-  /** schema.org areaServed values (country/region names). */
+  /** schema.org areaServed: ISO 3166-1 alpha-2 codes, or ['Worldwide']. */
   areaServed: string[]
   integrations: string[]
   localPractice: string[]
@@ -27,12 +36,14 @@ export type Market = {
 export const MARKETS: Record<MarketId, Market> = {
   trades: {
     id: 'trades',
+    label: 'Trades',
     badge: 'US · Canada · Australia · New Zealand',
+    shortRegions: 'US · CA · AU · NZ',
     heading: 'Built for trade contractors in North America and Australasia',
     intro:
       'We build field service software for residential and light-commercial HVAC, plumbing and electrical businesses in the United States, Canada, Australia and New Zealand — set up around the way your market quotes, invoices, taxes and certifies work.',
     regions: ['United States', 'Canada', 'Australia', 'New Zealand'],
-    areaServed: ['United States', 'Canada', 'Australia', 'New Zealand'],
+    areaServed: ['US', 'CA', 'AU', 'NZ'],
     integrations: [
       'QuickBooks Online, Xero and MYOB accounting sync',
       'Stripe and Square card payments, deposits and financing links',
@@ -77,28 +88,14 @@ export const MARKETS: Record<MarketId, Market> = {
 
   commercialMep: {
     id: 'commercialMep',
+    label: 'Commercial MEP',
     badge: 'Europe · Middle East · East Asia · South Asia',
+    shortRegions: 'EU · GCC · Asia',
     heading: 'Built for commercial HVAC & MEP contractors and FM providers',
     intro:
       'For HVAC, mechanical, electrical and plumbing contractors delivering commercial projects and maintenance contracts across Europe, the Gulf, East Asia and South Asia — where AMC renewals, PPM compliance and multi-site reporting decide your margins.',
-    regions: ['European Union', 'UAE, Saudi Arabia and the GCC', 'Japan, South Korea, China and Hong Kong', 'India, Sri Lanka and Bangladesh'],
-    areaServed: [
-      'European Union',
-      'United Arab Emirates',
-      'Saudi Arabia',
-      'Qatar',
-      'Kuwait',
-      'Oman',
-      'Bahrain',
-      'Japan',
-      'South Korea',
-      'China',
-      'Hong Kong',
-      'Taiwan',
-      'India',
-      'Sri Lanka',
-      'Bangladesh',
-    ],
+    regions: ['European Union', 'UAE, Saudi Arabia and the GCC', 'Singapore, Japan, South Korea, China, Hong Kong and Taiwan', 'India, Sri Lanka and Bangladesh'],
+    areaServed: [...EU, ...GCC, 'SG', 'JP', 'KR', 'CN', 'HK', 'TW', 'IN', 'LK', 'BD'],
     integrations: [
       'BIM model data from Revit, Navisworks and Autodesk Construction Cloud',
       'Building management systems over BACnet and Modbus',
@@ -144,7 +141,9 @@ export const MARKETS: Record<MarketId, Market> = {
 
   industrial: {
     id: 'industrial',
+    label: 'Manufacturing & Supply Chain',
     badge: 'Global manufacturers & supply chain operators',
+    shortRegions: 'Worldwide',
     heading: 'Built for global manufacturing and supply chain teams',
     intro:
       'We work with plants, warehouses and logistics operators across regions, connecting the machines, ERP and planning tools you already run instead of asking you to replace them.',
@@ -194,24 +193,14 @@ export const MARKETS: Record<MarketId, Market> = {
 
   tourism: {
     id: 'tourism',
+    label: 'Tourism',
     badge: 'Europe · Asia Pacific · Middle East (GCC) · South Asia',
+    shortRegions: 'EU · APAC · GCC · South Asia',
     heading: 'Built for travel businesses in Europe, Asia Pacific, the Gulf and South Asia',
     intro:
       'We build booking, CRM and operations software for tour operators, DMCs, travel agencies and hotels across the EU, Asia Pacific, the GCC, Sri Lanka, India and the Maldives — with the channels, payments, languages and data rules those markets expect.',
     regions: ['European Union', 'Asia Pacific', 'Middle East (GCC)', 'Sri Lanka', 'India', 'Maldives'],
-    areaServed: [
-      'European Union',
-      'Asia Pacific',
-      'United Arab Emirates',
-      'Saudi Arabia',
-      'Qatar',
-      'Kuwait',
-      'Bahrain',
-      'Oman',
-      'Sri Lanka',
-      'India',
-      'Maldives',
-    ],
+    areaServed: [...EU, ...GCC, 'JP', 'KR', 'CN', 'TH', 'SG', 'MY', 'ID', 'VN', 'AU', 'LK', 'IN', 'MV'],
     integrations: [
       'Booking.com, Expedia and Agoda channel connections',
       'GDS connectivity through Amadeus and Sabre',
@@ -256,7 +245,9 @@ export const MARKETS: Record<MarketId, Market> = {
 
   smb: {
     id: 'smb',
+    label: 'Growing Businesses',
     badge: 'Small and mid-sized businesses worldwide',
+    shortRegions: 'Worldwide',
     heading: 'Custom software for growing businesses, wherever you are',
     intro:
       'An offshore development team that works like an in-house one: we scope with you, build in short demoable increments and keep the system running after launch.',

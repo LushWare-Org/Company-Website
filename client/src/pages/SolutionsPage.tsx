@@ -158,60 +158,6 @@ const outcomes = [
   "More personalized guest experiences.",
 ];
 
-const faqItems = [
-  {
-    question: "What are LushWare's Tourism & Hospitality Solutions?",
-    answer:
-      "A combination of ready-to-deploy platforms (booking, hotel management, property management and travel CRM) and an intelligence layer that predicts demand, optimizes resources, improves revenue, simulates scenarios and automates operational decisions.",
-  },
-  {
-    question: "Which markets do you build tourism software for?",
-    answer:
-      "We build for tour operators, DMCs, travel agencies and hotels in the European Union, Asia Pacific, the Middle East (GCC) and South Asia (Sri Lanka, India and the Maldives), with multi-language guest communications, multi-currency pricing and meetings in your local time zone.",
-  },
-  {
-    question: "Can it handle GDPR and payment rules for European guests?",
-    answer:
-      "Yes. Guest data handling follows GDPR consent and retention rules, and payment flows support Strong Customer Authentication (PSD2), SEPA and major cards.",
-  },
-  {
-    question: "Can guests book and message us in their own language and apps?",
-    answer:
-      "Yes. Itineraries and guest communications can run in English, German, French, Japanese, Korean and Chinese, with messaging over WhatsApp, LINE, KakaoTalk or WeChat and payments by WeChat Pay or Alipay.",
-  },
-  {
-    question: "How can these solutions improve our hospitality operations?",
-    answer:
-      "They automate repetitive tasks, centralize guest and booking data, forecast demand, optimize inventory, staff and transport, and provide real-time reporting, so your team can focus on delivering exceptional guest experiences.",
-  },
-  {
-    question: "Can AI predict demand and recommend pricing?",
-    answer:
-      "Yes. We build occupancy, booking and cancellation forecasts, revenue forecasts and pricing recommendations from your own booking and market data, so you can act before demand shifts.",
-  },
-  {
-    question: "What is a resort or hotel digital twin?",
-    answer:
-      "A computational model of your operation that lets you test scenarios first, such as a 20% occupancy increase, an extra speedboat, a shifted restaurant peak, or the staffing needed at peak periods.",
-  },
-  {
-    question:
-      "Are these solutions suitable for all sizes of travel businesses?",
-    answer:
-      "Yes. They are scalable and can be customized for solo travel consultants, small agencies, tour operators, resorts, and enterprise hospitality groups.",
-  },
-  {
-    question:
-      "Can these solutions integrate with existing travel industry tools?",
-    answer:
-      "Yes. We integrate with GDS systems, payment processors, email platforms, property and booking systems, and other third-party tools to create a unified ecosystem.",
-  },
-  {
-    question: "Is customer data secure?",
-    answer:
-      "Absolutely. We use industry-standard security measures including encryption, access controls, compliance with data protection regulations, and regular security audits to protect sensitive guest and business data.",
-  },
-];
 
 const travelSteps = [
   {
@@ -898,7 +844,6 @@ export default function SolutionsPage() {
         {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
         <OutlineClose
           outline={tourismOutline}
-          faq={faqItems}
           marketRelated={{
             text: "Running a travel agency, or a guest house or speedboat operation in the Maldives?",
             links: [

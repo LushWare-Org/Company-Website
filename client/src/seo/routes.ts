@@ -2,6 +2,7 @@
 // Used at runtime by <Seo /> (client-side navigation) and at build time by
 // scripts/prerender.mjs (static HTML, sitemap.xml, robots.txt).
 
+import { faqPageJsonLd, getRouteFaq } from '../data/faq'
 import { MARKETS, type MarketId } from '../data/markets'
 
 export const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://lushware.net').replace(/\/$/, '')
@@ -14,6 +15,9 @@ export const REDIRECTS = [
   { from: '/solutions', to: '/industries/tourism-hospitality' },
   { from: '/industries/hvac', to: '/solutions/hvac-mep-service-software' },
   { from: '/industries/commercial-mep', to: '/industries/commercial-hvac-mep' },
+  { from: '/industries/plumbing', to: '/industries/field-service' },
+  { from: '/industries/electrical', to: '/industries/field-service' },
+  { from: '/solutions/crm', to: '/custom-software-development' },
 ]
 
 export const ORGANIZATION = {
@@ -39,7 +43,7 @@ export type RouteSeo = {
   prerenderBody?: boolean
   /** schema.org Service type for solution/industry pages. */
   service?: string
-  /** Target market (src/data/markets.ts); drives schema.org areaServed. Default: worldwide. */
+  /** Target market (src/data/markets.ts); drives schema.org areaServed (ISO country codes). Default: Worldwide. */
   market?: MarketId
   priority?: number
   changefreq?: 'weekly' | 'monthly' | 'yearly'
@@ -78,26 +82,6 @@ export const ROUTES: RouteSeo[] = [
     description:
       'HVAC and MEP service software for heating, cooling and building services contractors in the US, Canada, Australia and NZ: scheduling, dispatch, maintenance agreements, refrigerant records, quotes and invoices.',
     service: 'HVAC and MEP Field Service Software',
-    market: 'trades',
-    breadcrumb: [fieldService],
-    priority: 0.8,
-  },
-  {
-    path: '/industries/plumbing',
-    title: 'Plumbing Business Software — Dispatch, Quotes & Invoicing | LushWare',
-    description:
-      'Plumbing software for contractors in the US, Canada, Australia and NZ: emergency call-out dispatch, on-site quotes, invoicing, van stock and customer management.',
-    service: 'Plumbing Field Service Software',
-    market: 'trades',
-    breadcrumb: [fieldService],
-    priority: 0.8,
-  },
-  {
-    path: '/industries/electrical',
-    title: 'Electrical Contractor Software — Jobs, Compliance & Billing | LushWare',
-    description:
-      'Software for electrical contractors in the US, Canada, Australia and NZ: crew scheduling, compliance certificates, quoting, milestone billing and accounting sync.',
-    service: 'Electrical Contractor Software',
     market: 'trades',
     breadcrumb: [fieldService],
     priority: 0.8,
@@ -194,16 +178,6 @@ export const ROUTES: RouteSeo[] = [
     service: 'Custom Software Development',
     market: 'smb',
     priority: 0.9,
-  },
-  {
-    path: '/solutions/crm',
-    title: 'Custom CRM Development & Solutions | LushWare',
-    description:
-      'Build stronger customer relationships with intelligent CRM solutions — custom CRM development, automation, integrations and analytics tailored to your business.',
-    service: 'CRM Development',
-    market: 'smb',
-    breadcrumb: [customSoftware],
-    priority: 0.8,
   },
   {
     path: '/solutions/ai-agents',
@@ -352,6 +326,12 @@ export function getRouteSeo(pathname: string): RouteSeo {
 
 export const absoluteUrl = (path: string) => (/^https?:\/\//.test(path) ? path : `${SITE_URL}${path === '/' ? '/' : path}`)
 
+/** schema.org areaServed: ISO 3166-1 alpha-2 codes for a target market, or "Worldwide". */
+function areaServed(route: RouteSeo): string | string[] {
+  const codes = route.market ? MARKETS[route.market].areaServed : ['Worldwide']
+  return codes.length === 1 ? codes[0] : codes
+}
+
 /** JSON-LD graph for a route. */
 export function getStructuredData(route: RouteSeo): object[] {
   const org = {
@@ -388,9 +368,11 @@ export function getStructuredData(route: RouteSeo): object[] {
       description: route.description,
       url: absoluteUrl(route.path),
       provider: org,
-      areaServed: route.market ? MARKETS[route.market].areaServed : 'Worldwide',
+      areaServed: areaServed(route),
     })
   }
+  const faq = route.noindex ? [] : getRouteFaq(route.path)
+  if (faq.length) data.push(faqPageJsonLd(faq))
   if (route.path !== '/' && !route.noindex) {
     const trail = [{ name: 'Home', path: '/' }, ...(route.breadcrumb ?? []), { name: route.title.split(/ [|—] /)[0], path: route.path }]
     data.push({

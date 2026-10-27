@@ -3,6 +3,7 @@ import type { PageOutline } from './types'
 // Manufacturing & supply chain operators, worldwide.
 
 export const manufacturingOutline: PageOutline = {
+  path: '/industries/manufacturing',
   market: 'industrial',
   product: 'manufacturing software',
   whoFor:
@@ -86,7 +87,46 @@ export const manufacturingOutline: PageOutline = {
       },
     ],
   },
-  faq: [],
+  related: [
+    '/solutions/predictive-maintenance',
+    '/solutions/oee-monitoring',
+    '/solutions/iot-product-development',
+    '/solutions/ai-process-optimization',
+    '/industries/logistics-supply-chain',
+    '/solutions/warehouse-management',
+  ],
+  faq: [
+    {
+      question: 'What does AI for manufacturing actually do?',
+      answer:
+        'It predicts machine failures, optimizes production schedules and resources, detects quality problems early, and reduces energy and material waste, all using your real production data.',
+    },
+    {
+      question: 'Do you work with manufacturers and supply chain companies globally?',
+      answer:
+        'Yes. We work with plants, warehouses and logistics operators across Europe, North America, the Middle East and Asia-Pacific, delivering remotely and planning on-site visits per phase when installation is needed.',
+    },
+    {
+      question: 'Can this work with our existing MES, SCADA, and ERP?',
+      answer:
+        'Yes. We integrate through IoT, edge, and streaming layers such as MQTT/Kafka with MES, SCADA, and ERP, so AI operates as part of the factory rather than as an isolated analytics application.',
+    },
+    {
+      question: 'What is a factory digital twin?',
+      answer:
+        'A computational representation of your manufacturing operation. It combines real-time production data with simulation and optimization so you can evaluate decisions, like a machine failure or a new line, before they affect the physical operation.',
+    },
+    {
+      question: 'Will AI take control of production on its own?',
+      answer:
+        'Only within the limits you define. Autonomy is progressive: from recommendations, to human-approved actions, to automated decisions inside defined constraints and human oversight.',
+    },
+    {
+      question: 'Which types of manufacturing do you support?',
+      answer:
+        'Discrete manufacturing, process manufacturing, industrial facilities, and smart factory programs, each with solutions tailored to its environment.',
+    },
+  ],
   cta: {
     heading: 'Find your biggest hidden loss in one pilot',
     text: 'Tell us about the line or asset that hurts most today and we will propose a focused pilot to measure and fix it.',
@@ -95,6 +135,7 @@ export const manufacturingOutline: PageOutline = {
 }
 
 export const predictiveMaintenanceOutline: PageOutline = {
+  path: '/solutions/predictive-maintenance',
   market: 'industrial',
   product: 'predictive maintenance software',
   whoFor:
@@ -159,6 +200,12 @@ export const predictiveMaintenanceOutline: PageOutline = {
       },
     ],
   },
+  related: [
+    '/industries/manufacturing',
+    '/solutions/oee-monitoring',
+    '/industries/commercial-hvac-mep',
+    '/solutions/iot-product-development',
+  ],
   faq: [
     {
       question: 'What is predictive maintenance software?',
@@ -187,6 +234,7 @@ export const predictiveMaintenanceOutline: PageOutline = {
 }
 
 export const oeeOutline: PageOutline = {
+  path: '/solutions/oee-monitoring',
   market: 'industrial',
   product: 'OEE monitoring software',
   whoFor: 'Built for production and continuous-improvement teams in manufacturing plants worldwide, from one line to many sites.',
@@ -225,6 +273,11 @@ export const oeeOutline: PageOutline = {
       'The shift report is sent at handover with top losses and actions.',
     ],
   },
+  related: [
+    '/industries/manufacturing',
+    '/solutions/predictive-maintenance',
+    '/solutions/iot-product-development',
+  ],
   faq: [
     {
       question: 'What is OEE?',
@@ -259,6 +312,7 @@ export const oeeOutline: PageOutline = {
 }
 
 export const logisticsOutline: PageOutline = {
+  path: '/industries/logistics-supply-chain',
   market: 'industrial',
   product: 'logistics and supply chain software',
   whoFor:
@@ -339,7 +393,44 @@ export const logisticsOutline: PageOutline = {
       },
     ],
   },
-  faq: [],
+  related: [
+    '/solutions/warehouse-management',
+    '/industries/manufacturing',
+    '/solutions/ai-process-optimization',
+    '/solutions/autonomous-decision-intelligence',
+  ],
+  faq: [
+    {
+      question: 'How is this different from our existing planning tools?',
+      answer:
+        'Traditional planning is static. We add prediction, optimization under real-world constraints, and continuous re-optimization, so routes, inventory and priorities adapt as conditions change.',
+    },
+    {
+      question: 'Do you work with manufacturers and supply chain companies globally?',
+      answer:
+        'Yes. We work with plants, warehouses and logistics operators across Europe, North America, the Middle East and Asia-Pacific, delivering remotely and planning on-site visits per phase when installation is needed.',
+    },
+    {
+      question: 'Can you optimize routes under real-world constraints?',
+      answer:
+        'Yes. We model vehicle capacity, time windows, driver and resource availability, and live events, and support real-time rerouting.',
+    },
+    {
+      question: 'How do you reduce stockouts and excess inventory?',
+      answer:
+        'Through SKU-level and probabilistic forecasting combined with safety-stock and replenishment optimization across multiple locations.',
+    },
+    {
+      question: 'What is a supply chain digital twin used for?',
+      answer:
+        'To test scenarios such as a delayed supplier, a demand spike, reduced transport capacity, a new warehouse or higher fuel costs, before committing real resources.',
+    },
+    {
+      question: 'Can the system act on its own?',
+      answer:
+        'Autonomy is progressive and constrained. It can start with recommendations and approvals, then automate dispatch and re-optimization within limits you define.',
+    },
+  ],
   cta: {
     heading: 'See your whole supply chain in one view',
     text: 'Tell us where visibility breaks down today and we will propose a phased plan, starting with the flow that costs you most.',
@@ -348,6 +439,7 @@ export const logisticsOutline: PageOutline = {
 }
 
 export const warehouseOutline: PageOutline = {
+  path: '/solutions/warehouse-management',
   market: 'industrial',
   product: 'a custom WMS',
   whoFor: 'Built for warehouse, distribution and e-commerce fulfilment operators worldwide, from one site to a multi-country network.',
@@ -386,6 +478,11 @@ export const warehouseOutline: PageOutline = {
       'Packed orders get carrier labels automatically and the ERP is updated in real time.',
     ],
   },
+  related: [
+    '/industries/logistics-supply-chain',
+    '/industries/manufacturing',
+    '/solutions/mobile-apps',
+  ],
   faq: [
     {
       question: 'What does a warehouse management system do?',

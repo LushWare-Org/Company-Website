@@ -6,6 +6,67 @@ import {
   Globe,
   Instagram,
 } from "lucide-react";
+import { PAGE_LINKS, type PagePath } from "@/data/links";
+import { MARKETS } from "@/data/markets";
+
+type FooterGroup = { label: string; regions: string; links: PagePath[] };
+
+/** Footer link columns by target market (regions from src/data/markets.ts). */
+const FOOTER_COLUMNS: FooterGroup[][] = [
+  [
+    {
+      label: MARKETS.trades.label,
+      regions: MARKETS.trades.shortRegions,
+      links: ["/industries/field-service", "/solutions/hvac-mep-service-software"],
+    },
+  ],
+  [
+    { label: MARKETS.commercialMep.label, regions: MARKETS.commercialMep.shortRegions, links: ["/industries/commercial-hvac-mep"] },
+    {
+      label: MARKETS.tourism.label,
+      regions: MARKETS.tourism.shortRegions,
+      links: ["/industries/tourism-hospitality", "/solutions/travel-agency-software"],
+    },
+  ],
+  [
+    {
+      label: MARKETS.industrial.label,
+      regions: MARKETS.industrial.shortRegions,
+      links: [
+        "/industries/manufacturing",
+        "/solutions/predictive-maintenance",
+        "/solutions/oee-monitoring",
+        "/industries/logistics-supply-chain",
+        "/solutions/warehouse-management",
+      ],
+    },
+  ],
+  [
+    {
+      label: MARKETS.smb.label,
+      regions: MARKETS.smb.shortRegions,
+      links: [
+        "/custom-software-development",
+        "/solutions/ai-agents",
+        "/solutions/bpm",
+        "/solutions/websites",
+        "/solutions/mobile-apps",
+      ],
+    },
+  ],
+  [
+    {
+      label: "Engineering & AI",
+      regions: "Worldwide",
+      links: [
+        "/solutions/ai-process-optimization",
+        "/solutions/autonomous-decision-intelligence",
+        "/solutions/iot-product-development",
+        "/solutions/product-engineering",
+      ],
+    },
+  ],
+];
 
 const AnimatedLink = ({
   to,
@@ -154,136 +215,27 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Links Grid — 2 cols mobile, 4 cols md+ */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-16 gap-x-6 md:gap-x-8 pb-8">
-          <div className="space-y-5 md:space-y-6">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">
-              Services
-            </h4>
-            <ul className="space-y-3 md:space-y-4">
-              <li>
-                <AnimatedLink to="/solutions/ai-process-optimization">
-                  AI-Driven Process Optimization
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/solutions/autonomous-decision-intelligence">
-                  Autonomous Decision Intelligence
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/solutions/ai-agents">
-                  AI Agents & Chatbots
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/solutions/bpm">
-                  Business Process Management
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/solutions/predictive-maintenance">
-                  Predictive Maintenance
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/solutions/oee-monitoring">
-                  OEE Monitoring
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/solutions/warehouse-management">
-                  Warehouse Management
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/solutions/travel-agency-software">
-                  Travel Agency Software
-                </AnimatedLink>
-              </li>
-            </ul>
-          </div>
-
-          <div className="space-y-5 md:space-y-6">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">
-              Services
-            </h4>
-            <ul className="space-y-3 md:space-y-4">
-              <li>
-                <AnimatedLink to="/custom-software-development">
-                  Custom Software Development
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/solutions/websites">
-                  Business & Corporate Websites
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/solutions/mobile-apps">
-                  Mobile Apps
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/solutions/iot-product-development">
-                  IoT Product Development
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/solutions/product-engineering">
-                  Product Engineering & Embedded Systems
-                </AnimatedLink>
-              </li>
-            </ul>
-          </div>
-
-          <div className="space-y-5 md:space-y-6">
-            <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">
-              Industries
-            </h4>
-            <ul className="space-y-3 md:space-y-4">
-              <li>
-                <AnimatedLink to="/industries/field-service">
-                  Field Service Trades
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/solutions/hvac-mep-service-software">
-                  HVAC / MEP Service Software
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/industries/plumbing">
-                  Plumbing Software
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/industries/electrical">
-                  Electrical Contractor Software
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/industries/commercial-hvac-mep">
-                  Commercial HVAC &amp; MEP
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/industries/manufacturing">
-                  Manufacturing
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/industries/logistics-supply-chain">
-                  Logistics &amp; Supply Chain
-                </AnimatedLink>
-              </li>
-              <li>
-                <AnimatedLink to="/industries/tourism-hospitality">
-                  Tourism &amp; Hospitality
-                </AnimatedLink>
-              </li>
-            </ul>
-          </div>
+        {/* Links Grid — grouped by target market */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-10 md:gap-y-16 gap-x-6 md:gap-x-8 pb-8">
+          {FOOTER_COLUMNS.map((column, ci) => (
+            <div key={ci} className="space-y-8">
+              {column.map((group) => (
+                <div key={group.label} className="space-y-5 md:space-y-6">
+                  <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400">
+                    {group.label}
+                    <span className="block mt-1.5 tracking-[0.2em] text-emerald-700/70">{group.regions}</span>
+                  </h4>
+                  <ul className="space-y-3 md:space-y-4">
+                    {group.links.map((to) => (
+                      <li key={to}>
+                        <AnimatedLink to={to}>{PAGE_LINKS[to].name}</AnimatedLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ))}
 
           <div className="space-y-5 md:space-y-6">
             <h4 className="text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-400">

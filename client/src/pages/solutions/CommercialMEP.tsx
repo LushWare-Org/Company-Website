@@ -50,14 +50,6 @@ const content: LandingContent = {
     text: "Running a residential or light-commercial service business in North America or Australasia?",
     links: [{ label: "Field service software", to: "/industries/field-service" }],
   },
-  related: {
-    heading: "Related solutions",
-    items: [
-      { name: "HVAC / MEP Service Software", desc: "Dispatch, maintenance agreements, predictive maintenance and building digital twins for HVAC.", to: "/solutions/hvac-mep-service-software" },
-      { name: "Predictive Maintenance", desc: "Condition monitoring and failure prediction for critical plant and equipment.", to: "/solutions/predictive-maintenance" },
-      { name: "IoT Product Development", desc: "Sensors, gateways and dashboards to connect building systems.", to: "/solutions/iot-product-development" },
-    ],
-  },
   outline: commercialMepOutline,
 };
 

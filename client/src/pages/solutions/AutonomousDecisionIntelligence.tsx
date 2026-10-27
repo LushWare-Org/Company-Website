@@ -4,42 +4,12 @@ import WhyChooseLushWare from "../../components/WhyChooseLushWare";
 import ValueCard from "../../components/ValueCard";
 import CapabilityBlock, { type Capability } from "../../components/CapabilityBlock";
 import { useNavigate } from "react-router-dom";
+import { getRouteFaq } from "../../data/faq";
 
 const AutonomousDecisionIntelligence: React.FC = () => {
   const navigate = useNavigate();
 
-  const faqItems = [
-    {
-      question: "What is Autonomous Decision Intelligence?",
-      answer:
-        "It is a set of intelligent systems that continuously evaluate operational conditions, determine the best course of action, and execute decisions within predefined business objectives, constraints, and approval policies.",
-    },
-    {
-      question: "Will AI simply run my business on its own?",
-      answer:
-        "No. Autonomy is introduced progressively and kept constrained. You can start with AI recommendations, move to human-approved actions, and only then allow automatic execution within explicitly defined boundaries.",
-    },
-    {
-      question: "How do you keep autonomous decisions safe and accountable?",
-      answer:
-        "Through governance: approval workflows, confidence thresholds, escalation, audit logs, role-based permissions, decision explanations, action limits, and continuous AI monitoring.",
-    },
-    {
-      question: "How is this different from conventional automation?",
-      answer:
-        "Conventional automation repeats the same rules. Self-optimizing systems learn from operational feedback and continuously search for better ways to operate, while staying within safety limits.",
-    },
-    {
-      question: "Why use multiple agents instead of one large AI agent?",
-      answer:
-        "Specialized agents, such as planning, scheduling, dispatch, and technician agents, are easier to control, test, and audit than one giant agent, and they coordinate through a clear hierarchy.",
-    },
-    {
-      question: "Where does Autonomous Decision Intelligence fit with Process Optimization?",
-      answer:
-        "Operational AI provides insights, Optimization Engineering identifies suitable decisions, and Autonomous Decision Making turns those decisions into controlled, executable actions that adapt to changing conditions.",
-    },
-  ];
+  const faqItems = getRouteFaq("/solutions/autonomous-decision-intelligence");
 
   const capabilities: Capability[] = [
     {

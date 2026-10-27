@@ -28,6 +28,11 @@ export interface InquiryFormData {
   lastName: string;
   email: string;
   country: string;
+  /** ISO 3166-1 alpha-2 code for `country`. */
+  countryCode?: string;
+  /** Page the inquiry was sent from, and the market it is reported under. */
+  sourcePath?: string;
+  market?: string;
   whatsapp: string;
   inquiryType: InquiryType;
   
@@ -61,6 +66,9 @@ export const submitInquiry = async (data: InquiryFormData): Promise<{ success: b
       lastName: data.lastName.trim(),
       email: data.email.trim(),
       country: data.country.trim(),
+      countryCode: data.countryCode?.trim().toUpperCase() || null,
+      sourcePath: data.sourcePath || null,
+      market: data.market || null,
       whatsapp: data.whatsapp.trim(),
       inquiryType: data.inquiryType,
       organization: data.organization?.trim() || null,

@@ -5,28 +5,6 @@ import { OutlineClose, OutlineProblems, WhoItsFor } from "@/components/PageOutli
 import { websitesOutline } from "@/data/outlines/smb";
 
 const Websites: React.FC = () => {
-  const faqItems = [
-    {
-      question: "What is a corporate website?",
-      answer:
-        "A corporate website is a digital platform representing a business online, providing information, services, and engagement opportunities for clients, partners, and stakeholders.",
-    },
-    {
-      question: "How does a business website benefit my company?",
-      answer:
-        "It increases brand visibility, strengthens credibility, generates leads, provides customer engagement channels, and allows your business to reach a global audience.",
-    },
-    {
-      question: "Can my website be mobile-friendly?",
-      answer:
-        "Absolutely. All websites we design are responsive and optimized for mobile devices, ensuring an excellent user experience on smartphones and tablets.",
-    },
-    {
-      question: "Do you provide SEO and performance optimization?",
-      answer:
-        "Yes. Our websites follow SEO best practices, fast loading speeds, and modern web standards to help your business rank higher and perform better online.",
-    },
-  ];
 
   const webkitTemplates = [
     {
@@ -504,7 +482,7 @@ const Websites: React.FC = () => {
       <WhyChooseLushWare />
 
       {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
-      <OutlineClose outline={websitesOutline} faq={faqItems} />
+      <OutlineClose outline={websitesOutline} />
 
     </div>
   </section>

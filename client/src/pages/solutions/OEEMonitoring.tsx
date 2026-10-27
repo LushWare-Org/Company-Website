@@ -46,14 +46,6 @@ const content: LandingContent = {
       },
     ],
   },
-  related: {
-    heading: "Related solutions",
-    items: [
-      { name: "Predictive Maintenance", desc: "Predict failures on the machines your OEE depends on.", to: "/solutions/predictive-maintenance" },
-      { name: "Manufacturing Operations", desc: "Digital twins and self-optimizing production.", to: "/industries/manufacturing" },
-      { name: "AI Process Optimization", desc: "Forecast, simulate and optimize operations with AI.", to: "/solutions/ai-process-optimization" },
-    ],
-  },
   outline: oeeOutline,
 };
 

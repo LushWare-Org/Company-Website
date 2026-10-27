@@ -7,23 +7,6 @@ import { mobileAppsOutline } from "@/data/outlines/smb";
 const MobileApps: React.FC = () => {
   const navigate = useNavigate();
 
-  const faqItems = [
-    {
-      question: "What is Mobile App Development?",
-      answer:
-        "Mobile app development involves designing, building, and deploying applications for mobile devices on iOS and Android platforms, ensuring seamless user experiences and business value.",
-    },
-    {
-      question: "How can mobile apps benefit my business?",
-      answer:
-        "Mobile apps increase accessibility for customers, improve engagement, streamline business processes, and enable data-driven decisions through real-time interactions.",
-    },
-    {
-      question: "Can LushWare build apps for both iOS and Android?",
-      answer:
-        "Yes, we create native and cross-platform mobile applications tailored to your business needs, ensuring high performance and security across devices.",
-    },
-  ];
 
   return (
     <>
@@ -738,7 +721,7 @@ const MobileApps: React.FC = () => {
           <WhyChooseLushWare />
 
           {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
-          <OutlineClose outline={mobileAppsOutline} faq={faqItems} />
+          <OutlineClose outline={mobileAppsOutline} />
         </div>
       </section>
     </>

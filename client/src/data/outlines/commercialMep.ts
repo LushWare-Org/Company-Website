@@ -3,6 +3,7 @@ import type { PageOutline } from './types'
 // Commercial HVAC & MEP contractors and FM providers in Europe, the Middle East, East Asia and South Asia.
 
 export const commercialMepOutline: PageOutline = {
+  path: '/industries/commercial-hvac-mep',
   market: 'commercialMep',
   product: 'commercial HVAC & MEP software',
   whoFor:
@@ -89,6 +90,13 @@ export const commercialMepOutline: PageOutline = {
       },
     ],
   },
+  related: [
+    '/solutions/hvac-mep-service-software',
+    '/solutions/predictive-maintenance',
+    '/solutions/iot-product-development',
+    '/solutions/ai-process-optimization',
+    '/industries/field-service',
+  ],
   faq: [
     {
       question: 'What is commercial HVAC & MEP project management software?',

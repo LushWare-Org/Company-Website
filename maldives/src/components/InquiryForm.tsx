@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import type { InquiryFormData } from "../services/inquiryService";
 import {
   submitInquiry,
   validateEmail,
   validatePhone,
 } from "../services/inquiryService";
-import { getNames } from "country-list";
+import { getCode, getNames } from "country-list";
 import Select from "react-select";
 
 type InquiryFormProps = {
@@ -32,6 +33,7 @@ export default function InquiryForm({
   onClose,
   showCloseButton = false,
 }: InquiryFormProps) {
+  const { pathname } = useLocation();
   const countries = getNames();
   const countryOptions = countries.map((c) => ({ value: c, label: c }));
 
@@ -96,6 +98,10 @@ export default function InquiryForm({
         lastName: formData.lastName,
         email: formData.email,
         country: formData.country.value,
+        // Lead reporting (shared admin dashboard): ISO country code, landing page, site.
+        countryCode: getCode(formData.country.value),
+        sourcePath: pathname,
+        market: "maldives",
         whatsapp: formData.whatsappNumber,
         inquiryType: "solution",
         industry: topic,

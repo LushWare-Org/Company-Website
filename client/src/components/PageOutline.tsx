@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import QuestionItem from "@/components/QuestionItem";
 import InquiryForm from "@/components/InquiryForm";
 import MarketFitSection, { type MarketRelated } from "@/components/MarketFitSection";
-import { MARKETS, type Faq } from "@/data/markets";
+import { getRouteFaq } from "@/data/faq";
+import { PAGE_LINKS } from "@/data/links";
+import { MARKETS } from "@/data/markets";
 import { getWorkProject } from "@/data/work";
 import type { PageOutline } from "@/data/outlines/types";
 
@@ -70,20 +72,15 @@ export function OutlineProblems({ outline: o }: { outline: PageOutline }) {
 
 type OutlineCloseProps = {
   outline: PageOutline;
-  /** Existing page FAQ entries, shown after the outline's own questions. */
-  faq?: Faq[];
   marketRelated?: MarketRelated;
 };
 
-/** Features → integrations & compliance → proof → guide → FAQ → time-zone CTA. */
-export function OutlineClose({ outline: o, faq = [], marketRelated }: OutlineCloseProps) {
+/** Features → integrations & compliance → proof → guide → related pages → FAQ → time-zone CTA. */
+export function OutlineClose({ outline: o, marketRelated }: OutlineCloseProps) {
   const [showInquiryForm, setShowInquiryForm] = useState(false);
   const market = MARKETS[o.market];
-  const seen = new Set<string>();
-  const questions = [...o.faq, ...faq, ...market.buyerFaq(o.product)].filter((q) => {
-    const key = q.question.toLowerCase();
-    return seen.has(key) ? false : (seen.add(key), true);
-  });
+  // Same lookup as the FAQPage JSON-LD in src/seo/routes.ts.
+  const questions = getRouteFaq(o.path);
 
   return (
     <div style={sans}>
@@ -203,6 +200,27 @@ export function OutlineClose({ outline: o, faq = [], marketRelated }: OutlineClo
           ))}
         </section>
       )}
+
+      {/* ── RELATED: INDUSTRIES ↔ SOLUTIONS ──────── */}
+      <section aria-labelledby="outline-related" className={section}>
+        <div className="flex items-center gap-3 mb-8">
+          <div className="h-px w-8 bg-emerald-600" />
+          <h2 id="outline-related" className="text-[12px] font-bold text-emerald-700 uppercase tracking-[0.2em]">
+            Related industries &amp; solutions
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 border border-slate-200">
+          {o.related.map((to) => (
+            <Link key={to} to={to} className="group bg-white p-8 hover:bg-emerald-50/60 transition-colors duration-300">
+              <h3 className="text-lg font-semibold text-slate-900 mb-3 flex items-center justify-between gap-3">
+                {PAGE_LINKS[to].name}
+                <Arrow className="text-emerald-600 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
+              </h3>
+              <p className="text-slate-500 leading-relaxed text-sm md:text-base">{PAGE_LINKS[to].desc}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {/* ── FAQ ──────────────────────────────────── */}
       <section aria-labelledby="outline-faq" className="max-w-7xl mx-auto px-6 mb-20 md:mb-28">

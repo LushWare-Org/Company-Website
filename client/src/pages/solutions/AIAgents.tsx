@@ -8,28 +8,6 @@ import { aiAgentsOutline } from "@/data/outlines/smb";
 const AIAgents: React.FC = () => {
   const navigate = useNavigate();
 
-  const faqItems = [
-    {
-      question: "What are AI Agents?",
-      answer:
-        "AI Agents are autonomous software programs that can perform tasks, make decisions, and interact with users or systems based on artificial intelligence algorithms.",
-    },
-    {
-      question: "What are AI Chatbots?",
-      answer:
-        "AI Chatbots are intelligent conversational agents that understand user inputs and provide automated responses, improving engagement and customer support.",
-    },
-    {
-      question: "How do AI solutions benefit my business?",
-      answer:
-        "AI Agents and Chatbots help streamline operations, enhance customer experience, automate repetitive tasks, and provide insights through data-driven intelligence.",
-    },
-    {
-      question: "Is my data secure with AI solutions?",
-      answer:
-        "Absolutely. We implement strict security protocols and compliance measures to protect all business and customer data handled by our AI systems.",
-    },
-  ];
 
   return (
     <>
@@ -330,7 +308,7 @@ const AIAgents: React.FC = () => {
           <WhyChooseLushWare />
 
           {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
-          <OutlineClose outline={aiAgentsOutline} faq={faqItems} />
+          <OutlineClose outline={aiAgentsOutline} />
 
         </div>
       </section>

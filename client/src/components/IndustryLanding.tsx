@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import { Link } from "react-router-dom";
 import InquiryForm from "@/components/InquiryForm";
 import type { MarketRelated } from "@/components/MarketFitSection";
 import { OutlineClose, OutlineProblems, WhoItsFor } from "@/components/PageOutline";
@@ -20,7 +19,6 @@ export type LandingContent = {
     items: { title: string; desc: string; points: string[] }[];
   };
   marketRelated?: MarketRelated;
-  related: { heading: string; items: { name: string; desc: string; to: string }[] };
   /** Standard SEO outline: who it's for, problems, features, proof, guide, FAQ, CTA. */
   outline: PageOutline;
 };
@@ -212,25 +210,6 @@ export default function IndustryLanding({ content: c }: { content: LandingConten
               </li>
             ))}
           </ol>
-        </div>
-
-        {/* ── RELATED ──────────────────────────────── */}
-        <div className="max-w-7xl mx-auto px-6 mb-20 md:mb-28">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="h-px w-8 bg-emerald-600" />
-            <h2 className="text-[12px] font-bold text-emerald-700 uppercase tracking-[0.2em]">{c.related.heading}</h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-200 border border-slate-200">
-            {c.related.items.map((r) => (
-              <Link key={r.to} to={r.to} className="group bg-white p-8 hover:bg-emerald-50/60 transition-colors duration-300">
-                <h3 className="text-lg font-semibold text-slate-900 mb-3 flex items-center justify-between gap-3">
-                  {r.name}
-                  <Arrow className="text-emerald-600 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
-                </h3>
-                <p className="text-slate-500 leading-relaxed text-sm md:text-base">{r.desc}</p>
-              </Link>
-            ))}
-          </div>
         </div>
 
         {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}

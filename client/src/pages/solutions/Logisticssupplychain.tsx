@@ -9,38 +9,6 @@ const LogisticsSupplyChain: React.FC = () => {
   const navigate = useNavigate();
   const [activeSolution, setActiveSolution] = useState(0);
 
-  const faqItems = [
-    {
-      question: "How is this different from our existing planning tools?",
-      answer:
-        "Traditional planning is static. We add prediction, optimization under real-world constraints, and continuous re-optimization, so routes, inventory and priorities adapt as conditions change.",
-    },
-    {
-      question: "Do you work with manufacturers and supply chain companies globally?",
-      answer:
-        "Yes. We work with plants, warehouses and logistics operators across Europe, North America, the Middle East and Asia-Pacific, delivering remotely and planning on-site visits per phase when installation is needed.",
-    },
-    {
-      question: "Can you optimize routes under real-world constraints?",
-      answer:
-        "Yes. We model vehicle capacity, time windows, driver and resource availability, and live events, and support real-time rerouting.",
-    },
-    {
-      question: "How do you reduce stockouts and excess inventory?",
-      answer:
-        "Through SKU-level and probabilistic forecasting combined with safety-stock and replenishment optimization across multiple locations.",
-    },
-    {
-      question: "What is a supply chain digital twin used for?",
-      answer:
-        "To test scenarios such as a delayed supplier, a demand spike, reduced transport capacity, a new warehouse or higher fuel costs, before committing real resources.",
-    },
-    {
-      question: "Can the system act on its own?",
-      answer:
-        "Autonomy is progressive and constrained. It can start with recommendations and approvals, then automate dispatch and re-optimization within limits you define.",
-    },
-  ];
 
   const challenges = [
     "Demand volatility",
@@ -735,7 +703,6 @@ const Chain: React.FC<{ steps: string[]; dark?: boolean }> = ({ steps, dark }) =
           {/* ── FEATURES, PROOF, GUIDE, FAQ, CTA ─────── */}
           <OutlineClose
             outline={logisticsOutline}
-            faq={faqItems}
             marketRelated={{
               text: "Need tighter control inside the warehouse?",
               links: [{ label: "Warehouse management system", to: "/solutions/warehouse-management" }],

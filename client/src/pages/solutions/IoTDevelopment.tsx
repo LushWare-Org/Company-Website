@@ -3,32 +3,12 @@ import QuestionItem from "../../components/QuestionItem";
 import WhyChooseLushWare from "../../components/WhyChooseLushWare";
 import ValueCard from "../../components/ValueCard";
 import { useNavigate } from "react-router-dom";
+import { getRouteFaq } from "../../data/faq";
 
 const IoTProductDevelopment: React.FC = () => {
   const navigate = useNavigate();
 
-  const faqItems = [
-    {
-      question: "What are IoT Projects?",
-      answer:
-        "IoT projects involve engineering and connecting physical devices (like sensors and controllers) to the internet, allowing them to collect data and be controlled remotely through a centralized software system.",
-    },
-    {
-      question: "Do you build tailored solutions for specific industries?",
-      answer:
-        "Yes. We develop tailored, custom-built software solutions and IoT architectures for highly specific use cases, such as smart HVAC systems, allowing for remote temperature monitoring, automated climate adjustments, and predictive maintenance.",
-    },
-    {
-      question: "How does IoT integrate with software?",
-      answer:
-        "We build custom software interfaces and APIs that communicate directly with your physical devices, unifying data and workflows seamlessly without relying on generic, off-the-shelf platforms.",
-    },
-    {
-      question: "Is IoT suitable for small businesses?",
-      answer:
-        "Absolutely. IoT solutions are scalable and can be tailored to small businesses, growing startups, and large enterprises.",
-    },
-  ];
+  const faqItems = getRouteFaq("/solutions/iot-product-development");
 
   return (
     <>

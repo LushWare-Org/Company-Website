@@ -50,14 +50,6 @@ const content: LandingContent = {
     text: "Running a guest house, speedboat operation or travel agency in the Maldives?",
     links: [{ label: "LushWare Maldives", to: "https://mv.lushware.net" }],
   },
-  related: {
-    heading: "Related solutions",
-    items: [
-      { name: "Tourism & Hospitality", desc: "Booking, hotel and property management with AI demand forecasting.", to: "/industries/tourism-hospitality" },
-      { name: "Custom CRM Solutions", desc: "CRM development, automation and analytics for any sales process.", to: "/solutions/crm" },
-      { name: "AI Agents & AI Chatbots", desc: "Answer traveller inquiries and qualify leads around the clock.", to: "/solutions/ai-agents" },
-    ],
-  },
   outline: travelAgencyOutline,
 };
 

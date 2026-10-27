@@ -237,16 +237,15 @@ const menus: Record<MenuKey, MegaMenu> = {
             icon: icons.building,
           },
           {
-            // NOTE: keep your own route paths here if they differ
             name: "Manufacturing",
             to: "/industries/manufacturing",
-            desc: "Production optimization and quality intelligence.",
+            desc: "Live OEE, predictive maintenance and quality for plants worldwide.",
             icon: icons.factory,
           },
           {
             name: "Logistics & Supply Chain",
             to: "/industries/logistics-supply-chain",
-            desc: "Route, fleet, and warehouse optimization.",
+            desc: "Visibility, routing and warehouses for global supply chains.",
             icon: icons.truck,
           },
           {
@@ -254,6 +253,12 @@ const menus: Record<MenuKey, MegaMenu> = {
             to: "/industries/tourism-hospitality",
             desc: "Tour operators, DMCs and hotels in the EU, APAC, GCC and South Asia.",
             icon: icons.pin,
+          },
+          {
+            name: "Growing Businesses (SMB)",
+            to: "/custom-software-development",
+            desc: "Custom software for small and mid-sized businesses worldwide.",
+            icon: icons.code,
           },
         ],
       },

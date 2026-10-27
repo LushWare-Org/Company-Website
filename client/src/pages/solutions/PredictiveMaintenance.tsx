@@ -46,14 +46,6 @@ const content: LandingContent = {
       },
     ],
   },
-  related: {
-    heading: "Related solutions",
-    items: [
-      { name: "Manufacturing Operations", desc: "AI, digital twins and self-optimizing production for manufacturers.", to: "/industries/manufacturing" },
-      { name: "OEE Monitoring", desc: "Real-time availability, performance and quality on every line.", to: "/solutions/oee-monitoring" },
-      { name: "IoT Product Development", desc: "Custom sensors, gateways and firmware for industrial data.", to: "/solutions/iot-product-development" },
-    ],
-  },
   outline: predictiveMaintenanceOutline,
 };
 

@@ -50,14 +50,6 @@ const content: LandingContent = {
     text: "Delivering large commercial projects or AMC/PPM contracts in Europe, the Middle East or Asia?",
     links: [{ label: "Commercial HVAC & MEP software", to: "/industries/commercial-hvac-mep" }],
   },
-  related: {
-    heading: "Software for your trade",
-    items: [
-      { name: "HVAC / MEP Service Software", desc: "Dispatch, maintenance agreements and refrigerant records for heating and cooling contractors.", to: "/solutions/hvac-mep-service-software" },
-      { name: "Plumbing Business Software", desc: "Emergency call-outs, on-site quotes and van stock for plumbing companies.", to: "/industries/plumbing" },
-      { name: "Electrical Contractor Software", desc: "Crews, compliance certificates and milestone billing for electricians.", to: "/industries/electrical" },
-    ],
-  },
   outline: fieldServiceOutline,
 };
 

@@ -7,8 +7,20 @@ import {
   Clock,  ArrowLeft,  Eye, EyeOff,
   AlertCircle,
   SearchX,
+  Target, Link2,
 } from 'lucide-react';
 import { fetchAllInquiries, updateInquiryStatus } from '../services/adminService';
+import { MARKETS, type MarketId } from '../data/markets';
+
+/** Lead markets: client market ids (src/data/markets.ts) plus leads from the Maldives site. */
+const LEAD_MARKETS: Record<string, string> = {
+  ...Object.fromEntries((Object.keys(MARKETS) as MarketId[]).map((id) => [id, MARKETS[id].label])),
+  maldives: 'Maldives site (mv.lushware.net)',
+};
+/** Market filter values; 'none' = leads without a known market (general pages, older leads). */
+const MARKET_FILTERS = [...Object.keys(LEAD_MARKETS), 'none'];
+const leadMarket = (id?: string | null) => (id && id in LEAD_MARKETS ? id : 'none');
+const marketLabel = (id?: string | null) => LEAD_MARKETS[leadMarket(id)] ?? 'No market / general';
 
 interface Inquiry {
   _id: string;
@@ -17,6 +29,9 @@ interface Inquiry {
   email: string;
   whatsapp?: string;
   country?: string;
+  countryCode?: string | null;
+  sourcePath?: string | null;
+  market?: string | null;
   budget?: string;
   inquiryType: string;
   status: 'seen' | 'not-seen';
@@ -37,6 +52,7 @@ export default function CommandCenter() {
   const [searchTerm, setSearchTerm] = useState('');
   const [error, setError] = useState('');
   const [filterType, setFilterType] = useState<string>('all');
+  const [filterMarket, setFilterMarket] = useState<string>('all');
   const [showFilter, setShowFilter] = useState(false);
 
   // Design Tokens - Emerald Theme
@@ -117,10 +133,21 @@ export default function CommandCenter() {
         inquiry.organization?.toLowerCase().includes(normalizedSearch);
 
       const matchesType = filterType === 'all' || inquiry.inquiryType === filterType;
+      const matchesMarket = filterMarket === 'all' || leadMarket(inquiry.market) === filterMarket;
 
-      return matchesSearch && matchesType;
+      return matchesSearch && matchesType && matchesMarket;
     });
-  }, [inquiries, searchTerm, filterType]);
+  }, [inquiries, searchTerm, filterType, filterMarket]);
+
+  // Lead counts per market, for reporting.
+  const marketCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const i of inquiries) {
+      const key = leadMarket(i.market);
+      counts[key] = (counts[key] ?? 0) + 1;
+    }
+    return counts;
+  }, [inquiries]);
 
   const inquiryDetailBlocks: Record<string, Array<{
     key: keyof Inquiry;
@@ -316,7 +343,7 @@ export default function CommandCenter() {
                 <button 
                   onClick={() => setShowFilter(!showFilter)}
                   className={`p-2.5 rounded-xl transition-all border w-full md:w-auto ${
-                    filterType !== 'all' 
+                    filterType !== 'all' || filterMarket !== 'all'
                       ? 'bg-emerald-50 border-emerald-400 text-emerald-600' 
                       : 'bg-slate-50 border-slate-400 text-slate-600 hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-600'
                   }`}
@@ -325,7 +352,7 @@ export default function CommandCenter() {
                 </button>
                 
                 {showFilter && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white border border-slate-200 rounded-xl shadow-lg z-50">
+                  <div className="absolute right-0 mt-2 w-72 max-h-[70vh] overflow-y-auto bg-white border border-slate-200 rounded-xl shadow-lg z-50">
                     <div className="p-3 border-b border-slate-100">
                       <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Filter by Type</p>
                     </div>
@@ -382,6 +409,26 @@ export default function CommandCenter() {
                       >
                         Consultation Inquiries
                       </button>
+                    </div>
+                    <div className="p-3 border-y border-slate-100">
+                      <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Filter by Market</p>
+                    </div>
+                    <div className="p-2">
+                      {['all', ...MARKET_FILTERS].map((m) => (
+                        <button
+                          key={m}
+                          onClick={() => {
+                            setFilterMarket(m);
+                            setShowFilter(false);
+                          }}
+                          className={`w-full flex justify-between gap-3 text-left px-3 py-2 rounded-lg transition-all text-sm font-medium mt-1 ${
+                            filterMarket === m ? 'bg-emerald-100 text-emerald-700' : 'text-slate-600 hover:bg-slate-100'
+                          }`}
+                        >
+                          <span>{m === 'all' ? 'All Markets' : marketLabel(m)}</span>
+                          <span className="text-slate-400">{m === 'all' ? totalCount : marketCounts[m] ?? 0}</span>
+                        </button>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -506,8 +553,10 @@ export default function CommandCenter() {
                 <div className="grid grid-cols-2 gap-14 mb-16">
                   <DetailBlock icon={<Mail />} label="Email" value={selectedInquiry.email} />
                   <DetailBlock icon={<Phone />} label="WhatsApp" value={selectedInquiry.whatsapp || "Not Provided"} />
-                  <DetailBlock icon={<Globe />} label="Location" value={selectedInquiry.country || "Not Provided"} />
+                  <DetailBlock icon={<Globe />} label="Location" value={selectedInquiry.country ? `${selectedInquiry.country}${selectedInquiry.countryCode ? ` (${selectedInquiry.countryCode})` : ''}` : "Not Provided"} />
                   <DetailBlock icon={<Clock />} label="Received" value={new Date(selectedInquiry.createdAt).toLocaleDateString()} />
+                  <DetailBlock icon={<Target />} label="Market" value={marketLabel(selectedInquiry.market)} />
+                  <DetailBlock icon={<Link2 />} label="Landing Page" value={selectedInquiry.sourcePath || "Not Recorded"} />
                 </div>
 
                 {/* Conditional Fields Based on Inquiry Type */}

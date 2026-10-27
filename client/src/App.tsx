@@ -8,7 +8,6 @@ import Homepage from './pages/Homepage'
 import SolutionsPage from './pages/SolutionsPage'
 import AIAgents from './pages/solutions/AIAgents'
 import BPM from './pages/solutions/BPM'
-import CRM from './pages/solutions/CRM'
 import MobileApps from './pages/solutions/MobileApps'
 import Websites from './pages/solutions/Websites'
 import WorkPage from './pages/WorkPage'
@@ -23,8 +22,6 @@ import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 //import { useEffect, useState } from 'react'
 //import Loading from './components/Loading'
 //import { useLenis } from './hooks/useLenis'
-import ElectricalServices from './pages/solutions/ElectricalServices'
-import PlumbingServices from './pages/solutions/PlumbingServices'
 import HVACServices from './pages/solutions/HVACServices'
 import IoTProductDevelopment from './pages/solutions/IoTDevelopment'
 import ProductEngineering from './pages/solutions/ProductEngineering'
@@ -126,6 +123,9 @@ function App() {
           <Route path="/solutions" element={<Navigate to="/industries/tourism-hospitality" replace />} />
           <Route path="/industries/hvac" element={<Navigate to="/solutions/hvac-mep-service-software" replace />} />
           <Route path="/industries/commercial-mep" element={<Navigate to="/industries/commercial-hvac-mep" replace />} />
+          <Route path="/industries/plumbing" element={<Navigate to="/industries/field-service" replace />} />
+          <Route path="/industries/electrical" element={<Navigate to="/industries/field-service" replace />} />
+          <Route path="/solutions/crm" element={<Navigate to="/custom-software-development" replace />} />
           <Route path="/industries/tourism-hospitality" element={<SolutionsPage />} />
           <Route path="/solutions/travel-agency-software" element={<TravelAgencySoftware />} />
           <Route path="/industries/field-service" element={<FieldService />} />
@@ -134,7 +134,6 @@ function App() {
           <Route path="/solutions/oee-monitoring" element={<OEEMonitoring />} />
           <Route path="/solutions/warehouse-management" element={<WarehouseManagement />} />
           <Route path="/custom-software-development" element={<CustomSoftwareDevelopment />} />
-          <Route path="/solutions/crm" element={<CRM />} />
           <Route path="/solutions/ai-agents" element={<AIAgents />} />
           <Route path="/solutions/bpm" element={<BPM />} />
           <Route path="/solutions/websites" element={<Websites />} />
@@ -149,8 +148,6 @@ function App() {
           <Route path="/templates/healthcare" element={<HealthcarePage />} />
           <Route path="/templates/real-estate" element={<RealEstatePage />} />
           <Route path="/solutions/hvac-mep-service-software" element={<HVACServices />} />
-          <Route path="/industries/plumbing" element={<PlumbingServices />} />
-          <Route path="/industries/electrical" element={<ElectricalServices />} />  
           <Route path="/industries/manufacturing" element={<Manufacturing />} />
           <Route path="/industries/logistics-supply-chain" element={<LogisticsSupplyChain />} />
           <Route path="/admin" element={<AdminLogin />} />

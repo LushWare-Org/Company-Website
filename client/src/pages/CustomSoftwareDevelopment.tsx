@@ -46,17 +46,6 @@ const content: LandingContent = {
       },
     ],
   },
-  related: {
-    heading: "Explore our services",
-    items: [
-      { name: "Custom CRM Solutions", desc: "Intelligent CRM development, automation and analytics.", to: "/solutions/crm" },
-      { name: "Business & Corporate Websites", desc: "Fast, SEO-ready websites that convert visitors into customers.", to: "/solutions/websites" },
-      { name: "Mobile App Development", desc: "iOS and Android apps for customers and teams.", to: "/solutions/mobile-apps" },
-      { name: "AI Agents & AI Chatbots", desc: "Automate conversations, lead qualification and repetitive work.", to: "/solutions/ai-agents" },
-      { name: "Business Process Management", desc: "Design and automate business workflows.", to: "/solutions/bpm" },
-      { name: "Our Work", desc: "Projects we have delivered for clients.", to: "/work" },
-    ],
-  },
   outline: customSoftwareOutline,
 };
 

@@ -11,6 +11,7 @@ const tradesDemo = (trade: string, steps: string[]): PageOutline['proof'] => ({
 })
 
 export const fieldServiceOutline: PageOutline = {
+  path: '/industries/field-service',
   market: 'trades',
   product: 'field service software',
   whoFor:
@@ -109,6 +110,11 @@ export const fieldServiceOutline: PageOutline = {
       },
     ],
   },
+  related: [
+    '/solutions/hvac-mep-service-software',
+    '/solutions/mobile-apps',
+    '/industries/commercial-hvac-mep',
+  ],
   faq: [
     {
       question: 'What is field service management software?',
@@ -139,6 +145,7 @@ export const fieldServiceOutline: PageOutline = {
 }
 
 export const hvacOutline: PageOutline = {
+  path: '/solutions/hvac-mep-service-software',
   market: 'trades',
   product: 'HVAC service software',
   whoFor:
@@ -175,6 +182,12 @@ export const hvacOutline: PageOutline = {
     'The customer signs on the tablet and joins a maintenance agreement; tune-ups are scheduled for the year.',
     'The invoice syncs to QuickBooks, Xero or MYOB before the tech reaches the next job.',
   ]),
+  related: [
+    '/industries/field-service',
+    '/solutions/predictive-maintenance',
+    '/solutions/iot-product-development',
+    '/industries/commercial-hvac-mep',
+  ],
   faq: [
     {
       question: 'Can it keep refrigerant handling records?',
@@ -186,6 +199,51 @@ export const hvacOutline: PageOutline = {
       answer:
         'This page is for residential and light-commercial service contractors in the US, Canada, Australia and New Zealand. For commercial HVAC & MEP projects, AMC contracts and PPM schedules in Europe, the Middle East or Asia, see our Commercial HVAC & MEP software page.',
     },
+    {
+      question: 'How can software help HVAC and MEP service businesses?',
+      answer:
+        'Custom software helps HVAC, electrical, and plumbing companies manage service requests, technician scheduling, maintenance contracts, compliance records, and customer relationships more efficiently while reducing manual work.',
+    },
+    {
+      question: 'Do you work with HVAC businesses in the US, Canada, Australia and New Zealand?',
+      answer:
+        'Yes. We build for trade contractors in all four markets, with quotes, invoices and taxes in USD, CAD, AUD or NZD, and meetings scheduled in your local time zone.',
+    },
+    {
+      question: 'Can one system cover HVAC, electrical, and plumbing work?',
+      answer:
+        'Yes. The platform is built around a shared core of jobs, customers, technicians, and billing, with trade-specific modules on top, so mixed MEP teams work from a single system instead of three separate tools.',
+    },
+    {
+      question: 'Can the system handle job scheduling and dispatch?',
+      answer:
+        'Yes. Smart scheduling tools assign technicians, estimate job duration, and optimize routes for faster service delivery. Multi-crew dispatch and job-site assignment are supported for larger projects.',
+    },
+    {
+      question: 'Can it manage emergency call-outs and urgent jobs?',
+      answer:
+        'Yes. Emergency jobs can be flagged as priority, instantly routed to the nearest available technician, and the customer is updated in real time.',
+    },
+    {
+      question: 'Does it support recurring maintenance services?',
+      answer:
+        'Yes. Preventive maintenance contracts and recurring service schedules are managed, tracked, and reminded to customers automatically.',
+    },
+    {
+      question: 'Can we manage compliance certificates and safety records?',
+      answer:
+        'Yes. The platform stores compliance certificates, safety inspection records, and permit tracking so your business stays audit-ready at all times.',
+    },
+    {
+      question: 'Can we handle quoting, invoicing, parts, and supplier orders?',
+      answer:
+        'Yes. Technicians can create quotes on-site from mobile devices, convert approved quotes to jobs, and invoice on completion. Parts tracking, low-stock alerts, and supplier orders keep vans and sites stocked.',
+    },
+    {
+      question: 'Can we track technicians in real time?',
+      answer:
+        'Yes. The platform includes technician tracking, job status updates, and mobile access for field teams so dispatchers always have full visibility.',
+    },
   ],
   cta: {
     heading: 'Get ready for peak season now',
@@ -194,107 +252,3 @@ export const hvacOutline: PageOutline = {
   inquiry: { topic: 'HVAC / MEP Service Software', industry: 'HVAC / MEP' },
 }
 
-export const plumbingOutline: PageOutline = {
-  market: 'trades',
-  product: 'plumbing software',
-  whoFor:
-    'Built for residential and commercial plumbing contractors in the United States, Canada, Australia and New Zealand.',
-  problems: {
-    heading: 'What plumbing business owners tell us',
-    intro: 'Plumbing is emergency work, fixed-price quotes and a van full of stock. Here is how owners describe what goes wrong.',
-    items: [
-      { quote: 'Burst-pipe calls wreck the whole day.', detail: 'Emergencies arrive without warning and every booked job behind them slips.' },
-      { quote: 'Quotes get written up at night.', detail: 'Techs measure on site, then the owner prices and sends the quote hours or days later.' },
-      { quote: 'We keep going back for parts.', detail: 'No one knows what is on each van, so second trips eat into fixed-price jobs.' },
-      { quote: 'After-hours calls go to voicemail.', detail: 'Missed emergency calls at night are the most valuable jobs you never get.' },
-      { quote: 'Getting paid takes weeks.', detail: 'Invoices go out late and chasing payment becomes a part-time job.' },
-      { quote: 'Backflow and compliance paperwork is a mess.', detail: 'Test results and certificates are scattered across email and paper.' },
-    ],
-  },
-  features: {
-    heading: 'Plumbing features, in your words',
-    intro: 'Built around call-outs, fixed-price quotes and van stock — the way plumbing businesses actually run.',
-    items: [
-      { term: 'Emergency call-outs', feature: 'After-hours and urgent jobs flagged, priced with call-out fees and dispatched to the on-call plumber.' },
-      { term: 'On-site quotes', feature: 'Fixed-price or time-and-materials quotes built from your price book, signed on the spot with a deposit.' },
-      { term: 'Van stock', feature: 'Live stock per van, parts used per job and automatic reorder from your supplier.' },
-      { term: 'Job photos & notes', feature: 'Before-and-after photos, camera inspection notes and customer sign-off stored with the job.' },
-      { term: 'Compliance certificates', feature: 'Backflow test results and compliance certificates generated from the job and sent to the customer.' },
-      { term: 'Pay on completion', feature: 'Card payment on the tablet and invoices synced to QuickBooks, Xero or MYOB.' },
-    ],
-  },
-  proof: tradesDemo('plumbing', [
-    'A burst-pipe call comes in after hours and goes straight to the on-call plumber.',
-    'The plumber checks van stock, arrives with the right fittings and documents the job with photos.',
-    'A fixed-price quote for the follow-up repair is signed on site with a deposit.',
-    'The compliance certificate and invoice are sent before the plumber leaves the driveway.',
-  ]),
-  faq: [
-    {
-      question: 'Can the system manage emergency call-outs and urgent jobs?',
-      answer:
-        'Yes. Urgent jobs are flagged, priced with your call-out rates and dispatched to the on-call plumber, with the rest of the schedule re-sequenced automatically.',
-    },
-    {
-      question: 'Can we track parts, inventory, and supplier orders?',
-      answer: 'Yes. Stock is tracked per van and warehouse, parts are deducted as they are used on jobs, and purchase orders go to your suppliers when stock runs low.',
-    },
-  ],
-  cta: {
-    heading: 'Stop losing jobs to missed calls and late quotes',
-    text: 'Walk us through a typical emergency call and we will show you how it runs from first ring to paid invoice.',
-  },
-  inquiry: { topic: 'Plumbing Services', industry: 'Plumbing Services' },
-}
-
-export const electricalOutline: PageOutline = {
-  market: 'trades',
-  product: 'electrical contractor software',
-  whoFor:
-    'Built for electrical contractors and electricians in the United States, Canada, Australia and New Zealand, from service calls to small projects.',
-  problems: {
-    heading: 'What electrical contractors tell us',
-    intro: 'Electrical businesses juggle service calls, multi-day projects and strict compliance. Here is what they say is hardest.',
-    items: [
-      { quote: 'I can\'t see where every crew is.', detail: 'Multiple crews across job sites, and the office only finds out about delays when the customer calls.' },
-      { quote: 'Compliance certificates take forever.', detail: 'Test results get rewritten from paper into certificates after hours.' },
-      { quote: 'Project jobs blow the budget quietly.', detail: 'Labour and materials are only totalled at the end, when it is too late to fix.' },
-      { quote: 'Milestone billing is a spreadsheet.', detail: 'Progress claims and variations are tracked by hand and often missed.' },
-      { quote: 'Licences expire without anyone noticing.', detail: 'Electrician licences and safety training are tracked on a wall chart, if at all.' },
-      { quote: 'Quotes for bigger jobs take days.', detail: 'Estimating from scratch every time slows down winning work.' },
-    ],
-  },
-  features: {
-    heading: 'Electrical features, in your words',
-    intro: 'From a single service call to a multi-week fit-out, everything is named the way electricians work.',
-    items: [
-      { term: 'Crew scheduling', feature: 'Assign crews and apprentices to sites by skill and licence, with live job status from the field.' },
-      { term: 'Test & tag / compliance certificates', feature: 'Test results captured on the tablet and turned into compliance certificates automatically.' },
-      { term: 'Job costing', feature: 'Labour hours and materials tracked against the quote as the job progresses.' },
-      { term: 'Progress claims & variations', feature: 'Milestone billing, approved variations and retention tracked per project.' },
-      { term: 'Licence tracking', feature: 'Licence, certification and safety training expiry dates with reminders before they lapse.' },
-      { term: 'Estimates & quotes', feature: 'Reusable assemblies and price books for fast, consistent quoting on service and project work.' },
-    ],
-  },
-  proof: tradesDemo('electrical', [
-    'A switchboard upgrade is quoted from reusable assemblies and approved online.',
-    'Two crews are scheduled across the job; the office sees status updates from site.',
-    'Test results are entered on the tablet and the compliance certificate is generated automatically.',
-    'A progress claim is raised at the milestone and synced to your accounting system.',
-  ]),
-  faq: [
-    {
-      question: 'Does the system support quoting and project-based work?',
-      answer: 'Yes. It handles quick service quotes and multi-stage projects, with job costing, variations and milestone billing.',
-    },
-    {
-      question: 'Can electrical companies manage multiple crews and job sites?',
-      answer: 'Yes. Crews are scheduled by skill and licence across sites, and the office sees live progress from the field.',
-    },
-  ],
-  cta: {
-    heading: 'Get your crews, certificates and claims in one place',
-    text: 'Show us how you run a typical project today and we will map it into electrical contractor software built for your market.',
-  },
-  inquiry: { topic: 'Electrical Services', industry: 'Electrical Services' },
-}
