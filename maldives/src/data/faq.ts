@@ -2,9 +2,64 @@
 // (<FAQSection /> in each page) and the FAQPage JSON-LD (src/seo/routes.ts),
 // so the two can't drift apart.
 
+import { LOCAL } from './local'
+
 export type Faq = { question: string; answer: string }
 
+/** Questions every Maldivian buyer asks: price, setup time, data location, internet, hours. */
+const buyerFaq = (product: string, sizedBy: string): Faq[] => [
+  {
+    question: `How much does ${product} cost?`,
+    answer: `Pricing depends on the size of your operation — ${sizedBy} — and the modules you need. Request pricing and we send a written quote; the demo is free.`,
+  },
+  {
+    question: 'How long does setup take?',
+    answer:
+      'We set up the system with your real data, import what you already have and train your staff. Most of the time goes into your data, so we agree a go-live date with you before we start.',
+  },
+  {
+    question: 'Where is our data stored?',
+    answer:
+      'On secure cloud servers with encryption and automatic backups. The data belongs to your business, and you can ask us for a full export at any time.',
+  },
+  {
+    question: 'Does it work with slow island internet?',
+    answer:
+      'Yes. It is a lightweight web app that runs in any phone, tablet or laptop browser over normal mobile data. It needs a connection to sync, so bookings made on the island appear in Malé straight away.',
+  },
+  {
+    question: 'Do you support us in Maldives hours?',
+    answer: `Yes. ${LOCAL.hoursLine} Reach us on ${LOCAL.channels}.`,
+  },
+]
+
 const ROUTE_FAQ: Record<string, Faq[]> = {
+  '/': [
+    {
+      question: 'What software does LushWare make for Maldives businesses?',
+      answer:
+        'Lush Hotel Cloud for guest houses and small hotels, Viduvaru for speedboat and ferry ticketing, a Travel CRM for travel agencies and tour operators, and a Property Management System for agencies that manage many properties. We also build custom software, websites and mobile apps.',
+    },
+    {
+      question: 'Which businesses do you work with?',
+      answer:
+        'Guest houses on local islands, small hotels, speedboat and transfer operators, travel agencies, tour operators and DMCs across the Maldives.',
+    },
+    {
+      question: 'Do the systems work together?',
+      answer:
+        'Yes. For example, guest houses using Hotel Cloud can book speedboat transfers for their guests through the Viduvaru partner portal.',
+    },
+    {
+      question: 'Can you build something custom for our business?',
+      answer:
+        'Yes. If none of our products fit, we build custom software, websites, booking systems and AI chatbots for island businesses.',
+    },
+    {
+      question: 'Do you support us in Maldives hours?',
+      answer: `Yes. ${LOCAL.hoursLine} Reach us on ${LOCAL.channels}.`,
+    },
+  ],
   '/hotelcloud': [
     {
       question: "Can I manage multiple guest houses?",
@@ -118,11 +173,6 @@ const ROUTE_FAQ: Record<string, Faq[]> = {
         "Yes. Invite your reservations, finance and operations teams with their own logins and permission levels, so everyone works from the same up-to-date information without stepping on each other's bookings.",
     },
     {
-      question: "Is my data securely stored?",
-      answer:
-        "Your data is encrypted, backed up automatically, and hosted on secure cloud infrastructure with regular audits — so property, booking and financial records stay protected and recoverable at all times.",
-    },
-    {
       question: "Can I access the system from my phone?",
       answer:
         "Yes. The platform is fully cloud-based and works on any device with a browser, so you can check availability, confirm a booking or review revenue from your phone, tablet or laptop, anywhere.",
@@ -162,7 +212,14 @@ const ROUTE_FAQ: Record<string, Faq[]> = {
   ],
 }
 
-export const getRouteFaq = (path: string): Faq[] => ROUTE_FAQ[path] ?? []
+const BUYER_FAQ: Record<string, Faq[]> = {
+  '/hotelcloud': buyerFaq('Lush Hotel Cloud', 'the number of properties and rooms'),
+  '/viduvaru': buyerFaq('Viduvaru', 'the number of boats and routes'),
+  '/travel-crm': buyerFaq('the Travel CRM', 'the number of users and the modules you use'),
+  '/real-estate-control': buyerFaq('the Property Management System', 'the number of properties and users'),
+}
+
+export const getRouteFaq = (path: string): Faq[] => [...(ROUTE_FAQ[path] ?? []), ...(BUYER_FAQ[path] ?? [])]
 
 /** schema.org FAQPage for a list of questions. */
 export const faqPageJsonLd = (faq: Faq[]) => ({

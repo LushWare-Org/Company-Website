@@ -7,7 +7,7 @@ export const tourismOutline: PageOutline = {
   market: 'tourism',
   product: 'tourism and hospitality software',
   whoFor:
-    'Built for tour operators, DMCs, travel agencies and hotels in Europe, Asia Pacific, the GCC, Sri Lanka, India and the Maldives.',
+    'Built for tour operators, DMCs, travel agencies and hotels in Europe, Asia Pacific, the GCC, Sri Lanka and India.',
   problems: {
     heading: 'What travel and hospitality teams tell us',
     intro: 'Reservations managers, DMC owners and hotel GMs describe the same pressure points, season after season.',
@@ -56,7 +56,7 @@ export const tourismOutline: PageOutline = {
       {
         heading: 'Serve agents and partners, not just guests',
         paragraphs: [
-          'Much of the travel trade in the Maldives, Sri Lanka, India and the Gulf runs through B2B agents. A partner portal that shows net rates, live availability and instant vouchers — with commission rules and credit limits per agent — turns those partners into a scalable sales channel instead of an email inbox.',
+          'Much of the travel trade in Sri Lanka, India and the Gulf runs through B2B agents. A partner portal that shows net rates, live availability and instant vouchers — with commission rules and credit limits per agent — turns those partners into a scalable sales channel instead of an email inbox.',
           'If you also sell direct, the same inventory should power your website booking engine and your OTA connections to Booking.com, Expedia and Agoda, so availability never drifts between channels.',
         ],
       },
@@ -97,7 +97,7 @@ export const tourismOutline: PageOutline = {
     {
       question: 'Which markets do you build tourism software for?',
       answer:
-        'We build for tour operators, DMCs, travel agencies and hotels in the European Union, Asia Pacific, the Middle East (GCC) and South Asia (Sri Lanka, India and the Maldives), with multi-language guest communications, multi-currency pricing and meetings in your local time zone.',
+        'We build for tour operators, DMCs, travel agencies and hotels in the European Union, Asia Pacific, the Middle East (GCC) and South Asia (Sri Lanka and India), with multi-language guest communications, multi-currency pricing and meetings in your local time zone.',
     },
     {
       question: 'Can it handle GDPR and payment rules for European guests?',
@@ -152,7 +152,7 @@ export const travelAgencyOutline: PageOutline = {
   market: 'tourism',
   product: 'travel agency software',
   whoFor:
-    'Built for travel agencies and tour operators in Europe, Asia Pacific, the GCC and South Asia, including Sri Lanka, India and the Maldives.',
+    'Built for travel agencies and tour operators in Europe, Asia Pacific, the GCC and South Asia, including Sri Lanka and India.',
   problems: {
     heading: 'What travel agents tell us',
     intro: 'Agency owners and reservations teams describe the same daily friction.',
@@ -232,7 +232,7 @@ export const travelAgencyOutline: PageOutline = {
     {
       question: 'Which markets do you work with?',
       answer:
-        'We build for travel agencies and tour operators in the European Union, Asia Pacific, the Middle East (GCC) and South Asia, including Sri Lanka, India and the Maldives, with multi-currency pricing and meetings in your time zone.',
+        'We build for travel agencies and tour operators in the European Union, Asia Pacific, the Middle East (GCC) and South Asia, including Sri Lanka and India, with multi-currency pricing and meetings in your time zone.',
     },
   ],
   cta: {

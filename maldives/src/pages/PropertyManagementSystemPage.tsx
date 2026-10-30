@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import FAQSection from "../components/FAQSection";
 import { getRouteFaq } from "../data/faq";
+import PageOutline from "../components/PageOutline";
 
 // TODO: replace with the client's live WhatsApp Business number (international format, no + or spaces)
 const WHATSAPP_NUMBER = "94716430053";
@@ -168,15 +169,16 @@ function PropertyManagementSystemPage() {
               Property Management System for
             </span>
             <span className="mt-1 block bg-gradient-to-r from-primary via-primary/90 to-primary-container bg-clip-text text-transparent drop-shadow-sm py-1 sm:mt-2">
-              Travel Agencies
+              Maldives Travel Agencies
             </span>
           </h1>
 
           {/* Optimized Description Reading Width */}
           <p className="mx-auto mt-4 max-w-xs text-sm leading-relaxed text-on-surface-variant font-medium xs:max-w-sm sm:mt-6 sm:max-w-2xl sm:text-lg md:text-xl">
-            Manage properties, bookings, finances and daily operations from one
-            cloud-based platform — built for the way Maldivian tourism
-            businesses actually work.
+            Built for Maldivian travel agencies that sell and manage villas,
+            guest houses and rooms across many islands. Manage properties,
+            bookings, finances and daily operations from one cloud-based
+            platform.
           </p>
 
           {/* Premium Split-Action Controller */}
@@ -751,6 +753,8 @@ function PropertyManagementSystemPage() {
       </section>
 
       {/* 9. FAQ */}
+      <PageOutline path="/real-estate-control" />
+
       <FAQSection
         items={getRouteFaq("/real-estate-control")}
         title="Frequently Asked Questions"

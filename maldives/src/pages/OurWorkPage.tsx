@@ -1,90 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { WORK_PROJECTS } from "../data/work";
 
-const projects = [
-  {
-    name: "Travel Booking Website",
-    client: "Trip Sky Way",
-    summary:
-      "Trip Sky Way is a modern travel booking platform designed to help travelers discover destinations and plan seamless journeys.",
-    description:
-      "We built a responsive travel platform with intuitive navigation, fast performance, and seamless booking experiences tailored for modern travelers worldwide.",
-    image: "/work/TripSkyWay.webp",
-    link: "https://tripskyway.com/",
-  },
-  {
-    name: "Tour & Travel Website",
-    client: "Holiday Vibes Tour",
-    summary:
-      "Holiday Vibes Tour is a travel website built to promote curated tours and immersive travel experiences.",
-    description:
-      "We created a vibrant platform enabling users to explore curated tour packages, detailed itineraries, and easily connect with travel experts seamlessly.",
-    image: "/work/HolidayVibesTour.webp",
-    link: "https://holidayvibestour.com/",
-  },
-  {
-    name: "B2B Portal for Travel Agents",
-    client: "Yomaldives",
-    summary:
-      "Yomaldives, a B2B portal designed to help travel agents boost their revenue.",
-    description:
-      "We delivered a tailored B2B platform empowering travel agents to streamline operations, increase revenue, and efficiently manage bookings with ease daily.",
-    image: "/work/yomaldives.webp",
-    link: "https://yomaldives.live/",
-  },
-
-  {
-    name: "Speedboat Ticket Booking System",
-    client: "Dream Speed",
-    summary:
-      "We're thrilled to showcase our latest project, the Dream Speed Speedboat Booking System. We developed this platform to help travelers effortlessly search routes, check availability, and book their island journeys in the Maldives.",
-    description:
-      "This project reflects our commitment to building bespoke platforms that simplify bookings, optimize operations, and deliver seamless experiences for travelers globally.",
-    image: "/work/dreamspeed.webp",
-    link: "https://www.dreamspeedmaldives.com/",
-  },
-  {
-    name: "All-in-one Travel Agency Web Application",
-    client: "Islekey Holidays",
-    summary:
-      "We're excited to showcase a project close to our hearts: IsleKey Holdings, an all-in-one web application for a travel agency.",
-    description:
-      "We developed a comprehensive platform that streamlines bookings, enhances user experiences, and empowers travel agencies to manage operations efficiently and grow.",
-    image: "/work/islekeyholidays.webp",
-    link: "https://islekeyholidays.com/",
-  },
-  {
-    name: "Travel Agency Website",
-    client: "Traveliccted",
-    summary:
-      "Traveliccted is a travel-focused website built to showcase curated travel experiences and destination packages.",
-    description:
-      "This project highlights our ability to create engaging platforms with strong storytelling, seamless navigation, and conversion-focused designs for travel businesses worldwide.",
-    image: "/work/Traveliccted.webp",
-    link: "https://traveliccted.com/",
-  },
-  {
-    name: "Travel Agency Management System",
-    client: "Crown Voyages",
-    summary:
-      "Crown Voyages is a powerful travel agency management system with automatic quotation generation designed to streamline operations.",
-    description:
-      "We developed a comprehensive management platform that enables travel agencies to handle bookings, generate quotations automatically, manage clients, and optimize daily operations efficiently through a centralized system.",
-    image: "/work/CrownVoyages.jpg",
-    link: "https://portal.crownvoyages.com/",
-  },
-
-  {
-    name: "Travel Agency Websites",
-    client: "Holiday Life",
-    summary:
-      "We're proud to showcase Holiday Life, a custom web application we developed for a travel agency.",
-    description:
-      "We created a seamless platform helping users discover ideal holidays while enabling businesses to deliver exceptional services and manage operations effectively every day.",
-    image: "/work/holidaylife.jpg",
-    link: "https://holidaylife.travel/",
-  },
-];
+const projects = WORK_PROJECTS;
+const featured = WORK_PROJECTS[0];
 
 function OurWorkPage() {
   return (
@@ -104,133 +23,108 @@ function OurWorkPage() {
 
           {/* Stronger, Cleaner Typographic Hierarchy */}
           <h1 className="mt-6 font-headline text-5xl font-extrabold tracking-tight text-on-surface leading-[1.2] xs:text-4xl sm:mt-8 sm:text-5xl sm:leading-[1.15] md:text-6xl lg:text-7xl">
-            <span className="block text-balance">Empowering the</span>
+            <span className="block text-balance">Booking Systems &amp; Travel</span>
             <span className="mt-1 block sm:mt-2">
               <span className="bg-gradient-to-r from-primary via-primary/90 to-primary-container bg-clip-text text-transparent drop-shadow-sm">
-                Maldives Hospitality
+                Platforms Built for the
               </span>{" "}
-              <span className="text-on-surface">Ecosystem</span>
+              <span className="text-on-surface">Maldives</span>
             </span>
           </h1>
 
           {/* Optimized Description Reading Width */}
           <p className="mx-auto mt-4 max-w-xs text-sm leading-relaxed text-on-surface-variant font-medium xs:max-w-sm sm:mt-6 sm:max-w-2xl sm:text-lg md:text-xl">
-            We partner with the world's most prestigious island resorts and
-            marine conservationists to redefine digital operations in paradise.
+            Booking systems, agency platforms and travel websites we have
+            built for speedboat operators and travel businesses in the Maldives
+            and beyond — all live today.
           </p>
 
           {/* Premium Split-Action Controller */}
           <div className="mt-8 inline-flex w-full max-w-xs flex-col items-center justify-center gap-2.5 sm:mt-10 sm:w-auto sm:max-w-none sm:flex-row sm:gap-3 sm:bg-surface-container-low/60 sm:p-2 sm:rounded-full sm:border sm:border-surface-variant/30 sm:backdrop-blur-md">
-            <Link
-              to="/case-studies"
+            <a
+              href="#projects"
               className="w-full sm:w-auto sm:min-w-[180px] rounded-full bg-gradient-to-br from-primary to-primary-container px-6 py-3 text-center font-bold text-on-primary shadow-md shadow-primary/5 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] sm:py-3.5"
             >
-              View Case Studies
-            </Link>
+              View Projects
+            </a>
 
-            <button
-              type="button"
+            <Link
+              to="/contact"
               className="w-full sm:w-auto sm:min-w-[180px] rounded-full px-6 py-3 text-center text-sm font-bold text-on-surface transition-all duration-200 hover:bg-surface-container-high hover:text-primary active:scale-[0.98] sm:py-3.5 md:text-base"
             >
-              Become a Partner
-            </button>
+              Start a Project
+            </Link>
           </div>
         </div>
       </section>
 
       <section className="max-w-7xl mx-auto px-6 sm:px-8 md:px-9 lg:px-0 pb-8 sm:pb-10 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
-          {/* Main image card */}
+          {/* Featured project */}
           <div className="md:col-span-8 group relative aspect-[16/9]  overflow-hidden rounded-xl bg-surface-container-low shadow-sm hover:shadow-xl transition-all duration-500">
             <img
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              src="https://cdn.home-designing.com/wp-content/uploads/2011/12/maldives-resort-villa-1024x724.jpg"
-              alt="Luxurious overwater bungalows in a Maldivian turquoise lagoon"
+              src={featured.image}
+              alt={`${featured.client} — ${featured.name}`}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent opacity-60" />
             <div className="absolute bottom-4 left-4 text-white p-4 lg:p-0 sm:bottom-6 sm:left-6 md:bottom-8 md:left-8 lg:bottom-10 lg:left-10">
               <div className="flex items-center gap-2 mb-2 sm:mb-3 md:mb-4">
                 <span className="bg-tertiary-fixed text-on-tertiary-fixed px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-xs font-bold tracking-tight uppercase font-label">
-                  Resort
+                  Transport
                 </span>
                 <span className="text-white text-xs sm:text-sm font-medium">
-                  Flagship Implementation
+                  Featured Project
                 </span>
               </div>
               <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-headline font-bold mb-1 sm:mb-2 leading-tight">
-                Velana Sapphire Estate
+                {featured.client}
               </h3>
               <p className="text-white/90 text-xs sm:text-sm md:text-base max-w-xs sm:max-w-sm md:max-w-md">
-                Full-stack operational automation across 120 villas and private
-                yacht concierge.
+                {featured.name}
               </p>
             </div>
           </div>
 
-          {/* Stats card */}
+          {/* Featured project summary */}
           <div className="md:col-span-4 bg-gradient-to-br from-primary to-primary-container rounded-xl p-8 sm:p-8 md:p-8 lg:p-10 flex flex-col justify-between text-on-primary-container relative overflow-hidden">
             <div className="absolute -right-20 -top-20 w-64 h-64 bg-secondary/20 rounded-full blur-3xl" />
             <div className="relative z-10">
               <span className="text-white/95 font-bold tracking-widest text-xs uppercase font-label">
-                The Impact
+                What we built
               </span>
               <h3 className="text-2xl sm:text-3xl font-headline font-bold text-white mt-3 sm:mt-4 mb-4 sm:mb-6 leading-tight">
-                Digital transformation beyond expectations.
+                Online speedboat ticketing in the Maldives.
               </h3>
-              <ul className="space-y-4 sm:space-y-6">
-                <li className="flex items-start gap-3 sm:gap-4">
-                  <span className="material-symbols-outlined text-tertiary-fixed-dim text-xl sm:text-2xl flex-shrink-0">
-                    verified
-                  </span>
-                  <div>
-                    <p className="text-white font-semibold text-sm sm:text-base">
-                      99.8% Uptime
-                    </p>
-                    <p className="text-on-primary-container text-xs sm:text-sm">
-                      Critical hospitality infrastructure reliability.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 sm:gap-4">
-                  <span className="material-symbols-outlined text-tertiary-fixed-dim text-xl sm:text-2xl flex-shrink-0">
-                    speed
-                  </span>
-                  <div>
-                    <p className="text-white font-semibold text-sm sm:text-base">
-                      35% Efficiency Gain
-                    </p>
-                    <p className="text-on-primary-container text-xs sm:text-sm">
-                      Reduced manual guest service overhead.
-                    </p>
-                  </div>
-                </li>
-              </ul>
+              <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+                {featured.summary} {featured.description}
+              </p>
             </div>
-            <div className="mt-6 sm:mt-8">
-              <button className="w-full py-3 sm:py-4 bg-white/10 hover:bg-white/20 text-white text-sm sm:text-base rounded-lg font-headline font-bold transition-colors border border-white/10">
-                Read Case Study
-              </button>
+            <div className="relative z-10 mt-6 sm:mt-8 flex flex-col gap-3">
+              <Link
+                to="/viduvaru"
+                className="w-full py-3 sm:py-4 bg-white/10 hover:bg-white/20 text-white text-center text-sm sm:text-base rounded-lg font-headline font-bold transition-colors border border-white/10"
+              >
+                See Viduvaru
+              </Link>
+              <a
+                href={featured.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-center text-xs font-bold uppercase tracking-widest text-white/90 hover:text-white"
+              >
+                Visit live site ↗
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="max-w-7xl overflow-x-hidden mx-auto px-6 md:px-6 lg:px-0 py-12">
+      <section id="projects" className="max-w-7xl overflow-x-hidden mx-auto px-6 md:px-6 lg:px-0 py-12 scroll-mt-24">
         <div className="flex flex-col gap-6 mb-8 sm:flex-row sm:items-center sm:justify-between sm:mb-10 md:mb-12">
           <h2 className="text-2xl font-headline font-extrabold text-primary tracking-tight sm:text-3xl md:text-4xl">
             Recent Deployments
           </h2>
-          <div className="flex gap-2 flex-wrap">
-            <span className="px-4 py-1.5 text-sm sm:px-5 sm:py-2 sm:text-base bg-surface-container-highest text-primary font-bold rounded-full cursor-pointer hover:bg-secondary-fixed transition-colors">
-              All
-            </span>
-            <span className="px-4 py-1.5 text-sm sm:px-5 sm:py-2 sm:text-base bg-surface-container-low text-on-surface-variant font-medium rounded-full cursor-pointer hover:bg-secondary-fixed transition-colors">
-              Resorts
-            </span>
-            <span className="px-4 py-1.5 text-sm sm:px-5 sm:py-2 sm:text-base bg-surface-container-low text-on-surface-variant font-medium rounded-full cursor-pointer hover:bg-secondary-fixed transition-colors">
-              Marine
-            </span>
-          </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {projects.map((project, index) => (
@@ -331,20 +225,20 @@ function OurWorkPage() {
                 </div>
 
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-semibold tracking-tight leading-[1.1] text-white">
-                  Ready to transform your
+                  Ready to build your
                   <br className="hidden sm:block" />
-                  resort experience?
+                  next system?
                 </h2>
 
                 <p className="mt-5 max-w-lg text-base sm:text-lg leading-relaxed text-slate-200">
-                  Join the Maldives&apos; leading hospitality brands in the
-                  digital future.
+                  Tell us how your business runs today. We work Maldives hours
+                  (MVT, UTC+5) and reply on WhatsApp, phone or email.
                 </p>
 
                 {/* Buttons */}
                 <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-4 max-w-md sm:max-w-none">
-                  <button
-                    type="button"
+                  <Link
+                    to="/contact"
                     className="group relative flex items-center justify-center gap-3 sm:justify-between overflow-hidden rounded-xl bg-primary px-7 py-3 text-xs font-bold uppercase tracking-[0.2em] text-white shadow-lg transition-all duration-500 hover:bg-primary/90 hover:shadow-[0_0_35px_rgba(0,112,243,0.5)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 sm:min-w-[220px]"
                   >
                     <span className="relative z-10">Start a Project</span>
@@ -354,10 +248,10 @@ function OurWorkPage() {
                     </span>
 
                     <div className="absolute inset-0 translate-x-[-100%] bg-white/20 transition-transform duration-700 group-hover:translate-x-0" />
-                  </button>
+                  </Link>
 
-                  <button
-                    type="button"
+                  <Link
+                    to="/services"
                     className="group flex items-center justify-center gap-3 sm:justify-between rounded-xl border border-white/20 bg-slate-900/40 px-7 py-3 text-xs font-bold uppercase tracking-[0.2em] text-white backdrop-blur-xl transition-all duration-300 hover:bg-white hover:text-slate-950 hover:border-white active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 sm:min-w-[220px]"
                   >
                     <span>View all Services</span>
@@ -365,7 +259,7 @@ function OurWorkPage() {
                     <span className="flex h-6 w-6 shrink-0 items-center justify-center text-slate-300 transition-all duration-300 group-hover:text-slate-950 group-hover:translate-x-1">
                       →
                     </span>
-                  </button>
+                  </Link>
                 </div>
               </div>
 

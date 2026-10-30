@@ -153,7 +153,7 @@ export const ROUTES: RouteSeo[] = [
     path: '/industries/tourism-hospitality',
     title: 'Tourism & Hospitality Software for Tour Operators, DMCs & Hotels | LushWare',
     description:
-      'Booking, travel CRM, hotel and property management with AI demand forecasting for tour operators, DMCs and hotels in Europe, Asia Pacific, the Middle East and South Asia (GCC, Sri Lanka, India, Maldives).',
+      'Booking, travel CRM, hotel and property management with AI demand forecasting for tour operators, DMCs and hotels in Europe, Asia Pacific, the Middle East and South Asia (GCC, Sri Lanka, India).',
     service: 'Tourism and Hospitality Software',
     market: 'tourism',
     priority: 0.8,

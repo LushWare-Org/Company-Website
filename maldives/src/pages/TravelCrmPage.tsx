@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import FAQSection from "../components/FAQSection";
 import { getRouteFaq } from "../data/faq";
+import PageOutline from "../components/PageOutline";
 import InquiryForm from "../components/InquiryForm";
 import WhyChooseUs from "../components/WhyChooseUs";
 
@@ -150,20 +151,21 @@ function TravelCrmPage() {
 
           {/* Stronger, Cleaner Typographic Hierarchy */}
           <h1 className="mt-6 font-headline text-5xl font-extrabold tracking-tight text-on-surface leading-[1.2] xs:text-4xl sm:mt-8 sm:text-5xl sm:leading-[1.15] md:text-6xl lg:text-7xl">
-            <span className="block text-balance">Run Your Entire</span>
+            <span className="block text-balance">Travel Agency CRM for</span>
             <span className="mt-1 block sm:mt-2">
               <span className="bg-gradient-to-r from-primary via-primary/90 to-primary-container bg-clip-text text-transparent drop-shadow-sm">
-                Travel Business
+                Maldives Tour Operators
               </span>{" "}
-              <span className="text-on-surface">From One Platform</span>
+              <span className="text-on-surface">& DMCs</span>
             </span>
           </h1>
 
           {/* Optimized Description Reading Width */}
           <p className="mx-auto mt-4 max-w-xs text-sm leading-relaxed text-on-surface-variant font-medium xs:max-w-sm sm:mt-6 sm:max-w-2xl sm:text-lg md:text-xl">
-            Customer relationships, tour packages, quotations, invoicing, and
-            finances — one AI-powered CRM built for travel agencies and tour
-            operators, not a generic sales tool with travel bolted on.
+            Built for travel agencies, tour operators and DMCs selling the
+            Maldives. Customer relationships, tour packages, quotations,
+            invoicing and finances in one AI-powered CRM — not a generic sales
+            tool with travel bolted on.
           </p>
 
           {/* Premium Split-Action Controller */}
@@ -825,6 +827,8 @@ function TravelCrmPage() {
           ))}
         </div>
       </section>
+
+      <PageOutline path="/travel-crm" />
 
       <FAQSection
         items={getRouteFaq("/travel-crm")}

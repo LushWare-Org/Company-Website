@@ -198,9 +198,10 @@ export const MARKETS: Record<MarketId, Market> = {
     shortRegions: 'EU · APAC · GCC · South Asia',
     heading: 'Built for travel businesses in Europe, Asia Pacific, the Gulf and South Asia',
     intro:
-      'We build booking, CRM and operations software for tour operators, DMCs, travel agencies and hotels across the EU, Asia Pacific, the GCC, Sri Lanka, India and the Maldives — with the channels, payments, languages and data rules those markets expect.',
-    regions: ['European Union', 'Asia Pacific', 'Middle East (GCC)', 'Sri Lanka', 'India', 'Maldives'],
-    areaServed: [...EU, ...GCC, 'JP', 'KR', 'CN', 'TH', 'SG', 'MY', 'ID', 'VN', 'AU', 'LK', 'IN', 'MV'],
+      'We build booking, CRM and operations software for tour operators, DMCs, travel agencies and hotels across the EU, Asia Pacific, the GCC, Sri Lanka and India — with the channels, payments, languages and data rules those markets expect.',
+    // The Maldives is served by mv.lushware.net, so it is not targeted here.
+    regions: ['European Union', 'Asia Pacific', 'Middle East (GCC)', 'Sri Lanka', 'India'],
+    areaServed: [...EU, ...GCC, 'JP', 'KR', 'CN', 'TH', 'SG', 'MY', 'ID', 'VN', 'AU', 'LK', 'IN'],
     integrations: [
       'Booking.com, Expedia and Agoda channel connections',
       'GDS connectivity through Amadeus and Sabre',
@@ -218,7 +219,7 @@ export const MARKETS: Record<MarketId, Market> = {
       'Seasonal and peak-period demand forecasting per source market',
       'Meetings booked in your local time zone',
     ],
-    hours: 'CET, GST, Maldives (MVT), IST, SGT and AEST',
+    hours: 'CET, GST, IST, SGT and AEST',
     buyerFaq: (product) => [
       {
         question: `How much does ${product} cost?`,

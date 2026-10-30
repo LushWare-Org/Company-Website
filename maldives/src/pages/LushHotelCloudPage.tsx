@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import FAQSection from "../components/FAQSection";
 import { getRouteFaq } from "../data/faq";
+import PageOutline from "../components/PageOutline";
 import InquiryForm from "../components/InquiryForm";
 
 // TODO: replace with the client's live WhatsApp Business number (international format, no + or spaces)
@@ -153,18 +154,19 @@ function GuestHouseManagementSystemPage() {
           {/* Stronger, Cleaner Typographic Hierarchy */}
           <h1 className="mt-6 font-headline text-5xl font-extrabold tracking-tight text-on-surface leading-[1.2] xs:text-4xl sm:mt-8 sm:text-5xl sm:leading-[1.15] md:text-6xl lg:text-7xl">
             <span className="block text-balance">
-              Simplify Every Aspect of Your
+              Guest House Management
             </span>
             <span className="mt-1 block bg-gradient-to-r from-primary via-primary/90 to-primary-container bg-clip-text text-transparent drop-shadow-sm py-1 sm:mt-2">
-              Guest House Operations
+              Software for the Maldives
             </span>
           </h1>
 
           {/* Optimized Description Reading Width */}
           <p className="mx-auto mt-4 max-w-xs text-sm leading-relaxed text-on-surface-variant font-medium xs:max-w-sm sm:mt-6 sm:max-w-2xl sm:text-lg md:text-xl">
-            Manage reservations, rooms, finances, housekeeping, maintenance and
-            daily operations from one cloud-based platform, built for guest
-            houses, B&Bs and small hotels.
+            Built for guest houses and small hotels on Maafushi, Thulusdhoo,
+            Dhigurah and every local island. Manage reservations, rooms,
+            finances, housekeeping, maintenance and daily operations from one
+            cloud-based platform.
           </p>
 
           {/* Premium Split-Action Controller */}
@@ -925,6 +927,8 @@ function GuestHouseManagementSystemPage() {
           </div>
         </div>
       </section>
+
+      <PageOutline path="/hotelcloud" />
 
       <FAQSection
         items={getRouteFaq("/hotelcloud")}

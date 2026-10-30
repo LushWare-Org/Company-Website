@@ -41,7 +41,7 @@ const slides = [
     tagline: "Enterprise Property Management",
     title: "Property Management, Perfected for Travel Agencies",
     description:
-      "A refined PMS built for the Maldives' most prestigious travel agencies — unify reservations, villas and guest data in one command centre.",
+      "A property management system for Maldivian travel agencies — unify reservations, villas and guest data in one command centre.",
     image: "/hero/property.webp",
     ctaLink: "/real-estate-control",
     ctaLabel: "Explore the PMS",
@@ -181,11 +181,11 @@ const HeroSection = () => {
               flex-wrap + min-w-0/truncate keep the badge from forcing
               horizontal overflow on narrow phones; sm: and up are untouched. */}
           <div className="flex items-start sm:items-center justify-between gap-2 flex-wrap sm:flex-nowrap px-2 sm:px-4">
-            <span className="inline-flex items-center gap-2 sm:gap-2.5 min-w-0 max-w-full bg-on-surface/40 backdrop-blur-md text-inverse-on-surface rounded-full pl-3 pr-4 py-1.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest shadow-sm">
+            <h1 className="inline-flex items-center gap-2 sm:gap-2.5 min-w-0 max-w-full bg-on-surface/40 backdrop-blur-md text-inverse-on-surface rounded-full pl-3 pr-4 py-1.5 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest shadow-sm">
               <span className="truncate">
-                Premium Travel Tech Solution Provider — Maldives
+                Software for Maldives Guest Houses, Travel Agencies &amp; Transfer Operators
               </span>
-            </span>
+            </h1>
             <div className="text-sm font-mono font-bold text-on-surface/50 tracking-widest bg-surface-container-lowest/60 backdrop-blur-md px-3 py-1 rounded-lg border border-outline-variant/40 hidden sm:block shrink-0">
               <span>0{current + 1}</span>{" "}
               <span className="text-outline">/</span> 0{slides.length}
@@ -213,9 +213,9 @@ const HeroSection = () => {
                     {slides[current].tagline}
                   </span>
 
-                  <h1 className="font-headline text-xl sm:text-3xl md:text-4xl font-black text-on-surface tracking-tight leading-[1.15]">
+                  <h2 className="font-headline text-xl sm:text-3xl md:text-4xl font-black text-on-surface tracking-tight leading-[1.15]">
                     {slides[current].title}
-                  </h1>
+                  </h2>
 
                   <p className="text-xs sm:text-sm text-on-surface-variant font-semibold leading-relaxed">
                     {slides[current].description}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import FAQSection from "../components/FAQSection";
 import { getRouteFaq } from "../data/faq";
+import PageOutline from "../components/PageOutline";
 import InquiryForm from "../components/InquiryForm";
 import WhyChooseUs from "../components/WhyChooseUs";
 
@@ -69,18 +70,19 @@ function ViduvaruTransportPage() {
             {/* Stronger, Cleaner Typographic Hierarchy */}
             <h1 className="mt-6 font-headline text-5xl font-extrabold tracking-tight text-on-surface leading-[1.2] xs:text-4xl sm:mt-8 sm:text-5xl sm:leading-[1.15] md:text-6xl lg:text-7xl">
               <span className="block text-balance">
-                Run Your Speedboat Business
+                Speedboat Booking & Ticketing
               </span>
               <span className="mt-1 block bg-gradient-to-r from-primary via-primary/90 to-primary-container bg-clip-text text-transparent drop-shadow-sm py-1 sm:mt-2">
-                From One Platform
+                Software for the Maldives
               </span>
             </h1>
 
             {/* Optimized Description Reading Width */}
             <p className="mx-auto mt-4 max-w-xs text-sm leading-relaxed text-on-surface-variant font-medium xs:max-w-sm sm:mt-6 sm:max-w-2xl sm:text-lg md:text-xl">
-              Routes, bookings, boats, guest house partnerships, payments, and
-              performance — one cloud-based system built for Maldivian
-              speedboat, ferry, and water taxi operators.
+              Built for Maldivian speedboat, ferry and water taxi operators
+              running transfers between Malé, the airport and the islands.
+              Routes, bookings, boats, guest house partnerships, payments and
+              performance in one cloud-based system.
             </p>
 
             {/* Premium Split-Action Controller */}
@@ -600,6 +602,8 @@ function ViduvaruTransportPage() {
             </div>
           </div>
         </section>
+
+        <PageOutline path="/viduvaru" />
 
         <FAQSection
           items={getRouteFaq("/viduvaru")}

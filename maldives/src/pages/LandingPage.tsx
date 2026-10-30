@@ -6,13 +6,16 @@ import { motion } from "framer-motion";
 import HowItWorksSection from "../components/HowItWorksSection";
 import { useEffect, useState } from "react";
 import HeroSection from "../components/HeroSection";
+import PageOutline from "../components/PageOutline";
+import FAQSection from "../components/FAQSection";
+import { getRouteFaq } from "../data/faq";
 
 const ecosystemCards = [
   {
     icon: "directions_boat",
-    title: "Viduvaru Boats",
+    title: "Viduvaru Speedboat Ticketing",
     description:
-      "Reliable inter-island boat service connecting resorts and local destinations.",
+      "Booking and ticketing software for speedboat, ferry and water taxi operators.",
     route: "/viduvaru",
     textColor: "text-primary",
     bgColor: "bg-primary/10",
@@ -21,7 +24,7 @@ const ecosystemCards = [
     icon: "holiday_village",
     title: "Lush Hotel Cloud",
     description:
-      "Premium guest experience platform optimized for luxury island resort environments.",
+      "Guest house management software for guest houses and small hotels on local islands.",
     route: "/hotelcloud",
     textColor: "text-secondary",
     bgColor: "bg-secondary/10",
@@ -30,16 +33,16 @@ const ecosystemCards = [
     icon: "apartment",
     title: "Property Management",
     description:
-      "Next-generation PMS specifically engineered for multi-island property scaling.",
+      "Property management system for agencies managing properties across many islands.",
     route: "/real-estate-control",
     textColor: "text-tertiary",
     bgColor: "bg-tertiary/10",
   },
   {
     icon: "diversity_3",
-    title: "Agency CRM",
+    title: "Travel Agency CRM",
     description:
-      "Deep relationship management for travel agencies and destination managers.",
+      "Enquiries, packages, quotations and invoices for travel agencies, tour operators and DMCs.",
     route: "/travel-crm",
     textColor: "text-primary-container",
     bgColor: "bg-primary-container/10",
@@ -453,6 +456,14 @@ function LandingPage() {
         </section>
 
         <HowItWorksSection />
+
+        <PageOutline path="/" />
+
+        <FAQSection
+          items={getRouteFaq("/")}
+          title="Frequently Asked Questions"
+          subtitle="About LushWare software for Maldives tourism businesses"
+        />
 
         <section className="bg-[#Ffffff]  px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-32">
           <div className="relative mb-6 md:mb-12 w-full  py-8 sm:py-10 overflow-visible md:py-12">
