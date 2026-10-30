@@ -2,6 +2,8 @@
 // Used at runtime by <Seo /> (client-side navigation) and at build time by
 // scripts/prerender.mjs (static HTML, sitemap.xml, robots.txt).
 
+import { faqPageJsonLd, getRouteFaq } from '../data/faq'
+
 export const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://mv.lushware.net').replace(/\/$/, '')
 export const SITE_NAME = 'LushWare Maldives'
 export const DEFAULT_OG_IMAGE = '/og-image.jpg'
@@ -21,6 +23,17 @@ export const ORGANIZATION = {
   ],
 }
 
+/** Malé office for the LocalBusiness schema on / and /contact. Empty fields are left out of the JSON-LD. */
+export const LOCAL_BUSINESS = {
+  name: 'LushWare Maldives',
+  // TODO: fill in the Malé street address, postcode and Maldives (+960) phone number.
+  streetAddress: '',
+  addressLocality: 'Malé',
+  postalCode: '',
+  addressCountry: 'MV',
+  telephone: '',
+}
+
 export type RouteSeo = {
   path: string
   title: string
@@ -29,6 +42,8 @@ export type RouteSeo = {
   noindex?: boolean
   /** schema.org Service name for product/service pages. */
   service?: string
+  /** schema.org SoftwareApplication name for product pages (used instead of `service`). */
+  software?: string
   priority?: number
   changefreq?: 'weekly' | 'monthly' | 'yearly'
   breadcrumb?: { name: string; path: string }[]
@@ -50,7 +65,7 @@ export const ROUTES: RouteSeo[] = [
     title: 'Guest House & Hotel Management Software Maldives | Lush Hotel Cloud',
     description:
       'Manage reservations, rooms, finances, housekeeping and maintenance from one cloud platform built for Maldives guest houses, B&Bs and small hotels.',
-    service: 'Guest House Management Software',
+    software: 'Lush Hotel Cloud',
     breadcrumb: [services],
     priority: 0.9,
   },
@@ -59,7 +74,7 @@ export const ROUTES: RouteSeo[] = [
     title: 'Speedboat Ticketing & Transport Software Maldives | Viduvaru',
     description:
       'Routes, bookings, boats, guest house partnerships and payments in one cloud system for Maldivian speedboat, ferry and water taxi operators.',
-    service: 'Speedboat Ticketing and Operations Software',
+    software: 'Viduvaru',
     breadcrumb: [services],
     priority: 0.9,
   },
@@ -68,7 +83,7 @@ export const ROUTES: RouteSeo[] = [
     title: 'Travel Agency CRM Maldives — AI-Powered Tour Operator CRM | LushWare',
     description:
       'Customer relationships, tour packages, quotations, invoicing and finances in one AI-powered CRM built for Maldives travel agencies and tour operators.',
-    service: 'Travel Agency CRM',
+    software: 'LushWare Travel CRM',
     breadcrumb: [services],
     priority: 0.9,
   },
@@ -151,7 +166,40 @@ export function getStructuredData(route: RouteSeo): object[] {
       publisher: { '@id': `${SITE_URL}/#organization` },
     })
   }
-  if (route.service) {
+  if (route.path === '/' || route.path === '/contact') {
+    const b = LOCAL_BUSINESS
+    data.push({
+      '@type': 'LocalBusiness',
+      '@id': `${SITE_URL}/#localbusiness`,
+      name: b.name,
+      url: `${SITE_URL}/`,
+      image: absoluteUrl(DEFAULT_OG_IMAGE),
+      logo: absoluteUrl(ORGANIZATION.logo),
+      email: ORGANIZATION.email,
+      telephone: b.telephone || ORGANIZATION.telephone,
+      address: {
+        '@type': 'PostalAddress',
+        ...(b.streetAddress && { streetAddress: b.streetAddress }),
+        addressLocality: b.addressLocality,
+        ...(b.postalCode && { postalCode: b.postalCode }),
+        addressCountry: b.addressCountry,
+      },
+      areaServed: { '@type': 'Country', name: 'Maldives' },
+      parentOrganization: { '@id': `${SITE_URL}/#organization` },
+    })
+  }
+  if (route.software) {
+    data.push({
+      '@type': 'SoftwareApplication',
+      name: route.software,
+      description: route.description,
+      url: absoluteUrl(route.path),
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      publisher: org,
+      areaServed: { '@type': 'Country', name: 'Maldives' },
+    })
+  } else if (route.service) {
     data.push({
       '@type': 'Service',
       name: route.service,
@@ -174,6 +222,8 @@ export function getStructuredData(route: RouteSeo): object[] {
       })),
     })
   }
+  const faq = route.noindex ? [] : getRouteFaq(route.path)
+  if (faq.length) data.push(faqPageJsonLd(faq))
   return data.length ? [{ '@context': 'https://schema.org', '@graph': data }] : []
 }
 

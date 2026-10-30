@@ -1,42 +1,11 @@
 import FAQSection from "../components/FAQSection";
+import { getRouteFaq } from "../data/faq";
 import WhyChooseUs from "../components/WhyChooseUs.tsx";
 import { Link } from "react-router-dom";
 
 const WHATSAPP_NUMBER = "94716430053";
 const WHATSAPP_SERVICES_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi LushWare! I'm interested in your digital services for my business. Could we schedule a free consultation to discuss my needs?")}`;
 
-const servicesFAQs = [
-  {
-    id: "services-faq-1",
-    question: "What types of services does LushWare offer?",
-    answer:
-      "We specialize in digital transformation services tailored for Maldivian hospitality and enterprise businesses. Our offerings include CRM software, AI agents & chatbots, BPM automation, custom websites, and native mobile app development for iOS and Android.",
-  },
-  {
-    id: "services-faq-2",
-    question: "How long does a typical project take to complete?",
-    answer:
-      "Project timelines vary based on scope and complexity. A custom website typically takes 6-12 weeks, mobile apps 4-6 months, and enterprise CRM systems 8-16 weeks. We provide detailed timelines and milestone schedules during the initial consultation phase.",
-  },
-  {
-    id: "services-faq-3",
-    question: "Do you provide ongoing support and maintenance?",
-    answer:
-      "Absolutely! We offer comprehensive post-launch support including regular updates, security patches, feature enhancements, and 24/7 technical assistance. Our support packages are customized to your needs and can be scaled as your business grows.",
-  },
-  {
-    id: "services-faq-4",
-    question: "Can you integrate with our existing systems?",
-    answer:
-      "Yes, integration is one of our core strengths. We connect new solutions with your existing systems, databases, and third-party tools seamlessly. Our APIs and custom integration work ensure smooth data flow across your entire technology stack.",
-  },
-  {
-    id: "services-faq-5",
-    question: "What happens if we need to scale our application?",
-    answer:
-      "Our solutions are built with scalability in mind from day one. Whether you need to handle more users, process more data, or expand to new features, our cloud-based architecture and modular design allow for seamless scaling without performance degradation.",
-  },
-];
 
 function ServicesPage() {
   return (
@@ -241,7 +210,7 @@ function ServicesPage() {
       </section>
 
       <FAQSection
-        items={servicesFAQs}
+        items={getRouteFaq("/services")}
         title="Services FAQs"
         subtitle="Common questions about our digital services and solutions"
       />

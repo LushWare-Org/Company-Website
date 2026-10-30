@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import FAQSection from "../components/FAQSection";
+import { getRouteFaq } from "../data/faq";
 import InquiryForm from "../components/InquiryForm";
 import WhyChooseUs from "../components/WhyChooseUs";
 
@@ -93,44 +94,6 @@ const coreFeatureBlurbs = {
   },
 };
 
-const travelCrmFAQs = [
-  {
-    id: "crm-faq-1",
-    question: "Can I manage all my customer enquiries in one place?",
-    answer:
-      "Yes. Every enquiry, conversation, and booking is logged against a single customer profile, so your whole team can see the full history without digging through old emails.",
-  },
-  {
-    id: "crm-faq-2",
-    question: "Can the system generate travel itineraries automatically?",
-    answer:
-      "Yes. The AI itinerary generator drafts a complete multi-day plan from your package details and customer preferences, ready to fine-tune and export as a professional document.",
-  },
-  {
-    id: "crm-faq-3",
-    question: "Can I create quotations and invoices from the same platform?",
-    answer:
-      "Yes. Quotations, invoices, and receipts are generated from the same booking data, so pricing stays consistent from the first proposal to the final receipt — no re-typing figures.",
-  },
-  {
-    id: "crm-faq-4",
-    question: "Can I manage more than one tour package at a time?",
-    answer:
-      "Yes. Create, categorize, and update as many packages as you run, set pricing and availability per package, and promote your top sellers as featured listings.",
-  },
-  {
-    id: "crm-faq-5",
-    question: "Does the platform include financial reporting?",
-    answer:
-      "Yes. Income, expenses, and payments are tracked automatically, and the dashboard rolls them up into revenue summaries and profit reports whenever you need them.",
-  },
-  {
-    id: "crm-faq-6",
-    question: "Is the platform cloud-based?",
-    answer:
-      "Yes. It runs securely in the cloud, so you and your team can access customer records, packages, and finances from any device with an internet connection.",
-  },
-];
 
 const howItWorks = [
   {
@@ -864,7 +827,7 @@ function TravelCrmPage() {
       </section>
 
       <FAQSection
-        items={travelCrmFAQs}
+        items={getRouteFaq("/travel-crm")}
         title="Travel CRM FAQs"
         subtitle="Common questions about managing your travel business with Lushware's CRM"
       />

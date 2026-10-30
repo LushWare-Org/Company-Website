@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import FAQSection from "../components/FAQSection";
+import { getRouteFaq } from "../data/faq";
 import InquiryForm from "../components/InquiryForm";
 
 // TODO: replace with the client's live WhatsApp Business number (international format, no + or spaces)
@@ -106,50 +107,6 @@ const whyChoose = [
   "Scalable as your business grows",
 ];
 
-const guestHouseFAQs = [
-  {
-    id: "gh-faq-1",
-    question: "Can I manage multiple guest houses?",
-    answer:
-      "Yes. The platform supports managing multiple properties from a single account, so you can oversee each one without juggling separate systems.",
-  },
-  {
-    id: "gh-faq-2",
-    question: "Can guests make reservations online?",
-    answer:
-      "Yes. Guests can book directly online, and your availability updates instantly so every channel stays accurate.",
-  },
-  {
-    id: "gh-faq-3",
-    question: "Does the system prevent double bookings?",
-    answer:
-      "Yes. Room availability updates in real time across every booking source, which is what keeps double bookings from happening in the first place.",
-  },
-  {
-    id: "gh-faq-4",
-    question: "Can I track my business finances?",
-    answer:
-      "Yes. Income and expense tracking, invoicing, payment management and financial reporting are all built into the platform.",
-  },
-  {
-    id: "gh-faq-5",
-    question: "Does it include maintenance management?",
-    answer:
-      "Yes. You can log maintenance requests, assign them to staff and monitor progress until they're resolved.",
-  },
-  {
-    id: "gh-faq-6",
-    question: "Can I manage kitchen operations?",
-    answer:
-      "Yes. Restaurant order management, menu management and kitchen order processing are included for properties running food and beverage service.",
-  },
-  {
-    id: "gh-faq-7",
-    question: "Is the system cloud-based?",
-    answer:
-      "Yes. You can securely access your guest house from any device with an internet connection, wherever you are.",
-  },
-];
 
 function WhatsAppLink({
   children,
@@ -970,7 +927,7 @@ function GuestHouseManagementSystemPage() {
       </section>
 
       <FAQSection
-        items={guestHouseFAQs}
+        items={getRouteFaq("/hotelcloud")}
         title="Frequently Asked Questions"
         subtitle="Everything you need to know about the Guest House Management System"
       />

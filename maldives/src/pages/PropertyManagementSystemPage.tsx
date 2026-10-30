@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import FAQSection from "../components/FAQSection";
+import { getRouteFaq } from "../data/faq";
 
 // TODO: replace with the client's live WhatsApp Business number (international format, no + or spaces)
 const WHATSAPP_NUMBER = "94716430053";
@@ -10,38 +11,6 @@ const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponen
   WHATSAPP_MESSAGE,
 )}`;
 
-const faqItems = [
-  {
-    id: "faq-1",
-    question: "Can I manage multiple properties?",
-    answer:
-      "Yes. Add as many resorts, hotels, guest houses, restaurants or rental units as you operate, and manage every one of them from a single dashboard — no separate logins or spreadsheets per property.",
-  },
-  {
-    id: "faq-2",
-    question: "Can multiple staff members access the system?",
-    answer:
-      "Yes. Invite your reservations, finance and operations teams with their own logins and permission levels, so everyone works from the same up-to-date information without stepping on each other's bookings.",
-  },
-  {
-    id: "faq-3",
-    question: "Is my data securely stored?",
-    answer:
-      "Your data is encrypted, backed up automatically, and hosted on secure cloud infrastructure with regular audits — so property, booking and financial records stay protected and recoverable at all times.",
-  },
-  {
-    id: "faq-4",
-    question: "Can I access the system from my phone?",
-    answer:
-      "Yes. The platform is fully cloud-based and works on any device with a browser, so you can check availability, confirm a booking or review revenue from your phone, tablet or laptop, anywhere.",
-  },
-  {
-    id: "faq-5",
-    question: "Is training provided?",
-    answer:
-      "Yes. Every account comes with guided onboarding and hands-on training for your team, plus ongoing support so new staff can get up to speed quickly as your business grows.",
-  },
-];
 
 const audiences = [
   { icon: "confirmation_number", label: "Travel Agencies" },
@@ -783,7 +752,7 @@ function PropertyManagementSystemPage() {
 
       {/* 9. FAQ */}
       <FAQSection
-        items={faqItems}
+        items={getRouteFaq("/real-estate-control")}
         title="Frequently Asked Questions"
         subtitle="Everything you need to know about the Property Management System"
       />

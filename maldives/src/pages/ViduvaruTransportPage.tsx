@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import FAQSection from "../components/FAQSection";
+import { getRouteFaq } from "../data/faq";
 import InquiryForm from "../components/InquiryForm";
 import WhyChooseUs from "../components/WhyChooseUs";
 
@@ -41,44 +42,6 @@ const challenges = [
   },
 ];
 
-const transportFAQs = [
-  {
-    id: "transport-faq-1",
-    question: "Can I manage multiple boats and routes?",
-    answer:
-      "Yes. Register every boat in your fleet, assign it to routes, and manage schedules, destinations, and seat availability from a single dashboard.",
-  },
-  {
-    id: "transport-faq-2",
-    question: "Can customers book tickets online?",
-    answer:
-      "Yes. Customers reserve seats online, pay securely, and get an instant booking confirmation — no back-and-forth over the phone.",
-  },
-  {
-    id: "transport-faq-3",
-    question: "Can my staff still create bookings manually?",
-    answer:
-      "Yes. Staff can create, edit, and manage bookings directly in the dashboard for walk-ins or phone requests, with the same protection against double-booking.",
-  },
-  {
-    id: "transport-faq-4",
-    question: "Can guest houses book transfers through the platform?",
-    answer:
-      "Yes. Guest houses get their own portal to book transfers for guests, schedule special transportation, and track their reservations directly.",
-  },
-  {
-    id: "transport-faq-5",
-    question: "Can I monitor revenue and business performance?",
-    answer:
-      "Yes. The dashboard includes revenue tracking, daily income reports, and route performance so you always know how the business is doing.",
-  },
-  {
-    id: "transport-faq-6",
-    question: "Is the platform cloud-based?",
-    answer:
-      "Yes. Everything runs securely in the cloud, so you and your team can manage the business from anywhere with an internet connection.",
-  },
-];
 
 function ViduvaruTransportPage() {
   const [isInquiryOpen, setIsInquiryOpen] = useState(false);
@@ -639,7 +602,7 @@ function ViduvaruTransportPage() {
         </section>
 
         <FAQSection
-          items={transportFAQs}
+          items={getRouteFaq("/viduvaru")}
           title="Viduvaru Transport FAQs"
           subtitle="Everything you need to know about our fleet management and booking system"
         />

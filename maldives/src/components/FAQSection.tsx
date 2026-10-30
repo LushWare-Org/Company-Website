@@ -1,16 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
-interface FAQItem {
-  id: string;
-  question: string;
-  answer: string;
-}
+import type { Faq } from "../data/faq";
 
 interface FAQSectionProps {
   title?: string;
   subtitle?: string;
-  items: FAQItem[];
+  items: Faq[];
 }
 
 export default function FAQSection({
@@ -57,12 +52,12 @@ export default function FAQSection({
         {/* FAQ Items */}
         <div className="space-y-0">
           {items.map((item) => {
-            const isOpen = openId === item.id;
+            const isOpen = openId === item.question;
             return (
               <div
-                key={item.id}
+                key={item.question}
                 // Hover functionality added here
-                onMouseEnter={() => setOpenId(item.id)}
+                onMouseEnter={() => setOpenId(item.question)}
                 onMouseLeave={() => setOpenId(null)}
                 className={`group overflow-hidden rounded-2xl border transition-all duration-500 ease-out ${
                   isOpen 
@@ -72,7 +67,7 @@ export default function FAQSection({
               >
                 {/* Question Header */}
                 <button
-                  onClick={() => toggleFAQ(item.id)}
+                  onClick={() => toggleFAQ(item.question)}
                   className="flex w-full items-center justify-between gap-6 px-6 py-6 text-left sm:px-8 sm:py-6"
                 >
                   <span className={`font-headline text-lg font-bold transition-colors duration-300 sm:text-xl ${

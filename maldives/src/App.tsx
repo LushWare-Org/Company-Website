@@ -47,7 +47,7 @@ function App() {
           pointerEvents: 'none',
         }}
       >
-        {/* Kept mounted in the browser so Calendly preloads; prerendered only on /contact
+        {/* Kept mounted in the browser so Calendly, once loaded on /contact, stays ready; prerendered only on /contact
             so its copy isn't duplicated as hidden content on every static page. */}
         {(!isPrerender || isContactPage) && <ContactPage />}
       </div>

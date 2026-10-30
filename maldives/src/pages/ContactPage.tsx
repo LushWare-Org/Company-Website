@@ -24,11 +24,15 @@ const CALENDLY_PUBLIC_URL = "https://calendly.com/lushware-net";
 
 function ContactPage() {
   // This page stays mounted (hidden) on every route; it is only the page <h1> on /contact.
-  const Heading = useLocation().pathname === "/contact" ? "h1" : "h2";
+  const isContactPage = useLocation().pathname === "/contact";
+  const Heading = isContactPage ? "h1" : "h2";
   const calendlyRef = useRef<HTMLDivElement>(null);
 
+  // Calendly loads the first time /contact is opened (every booking button links
+  // there), then the widget stays in the hidden page for later visits.
   useEffect(() => {
     const container = calendlyRef.current;
+    if (!isContactPage || !container || container.childElementCount > 0) return;
     let cancelled = false;
 
     const initWidget = () => {
@@ -40,10 +44,11 @@ function ContactPage() {
       });
     };
 
+    let script: HTMLScriptElement | null = null;
     if (window.Calendly) {
       initWidget();
     } else {
-      let script = document.querySelector<HTMLScriptElement>(
+      script = document.querySelector<HTMLScriptElement>(
         `script[src="${CALENDLY_SCRIPT_SRC}"]`,
       );
       if (!script) {
@@ -57,9 +62,9 @@ function ContactPage() {
 
     return () => {
       cancelled = true;
-      if (container) container.innerHTML = "";
+      script?.removeEventListener("load", initWidget);
     };
-  }, []);
+  }, [isContactPage]);
 
   return (
     <main className="bg-[#ffffff] pt-24 md:pt-20 font-body text-on-surface">
