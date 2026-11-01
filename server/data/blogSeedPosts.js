@@ -1,0 +1,574 @@
+// Starter blog posts, inserted by scripts/seedBlog.js. One post per target
+// market, each aimed at an informational search term that the landing pages
+// don't target, and linking to the matching solution/industry pages.
+// Content uses the same HTML the admin editor produces (see client
+// src/components/blog/editor/extensions.ts); projects named here must be real
+// ones from client/src/data/work.ts.
+
+const SITE = (process.env.BLOG_SEED_SITE_URL || "https://lushware.net").replace(/\/$/, "");
+const img = (path) => `${SITE}${path}`;
+
+const ul = (...items) => `<ul>${items.map((i) => `<li><p>${i}</p></li>`).join("")}</ul>`;
+const ol = (...items) => `<ol>${items.map((i) => `<li><p>${i}</p></li>`).join("")}</ol>`;
+const tasks = (...items) =>
+  `<ul data-type="taskList">${items
+    .map((i) => `<li data-type="taskItem" data-checked="false"><label><input type="checkbox"><span></span></label><div><p>${i}</p></div></li>`)
+    .join("")}</ul>`;
+const table = (head, rows) =>
+  `<table><tbody><tr>${head.map((h) => `<th><p>${h}</p></th>`).join("")}</tr>${rows
+    .map((r) => `<tr>${r.map((c) => `<td><p>${c}</p></td>`).join("")}</tr>`)
+    .join("")}</tbody></table>`;
+const callout = (variant, html) => `<div class="callout callout-${variant}"><p>${html}</p></div>`;
+const figure = ({ src, alt, caption, align = "center", width = 100 }) =>
+  `<figure class="blog-figure align-${align}" style="width:${width}%" data-align="${align}" data-width="${width}"><img src="${src}" alt="${alt}">${
+    caption ? `<figcaption>${caption}</figcaption>` : ""
+  }</figure>`;
+const ext = (href, text) => `<a href="${href}" target="_blank">${text}</a>`;
+
+const author = { name: "LushWare Team", role: "Software Engineering" };
+
+module.exports = [
+  /* ── Trades (US · CA · AU · NZ) ─────────────────────────────────── */
+  {
+    title: "HVAC Maintenance Agreements: How to Sell, Schedule and Renew Them",
+    slug: "hvac-maintenance-agreements",
+    excerpt:
+      "What to put in an HVAC maintenance plan, how to price it from your real costs, and how to run visits and renewals without the office chasing paper.",
+    category: "Field Service",
+    tags: ["hvac", "maintenance agreements", "field service", "recurring revenue"],
+    featured: true,
+    author,
+    coverImage: { url: img("/Industry/hvac.jpg"), alt: "HVAC technician beside a heat pump and refrigerant gauges, ready for a visit under HVAC maintenance agreements" },
+    seo: {
+      metaTitle: "HVAC Maintenance Agreements: Sell, Schedule, Renew",
+      metaDescription:
+        "A practical guide to HVAC maintenance agreements: what to include, how to price plans, schedule visits automatically and stop renewals slipping away.",
+      focusKeyword: "HVAC maintenance agreements",
+      keywords: ["service agreement", "maintenance plan", "membership", "recurring revenue"],
+    },
+    content: [
+      `<p>HVAC maintenance agreements are the steadiest revenue a residential or light-commercial contractor can build. They fill the shoulder seasons, keep your best technicians busy when the phones go quiet, and turn one-off repair customers into households that call you first. Yet many shops sell plans at the kitchen table and then lose track of them in a spreadsheet. This guide covers what to put in a plan, how to price it, and how to run visits and renewals without the office chasing paper.</p>`,
+      `<h2>Why HVAC maintenance agreements matter</h2>`,
+      `<p>Equipment is more complex than it was a decade ago. Variable-speed compressors, communicating thermostats and heat pumps need regular attention to run at their rated efficiency. Homeowners know this, but few remember to book a tune-up twice a year. A plan makes that decision for them.</p>`,
+      `<p>For the contractor, the benefits stack up:</p>`,
+      ul(
+        "<strong>Predictable revenue.</strong> Plan payments arrive whether or not the weather cooperates.",
+        "<strong>Better scheduling.</strong> Tune-ups are booked in spring and autumn, before the peak heating and cooling rush.",
+        "<strong>More replacement opportunities.</strong> Technicians see ageing equipment early and can quote a replacement before it fails.",
+        "<strong>Loyal customers.</strong> Members rarely switch, because switching means losing their priority and discounts.",
+      ),
+      `<h2>What to include in a maintenance plan</h2>`,
+      `<p>Keep the offer simple enough to explain in under a minute. Most successful plans combine three things: scheduled visits, member benefits and clear terms.</p>`,
+      figure({
+        src: img("/Industry/havc.jpg"),
+        alt: "HVAC service tools: manifold gauges, multimeter, infrared thermometer, hoses and brass fittings",
+        caption: "A good plan spells out exactly what each tune-up checks.",
+        align: "right",
+        width: 45,
+      }),
+      `<h3>Scheduled visits</h3>`,
+      `<p>Specify how many visits per year are included, and which equipment each visit covers. A common pattern is a cooling check in spring and a heating check in autumn. Spell out the checklist: filters, coils, condensate drains, electrical connections, refrigerant pressures and safety controls.</p>`,
+      `<h3>Member benefits</h3>`,
+      `<p>Priority booking, waived diagnostic fees and a discount on repairs are the usual perks. Choose benefits your office can actually honour during a heatwave. A priority promise is worthless if members still wait three days.</p>`,
+      `<h3>Clear terms</h3>`,
+      `<p>State the term, how the plan renews and what is excluded. Does it renew automatically? How much notice does a customer need to cancel? Clear terms prevent disputes, and many states and provinces regulate auto-renewing consumer contracts.</p>`,
+      `<h2>How to price a plan</h2>`,
+      `<p>Start from cost, not from a competitor's flyer. Work out what one visit really costs you: technician time including travel, consumables such as filters, and the office time to book and confirm it. Multiply by the number of visits, then add the value of the discounts you are giving away.</p>`,
+      `<p>Next, decide how customers pay. Monthly billing lowers the barrier to joining, because the cost feels small. Annual billing improves cash flow but turns the renewal date into a bigger decision. Many contractors offer both, with a small saving for paying annually.</p>`,
+      `<p>Finally, consider tiers. A basic plan for one system and a premium plan with extra benefits lets customers choose without a long sales conversation. Here is an example structure to adapt to your own costs:</p>`,
+      table(
+        ["Plan element", "Basic", "Premium"],
+        [
+          ["Visits per year", "2", "2, plus an indoor air quality check"],
+          ["Repair discount", "10%", "15%"],
+          ["Diagnostic fee", "Standard", "Waived"],
+          ["Booking priority", "Ahead of non-members", "Same or next working day"],
+        ],
+      ),
+      `<h2>Scheduling visits without the spreadsheet</h2>`,
+      `<p>The hardest part of running HVAC maintenance agreements is not selling them. It is making sure every visit actually happens. When plans live in a spreadsheet, someone has to remember to check it, call each customer and find a slot on the board.</p>`,
+      `<p>Good <a href="/solutions/hvac-mep-service-software">HVAC service software</a> handles this automatically:</p>`,
+      ul(
+        "Each agreement creates its visits for the whole term the moment it is sold.",
+        "Visits are released into the schedule a few weeks ahead, grouped by area to cut drive time.",
+        "Customers get an SMS or email to confirm a time, and a reminder the day before.",
+        "The technician sees the plan, equipment history and checklist on their phone.",
+        "Completed checklists, photos and readings are stored against the equipment record.",
+      ),
+      `<p>Because each visit is tied to its agreement, you can see at a glance which members are overdue and which technicians have capacity to catch up.</p>`,
+      `<h2>Renewals: where most plans leak</h2>`,
+      `<p>A plan that is not renewed is a customer you paid to win and then let go. Renewals fail for predictable reasons: the card on file expired, nobody reminded the customer, or the customer forgot what the plan gave them.</p>`,
+      `<p>Fix each one deliberately:</p>`,
+      ol(
+        "<strong>Send a value summary before renewal.</strong> List the visits completed, issues found and money saved through member discounts.",
+        "<strong>Handle failed payments automatically.</strong> Retry the card and send a secure link to update payment details.",
+        "<strong>Flag at-risk members.</strong> Customers with a missed visit or an open complaint deserve a call before renewal day.",
+        "<strong>Make renewal the default.</strong> Where it is lawful, auto-renewal with clear notice stops good customers lapsing by accident.",
+      ),
+      callout(
+        "info",
+        `<strong>Keep refrigerant records with each visit.</strong> In the US, technicians who handle refrigerants must be certified under ${ext("https://www.epa.gov/section608", "EPA Section 608")}. Storing certification details and refrigerant readings with each visit keeps that evidence in one place.`,
+      ),
+      `<h2>Measuring whether your plans work</h2>`,
+      `<p>Track a handful of numbers every month:</p>`,
+      ul(
+        "<strong>Active members,</strong> and how many joined or cancelled this month.",
+        "<strong>Visit completion rate:</strong> visits done on time versus visits due.",
+        "<strong>Renewal rate</strong> for agreements that reached their end date.",
+        "<strong>Revenue per member,</strong> including repairs and replacements sold during plan visits.",
+      ),
+      `<p>If completion is low, the problem is capacity or scheduling. If renewals are low, the problem is usually communication. Either way, the numbers point you to the fix.</p>`,
+      `<h2>Bringing it together</h2>`,
+      `<p>HVAC maintenance agreements reward contractors who treat them as a system rather than a sales promotion. Define a simple offer, price it from your real costs, and let software generate visits, reminders and renewals. Your office spends less time chasing, and customers get the service they paid for.</p>`,
+      `<p>LushWare builds <a href="/industries/field-service">field service software</a> for HVAC, plumbing and electrical contractors in the US, Canada, Australia and New Zealand, with agreements, dispatch and invoicing set up around how your business already works. <a href="/contact">Book a free discovery call</a> to see what it would look like for your team.</p>`,
+    ].join(""),
+  },
+
+  /* ── Commercial HVAC & MEP (EU · GCC · Asia) ────────────────────── */
+  {
+    title: "How to Build an Audit-Ready PPM Schedule for Commercial HVAC & MEP",
+    slug: "ppm-schedule-commercial-hvac-mep",
+    excerpt:
+      "Asset registers, task frequencies, evidence and compliance reporting: a step-by-step guide to a PPM schedule that stands up to client audits and AMC reviews.",
+    category: "Commercial MEP",
+    tags: ["ppm", "amc", "facilities management", "commercial hvac", "mep"],
+    featured: false,
+    author,
+    coverImage: { url: img("/Industry/havc.jpg"), alt: "HVAC and MEP maintenance tools laid out for a PPM schedule visit" },
+    seo: {
+      metaTitle: "PPM Schedule Guide for Commercial HVAC & MEP",
+      metaDescription:
+        "Build a PPM schedule that passes audits: asset registers, task frequencies, evidence on every visit and AMC compliance reports for commercial HVAC and MEP.",
+      focusKeyword: "PPM schedule",
+      keywords: ["planned preventive maintenance", "AMC", "asset register", "SFG20", "SLA"],
+    },
+    content: [
+      `<p>A PPM schedule is the backbone of every commercial maintenance contract. It decides which assets are serviced, how often, by whom and to what standard. Built well, it tells your engineers exactly what to do and gives your client proof that it was done. Built badly, you find out during an audit, or when a chiller fails in July. This guide walks through building a PPM schedule for commercial HVAC and MEP portfolios that stands up to scrutiny.</p>`,
+      `<h2>What a PPM schedule actually is</h2>`,
+      `<p>Planned preventive maintenance (PPM) is work done at fixed intervals to keep equipment safe, compliant and efficient. The schedule turns an asset list into dated tasks across the year. For a contractor or FM provider it is also a commercial document. It defines the scope of an annual maintenance contract (AMC) and the evidence you owe the client.</p>`,
+      `<p>A good schedule answers five questions for every asset: what it is, where it is, what must be done, how often, and how completion is proven.</p>`,
+      `<h2>Step 1: Build a reliable asset register</h2>`,
+      `<p>You cannot schedule what you have not counted. Start with a site survey and give each maintainable asset a unique tag. Record at least:</p>`,
+      ul(
+        "Asset type, such as AHU, chiller, FCU, pump, distribution board or fire damper.",
+        "Location by building, floor and zone.",
+        "Manufacturer, model, serial number and installation date.",
+        "Criticality: what happens to the building if this asset fails?",
+        "The statutory requirements that apply to it.",
+      ),
+      `<p>On newer buildings, much of this data already exists in the BIM model or the O&amp;M manuals. Importing it saves weeks of manual entry and keeps asset names consistent with the drawings.</p>`,
+      `<h2>Step 2: Set task frequencies from a recognised standard</h2>`,
+      `<p>Frequencies should come from a defensible source, not from habit. Most contractors combine manufacturer guidance with an industry specification library. In the UK and on many international projects, ${ext("https://www.sfg20.co.uk/", "SFG20")} is the common reference. Other markets rely on ASHRAE, CIBSE, EN standards or local authority rules.</p>`,
+      `<p>Classify each task so the client understands its priority:</p>`,
+      table(
+        ["Category", "Meaning", "Example"],
+        [
+          ["Statutory", "Required by law or regulation", "Fire damper testing, pressure system inspections"],
+          ["Mandatory", "Required to keep a warranty or insurance valid", "Manufacturer-specified chiller servicing"],
+          ["Optimal", "Recommended for efficiency and asset life", "Coil cleaning, belt tension checks"],
+          ["Discretionary", "Useful, but can be deferred on budget grounds", "Cosmetic cleaning of plant rooms"],
+        ],
+      ),
+      `<p>Statutory requirements vary by country and building type, so confirm them for each site. The split matters when budgets are cut, because you can show the client exactly which tasks are safe to defer.</p>`,
+      `<h2>Step 3: Turn tasks into a balanced calendar</h2>`,
+      `<p>A list of frequencies is not yet a PPM schedule. Every task needs a date, and the workload needs balancing so engineers are not idle one month and overloaded the next.</p>`,
+      ul(
+        "Group tasks by site and zone, so one visit covers several assets.",
+        "Spread quarterly and annual tasks across the year instead of stacking them in January.",
+        "Service heating plant before winter and cooling plant before summer.",
+        "Agree access windows with the client, especially for offices, hospitals and hotels.",
+        "Leave capacity for reactive callouts, which will always arrive.",
+      ),
+      `<h2>Step 4: Capture evidence on every visit</h2>`,
+      figure({
+        src: img("/Industry/hvac.jpg"),
+        alt: "Maintenance engineer in a hard hat beside a heat pump, pipework and refrigerant gauges",
+        caption: "Readings and photos captured at the asset are the evidence behind every completed task.",
+        align: "right",
+        width: 40,
+      }),
+      `<p>An audit-ready PPM schedule is only as good as its evidence. Paper job sheets get lost, and spreadsheets cannot prove when work happened. Each completed task should record:</p>`,
+      ul(
+        "The engineer, date and time on site.",
+        "The checklist, with readings such as temperatures, pressures and currents.",
+        "Photos of the asset before and after, where relevant.",
+        "Defects found, with a recommended remedial quote.",
+        "A sign-off from the client's representative.",
+      ),
+      `<p>When engineers capture this on a mobile app at the asset, your monthly report almost writes itself.</p>`,
+      callout(
+        "warning",
+        "<strong>Missed PPM is a contract risk.</strong> Many AMCs carry SLA penalties for late or missed tasks. Track compliance weekly, not at month-end, so overdue work can be recovered before it becomes a penalty.",
+      ),
+      `<h2>Step 5: Report compliance the way clients read it</h2>`,
+      `<p>Facilities managers want three things from your monthly report: what was planned, what was completed, and what needs attention. Show PPM compliance as a percentage per site and per category, with overdue statutory tasks listed first. Add the remedial quotes raised, so the client can approve them quickly.</p>`,
+      `<p>Multi-site clients and regional FM providers also need roll-up views. A portfolio dashboard lets them compare sites and spot where performance is slipping.</p>`,
+      `<h2>Common PPM schedule mistakes</h2>`,
+      ol(
+        "<strong>Copying last year's schedule.</strong> Assets get added, replaced and decommissioned. Review the register at every renewal.",
+        "<strong>One frequency for everything.</strong> A critical chiller and a toilet extract fan do not deserve the same attention.",
+        "<strong>No link to the contract.</strong> If the schedule and the AMC scope disagree, you either over-deliver for free or under-deliver and pay penalties.",
+        "<strong>Evidence stored in email.</strong> If you cannot produce a signed checklist in minutes, it might as well not exist.",
+      ),
+      `<h2>Software that keeps the schedule honest</h2>`,
+      `<p>Spreadsheets work for one building. They break down across a portfolio of sites, contracts and engineers. Purpose-built <a href="/industries/commercial-hvac-mep">commercial HVAC and MEP software</a> generates the calendar from the asset register, assigns tasks to engineers, captures evidence on site and produces compliance reports automatically. It can also take alarms from the building management system, so reactive faults and planned work live in one place.</p>`,
+      `<p>LushWare builds these systems for contractors and FM providers across Europe, the Gulf and Asia, set up around your contracts, report formats and existing ERP. <a href="/contact">Talk to us</a> about turning your PPM schedule into something your team and your clients can trust.</p>`,
+    ].join(""),
+  },
+
+  /* ── Manufacturing (global) ─────────────────────────────────────── */
+  {
+    title: "How to Calculate OEE: Formula, Worked Example and Common Mistakes",
+    slug: "how-to-calculate-oee",
+    excerpt:
+      "The OEE formula explained step by step, a full worked example for one shift, the six big losses, and the mistakes that quietly inflate your score.",
+    category: "Manufacturing",
+    tags: ["oee", "manufacturing", "production monitoring", "lean manufacturing", "kpi"],
+    featured: false,
+    author,
+    coverImage: {
+      url: img("/hero4/manufacturing.jpg"),
+      alt: "Engineer reviewing a production dashboard next to automation hardware, learning how to calculate OEE from machine data",
+    },
+    seo: {
+      metaTitle: "How to Calculate OEE: Formula and Worked Example",
+      metaDescription:
+        "Learn how to calculate OEE step by step: availability, performance and quality, a worked shift example, the six big losses and mistakes that inflate scores.",
+      focusKeyword: "how to calculate OEE",
+      keywords: ["OEE formula", "availability", "performance", "quality", "six big losses", "downtime"],
+    },
+    content: [
+      `<p>Overall equipment effectiveness (OEE) is the most widely used measure of how well a machine or line turns planned time into good parts. Knowing how to calculate OEE correctly matters more than most teams expect. Two plants can report the same number while measuring very different things. This guide explains the formula, works through a full example, and lists the mistakes that quietly inflate scores.</p>`,
+      `<h2>The OEE formula</h2>`,
+      `<p>OEE multiplies three factors, each expressed as a percentage (see the ${ext("https://en.wikipedia.org/wiki/Overall_equipment_effectiveness", "standard definition")}):</p>`,
+      `<p><strong>OEE = Availability × Performance × Quality</strong></p>`,
+      ul(
+        "<strong>Availability</strong> captures stops: breakdowns, changeovers and material shortages. It is run time divided by planned production time.",
+        "<strong>Performance</strong> captures speed losses: slow cycles and short stops. It is ideal cycle time × total count, divided by run time.",
+        "<strong>Quality</strong> captures defects: scrap and rework. It is good count divided by total count.",
+      ),
+      `<p>Together, the result is the share of planned time spent making good parts at full speed. A score of 100% means no stops, no slow cycles and no defects.</p>`,
+      `<h2>How to calculate OEE: a worked example</h2>`,
+      `<p>Take one machine running a single eight-hour shift:</p>`,
+      table(
+        ["Input", "Value"],
+        [
+          ["Shift length", "480 minutes"],
+          ["Planned breaks", "30 minutes"],
+          ["Unplanned downtime", "45 minutes"],
+          ["Ideal cycle time", "1.0 minute per part"],
+          ["Total parts produced", "380"],
+          ["Rejected parts", "19"],
+        ],
+      ),
+      `<h3>Step 1: Availability</h3>`,
+      `<p>Planned production time is 480 − 30 = 450 minutes. Run time is 450 − 45 = 405 minutes. Availability is 405 ÷ 450 = <strong>90.0%</strong>.</p>`,
+      `<h3>Step 2: Performance</h3>`,
+      `<p>At the ideal rate, 405 minutes of run time would produce 405 parts. The machine made 380. Performance is (1.0 × 380) ÷ 405 = <strong>93.8%</strong>.</p>`,
+      `<h3>Step 3: Quality</h3>`,
+      `<p>Good parts are 380 − 19 = 361. Quality is 361 ÷ 380 = <strong>95.0%</strong>.</p>`,
+      `<h3>Step 4: OEE</h3>`,
+      `<p>OEE is 0.900 × 0.938 × 0.950 = <strong>80.2%</strong>.</p>`,
+      `<p>There is also a quick cross-check. Multiply good parts by the ideal cycle time and divide by planned production time: (361 × 1.0) ÷ 450 = 80.2%. If the two methods disagree, one of your inputs is wrong.</p>`,
+      callout(
+        "info",
+        "<strong>Is 80% good?</strong> 85% is widely quoted as world-class for discrete manufacturing. Treat it as a rough reference, not a target. The trend on your own line is far more useful than a comparison with someone else's.",
+      ),
+      `<h2>What counts as planned production time?</h2>`,
+      `<p>Planned production time is the shift length minus time when the machine was never meant to run, such as scheduled breaks, planned maintenance windows or a day with no orders. Everything else counts. That includes changeovers, waiting for materials and waiting for an operator.</p>`,
+      `<p>Be strict and consistent here. If one supervisor treats a changeover as planned and another does not, their OEE scores cannot be compared.</p>`,
+      `<h3>OEE vs TEEP</h3>`,
+      `<p>OEE measures how well you use the time you planned to run. TEEP (total effective equipment performance) measures against all calendar time, 24 hours a day, 7 days a week. TEEP shows how much hidden capacity you have before buying another machine or adding a shift.</p>`,
+      `<h2>What the three factors tell you</h2>`,
+      `<p>The headline number tells you there is a problem. The factors tell you where. In the example, availability is the weakest factor, so the 45 minutes of downtime is the first place to look. The classic way to organise losses is the six big losses:</p>`,
+      table(
+        ["Factor", "Loss", "Typical causes"],
+        [
+          ["Availability", "Equipment failure", "Breakdowns, tooling failures"],
+          ["Availability", "Setup and adjustment", "Changeovers, warm-up, material shortages"],
+          ["Performance", "Idling and minor stops", "Jams, blocked sensors, operator waits"],
+          ["Performance", "Reduced speed", "Worn equipment, conservative settings"],
+          ["Quality", "Process defects", "Scrap and rework during stable running"],
+          ["Quality", "Reduced yield", "Scrap during start-up after a changeover"],
+        ],
+      ),
+      `<p>Recording a reason for every stop is what turns OEE from a scorecard into an improvement tool.</p>`,
+      `<h2>Common mistakes when calculating OEE</h2>`,
+      ol(
+        "<strong>Using a standard cycle time instead of the ideal one.</strong> If the standard already includes slack, performance looks better than it is. Use the fastest cycle the machine is designed to sustain.",
+        "<strong>Excluding changeovers from planned time.</strong> Changeovers are a loss to reduce, not a break. Hiding them inflates availability.",
+        "<strong>Ignoring short stops.</strong> Stops of a minute or two rarely get written down, yet together they can cost more than one big breakdown.",
+        "<strong>Counting rework as good.</strong> Quality should count only parts that are right first time.",
+        "<strong>Averaging percentages across machines.</strong> Add up the underlying times and counts, then calculate. A simple average gives a small, idle machine the same weight as your bottleneck.",
+      ),
+      `<h2>From spreadsheets to automatic OEE</h2>`,
+      figure({
+        src: img("/hero4/iot2.jpg"),
+        alt: "Engineer assembling an IoT gateway and sensors that collect machine cycle and downtime data",
+        caption: "Sensors and gateways record every cycle and stop, so OEE no longer depends on handwritten logs.",
+        align: "left",
+        width: 45,
+      }),
+      `<p>Manual OEE relies on operators writing down stops and counts at the end of a shift. The numbers arrive late and short stops go missing. Automatic data collection fixes both problems. A sensor or PLC connection records every cycle and stop as it happens, and operators only tap a reason code.</p>`,
+      `<p>With live data you can see OEE by shift, product and loss category, and spot a falling trend before it becomes a missed delivery. It also lays the groundwork for <a href="/solutions/predictive-maintenance">predictive maintenance</a>, because the same machine data reveals the patterns that come before a failure.</p>`,
+      `<h2>Next steps</h2>`,
+      `<p>Now that you know how to calculate OEE, try it by hand for one bottleneck machine over a week. Once the team trusts the definitions, automate the data collection.</p>`,
+      `<p>LushWare builds <a href="/solutions/oee-monitoring">OEE monitoring</a> systems that connect to your existing machines and PLCs, and wider <a href="/industries/manufacturing">manufacturing software</a> for plants that want live production visibility. <a href="/contact">Get in touch</a> to talk about your line.</p>`,
+    ].join(""),
+  },
+
+  /* ── Logistics & supply chain (global) ──────────────────────────── */
+  {
+    title: "WMS Implementation: A Step-by-Step Checklist for Growing Warehouses",
+    slug: "wms-implementation-checklist",
+    excerpt:
+      "Process mapping, location and barcode design, data clean-up, integrations, testing and go-live: everything to prepare before switching on a warehouse management system.",
+    category: "Logistics",
+    tags: ["wms", "warehouse management", "logistics", "inventory", "barcodes"],
+    featured: false,
+    author,
+    coverImage: {
+      url: img("/hero4/logistics-supply-chain.jpg"),
+      alt: "Operations manager with a tablet beside a live shipments and inventory dashboard, planning a WMS implementation",
+    },
+    seo: {
+      metaTitle: "WMS Implementation Checklist for Growing Warehouses",
+      metaDescription:
+        "A practical WMS implementation checklist: process mapping, barcodes, data clean-up, integrations, testing and a go-live plan that avoids stock chaos.",
+      focusKeyword: "WMS implementation",
+      keywords: ["warehouse management system", "go-live", "barcode", "cycle counting", "inventory accuracy"],
+    },
+    content: [
+      `<p>A warehouse management system (WMS) can transform receiving, picking and shipping. A rushed WMS implementation can do the opposite: lost stock, late orders and a team that goes back to paper within a month. The difference is rarely the software itself. It is the preparation. This checklist covers what growing warehouses should do before, during and after go-live.</p>`,
+      `<h2>Signs you are ready for a WMS</h2>`,
+      `<p>Most warehouses start with spreadsheets or the stock module of their accounting or ERP system. That works until it doesn't. Common signs it is time to move:</p>`,
+      ul(
+        "Stock on the system rarely matches what is on the shelf.",
+        "New pickers take weeks to learn where everything is.",
+        "Orders are picked from paper lists and checked by eye.",
+        "You cannot see stock by location, batch or expiry date.",
+        "Peak season means overtime, mistakes and missed carrier cut-offs.",
+      ),
+      `<h2>Phase 1: Plan the WMS implementation</h2>`,
+      `<h3>Map your processes as they really are</h3>`,
+      `<p>Walk the floor and document each flow: receiving, put-away, replenishment, picking, packing, shipping and returns. Capture the exceptions too, such as short deliveries, damaged goods and urgent orders. The WMS will be configured around these flows. Gaps found now are cheap; gaps found after go-live are expensive.</p>`,
+      `<h3>Define what success looks like</h3>`,
+      `<p>Pick a few measurable goals before you choose software. Typical examples are inventory accuracy, orders shipped the same day, picks per hour and mis-shipments per thousand orders. Measure today's baseline, so you can prove the result later.</p>`,
+      `<h3>Choose the right scope</h3>`,
+      `<p>Resist switching on everything at once. A first phase covering receiving, locations, picking and shipping delivers most of the value. Wave planning, slotting optimisation and labour management can follow once the basics are stable.</p>`,
+      `<h3>Budget for more than the software</h3>`,
+      `<p>The licence or development cost is only part of the project. Budget for barcode labels and printers, scanners or rugged phones, Wi-Fi improvements, data clean-up time, training and a short period of reduced productivity after go-live. Projects that skip these items tend to overrun, or go live with gaps that staff fill with paper.</p>`,
+      `<h2>Phase 2: Prepare your data and warehouse</h2>`,
+      tasks(
+        "Give every location a unique, logical code, such as aisle, bay, level and position.",
+        `Label every location and product with a scannable barcode. ${ext("https://www.gs1.org/standards/barcodes", "GS1 barcode standards")} are the safe choice for products that leave your building.`,
+        "Clean the item master: units of measure, pack sizes, dimensions, weights and barcodes.",
+        "Remove obsolete items and duplicate SKUs before importing anything.",
+        "Decide which items need batch, serial number or expiry tracking.",
+        "Test scanners or mobile devices in the real building, including Wi-Fi dead zones and cold stores.",
+      ),
+      `<p>Data preparation is the step most often rushed, and the one behind most problems in a WMS implementation. A system that trusts bad data simply makes mistakes faster.</p>`,
+      `<h2>Phase 3: Connect the systems around it</h2>`,
+      `<p>A WMS rarely works alone. It needs orders from your sales channels and ERP, and it must send stock levels and shipment details back. List every integration and who owns it:</p>`,
+      ul(
+        "ERP or accounting system, for purchase orders, sales orders and stock valuation.",
+        "E-commerce platforms and marketplaces, for incoming orders.",
+        "Carrier and shipping platforms, for labels and tracking.",
+        "Supplier advance shipping notices, where suppliers can send them.",
+      ),
+      `<p>Agree which system is the master for each piece of data. If both the ERP and the WMS can change stock levels, they will eventually disagree.</p>`,
+      `<p>Decide how often each integration syncs, too. Orders and stock levels usually need to move in near real time, so you never sell stock that has already been picked. Financial postings can often run in batches at the end of the day.</p>`,
+      `<h2>Phase 4: Test, train and go live</h2>`,
+      `<h3>Test with real scenarios</h3>`,
+      `<p>Run end-to-end tests with real products, labels and devices. Include the awkward cases: a part-received purchase order, a pick from an empty location, an order cancelled after picking, a customer return.</p>`,
+      `<h3>Train by role</h3>`,
+      `<p>Pickers need ten minutes on a scanner, not a two-hour presentation. Supervisors need to know how to handle exceptions and read the dashboards. Train people as close to go-live as possible, on the actual devices.</p>`,
+      `<h3>Plan the cut-over</h3>`,
+      callout(
+        "warning",
+        "<strong>Never go live without a full stock count.</strong> Count every location the day before go-live, ideally with operations paused. Starting with accurate stock is what makes every later number trustworthy.",
+      ),
+      `<p>Choose a quiet period, avoid month-end, and keep the vendor or developer on hand for the first days. Expect a short dip in productivity while people adjust.</p>`,
+      `<h2>Phase 5: Stabilise and improve</h2>`,
+      figure({
+        src: img("/hero4/manufacturing.jpg"),
+        alt: "Analyst reviewing a warehouse operations dashboard with shipments, inventory and on-time delivery figures",
+        caption: "After go-live, a daily dashboard of exceptions and accuracy shows where the process still needs work.",
+        align: "center",
+        width: 80,
+      }),
+      `<p>The first month after go-live is when habits form. Review exceptions daily, fix configuration issues quickly and listen to the floor team. Replace the annual stock-take with cycle counting, so a few locations are checked every day and errors are caught while they are small.</p>`,
+      `<p>Then return to the goals from Phase 1. Compare inventory accuracy, same-day shipping and picks per hour against the baseline. Those numbers make the case for the next phase.</p>`,
+      `<h2>Off-the-shelf or custom WMS?</h2>`,
+      `<p>Packaged systems suit warehouses with standard processes. If your operation has unusual flows, such as kitting, cross-docking, consignment stock or mixed B2B and B2C channels, a configurable or custom system may fit better than one you have to work around. Our guide to <a href="/blog/custom-software-vs-off-the-shelf">custom software vs off-the-shelf</a> covers that decision in more detail.</p>`,
+      `<p>LushWare builds <a href="/solutions/warehouse-management">warehouse management systems</a> and wider <a href="/industries/logistics-supply-chain">logistics and supply chain software</a> around the way your warehouse already works, with barcode scanning, integrations and real-time stock visibility. <a href="/contact">Book a discovery call</a> to plan your WMS implementation.</p>`,
+    ].join(""),
+  },
+
+  /* ── Tourism (EU · Asia Pacific · GCC · South Asia) ─────────────── */
+  {
+    title: "Tour Operator Software: 9 Features That Actually Save Time",
+    slug: "tour-operator-software-features",
+    excerpt:
+      "Quotes, itineraries, supplier contracts, B2B agent portals, online payments and reporting: the nine features that matter most when choosing tour operator software.",
+    category: "Travel & Tourism",
+    tags: ["tour operators", "travel technology", "dmc", "booking engine", "travel crm"],
+    featured: false,
+    author,
+    coverImage: {
+      url: img("/solution/travel.webp"),
+      alt: "Traveller holding a passport and boarding pass while booking a trip online through tour operator software",
+    },
+    seo: {
+      metaTitle: "Tour Operator Software: 9 Features That Save Time",
+      metaDescription:
+        "What tour operator software should do: fast quotes, itineraries, supplier rates, B2B agent portals, payments and reporting, with examples from real projects.",
+      focusKeyword: "tour operator software",
+      keywords: ["travel agency software", "DMC software", "itinerary builder", "B2B travel portal", "booking engine"],
+    },
+    content: [
+      `<p>Tour operator software has one job: to let a small team handle more enquiries, bookings and travellers without more admin. Yet many operators still build quotes in spreadsheets, copy itineraries into Word and chase supplier confirmations by email. Whether you run a tour company, a destination management company (DMC) or a specialist travel agency, these are the nine features that make the biggest difference.</p>`,
+      `<h2>1. Fast, accurate quotations</h2>`,
+      `<p>Speed wins enquiries. The operator who sends a clear, priced proposal first often gets the booking. Good software builds a quote from your own contracted rates, applies seasons, occupancy rules, markups and currency, and produces a branded proposal in minutes.</p>`,
+      figure({
+        src: img("/work2/CrownVoyages.webp"),
+        alt: "Crown Voyages travel agency management system on laptop, tablet and phone, showing bookings, invoices and receipts",
+        caption: "Crown Voyages: a travel agency management system with automatic quotation generation, built by LushWare.",
+        align: "right",
+        width: 50,
+      }),
+      `<p>Automatic quoting was the core of <strong>Crown Voyages</strong>, a travel agency management system we built. Bookings, clients, invoices and daily operations sit in one place, so every quote comes from the same data the operations team uses.</p>`,
+      `<h2>2. A visual itinerary builder</h2>`,
+      `<p>Drag days, transfers, hotels and activities into a timeline, and the price updates automatically. Reusable templates for your most popular tours mean a new proposal starts mostly complete, not from a blank page.</p>`,
+      `<p>The same itinerary should serve everyone who needs it: a polished version with photos for the client, a day-by-day run sheet for guides and drivers, and a cost breakdown for your finance team. One source, three views, and no copying between documents.</p>`,
+      `<h2>3. Supplier contracts and rates in one place</h2>`,
+      `<p>Hotel contracts, allotments, stop-sales, child policies and special offers change constantly. Store them once, with validity dates, and let the system pick the right rate for each travel date. Rate errors are the most expensive kind, because they usually surface after the client has paid.</p>`,
+      `<h2>4. A travel CRM built around trips</h2>`,
+      `<p>Enquiries arrive by email, web forms, WhatsApp and phone. A good system captures them all into one pipeline, so nothing waits in a personal inbox. A generic CRM tracks deals. A travel CRM tracks travellers: preferences, past trips, passport details and special requests. It shows where each enquiry stands, who owes a follow-up and which past clients are due their next holiday.</p>`,
+      `<h2>5. A B2B portal for travel agents</h2>`,
+      `<p>If you sell through agents, give them self-service. A B2B portal lets partner agents search your products, see their net rates and commissions, and book or request quotes without emailing your team. We built this for <strong>Yomaldives</strong>, a B2B portal designed to help travel agents boost their revenue.</p>`,
+      `<h2>6. Online booking and payments</h2>`,
+      `<p>For direct customers, a booking engine on your own website turns browsers into buyers. Real-time availability, deposits, balance reminders and secure card payments remove days of back-and-forth. The <strong>Dream Speed</strong> booking system we developed lets travellers search speedboat routes, check availability and book their island transfers online.</p>`,
+      `<h2>7. Operations and supplier confirmations</h2>`,
+      `<p>Once a trip is booked, every service needs a confirmation: hotel, guide, driver, transfer and activity. Tour operator software should send supplier requests and vouchers automatically, track who has confirmed, and flag anything still pending close to departure.</p>`,
+      `<p>Travellers benefit as well. A shareable online itinerary with confirmed times, contact numbers and documents means fewer calls to your office, and an easy way to send last-minute changes. During the trip, your team can see exactly which services each group has booked.</p>`,
+      `<h2>8. Multi-currency finance and margins</h2>`,
+      `<p>Operators often buy in one currency and sell in another. You need cost, sell price and margin per booking and per currency, plus a clear view of what you owe suppliers and what clients owe you. An accounting integration avoids keying every invoice twice.</p>`,
+      `<h2>9. Reporting and compliance</h2>`,
+      `<p>Track the conversion rate from enquiry to booking, average margin per trip, revenue by source market and agent performance. In Europe, many packages also fall under the ${ext("https://eur-lex.europa.eu/eli/dir/2015/2302/oj", "EU Package Travel Directive")}, which sets rules on pre-contract information and traveller protection. Keeping terms and booking documents in the system makes those obligations easier to meet.</p>`,
+      `<h2>How to choose tour operator software</h2>`,
+      `<p>Feature lists look alike, so test platforms against your own work. Before you sign anything, ask each vendor to show you:</p>`,
+      ol(
+        "A real quote built from one of your own hotel contracts, with your seasons and child policies.",
+        "How a change to a confirmed booking flows through to suppliers, invoices and the client.",
+        "What a partner agent sees when they log in, and how their commission is calculated.",
+        "How payments, refunds and supplier balances appear in your accounting system.",
+        "How you export all your data if you ever leave.",
+      ),
+      `<p>Also check practical details: support hours in your time zone, the languages and currencies your markets need, and whether the price grows per user, per booking or per module.</p>`,
+      `<h2>Off-the-shelf or custom tour operator software?</h2>`,
+      `<p>Packaged platforms are quick to start and suit operators with standard products. They can struggle with unusual pricing, complex contracts, or a sales model that mixes direct, B2B and online channels. A custom system costs more upfront, but it fits your process and you own it.</p>`,
+      callout(
+        "info",
+        "<strong>A practical test:</strong> list the five tasks your team repeats most every week. If a platform cannot remove at least three of them without workarounds, it is not the right fit.",
+      ),
+      `<p>LushWare builds <a href="/solutions/travel-agency-software">travel agency software</a> and booking platforms for tour operators, DMCs and hotels across Europe, Asia Pacific, the Gulf and South Asia. See these projects and more on <a href="/work">our work page</a>, or explore our <a href="/industries/tourism-hospitality">tourism and hospitality software</a>. <a href="/contact">Book a call</a> to talk through your quoting and booking process.</p>`,
+    ].join(""),
+  },
+
+  /* ── SMBs (worldwide) ───────────────────────────────────────────── */
+  {
+    title: "Custom Software vs Off-the-Shelf: How to Decide Without Regret",
+    slug: "custom-software-vs-off-the-shelf",
+    excerpt:
+      "Cost, time to launch, fit, integrations and ownership compared honestly, plus a simple scoring framework to decide whether to build or buy your next system.",
+    category: "Custom Software",
+    tags: ["custom software", "saas", "build vs buy", "digital transformation", "small business"],
+    featured: false,
+    author,
+    coverImage: {
+      url: img("/hero4/crmnew2.jpg"),
+      alt: "Business owner presenting a sales pipeline dashboard while weighing custom software vs off-the-shelf",
+    },
+    seo: {
+      metaTitle: "Custom Software vs Off-the-Shelf: How to Decide",
+      metaDescription:
+        "Custom software vs off-the-shelf: compare cost, time to launch, fit, ownership and risk, then use a simple scoring framework to choose the right option.",
+      focusKeyword: "custom software vs off-the-shelf",
+      keywords: ["build vs buy", "bespoke software", "SaaS", "total cost of ownership"],
+    },
+    content: [
+      `<p>Every growing business reaches the point where spreadsheets and a patchwork of apps stop keeping up. Then comes the classic question: custom software vs off-the-shelf? Should you buy a ready-made product, or build something around how you work? Neither answer is always right. This guide compares the two honestly and gives you a simple way to decide.</p>`,
+      `<h2>What we mean by each option</h2>`,
+      `<p><strong>Off-the-shelf software</strong> is a ready-made product sold to many customers, today usually as a monthly SaaS subscription. Think of accounting packages, generic CRMs and project management tools.</p>`,
+      `<p><strong>Custom software</strong>, also called bespoke software, is designed and built around one organisation's processes. You decide the features, workflow and integrations, and you usually own the code.</p>`,
+      `<p>There is also a middle path: a packaged platform extended with custom modules or integrations. Many businesses end up there.</p>`,
+      `<h2>Custom software vs off-the-shelf at a glance</h2>`,
+      table(
+        ["Factor", "Off-the-shelf", "Custom"],
+        [
+          ["Upfront cost", "Low: a subscription and setup", "Higher: design and development"],
+          ["Ongoing cost", "Per-user fees that grow with your team", "Hosting, support and improvements"],
+          ["Time to start", "Days to weeks", "Weeks to months for a first version"],
+          ["Fit to your process", "You adapt to the product", "The product adapts to you"],
+          ["Integrations", "Limited to what the vendor supports", "Built for the systems you already use"],
+          ["Ownership", "You rent access; the vendor controls the roadmap", "You own the software and the data"],
+          ["Competitive edge", "Same tools as your competitors", "Can encode what makes you different"],
+        ],
+      ),
+      `<h2>When off-the-shelf is the right choice</h2>`,
+      `<p>Buy when the process is standard and not what sets you apart. Payroll, email, accounting and document storage are solved problems. Building them yourself is rarely worth it.</p>`,
+      `<p>Off-the-shelf also makes sense when you need something running this month, when your team is small and unlikely to grow fast, or when you are still learning what your process should be. A cheap subscription is a good way to discover your real requirements.</p>`,
+      `<p>Many businesses start this way and only build later, once they know which parts of the product they keep working around. That experience makes any later custom project faster and cheaper, because the requirements are already proven.</p>`,
+      `<h2>When custom software makes more sense</h2>`,
+      `<p>Build when the software sits close to how you make money. The signs are usually obvious:</p>`,
+      ul(
+        "Your team spends hours a week on workarounds, exports and copy-paste between tools.",
+        "You pay for several subscriptions that each solve part of one workflow.",
+        "Per-user pricing is growing faster than the value you get.",
+        "Your process is a genuine advantage, and a generic tool would flatten it.",
+        "Customers or partners need a portal or app that matches your brand.",
+        "You need integrations or data ownership that vendors will not offer.",
+      ),
+      figure({
+        src: img("/hero4/bpmnew2.jpg"),
+        alt: "Manager pointing at an approval workflow on a business process management dashboard",
+        caption: "Custom workflows remove the copy-paste between tools that off-the-shelf products often leave behind.",
+        align: "center",
+        width: 80,
+      }),
+      `<h2>The real cost comparison</h2>`,
+      `<p>Comparing a monthly subscription with a development quote is misleading. Look at the total cost of ownership over three to five years. For off-the-shelf, include every user licence as you grow, paid add-ons, integration tools and the staff time spent on workarounds. For custom, include development, hosting, support and planned improvements.</p>`,
+      `<p>The hidden cost on both sides is the same: people's time. A tool that saves each employee an hour a day pays for itself quickly, whether you bought it or built it.</p>`,
+      callout(
+        "warning",
+        "<strong>Watch out for lock-in.</strong> Before you commit to any product, ask how you would get your data out. With custom software, insist on owning the code, the hosting account and the documentation.",
+      ),
+      `<h2>How to reduce the risk of a custom build</h2>`,
+      `<p>Custom projects fail when they try to do everything at once. A few habits reduce the risk:</p>`,
+      ol(
+        "Start with one painful workflow, not the whole business.",
+        "Ship a first version in weeks, then improve it from real use.",
+        "Ask for regular demos of working software, not just status reports.",
+        "Keep the data model and integrations documented, so you never depend on one developer.",
+        "Agree support and hosting arrangements before launch.",
+        `Ask how the team handles security, for example testing against the ${ext("https://owasp.org/www-project-top-ten/", "OWASP Top 10")} web application risks.`,
+      ),
+      `<p>Choosing a partner matters as much as choosing the approach. Look for a team that asks about your business before talking about technology, shows you similar work and explains trade-offs in plain language. If a proposal promises everything in the first release, treat it as a warning sign.</p>`,
+      `<h2>A simple decision framework</h2>`,
+      `<p>Score each statement from 0 (disagree) to 2 (agree):</p>`,
+      ol(
+        "The process is core to how we win or keep customers.",
+        "No product fits without significant workarounds.",
+        "We need deep integration with systems we already use.",
+        "Licence costs will rise sharply as we grow.",
+        "We want to own the software and data outright.",
+        "We expect the process to keep changing.",
+      ),
+      `<p>A score of 8 or more points towards custom software. Below 5, start with off-the-shelf. In between, look for a packaged product you can extend with custom modules or integrations.</p>`,
+      `<h2>Getting started</h2>`,
+      `<p>The custom software vs off-the-shelf decision does not have to be all or nothing. Many of the systems we build sit alongside tools our clients already like, connecting them and filling the gaps. That might be a <a href="/solutions/bpm">workflow and approvals system</a>, an <a href="/solutions/ai-agents">AI agent</a> that answers repetitive enquiries, or a <a href="/solutions/mobile-apps">mobile app</a> for your field team. The aim is the same: fewer workarounds and more time for real work.</p>`,
+      `<p>LushWare offers <a href="/custom-software-development">custom software development</a> for growing businesses worldwide. <a href="/contact">Book a free discovery call</a> and we will tell you honestly whether building makes sense for you.</p>`,
+    ].join(""),
+  },
+];

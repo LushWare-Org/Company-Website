@@ -320,4 +320,8 @@ module.exports = {
   uploadImage,
   listImages,
   deleteImage,
+  // Used by scripts/seedBlog.js so seeded posts are built like editor saves.
+  buildPostData,
+  validationError,
+  uniqueSlug,
 };
