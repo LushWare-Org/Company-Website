@@ -18,7 +18,11 @@ import AdminDashboard from './pages/AdminDashboard'
 import ConsultancyPage from './pages/templates/ConsultancyPage'
 import HealthcarePage from './pages/templates/HealthcarePage'
 import RealEstatePage from './pages/templates/RealEstatePage'
+import BlogIndex from './pages/blog/BlogIndex'
+import BlogPostPage from './pages/blog/BlogPostPage'
+import AdminBlogList from './pages/admin/AdminBlogList'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
 //import { useEffect, useState } from 'react'
 //import Loading from './components/Loading'
 //import { useLenis } from './hooks/useLenis'
@@ -38,6 +42,9 @@ import WarehouseManagement from './pages/solutions/WarehouseManagement'
 import CustomSoftwareDevelopment from './pages/CustomSoftwareDevelopment'
 import NotFoundPage from './pages/NotFoundPage'
 import Seo from './seo/Seo'
+
+// The rich-text editor is admin-only and heavy: load it on demand.
+const AdminBlogEditor = lazy(() => import('./pages/admin/AdminBlogEditor'))
 
 // True while prerendering in Node (scripts/prerender.mjs).
 const isPrerender = typeof window === 'undefined'
@@ -143,6 +150,8 @@ function App() {
           <Route path="/solutions/ai-process-optimization" element={<AIProcessOptimization />} />
           <Route path="/solutions/autonomous-decision-intelligence" element={<AutonomousDecisionIntelligence />} />
           <Route path="/work" element={<WorkPage />} />
+          <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/project-base" element={<ProjectBasePage />} />
           <Route path="/templates/consultancy" element={<ConsultancyPage />} />
           <Route path="/templates/healthcare" element={<HealthcarePage />} />
@@ -156,6 +165,24 @@ function App() {
             element={
               <ProtectedRoute>
                 <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/blog"
+            element={
+              <ProtectedRoute>
+                <AdminBlogList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/blog/edit"
+            element={
+              <ProtectedRoute>
+                <Suspense fallback={<div className="h-screen flex items-center justify-center text-emerald-700 text-sm">Loading editor…</div>}>
+                  <AdminBlogEditor />
+                </Suspense>
               </ProtectedRoute>
             }
           />

@@ -303,6 +303,7 @@ const menus: Record<MenuKey, MegaMenu> = {
 
 const links = [
   { name: "Projects", to: "/work" },
+  { name: "Blog", to: "/blog" },
   //{ name: "Products", to: "/products" },
 ];
 

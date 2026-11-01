@@ -4,6 +4,8 @@
 
 import { faqPageJsonLd, getRouteFaq } from '../data/faq'
 import { MARKETS, type MarketId } from '../data/markets'
+import { getBlogState } from '../data/blogStore'
+import type { BlogPost } from '../types/blog'
 
 export const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://lushware.net').replace(/\/$/, '')
 export const SITE_NAME = 'LushWare'
@@ -53,6 +55,21 @@ export type RouteSeo = {
   priority?: number
   changefreq?: 'weekly' | 'monthly' | 'yearly'
   breadcrumb?: { name: string; path: string }[]
+  /** Social share image (absolute or site path). Default: DEFAULT_OG_IMAGE. */
+  image?: string
+  /** Blog posts: og:type article + BlogPosting JSON-LD. */
+  article?: {
+    publishedAt: string | null
+    updatedAt: string
+    author: string
+    section?: string
+    tags: string[]
+    wordCount?: number
+  }
+  /** Sitemap <lastmod> (YYYY-MM-DD); default: build date. */
+  lastmod?: string
+  /** Blog post still loading on the client: head tags are provisional (not tracked as a page view yet). */
+  pending?: boolean
 }
 
 const fieldService = { name: 'Field Service Software', path: '/industries/field-service' }
@@ -268,6 +285,14 @@ export const ROUTES: RouteSeo[] = [
     changefreq: 'monthly',
   },
   {
+    path: '/blog',
+    title: 'Blog — Software, AI & Operations Insights | LushWare',
+    description:
+      'Practical articles from LushWare on field service software, manufacturing and supply chain AI, tourism systems, custom software and business automation.',
+    priority: 0.7,
+    changefreq: 'weekly',
+  },
+  {
     path: '/project-base',
     title: 'Become a Product Builder | LushWare',
     description:
@@ -315,7 +340,46 @@ export const ROUTES: RouteSeo[] = [
     noindex: true,
     prerenderBody: false,
   },
+  {
+    path: '/admin/blog',
+    title: 'Blog Posts | LushWare Admin',
+    description: 'Manage LushWare blog posts.',
+    noindex: true,
+    prerenderBody: false,
+  },
+  {
+    path: '/admin/blog/edit',
+    title: 'Edit Blog Post | LushWare Admin',
+    description: 'Write a LushWare blog post.',
+    noindex: true,
+    prerenderBody: false,
+  },
 ]
+
+const blog = { name: 'Blog', path: '/blog' }
+
+/** SEO for one blog post (built from API data, not listed in ROUTES). */
+export function blogPostSeo(post: BlogPost): RouteSeo {
+  return {
+    path: `/blog/${post.slug}`,
+    title: post.seo.metaTitle || `${post.title} | LushWare Blog`,
+    description: post.seo.metaDescription || post.excerpt,
+    noindex: post.seo.noindex,
+    image: post.coverImage.url || undefined,
+    breadcrumb: [blog],
+    priority: 0.6,
+    changefreq: 'monthly',
+    lastmod: post.updatedAt.slice(0, 10),
+    article: {
+      publishedAt: post.publishedAt,
+      updatedAt: post.updatedAt,
+      author: post.author.name,
+      section: post.category || undefined,
+      tags: post.tags,
+      wordCount: post.wordCount,
+    },
+  }
+}
 
 export const NOT_FOUND_SEO: RouteSeo = {
   path: '/404',
@@ -326,7 +390,15 @@ export const NOT_FOUND_SEO: RouteSeo = {
 
 export function getRouteSeo(pathname: string): RouteSeo {
   const normalized = pathname !== '/' ? pathname.replace(/\/+$/, '') : pathname
-  return ROUTES.find((r) => r.path === normalized) ?? NOT_FOUND_SEO
+  const route = ROUTES.find((r) => r.path === normalized)
+  if (route) return route
+  const slug = normalized.match(/^\/blog\/([^/]+)$/)?.[1]
+  if (slug) {
+    const entry = getBlogState().posts[decodeURIComponent(slug)]
+    if (entry) return blogPostSeo(entry.post)
+    if (entry === undefined) return { ...ROUTES.find((r) => r.path === '/blog')!, path: normalized, breadcrumb: [blog], pending: true }
+  }
+  return NOT_FOUND_SEO
 }
 
 export const absoluteUrl = (path: string) => (/^https?:\/\//.test(path) ? path : `${SITE_URL}${path === '/' ? '/' : path}`)
@@ -365,6 +437,35 @@ export function getStructuredData(route: RouteSeo): object[] {
       publisher: { '@id': `${SITE_URL}/#organization` },
     })
   }
+  if (route.path === '/blog') {
+    data.push({
+      '@type': 'Blog',
+      '@id': `${SITE_URL}/blog#blog`,
+      name: 'LushWare Blog',
+      description: route.description,
+      url: absoluteUrl(route.path),
+      publisher: org,
+    })
+  }
+  if (route.article && !route.pending) {
+    const a = route.article
+    data.push({
+      '@type': 'BlogPosting',
+      headline: route.title.split(/ [|—] /)[0].slice(0, 110),
+      description: route.description,
+      image: absoluteUrl(route.image ?? DEFAULT_OG_IMAGE),
+      url: absoluteUrl(route.path),
+      mainEntityOfPage: absoluteUrl(route.path),
+      datePublished: a.publishedAt ?? a.updatedAt,
+      dateModified: a.updatedAt,
+      author: a.author === ORGANIZATION.name || /team$/i.test(a.author) ? org : { '@type': 'Person', name: a.author },
+      publisher: org,
+      ...(a.section ? { articleSection: a.section } : {}),
+      ...(a.tags.length ? { keywords: a.tags.join(', ') } : {}),
+      ...(a.wordCount ? { wordCount: a.wordCount } : {}),
+      isPartOf: { '@id': `${SITE_URL}/blog#blog` },
+    })
+  }
   if (route.service) {
     data.push({
       '@type': 'Service',
@@ -397,21 +498,29 @@ export function getStructuredData(route: RouteSeo): object[] {
 export function renderHeadTags(route: RouteSeo): string {
   const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
   const url = absoluteUrl(route.path)
-  const image = absoluteUrl(DEFAULT_OG_IMAGE)
+  const image = absoluteUrl(route.image ?? DEFAULT_OG_IMAGE)
+  const a = route.article
   const tags = [
     `<title>${esc(route.title)}</title>`,
     `<meta name="description" content="${esc(route.description)}" />`,
     route.noindex ? `<meta name="robots" content="noindex, follow" />` : `<meta name="robots" content="index, follow, max-image-preview:large" />`,
     route.path !== NOT_FOUND_SEO.path ? `<link rel="canonical" href="${url}" />` : '',
     ...(route.path === '/' ? SITE_VERIFICATION.filter(([, content]) => content).map(([name, content]) => `<meta name="${name}" content="${esc(content!)}" />`) : []),
-    `<meta property="og:type" content="website" />`,
+    `<meta property="og:type" content="${a ? 'article' : 'website'}" />`,
     `<meta property="og:site_name" content="${SITE_NAME}" />`,
     `<meta property="og:title" content="${esc(route.title)}" />`,
     `<meta property="og:description" content="${esc(route.description)}" />`,
     `<meta property="og:url" content="${url}" />`,
     `<meta property="og:image" content="${image}" />`,
-    `<meta property="og:image:width" content="1200" />`,
-    `<meta property="og:image:height" content="630" />`,
+    ...(route.image ? [] : [`<meta property="og:image:width" content="1200" />`, `<meta property="og:image:height" content="630" />`]),
+    ...(a && !route.pending
+      ? [
+          a.publishedAt ? `<meta property="article:published_time" content="${a.publishedAt}" />` : '',
+          `<meta property="article:modified_time" content="${a.updatedAt}" />`,
+          a.section ? `<meta property="article:section" content="${esc(a.section)}" />` : '',
+          ...a.tags.map((t) => `<meta property="article:tag" content="${esc(t)}" />`),
+        ]
+      : []),
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${esc(route.title)}" />`,
     `<meta name="twitter:description" content="${esc(route.description)}" />`,

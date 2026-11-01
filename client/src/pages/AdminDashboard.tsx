@@ -277,6 +277,16 @@ export default function CommandCenter() {
                 </span>
               </div>
 
+              {/* Blog editor */}
+              <button onClick={() => navigate('/admin/blog')} className="group relative flex justify-center">
+                <div className="relative p-2.5 text-slate-500 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-all">
+                  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z"/></svg>
+                </div>
+                <span className="absolute left-14 top-1/2 -translate-y-1/2 scale-0 group-hover:scale-100 px-3 py-1.5 rounded-lg bg-slate-900 text-white text-[12px] font-bold uppercase tracking-widest transition-all origin-left whitespace-nowrap z-50 shadow-xl">
+                  Blog
+                </span>
+              </button>
+
               {/* Monthly lead report (by landing page and country) */}
               <button onClick={() => setShowReport(true)} className="group relative flex justify-center">
                 <div className="relative p-2.5 text-slate-500 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-all">

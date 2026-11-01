@@ -5,6 +5,7 @@ require("dotenv").config(); // Load .env variables
 
 const inquiryRoutes = require("./routes/inquiries");
 const adminRoutes = require("./routes/admin");
+const blogRoutes = require("./routes/blog");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -71,7 +72,7 @@ const corsOptions = {
 // Middleware
 app.use(cors(corsOptions));  // Handles all CORS including OPTIONS preflight
 
-app.use(express.json());     // Parse JSON bodies
+app.use(express.json({ limit: '2mb' }));     // Parse JSON bodies (blog posts can be long)
 
 // --------------------------
 // MongoDB Connection
@@ -117,6 +118,9 @@ app.use("/api/inquiries", inquiryRoutes);
 
 // Mount admin routes
 app.use("/api/admin", adminRoutes);
+
+// Mount blog routes (public posts + admin editor)
+app.use("/api/blog", blogRoutes);
 
 // --------------------------
 // Error handling middleware - ensure CORS headers on errors

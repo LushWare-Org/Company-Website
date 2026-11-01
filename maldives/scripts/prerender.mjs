@@ -2,6 +2,10 @@
 // (dist/<route>.html, served extensionless via vercel.json "cleanUrls"), plus
 // 404.html, sitemap.xml and robots.txt.
 //
+// Optional exports of the entry: loadDynamicRoutes() adds routes known only at
+// build time (e.g. blog posts from the API); getInitialData(url) returns data
+// embedded as <script id="initial-data" type="application/json"> for the browser.
+//
 // Expects `vite build` (dist/) and `vite build --ssr src/entry-server.tsx`
 // (dist-ssr/) to have run first — see the "build" script in package.json.
 
@@ -13,9 +17,11 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const distDir = path.join(root, 'dist')
 const ssrDir = path.join(root, 'dist-ssr')
 
-const { render, ROUTES, NOT_FOUND_SEO, SITE_URL, ROBOTS_DISALLOW = [], REDIRECTS = [], PLACEHOLDER_SITE_URL, renderHeadTags } = await import(
+const { render, ROUTES: STATIC_ROUTES, NOT_FOUND_SEO, SITE_URL, ROBOTS_DISALLOW = [], REDIRECTS = [], PLACEHOLDER_SITE_URL, renderHeadTags, loadDynamicRoutes, getInitialData } = await import(
   pathToFileURL(path.join(ssrDir, 'entry-server.js')).href
 )
+const DYNAMIC_ROUTES = loadDynamicRoutes ? await loadDynamicRoutes() : []
+const ROUTES = [...STATIC_ROUTES, ...DYNAMIC_ROUTES]
 if (PLACEHOLDER_SITE_URL && SITE_URL === PLACEHOLDER_SITE_URL) {
   console.warn(`\n⚠ SITE_URL is still the placeholder ${SITE_URL} — set VITE_SITE_URL to the real domain, or canonicals and the sitemap will point at the wrong site.\n`)
 }
@@ -37,10 +43,12 @@ function buildPage(route, url) {
       failures.push(`${url}: ${err?.message ?? err}`)
     }
   }
+  const data = route.prerenderBody !== false && getInitialData ? getInitialData(url) : null
+  const dataTag = data ? `\n    <script id="initial-data" type="application/json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>` : ''
   return template
     .replace(/<title>.*?<\/title>/s, '')
-    .replace('<!--seo-head-->', renderHeadTags(route))
-    .replace('<div id="root"></div>', `<div id="root">${body}</div>`)
+    .replace('<!--seo-head-->', () => renderHeadTags(route) + dataTag)
+    .replace('<div id="root"></div>', () => `<div id="root">${body}</div>`)
 }
 
 function outFile(routePath) {
@@ -73,7 +81,7 @@ const urls = ROUTES.filter((r) => !r.noindex && r.sitemap !== false)
     [
       '  <url>',
       `    <loc>${SITE_URL}${r.path === '/' ? '/' : r.path}</loc>`,
-      `    <lastmod>${today}</lastmod>`,
+      `    <lastmod>${r.lastmod ?? today}</lastmod>`,
       r.changefreq ? `    <changefreq>${r.changefreq}</changefreq>` : '',
       r.priority != null ? `    <priority>${r.priority.toFixed(1)}</priority>` : '',
       '  </url>',
@@ -95,7 +103,7 @@ fs.writeFileSync(path.join(distDir, 'robots.txt'), `User-agent: *\nAllow: /\n${d
 fs.rmSync(ssrDir, { recursive: true, force: true })
 
 console.log(
-  `Prerendered ${ROUTES.length} routes + 404.html${REDIRECTS.length ? ` + ${REDIRECTS.length} redirect(s)` : ''}, sitemap.xml (${urls.split('<url>').length - 1} URLs), robots.txt`,
+  `Prerendered ${ROUTES.length} routes${DYNAMIC_ROUTES.length ? ` (${DYNAMIC_ROUTES.length} from the API)` : ''} + 404.html${REDIRECTS.length ? ` + ${REDIRECTS.length} redirect(s)` : ''}, sitemap.xml (${urls.split('<url>').length - 1} URLs), robots.txt`,
 )
 if (failures.length) {
   console.warn(`\n⚠ ${failures.length} route(s) fell back to client-only rendering:\n  ${failures.join('\n  ')}`)
