@@ -13,6 +13,8 @@
 
 
 
+import { trackEvent } from '../lib/analytics';
+
 export type InquiryType = 'solution' | 'project' | 'consultation';
 const BACKEND_URL = import.meta.env.VITE_API_URL;
 
@@ -187,6 +189,12 @@ export const submitInquiry = async (data: InquiryFormData): Promise<{ success: b
     if (adminEmailStatus === 'failed' || userEmailStatus === 'failed') {
       console.warn('[Inquiry] Email delivery failed. Check server logs for SMTP error details.');
     }
+    trackEvent('generate_lead', {
+      inquiry_type: data.inquiryType,
+      market: data.market,
+      country_code: data.countryCode,
+      form_page: data.sourcePath,
+    });
     
     return {
       success: true,

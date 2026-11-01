@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { fetchAllInquiries, updateInquiryStatus } from '../services/adminService';
 import { MARKETS, type MarketId } from '../data/markets';
+import LeadReport from '../components/LeadReport';
 
 /** Lead markets: client market ids (src/data/markets.ts) plus leads from the Maldives site. */
 const LEAD_MARKETS: Record<string, string> = {
@@ -54,6 +55,7 @@ export default function CommandCenter() {
   const [filterType, setFilterType] = useState<string>('all');
   const [filterMarket, setFilterMarket] = useState<string>('all');
   const [showFilter, setShowFilter] = useState(false);
+  const [showReport, setShowReport] = useState(false);
 
   // Design Tokens - Emerald Theme
   const sidebarWidth = selectedInquiry ? "w-1/3" : "w-full";
@@ -222,6 +224,7 @@ export default function CommandCenter() {
 
   return (
     <div className="flex h-screen bg-emerald-50 text-emerald-950 font-sans overflow-hidden">
+      {showReport && <LeadReport inquiries={inquiries} marketLabel={marketLabel} onClose={() => setShowReport(false)} />}
       
         <aside className="w-16 flex flex-col items-center py-8 border-r border-emerald-100 bg-white justify-between shadow-[2px_0_12px_rgba(0,0,0,0.02)] z-30">
           
@@ -274,6 +277,15 @@ export default function CommandCenter() {
                 </span>
               </div>
 
+              {/* Monthly lead report (by landing page and country) */}
+              <button onClick={() => setShowReport(true)} className="group relative flex justify-center">
+                <div className="relative p-2.5 text-slate-500 hover:text-emerald-600 hover:bg-emerald-50 rounded-xl transition-all">
+                  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 3v18h18"/><path d="M7 16v-5M12 16V8M17 16v-8"/></svg>
+                </div>
+                <span className="absolute left-14 top-1/2 -translate-y-1/2 scale-0 group-hover:scale-100 px-3 py-1.5 rounded-lg bg-slate-900 text-white text-[12px] font-bold uppercase tracking-widest transition-all origin-left whitespace-nowrap z-50 shadow-xl">
+                  Monthly Report
+                </span>
+              </button>
 
             </nav>
           </div>

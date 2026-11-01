@@ -8,6 +8,11 @@ import { MARKETS, type MarketId } from '../data/markets'
 export const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://lushware.net').replace(/\/$/, '')
 export const SITE_NAME = 'LushWare'
 export const DEFAULT_OG_IMAGE = '/og-image.jpg'
+/** Search Console / Bing Webmaster ownership tags on the homepage (only needed if the site is not verified by DNS). */
+const SITE_VERIFICATION: [name: string, content: string | undefined][] = [
+  ['google-site-verification', import.meta.env.VITE_GOOGLE_SITE_VERIFICATION],
+  ['msvalidate.01', import.meta.env.VITE_BING_SITE_VERIFICATION],
+]
 /** Paths blocked in robots.txt. */
 export const ROBOTS_DISALLOW = ['/admin']
 /** Moved pages: prerendered as instant redirects (also add a 301 in nginx). */
@@ -398,6 +403,7 @@ export function renderHeadTags(route: RouteSeo): string {
     `<meta name="description" content="${esc(route.description)}" />`,
     route.noindex ? `<meta name="robots" content="noindex, follow" />` : `<meta name="robots" content="index, follow, max-image-preview:large" />`,
     route.path !== NOT_FOUND_SEO.path ? `<link rel="canonical" href="${url}" />` : '',
+    ...(route.path === '/' ? SITE_VERIFICATION.filter(([, content]) => content).map(([name, content]) => `<meta name="${name}" content="${esc(content!)}" />`) : []),
     `<meta property="og:type" content="website" />`,
     `<meta property="og:site_name" content="${SITE_NAME}" />`,
     `<meta property="og:title" content="${esc(route.title)}" />`,
