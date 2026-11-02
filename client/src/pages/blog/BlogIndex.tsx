@@ -122,7 +122,7 @@ export default function BlogIndex() {
             <div className="h-px w-8 bg-emerald-600" />
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900">
-            Insights on software, AI <span className="text-emerald-600">&amp; operations</span>
+            Insights on Software, AI <span className="text-emerald-600">&amp; Operations</span>
           </h1>
           <p className="mt-5 text-lg text-slate-600">
             Practical guides for field service, manufacturing, logistics, tourism and growing businesses — written by the team that builds the systems.

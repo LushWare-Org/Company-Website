@@ -233,12 +233,13 @@ export const ROUTES: RouteSeo[] = [
   },
   {
     path: '/solutions/mobile-apps',
-    title: 'Mobile App Development (iOS & Android) | LushWare',
+    title: 'Mobile App Development Company — iOS & Android | LushWare',
     description:
-      'Transform your business with intelligent mobile apps. LushWare designs and builds iOS and Android applications for customers, staff and field teams.',
+      'iOS and Android app development for businesses worldwide: customer apps and offline field apps connected to your systems. No upfront payment — we build first.',
     service: 'Mobile Application Development',
     market: 'smb',
     breadcrumb: [customSoftware],
+    image: '/og/mobile-apps.jpg',
     priority: 0.8,
   },
 

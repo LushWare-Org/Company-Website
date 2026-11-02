@@ -332,7 +332,8 @@ export const mobileAppsOutline: PageOutline = {
   path: '/solutions/mobile-apps',
   market: 'smb',
   product: 'a mobile app',
-  whoFor: 'Built for businesses worldwide that need iOS and Android apps for their customers, staff or field teams.',
+  whoFor:
+    'Built for small and mid-sized businesses in North America, Europe, the Middle East and Asia-Pacific that need iOS and Android apps for their customers, staff or field teams.',
   problems: {
     heading: 'What businesses tell us before building an app',
     intro: 'These are the reasons teams come to us for a mobile app.',
@@ -349,7 +350,7 @@ export const mobileAppsOutline: PageOutline = {
     heading: 'App features, in plain terms',
     intro: 'What a business app typically needs to do.',
     items: [
-      { term: 'iOS & Android from one build', feature: 'Cross-platform apps that look and feel native, maintained as one codebase.' },
+      { term: 'iOS & Android from one build', feature: 'Cross-platform apps in Flutter or React Native that look and feel native, maintained as one codebase.' },
       { term: 'Bookings, orders & payments', feature: 'Let customers book, order and pay in a few taps.' },
       { term: 'Field forms & signatures', feature: 'Digital job sheets, checklists, photos and signatures for staff in the field.' },
       { term: 'Works offline', feature: 'Data captured without signal syncs automatically when back online.' },
@@ -367,6 +368,48 @@ export const mobileAppsOutline: PageOutline = {
       'An app update is released to both iOS and Android from one codebase.',
     ],
   ),
+  guide: {
+    heading: 'A buyer\'s guide to mobile app development for businesses',
+    intro:
+      'A business app is no longer a project only large brands can afford. Small and mid-sized businesses commission customer apps, staff apps and field apps routinely. Most regrets come from decisions made in the first few weeks. Here is how to scope a first version, choose an approach and pick a development partner.',
+    sections: [
+      {
+        heading: 'Decide who the app is for',
+        paragraphs: [
+          'Customer apps (booking, ordering, loyalty, account self-service) live or die on convenience: they must do one thing faster than your website or a phone call. Staff and field apps (job sheets, inspections, stock counts, approvals) are judged on reliability: they must work offline, on any phone, and save time every day.',
+          'The two need different priorities, so start by naming the users and the one task they will do most often. That task is your first version.',
+        ],
+      },
+      {
+        heading: 'Native, cross-platform or a web app?',
+        paragraphs: [
+          'Cross-platform frameworks such as Flutter and React Native build iOS and Android apps from one codebase. For most business apps — forms, bookings, payments, dashboards, notifications — they look and feel native and cost far less to build and maintain than two separate apps.',
+          'Fully native development (Swift for iOS, Kotlin for Android) earns its cost when the app depends on heavy graphics, advanced camera or Bluetooth hardware, or platform features the day they are released. If users only need occasional access and never work offline, a progressive web app can be enough, with no app store at all.',
+        ],
+      },
+      {
+        heading: 'What drives the cost of an app',
+        paragraphs: [
+          'The number of screens matters less than what happens behind them. Cost grows with user roles and permissions, offline sync, payments, integrations with existing systems, real-time features such as chat or live tracking, and the admin panel your team uses to manage content and users.',
+          'Budget for the whole life of the app, not just the build: hosting, the Apple and Google developer accounts, updates for each new iOS and Android release, security patches and new features. An app nobody maintains stops working within a year or two of operating system updates.',
+        ],
+      },
+      {
+        heading: 'Plan the app store launch early',
+        paragraphs: [
+          'Apple and Google both review apps before they go live, and both have rules on privacy disclosures, account deletion, payments and content. Publish under your own developer accounts so you own the listing, the reviews and the download history — never under the agency\'s account.',
+          'Internal staff apps can skip the public stores entirely through private distribution, such as Apple Business Manager or a managed Google Play store, which keeps them out of public search.',
+        ],
+      },
+      {
+        heading: 'Choosing an app development partner',
+        paragraphs: [
+          'Ask to install and use apps the team has built, not just see screenshots. Ask how often you will get a test build on your own phone, who owns the code and the store accounts, how they handle offline data and security, and what happens when the next iOS or Android version ships.',
+          'At LushWare there is no upfront payment: we build the first version, you test it on your own devices, and if it fits you continue on a managed pay-as-you-go plan that covers hosting, store updates and support.',
+        ],
+      },
+    ],
+  },
   related: [
     '/custom-software-development',
     '/industries/field-service',
@@ -374,19 +417,39 @@ export const mobileAppsOutline: PageOutline = {
   ],
   faq: [
     {
-      question: 'What is Mobile App Development?',
+      question: 'Do you build apps for both iOS and Android?',
       answer:
-        'Mobile app development involves designing, building, and deploying applications for mobile devices on iOS and Android platforms, ensuring seamless user experiences and business value.',
+        'Yes. We build cross-platform, so one codebase runs on iPhone and Android phones and tablets. When an app needs deep hardware or platform features, we build those parts natively.',
     },
     {
-      question: 'How can mobile apps benefit my business?',
+      question: 'Do you use Flutter or React Native?',
       answer:
-        'Mobile apps increase accessibility for customers, improve engagement, streamline business processes, and enable data-driven decisions through real-time interactions.',
+        'Both. We choose per project: Flutter suits apps that need a consistent, highly branded interface on every device, and React Native suits apps that share code or skills with a React web app. We explain the recommendation during discovery.',
     },
     {
-      question: 'Can LushWare build apps for both iOS and Android?',
+      question: 'Who owns the app, the code and the app store listings?',
       answer:
-        'Yes, we create native and cross-platform mobile applications tailored to your business needs, ensuring high performance and security across devices.',
+        'You do. The app is published under your own Apple App Store and Google Play developer accounts, so the listing, reviews and download history stay with your business.',
+    },
+    {
+      question: 'Do you handle App Store and Google Play submission?',
+      answer:
+        'Yes. We prepare the store listings, privacy disclosures and screenshots, submit the app for review and handle any feedback from Apple or Google. Internal staff apps can be distributed privately instead of through the public stores.',
+    },
+    {
+      question: 'Can the app work offline?',
+      answer:
+        'Yes. Field and staff apps can store jobs, forms, photos and signatures on the device and sync automatically when the connection returns.',
+    },
+    {
+      question: 'Who maintains the app after launch?',
+      answer:
+        'We do, as part of the managed service: hosting, monitoring, updates for new iOS and Android versions, security patches and new features, so the app keeps working as phones and operating systems change.',
+    },
+    {
+      question: 'Can you take over or rebuild an existing app?',
+      answer:
+        'Yes. We review the existing code, store accounts and backend first, then recommend whether to fix and continue or rebuild, with your data and store listings carried over.',
     },
   ],
   cta: {

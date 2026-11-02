@@ -1,11 +1,10 @@
 import React from "react";
 import WhyChooseLushWare from "../../components/WhyChooseLushWare";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { OutlineClose, OutlineProblems, WhoItsFor } from "@/components/PageOutline";
 import { mobileAppsOutline } from "@/data/outlines/smb";
 
 const MobileApps: React.FC = () => {
-  const navigate = useNavigate();
 
 
   return (
@@ -68,9 +67,9 @@ const MobileApps: React.FC = () => {
             <WhoItsFor text={mobileAppsOutline.whoFor} className="mob-fadeUp text-center" />
 
             <p className="mob-fadeUp text-lg sm:text-xl text-slate-500 font-light max-w-3xl mx-auto leading-relaxed">
-              LushWare delivers mobile apps designed to optimize business
-              processes, engage customers, and provide measurable impact across
-              iOS and Android devices.
+              We design, build, publish and maintain business apps for iPhone
+              and Android: booking and ordering apps for customers, offline
+              field apps for staff, all connected to the systems you already use.
             </p>
           </div>
 
@@ -79,13 +78,13 @@ const MobileApps: React.FC = () => {
             <div className="relative overflow-hidden h-[250px] sm:h-[420px] md:h-[500px] lg:h-[550px] xl:h-[600px] w-full">
               <img
                 src="/hero4/appnew2.webp"
-                alt="Enterprise Interface"
+                alt="Business mobile app on an iPhone showing a performance dashboard, messages and notifications"
                 className="w-full h-full object-cover object-top"
               />
 
               <div className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 w-full px-4 sm:px-6 flex justify-center">
-                <button
-                  onClick={() => navigate("/contact")}
+                <Link
+                  to="/contact"
                   className="group relative rounded-sm border-2 border-emerald-600 cursor-pointer inline-flex items-center gap-2 sm:gap-3 md:gap-4 
         px-6 sm:px-8 md:px-10 lg:px-12 
         py-3 sm:py-4 md:py-5 
@@ -96,7 +95,7 @@ const MobileApps: React.FC = () => {
         hover:shadow-[0_10px_40px_rgba(16,185,129,0.5)] hover:scale-105 active:scale-[0.98]"
                 >
                   <span className="relative z-20 transition-colors duration-300 group-hover:text-emerald-600 whitespace-nowrap">
-                    Discover the Platform
+                    Scope Your App
                   </span>
 
                   <svg
@@ -115,7 +114,7 @@ const MobileApps: React.FC = () => {
 
                   {/* Animated Background Slide on Hover */}
                   <div className="absolute inset-0 bg-white translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -136,10 +135,10 @@ const MobileApps: React.FC = () => {
                         Our Approach
                       </span>
                     </div>
-                    <h3 className="mob-serif text-5xl md:text-7xl font-normal text-slate-900 tracking-tight leading-[0.9]">
-                      Mobile <br />
-                      <span className=" text-emerald-600">Sovereignty.</span>
-                    </h3>
+                    <h2 className="mob-serif text-5xl md:text-7xl font-normal text-slate-900 tracking-tight leading-[0.9]">
+                      One app, <br />
+                      <span className=" text-emerald-600">iOS & Android.</span>
+                    </h2>
                   </div>
 
                   <div className="flex-1 md:max-w-md lg:max-w-lg">
@@ -658,11 +657,11 @@ const MobileApps: React.FC = () => {
                     <h3 className="mob-serif text-4xl font-normal tracking-tight text-slate-900">
                       iOS{" "}
                       <span className="italic text-slate-400 group-hover:text-emerald-600 transition-colors duration-500">
-                        Native
+                        Apps
                       </span>
                     </h3>
                     <p className="text-base text-slate-500 font-light max-w-[200px] leading-relaxed mt-1">
-                      Optimized Swift engineering for Apple's premium ecosystem.
+                      iPhone and iPad apps, published to the App Store.
                     </p>
                   </div>
 
@@ -693,12 +692,11 @@ const MobileApps: React.FC = () => {
                     <h3 className="mob-serif text-4xl font-normal tracking-tight text-slate-900">
                       Android{" "}
                       <span className="italic text-slate-400 group-hover:text-emerald-600 transition-colors duration-500">
-                        OS
+                        Apps
                       </span>
                     </h3>
                     <p className="text-base text-slate-500 font-light max-w-[200px] leading-relaxed mt-1">
-                      High-performance Kotlin builds for the global mobile
-                      market.
+                      Android phone and tablet apps, published to Google Play.
                     </p>
                   </div>
 
