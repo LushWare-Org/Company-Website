@@ -19,16 +19,18 @@ const servicesData: Service[] = [
   },
   {
     number: "02",
-    title: "Custom Development",
-    desc: "Custom software solutions made for your company, helping you save time, reduce cost, and work smarter.",
-    tags: ["Enterprise Solutions", "Legacy Migration"],
+    title: "Custom Software Development",
+    desc: "Custom CRMs, web apps, portals and internal tools made for your company, helping you save time, reduce cost, and work smarter.",
+    tags: ["Custom CRM", "Legacy Migration"],
+    to: "/custom-software-development",
     color: "group-hover:text-emerald-600",
   },
   {
     number: "03",
     title: "Mobile App Development",
-    desc: "High-quality mobile apps for iOS and Android, built for smooth performance and great user experience.",
-    tags: ["React Native", "Native Performance"],
+    desc: "iOS and Android apps for customers, staff and field teams, built for smooth performance and great user experience.",
+    tags: ["Flutter & React Native", "iOS & Android"],
+    to: "/solutions/mobile-apps",
     color: "group-hover:text-emerald-600",
   },
   {

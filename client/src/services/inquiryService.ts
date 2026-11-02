@@ -14,6 +14,7 @@
 
 
 import { trackEvent } from '../lib/analytics';
+import { getAttribution } from '../lib/attribution';
 
 export type InquiryType = 'solution' | 'project' | 'consultation';
 const BACKEND_URL = import.meta.env.VITE_API_URL;
@@ -116,6 +117,8 @@ export const submitInquiry = async (data: InquiryFormData): Promise<{ success: b
       countryCode: data.countryCode?.trim().toUpperCase() || null,
       sourcePath: data.sourcePath || null,
       market: data.market || null,
+      // Campaign / ad / referrer that brought the visitor (lib/attribution.ts).
+      attribution: getAttribution(),
       budget: data.budget?.trim() || null,
       whatsapp: data.whatsapp?.trim() || null,
       inquiryType: data.inquiryType,
@@ -194,6 +197,7 @@ export const submitInquiry = async (data: InquiryFormData): Promise<{ success: b
       market: data.market,
       country_code: data.countryCode,
       form_page: data.sourcePath,
+      lead_source: payload.attribution ? `${payload.attribution.source} / ${payload.attribution.medium}` : '(unknown)',
     });
     
     return {

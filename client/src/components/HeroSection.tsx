@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 
@@ -17,9 +17,40 @@ type HeroSlide = {
   aspectClass: string;
   titleSizeClass: string;
   path: string;
+  /** Image alt text; defaults to the slide title. */
+  alt?: string;
 };
 
+// The first slide carries the homepage <h1>, so it leads with the main service keyword.
 const heroSlides: HeroSlide[] = [
+  {
+    id: "10",
+    titleTop: "Custom",
+    titleHighlight: "Software",
+    titleOutline: "Development.",
+    description:
+      "Custom CRMs, web apps, portals and AI automation for growing businesses worldwide — built first, with no upfront payment.",
+    image: "/hero3/crm5.jpg",
+    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
+    titleSizeClass: "text-5xl md:text-7xl lg:text-[6.5rem]",
+    path: "/custom-software-development",
+    alt: "Custom CRM and business software dashboard built for a growing company",
+  },
+  {
+    id: "05",
+    titleTop: "Mobile",
+    titleHighlight: "App",
+    titleOutline: "Development.",
+    description:
+      "iOS and Android apps for your customers, staff and field teams, built in Flutter or React Native and connected to your systems.",
+    image: "/hero3/app.jpg",
+    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
+    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
+    titleSizeClass: "text-5xl md:text-7xl lg:text-[6.5rem]",
+    path: "/solutions/mobile-apps",
+    alt: "Business mobile app for iOS and Android on a smartphone",
+  },
   {
     id: "07",
     titleTop: "AI-Driven",
@@ -101,19 +132,6 @@ const heroSlides: HeroSlide[] = [
     path: "/solutions/websites"
   },
   {
-    id: "05",
-    titleTop: "Mobile",
-    titleHighlight: "Applications",
-    titleOutline: "Development.",
-    description:
-      "Scalable iOS and Android applications engineered for performance and user experience.",
-    image: "/hero3/app.jpg",
-    maxWidthClass: "w-full px-4 sm:px-6 md:max-w-lg lg:max-w-md",
-    aspectClass: "aspect-[3/4] sm:aspect-[4/5] lg:aspect-[2/3]",
-    titleSizeClass: "text-5xl md:text-7xl lg:text-[6.5rem]",
-    path: "/solutions/mobile-apps"
-  },
-  {
     id: "09",
   titleTop: "Product",
   titleHighlight: "Engineering",
@@ -142,8 +160,6 @@ const heroSlides: HeroSlide[] = [
 ];
 
 export default function HeroSection() {
-  const navigate = useNavigate();
-
   return (
     <section className="sticky top-0 w-full h-screen flex items-center justify-center overflow-hidden">
       <Swiper
@@ -195,25 +211,26 @@ export default function HeroSection() {
 
                   <div className="flex flex-row gap-4 w-full lg:w-max md:justify-center lg:justify-start">
                     {/* Learn More Button */}
-                    <button
-                      onClick={() => navigate(slide.path)}
+                    <Link
+                      to={slide.path}
+                      aria-label={`Learn more about ${slide.titleTop} ${slide.titleHighlight} ${slide.titleOutline}`.replace(/\s+/g, " ").replace(/\.$/, "")}
                       className="group relative cursor-pointer rounded-md px-8 py-4 bg-white border border-black overflow-hidden transition-all duration-500 hover:scale-105"
                     >
                       <span className="relative z-10 text-[14px] font-bold tracking-[0.2em] uppercase text-black transition-colors duration-500 group-hover:text-white">
                         Learn More
                       </span>
                       <div className="absolute inset-0 bg-emerald-600 translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:translate-y-0"></div>
-                    </button>
+                    </Link>
                     {/* Start Your Project Button */}
-                    <button
-                      onClick={() => navigate("/contact")}
+                    <Link
+                      to="/contact"
                       className="group relative cursor-pointer rounded-xs px-8 py-4 bg-stone-900 overflow-hidden lg:shadow-2xl shadow-none transition-all duration-500 hover:scale-105"
                     >
                       <span className="relative z-10 text-[14px] font-bold tracking-[0.2em] uppercase text-white">
                         Start Your Project
                       </span>
                       <div className="absolute inset-0 bg-emerald-600 translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:translate-y-0"></div>
-                    </button>
+                    </Link>
                   </div>
                 </div>
 
@@ -224,7 +241,7 @@ export default function HeroSection() {
                   >
                     <img
                       src={slide.image}
-                      alt={`${slide.titleHighlight} ${slide.titleOutline}`}
+                      alt={slide.alt ?? `${slide.titleTop} ${slide.titleHighlight} ${slide.titleOutline}`}
                       className="w-full h-full object-cover hero-image"
                     />
                   </div>

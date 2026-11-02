@@ -32,6 +32,23 @@ export const ORGANIZATION = {
   email: 'info@lushware.net',
   telephone: '+94716430053',
   logo: '/logo.jpeg',
+  description:
+    'Custom software and mobile app development company based in Sri Lanka, building CRMs, web apps, iOS and Android apps and AI automation for growing businesses worldwide.',
+  /** ISO 3166-1 alpha-2 country of the head office. */
+  country: 'LK',
+  /** Main services, most important first (schema.org knowsAbout). */
+  knowsAbout: [
+    'Custom Software Development',
+    'Mobile App Development',
+    'iOS App Development',
+    'Android App Development',
+    'Flutter',
+    'React Native',
+    'Custom CRM Development',
+    'Web Application Development',
+    'AI Agents',
+    'Field Service Management Software',
+  ],
   sameAs: [
     'https://www.linkedin.com/company/lushware',
     'https://www.instagram.com/lush_ware_org/',
@@ -81,9 +98,9 @@ const customSoftware = { name: 'Custom Software Development', path: '/custom-sof
 export const ROUTES: RouteSeo[] = [
   {
     path: '/',
-    title: 'LushWare — Business Operations on Autopilot',
+    title: 'LushWare — Custom Software & Mobile App Development',
     description:
-      'LushWare builds field service software for trades, MEP and maintenance platforms, manufacturing and supply chain AI, tourism systems and custom software for growing businesses worldwide.',
+      'Custom software and iOS/Android app development for growing businesses worldwide, plus field service, MEP, manufacturing and tourism software. No upfront payment.',
     priority: 1.0,
     changefreq: 'weekly',
   },
@@ -194,11 +211,12 @@ export const ROUTES: RouteSeo[] = [
   // ── Global SMBs: custom projects ──────────────────────────────────────
   {
     path: '/custom-software-development',
-    title: 'Custom Software Development for Small & Mid-Sized Businesses | LushWare',
+    title: 'Custom Software Development Company for SMBs | LushWare',
     description:
-      'Offshore custom software development for growing businesses worldwide: custom CRMs, web apps, mobile apps and AI automation. No upfront payment — we build first.',
+      'Custom software development for growing businesses worldwide: CRMs, web apps, portals, mobile apps and AI automation. No upfront payment — we build first.',
     service: 'Custom Software Development',
     market: 'smb',
+    image: '/og/custom-software-development.jpg',
     priority: 0.9,
   },
   {
@@ -418,6 +436,9 @@ export function getStructuredData(route: RouteSeo): object[] {
     name: ORGANIZATION.name,
     url: `${SITE_URL}/`,
     logo: absoluteUrl(ORGANIZATION.logo),
+    description: ORGANIZATION.description,
+    address: { '@type': 'PostalAddress', addressCountry: ORGANIZATION.country },
+    knowsAbout: ORGANIZATION.knowsAbout,
     email: ORGANIZATION.email,
     telephone: ORGANIZATION.telephone,
     sameAs: ORGANIZATION.sameAs,

@@ -4,7 +4,10 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
 import { initAnalytics } from './lib/analytics'
+import { captureAttribution } from './lib/attribution'
+import { analyticsAllowed } from './lib/consent'
 
+captureAttribution(analyticsAllowed())
 initAnalytics()
 
 createRoot(document.getElementById('root')!).render(

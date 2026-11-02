@@ -11,6 +11,22 @@ const InquirySchema = new mongoose.Schema({
   countryCode: { type: String, trim: true, uppercase: true, maxlength: 2, default: null },
   sourcePath: { type: String, trim: true, maxlength: 200, default: null },
   market: { type: String, trim: true, maxlength: 40, default: null },
+  // Campaign / ad / referrer that brought the visitor (client/src/lib/attribution.ts).
+  attribution: {
+    type: new mongoose.Schema({
+      source: String,
+      medium: String,
+      campaign: String,
+      term: String,
+      content: String,
+      clickId: String,
+      clickIdType: String,
+      referrer: String,
+      landingPage: String,
+      capturedAt: Date,
+    }, { _id: false }),
+    default: null,
+  },
   budget: { type: String, trim: true, default: null },
   whatsapp: { type: String, trim: true, default: null },
   inquiryType: { 
@@ -46,6 +62,7 @@ InquirySchema.index({ email: 1, inquiryType: 1 });
 InquirySchema.index({ status: 1 });
 InquirySchema.index({ market: 1, createdAt: -1 });
 InquirySchema.index({ countryCode: 1 });
+InquirySchema.index({ "attribution.source": 1, createdAt: -1 });
 InquirySchema.index({ createdAt: -1 });
 
 module.exports = mongoose.model("Inquiry", InquirySchema);

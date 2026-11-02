@@ -24,8 +24,13 @@ export default function Seo() {
     // One page view per path, sent once the real title is in place.
     if (route.pending || trackedPath.current === pathname) return
     trackedPath.current = pathname
-    trackPageView()
-  }, [pathname, route.pending, head])
+    trackPageView({
+      service: route.service ?? 'none',
+      contentGroup:
+        route.service ??
+        (route.article?.section ? `Blog: ${route.article.section}` : pathname.startsWith('/blog') ? 'Blog' : 'Other'),
+    })
+  }, [pathname, route.pending, head]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return null
 }

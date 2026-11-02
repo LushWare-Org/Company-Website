@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { PAGE_LINKS, type PagePath } from "@/data/links";
 import { MARKETS } from "@/data/markets";
+import { openCookieSettings } from "@/lib/consent";
 
 type FooterGroup = { label: string; regions: string; links: PagePath[] };
 
@@ -290,6 +291,13 @@ export default function Footer() {
           <div className="text-center md:text-left">
             <p className="text-[11px] md:text-[12px] font-medium tracking-[0.15em] uppercase text-zinc-500">
               © {new Date().getFullYear()} LushWare. All Rights Reserved.
+              <button
+                type="button"
+                onClick={openCookieSettings}
+                className="ml-4 uppercase tracking-[0.15em] underline underline-offset-2 hover:text-emerald-600"
+              >
+                Cookie settings
+              </button>
             </p>
           </div>
 

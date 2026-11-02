@@ -102,6 +102,26 @@ export const customSoftwareOutline: PageOutline = {
       answer:
         'We keep running it. Hosting, monitoring, updates, security patches and new features are part of the managed service, so you are never left with unsupported software.',
     },
+    {
+      question: 'Who owns the software and the data?',
+      answer:
+        'Your data is always yours and can be exported at any time. Ownership of the code and how it transfers is set out in writing before the build starts, so there are no surprises later.',
+    },
+    {
+      question: 'Can you replace or take over an existing system?',
+      answer:
+        'Yes. We review the current system, its data and integrations first, then recommend whether to improve it or replace it step by step, migrating your data so the business keeps running during the switch.',
+    },
+    {
+      question: 'Which technologies do you use?',
+      answer:
+        'Widely used, well-supported technologies, so any competent team can maintain the system: React and TypeScript for web applications, Node.js on the server, and Flutter or React Native for mobile apps, chosen per project.',
+    },
+    {
+      question: 'How do we communicate during the project?',
+      answer:
+        'You get one day-to-day contact, written progress updates and a weekly demo of working software. Calls are scheduled in your time zone, and you can see and prioritise the backlog at any time.',
+    },
   ],
   cta: {
     heading: 'Tell us the process that\'s holding you back',

@@ -3,6 +3,7 @@ import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
 import WhatsAppButton from './components/WhatsAppButton'
+import CookieConsent from './components/CookieConsent'
 import ProtectedRoute from './components/ProtectedRoute'
 import Homepage from './pages/Homepage'
 import SolutionsPage from './pages/SolutionsPage'
@@ -104,6 +105,7 @@ function App() {
       {!isAdminPage && !isTemplatePage && <Navbar />}
       <ScrollToTop />
       {!isAdminPage && !isTemplatePage && <WhatsAppButton />}
+      {!isAdminPage && <CookieConsent />}
       
       <main className="relative z-10">
         <div

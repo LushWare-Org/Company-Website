@@ -7,11 +7,12 @@ import {
   Clock,  ArrowLeft,  Eye, EyeOff,
   AlertCircle,
   SearchX,
-  Target, Link2,
+  Target, Link2, Megaphone,
 } from 'lucide-react';
 import { fetchAllInquiries, updateInquiryStatus } from '../services/adminService';
 import { MARKETS, type MarketId } from '../data/markets';
 import LeadReport from '../components/LeadReport';
+import type { Attribution } from '../lib/attribution';
 
 /** Lead markets: client market ids (src/data/markets.ts) plus leads from the Maldives site. */
 const LEAD_MARKETS: Record<string, string> = {
@@ -43,7 +44,12 @@ interface Inquiry {
   industry?: string;
   project?: string;
   teamMembers?: string;
+  attribution?: Attribution | null;
 }
+
+/** "google / cpc · spring-sale" — how the visitor reached the site. */
+const leadSourceLabel = (a?: Attribution | null) =>
+  a ? [`${a.source} / ${a.medium}`, a.campaign, a.clickIdType && `${a.clickIdType} ✓`].filter(Boolean).join(' · ') : 'Not Recorded';
 
 export default function CommandCenter() {
   const navigate = useNavigate();
@@ -579,6 +585,8 @@ export default function CommandCenter() {
                   <DetailBlock icon={<Clock />} label="Received" value={new Date(selectedInquiry.createdAt).toLocaleDateString()} />
                   <DetailBlock icon={<Target />} label="Market" value={marketLabel(selectedInquiry.market)} />
                   <DetailBlock icon={<Link2 />} label="Landing Page" value={selectedInquiry.sourcePath || "Not Recorded"} />
+                  <DetailBlock icon={<Megaphone />} label="Lead Source" value={leadSourceLabel(selectedInquiry.attribution)} />
+                  <DetailBlock icon={<Link2 />} label="First Page Visited" value={selectedInquiry.attribution?.landingPage || "Not Recorded"} />
                 </div>
 
                 {/* Conditional Fields Based on Inquiry Type */}

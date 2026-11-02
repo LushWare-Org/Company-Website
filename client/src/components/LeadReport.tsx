@@ -8,6 +8,7 @@ export interface ReportInquiry {
   countryCode?: string | null;
   sourcePath?: string | null;
   market?: string | null;
+  attribution?: { source: string; medium: string; campaign?: string } | null;
 }
 
 interface LeadReportProps {
@@ -21,6 +22,8 @@ const monthName = (key: string) =>
   new Date(`${key}-01T00:00:00`).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
 const countryOf = (i: ReportInquiry) => i.countryCode || i.country || '??';
 const pageOf = (i: ReportInquiry) => i.sourcePath || '(not recorded)';
+const sourceOf = (i: ReportInquiry) =>
+  i.attribution ? `${i.attribution.source} / ${i.attribution.medium}${i.attribution.campaign ? ` · ${i.attribution.campaign}` : ''}` : '(not recorded)';
 
 type PageRow = { page: string; market: string; total: number; countries: [string, number][] };
 
@@ -60,9 +63,21 @@ export default function LeadReport({ inquiries, marketLabel, onClose }: LeadRepo
     return [...counts].sort((a, b) => b[1] - a[1]);
   }, [monthInquiries]);
 
+  const sourceRows = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const i of monthInquiries) counts.set(sourceOf(i), (counts.get(sourceOf(i)) ?? 0) + 1);
+    return [...counts].sort((a, b) => b[1] - a[1]);
+  }, [monthInquiries]);
+
   const downloadCsv = () => {
-    const lines = [['month', 'landing_page', 'market', 'country', 'inquiries']];
-    for (const r of pageRows) for (const [c, n] of r.countries) lines.push([month, r.page, r.market, c, String(n)]);
+    const lines = [['month', 'landing_page', 'market', 'country', 'source', 'inquiries']];
+    const rows = new Map<string, { cells: string[]; n: number }>();
+    for (const i of monthInquiries) {
+      const cells = [month, pageOf(i), marketLabel(i.market), countryOf(i), sourceOf(i)];
+      const key = cells.join('\u0000');
+      rows.set(key, { cells, n: (rows.get(key)?.n ?? 0) + 1 });
+    }
+    for (const { cells, n } of rows.values()) lines.push([...cells, String(n)]);
     const csv = lines.map((l) => l.map((v) => `"${v.replace(/"/g, '""')}"`).join(',')).join('\n');
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
@@ -131,6 +146,17 @@ export default function LeadReport({ inquiries, marketLabel, onClose }: LeadRepo
                 )}
               </tbody>
             </table>
+          </section>
+
+          <section>
+            <h3 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-3">By source / medium · campaign</h3>
+            <div className="flex flex-wrap gap-2">
+              {sourceRows.map(([s, n]) => (
+                <span key={s} className="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-sm">
+                  <span className="font-semibold text-slate-800">{s}</span> <span className="text-slate-500">{n}</span>
+                </span>
+              ))}
+            </div>
           </section>
 
           <section>

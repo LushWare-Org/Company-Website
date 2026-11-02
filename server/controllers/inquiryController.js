@@ -1,6 +1,20 @@
 const Inquiry = require("../models/Inquiry");
 const { sendInquiryEmail, sendUserConfirmationEmail } = require("../utils/emailService");
 
+const ATTRIBUTION_FIELDS = { source: 150, medium: 150, campaign: 150, term: 150, content: 150, clickId: 300, clickIdType: 20, referrer: 300, landingPage: 200 };
+
+/** Keeps only known attribution fields as trimmed, length-limited strings; null if none. */
+const cleanAttribution = (raw) => {
+  if (!raw || typeof raw !== "object") return null;
+  const out = {};
+  for (const [key, max] of Object.entries(ATTRIBUTION_FIELDS)) {
+    if (typeof raw[key] === "string" && raw[key].trim()) out[key] = raw[key].trim().slice(0, max);
+  }
+  const capturedAt = new Date(raw.capturedAt);
+  if (!Number.isNaN(capturedAt.getTime())) out.capturedAt = capturedAt;
+  return out.source ? out : null;
+};
+
 /**
  * Submit a new inquiry
  * Handles all inquiry types: solution, project, consultation
@@ -32,6 +46,7 @@ const submitInquiry = async (req, res) => {
       countryCode: /^[A-Za-z]{2}$/.test(req.body.countryCode || "") ? req.body.countryCode.toUpperCase() : null,
       sourcePath: typeof req.body.sourcePath === "string" ? req.body.sourcePath.slice(0, 200) : null,
       market: typeof req.body.market === "string" ? req.body.market.slice(0, 40) : null,
+      attribution: cleanAttribution(req.body.attribution),
       budget: budget ? budget.trim() : null,
       whatsapp: whatsapp ? whatsapp.trim() : null,
       inquiryType,
