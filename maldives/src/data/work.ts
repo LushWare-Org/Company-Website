@@ -15,6 +15,18 @@ export type WorkProject = {
 
 export const WORK_PROJECTS: WorkProject[] = [
   {
+    id: 'meetmemaldives',
+    name: 'Travel Offers Listing Platform',
+    client: 'Meet Me Maldives',
+    summary:
+      'Meet Me Maldives is a travel deals platform that helps travellers discover Maldives holiday deals and accommodation offers from verified operators.',
+    description:
+      'We built a platform where travellers browse curated offers, explore the details of each deal and send an enquiry to move towards booking, while the travel business handles the booking and arrangements.',
+    image: '/work/meetmemaldives.webp',
+    link: 'https://meetmemaldives.com/',
+    relatedPath: '/services',
+  },
+  {
     id: 'dreamspeed',
     name: 'Speedboat Ticket Booking System',
     client: 'Dream Speed',
@@ -34,7 +46,7 @@ export const WORK_PROJECTS: WorkProject[] = [
     description:
       'We delivered a tailored B2B platform that helps travel agents streamline operations, increase revenue and manage bookings day to day.',
     image: '/work/yomaldives.webp',
-    link: 'https://yomaldives.live/',
+    link: 'https://yomaldives.travel/',
     relatedPath: '/real-estate-control',
   },
   {

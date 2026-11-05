@@ -22,6 +22,8 @@ export const PAGE_LINKS = {
   '/solutions/ai-process-optimization': { name: 'AI-Driven Process Optimization', desc: 'Operational intelligence layered on top of your existing systems.' },
   '/solutions/autonomous-decision-intelligence': { name: 'Autonomous Decision Intelligence', desc: 'Operations that decide, act and keep improving, with people in control.' },
   '/work': { name: 'Our Work', desc: 'Projects we have delivered for clients.' },
+  '/case-studies/meet-me-maldives': { name: 'Case study: Meet Me Maldives', desc: 'AI-powered recommendations that personalize travel deals for every visitor.' },
+  '/case-studies/yo-maldives': { name: 'Case study: Yo Maldives', desc: 'A B2B platform where travel agents search trade rates, request bookings and quote clients.' },
 } as const satisfies Record<string, { name: string; desc: string }>
 
 export type PagePath = keyof typeof PAGE_LINKS

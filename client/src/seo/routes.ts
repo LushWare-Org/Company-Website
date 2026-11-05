@@ -94,11 +94,12 @@ const manufacturing = { name: 'Manufacturing', path: '/industries/manufacturing'
 const logistics = { name: 'Logistics & Supply Chain', path: '/industries/logistics-supply-chain' }
 const tourism = { name: 'Tourism & Hospitality', path: '/industries/tourism-hospitality' }
 const customSoftware = { name: 'Custom Software Development', path: '/custom-software-development' }
+const work = { name: 'Our Work', path: '/work' }
 
 export const ROUTES: RouteSeo[] = [
   {
     path: '/',
-    title: 'LushWare — Custom Software & Mobile App Development',
+    title: 'LushWare — Business Operations on Autopilot',
     description:
       'Custom software and iOS/Android app development for growing businesses worldwide, plus field service, MEP, manufacturing and tourism software. No upfront payment.',
     priority: 1.0,
@@ -302,6 +303,26 @@ export const ROUTES: RouteSeo[] = [
       'Explore LushWare projects showcasing innovation across travel, hospitality, real estate, CRM, automation and digital products.',
     priority: 0.7,
     changefreq: 'monthly',
+  },
+  {
+    path: '/case-studies/meet-me-maldives',
+    title: 'Meet Me Maldives Case Study: AI Travel Recommendations | LushWare',
+    description:
+      'How LushWare built Meet Me Maldives, a travel deals platform with AI-powered recommendations that personalize offers to each traveller\'s profile and behaviour.',
+    breadcrumb: [work],
+    image: '/og/case-study-meet-me-maldives.jpg',
+    priority: 0.7,
+    changefreq: 'yearly',
+  },
+  {
+    path: '/case-studies/yo-maldives',
+    title: 'Yo Maldives Case Study: B2B Travel Platform Development | LushWare',
+    description:
+      'How LushWare built Yo Maldives, a B2B travel platform where agencies register, search trade hotel rates, request bookings and generate client quotes.',
+    breadcrumb: [work],
+    image: '/og/case-study-yo-maldives.jpg',
+    priority: 0.7,
+    changefreq: 'yearly',
   },
   {
     path: '/blog',

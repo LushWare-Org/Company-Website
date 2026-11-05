@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
+
 export type WorkProject = {
   name: string;
   client: string;
   summary: string;
   description: string;
   image: string;
-  link: string;
+  /** Public website; omitted for projects we don't link to. */
+  link?: string;
 };
 
 type WorkCardProps = {
@@ -14,6 +17,8 @@ type WorkCardProps = {
   ctaAlign?: "start" | "center";
   className?: string;
   ctaClassName?: string;
+  /** Path of the project's case study page, if it has one. */
+  caseStudy?: string;
 };
 
 const dmSans = "'DM Sans', sans-serif";
@@ -27,7 +32,13 @@ export default function WorkCard({
   ctaAlign = "start",
   className,
   ctaClassName,
+  caseStudy,
 }: WorkCardProps) {
+  // "#" is a placeholder link: the button shows but goes nowhere.
+  const openLink = () => {
+    if (project.link && project.link !== "#") window.open(project.link, "_blank");
+  };
+
   return (
     <div
       style={{ transitionDelay: `${(index % 2) * 150}ms`, fontFamily: dmSans }}
@@ -39,8 +50,8 @@ export default function WorkCard({
         {/* Image block */}
         <div className="w-full">
           <div
-            onClick={() => window.open(project.link, "_blank")}
-            className="relative aspect-video cursor-pointer overflow-hidden "
+            onClick={project.link ? openLink : undefined}
+            className={`relative aspect-video overflow-hidden ${project.link ? "cursor-pointer" : ""}`}
           >
             <img
               src={project.image}
@@ -48,6 +59,7 @@ export default function WorkCard({
               className="w-full h-full object-cover transition-transform duration-[2500ms] ease-out"
             />
 
+            {project.link && (
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="bg-gray-900 p-8 border-2 border-white shadow-2xl scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500">
                 <svg
@@ -66,6 +78,7 @@ export default function WorkCard({
                 </svg>
               </div>
             </div>
+            )}
           </div>
         </div>
 
@@ -95,10 +108,22 @@ export default function WorkCard({
 
             {/* CTA (unchanged) */}
             <div
-              className={`pt-1 flex md:mt-auto ${ctaAlign === "center" ? "justify-center" : "justify-start"} ${ctaClassName ?? ""}`}
+              className={`pt-1 flex flex-wrap gap-3 md:mt-auto ${ctaAlign === "center" ? "justify-center" : "justify-start"} ${ctaClassName ?? ""}`}
             >
+              {caseStudy && (
+                <Link
+                  to={caseStudy}
+                  className="inline-flex items-center gap-3 px-8 py-4 border border-slate-900 text-slate-900 text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-slate-900 hover:text-white! transition-colors duration-300"
+                >
+                  Read Case Study
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              )}
+              {project.link && (
               <button
-                onClick={() => window.open(project.link, "_blank")}
+                onClick={openLink}
                 className="group/btn relative cursor-pointer inline-flex items-center gap-3 px-8 py-4 bg-slate-900 text-white text-[10px] font-bold tracking-[0.2em] uppercase overflow-hidden transition-shadow duration-300 hover:shadow-[0_16px_48px_rgba(0,0,0,0.12)] active:scale-[0.98]"
               >
                 <span className="relative z-10">Visit Platform</span>
@@ -116,6 +141,7 @@ export default function WorkCard({
                 </svg>
                 <div className="absolute inset-0 bg-emerald-600 translate-x-[-101%] group-hover/btn:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.85,0,0.15,1)]" />
               </button>
+              )}
             </div>
           </div>
 

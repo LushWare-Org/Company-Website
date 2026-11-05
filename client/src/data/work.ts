@@ -5,26 +5,15 @@ import type { WorkProject } from "@/components/WorkCard";
 
 export const WORK_PROJECTS = [
   {
-    id: "tripskyway",
-    name: "Travel Booking Website",
-    client: "Trip Sky Way",
+    id: "meetmemaldives",
+    name: "Travel Offers Listing Platform",
+    client: "Meet Me Maldives",
     summary:
-      "Trip Sky Way is a modern travel booking platform designed to help travelers discover destinations and plan seamless journeys.",
+      "Meet Me Maldives is a travel deals platform that helps travellers discover Maldives holiday deals and accommodation offers from verified operators.",
     description:
-      "We developed a clean, responsive travel website focused on intuitive navigation, fast performance, and a streamlined booking experience tailored to modern travelers.",
-    image: "/work2/TripSkyWay.webp",
-    link: "https://tripskyway.com/",
-  },
-  {
-    id: "holidayvibes",
-    name: "Tour & Travel Website",
-    client: "Holiday Vibes Tour",
-    summary:
-      "Holiday Vibes Tour is a travel website built to promote curated tours and immersive travel experiences.",
-    description:
-      "We crafted a vibrant and responsive platform that enables users to explore tour packages, view detailed itineraries, and make inquiries with ease.",
-    image: "/work2/HolidayVibesTour.jpg",
-    link: "https://holidayvibestour.com/",
+      "We built a platform where travellers browse curated offers, explore the details of each deal and send an enquiry to move towards booking, while the travel business handles the booking and arrangements.",
+    image: "/work2/meetmemaldives.webp",
+    link: "https://meetmemaldives.com/",
   },
   {
     id: "yomaldives",
@@ -35,30 +24,7 @@ export const WORK_PROJECTS = [
     description:
       "This platform is a perfect example of how our bespoke software solutions can empower businesses and drive success. This project highlights our ability to deliver tailored software solutions that meet our clients’ specific business needs.",
     image: "/work2/yomaldives.webp",
-    link: "https://yomaldives.live/",
-  },
-
-  {
-    id: "dreamspeed",
-    name: "Speedboat Ticket Booking System",
-    client: "Dream Speed",
-    summary:
-      "We’re thrilled to showcase our latest project, the Dream Speed Speedboat Booking System. We developed this platform to help travelers effortlessly search routes, check availability, and book their island journeys in the Maldives.",
-    description:
-      "This project is a perfect example of our commitment to creating bespoke software that solves real-world challenges and enhances user experiences.",
-    image: "/work2/dreamspeed.jpg",
-    link: "https://www.dreamspeedmaldives.com/",
-  },
-  {
-    id: "islekey",
-    name: "All-in-one Travel Agency Web Application",
-    client: "Islekey Holidays",
-    summary:
-      "We’re excited to showcase a project close to our hearts: IsleKey Holdings, an all-in-one web application for a travel agency.",
-    description:
-      "We built a platform that not only manages bookings but truly helps users “Experience Paradise” from the moment they land on the site. This project is a perfect example of our ability to create seamless, user-friendly solutions that elevate businesses and delight their customers.",
-    image: "/work2/islekeyholidays.webp",
-    link: "https://islekeyholidays.com/",
+    link: "https://yomaldives.travel/",
   },
   {
     id: "traveliccted",
@@ -72,17 +38,27 @@ export const WORK_PROJECTS = [
     link: "https://traveliccted.com/",
   },
   {
-    id: "crownvoyages",
-    name: "Travel Agency Management System",
-    client: "Crown Voyages",
+    id: "islekey",
+    name: "All-in-one Travel Agency Web Application",
+    client: "Islekey Holidays",
     summary:
-      "Crown Voyages is a powerful travel agency management system with automatic quotation generation designed to streamline operations.",
+      "We’re excited to showcase a project close to our hearts: IsleKey Holdings, an all-in-one web application for a travel agency.",
     description:
-      "We developed a comprehensive platform that enables travel agencies to manage bookings, generate quotations automatically, handle clients, and optimize daily operations through a centralized system.",
-    image: "/work2/CrownVoyages.webp",
-    link: "https://portal.crownvoyages.com/",
+      "We built a platform that not only manages bookings but truly helps users “Experience Paradise” from the moment they land on the site. This project is a perfect example of our ability to create seamless, user-friendly solutions that elevate businesses and delight their customers.",
+    image: "/work2/islekeyholidays.webp",
+    link: "https://islekeyholidays.com/",
   },
-
+  {
+    id: "holidayvibes",
+    name: "Tour & Travel Website",
+    client: "Holiday Vibes Tour",
+    summary:
+      "Holiday Vibes Tour is a travel website built to promote curated tours and immersive travel experiences.",
+    description:
+      "We crafted a vibrant and responsive platform that enables users to explore tour packages, view detailed itineraries, and make inquiries with ease.",
+    image: "/work2/HolidayVibesTour.jpg",
+    link: "https://holidayvibestour.com/",
+  },
   {
     id: "holidaylife",
     name: "Travel Agency Websites",
@@ -92,7 +68,40 @@ export const WORK_PROJECTS = [
     description:
       "Our team worked to create a seamless, user-friendly platform that helps users find their dream holiday. This project is a testament to our commitment to building high-quality, impactful software solutions.",
     image: "/work2/holidaylife.webp",
-    link: "https://holidaylife.travel/",
+    link: "https://holidaylife.online/",
+  },
+  {
+    id: "tripskyway",
+    name: "Travel Booking Website",
+    client: "Trip Sky Way",
+    summary:
+      "Trip Sky Way is a modern travel booking platform designed to help travelers discover destinations and plan seamless journeys.",
+    description:
+      "We developed a clean, responsive travel website focused on intuitive navigation, fast performance, and a streamlined booking experience tailored to modern travelers.",
+    image: "/work2/TripSkyWay.webp",
+    link: "#",
+  },
+  {
+    id: "dreamspeed",
+    name: "Speedboat Ticket Booking System",
+    client: "Dream Speed",
+    summary:
+      "We’re thrilled to showcase our latest project, the Dream Speed Speedboat Booking System. We developed this platform to help travelers effortlessly search routes, check availability, and book their island journeys in the Maldives.",
+    description:
+      "This project is a perfect example of our commitment to creating bespoke software that solves real-world challenges and enhances user experiences.",
+    image: "/work2/dreamspeed.jpg",
+    link: "#",
+  },
+  {
+    id: "crownvoyages",
+    name: "Travel Agency Management System",
+    client: "Crown Voyages",
+    summary:
+      "Crown Voyages is a powerful travel agency management system with automatic quotation generation designed to streamline operations.",
+    description:
+      "We developed a comprehensive platform that enables travel agencies to manage bookings, generate quotations automatically, handle clients, and optimize daily operations through a centralized system.",
+    image: "/work2/CrownVoyages.webp",
+    link: "#",
   },
 ] as const satisfies readonly (WorkProject & { id: string })[];
 

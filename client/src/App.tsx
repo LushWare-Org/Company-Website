@@ -12,6 +12,7 @@ import BPM from './pages/solutions/BPM'
 import MobileApps from './pages/solutions/MobileApps'
 import Websites from './pages/solutions/Websites'
 import WorkPage from './pages/WorkPage'
+import CaseStudyPage from './pages/CaseStudyPage'
 import ProjectBasePage from './pages/ProjectBasePage'
 import ConsultationPage from './pages/ConsultationPage'
 import AdminLogin from './pages/AdminLogin'
@@ -152,6 +153,8 @@ function App() {
           <Route path="/solutions/ai-process-optimization" element={<AIProcessOptimization />} />
           <Route path="/solutions/autonomous-decision-intelligence" element={<AutonomousDecisionIntelligence />} />
           <Route path="/work" element={<WorkPage />} />
+          <Route path="/case-studies/meet-me-maldives" element={<CaseStudyPage slug="meet-me-maldives" />} />
+          <Route path="/case-studies/yo-maldives" element={<CaseStudyPage slug="yo-maldives" />} />
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/project-base" element={<ProjectBasePage />} />

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import WorkCard from "../components/WorkCard";
 import { WORK_PROJECTS as projects } from "../data/work";
+import { caseStudyPathForWork } from "../data/caseStudies";
 
 
 
@@ -105,6 +106,7 @@ export default function WorkPage() {
                 project={project}
                 index={index}
                 isVisible={visibleProjects.has(index)}
+                caseStudy={caseStudyPathForWork(project.id)}
               />
             </div>
           ))}

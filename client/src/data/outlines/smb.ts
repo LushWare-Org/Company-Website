@@ -37,7 +37,7 @@ export const customSoftwareOutline: PageOutline = {
     kind: 'caseStudy',
     heading: 'Custom systems we have delivered',
     intro: 'A few of the platforms we have designed, built and keep running for clients. All are live.',
-    projects: ['crownvoyages', 'yomaldives', 'dreamspeed'],
+    projects: ['meetmemaldives', 'yomaldives', 'crownvoyages'],
   },
   guide: {
     heading: 'A buyer\'s guide to custom software development for SMBs',

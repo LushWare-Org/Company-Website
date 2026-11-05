@@ -8,6 +8,7 @@ import { getRouteFaq } from "@/data/faq";
 import { PAGE_LINKS } from "@/data/links";
 import { MARKETS } from "@/data/markets";
 import { getWorkProject } from "@/data/work";
+import { caseStudyPathForWork } from "@/data/caseStudies";
 import type { PageOutline } from "@/data/outlines/types";
 
 // Sections of the standard page outline (src/data/outlines/types.ts), shared by
@@ -132,14 +133,23 @@ export function OutlineClose({ outline: o, marketRelated }: OutlineCloseProps) {
                       <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-emerald-700 mb-2">{p.client}</p>
                       <h3 className="text-xl font-semibold text-slate-900 mb-3">{p.name}</h3>
                       <p className="text-slate-500 leading-relaxed mb-6 flex-1">{p.summary}</p>
-                      <a
-                        href={p.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-900 hover:text-emerald-700"
-                      >
-                        View live project <Arrow />
-                      </a>
+                      {caseStudyPathForWork(id) && (
+                        <Link
+                          to={caseStudyPathForWork(id)!}
+                          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-emerald-700 hover:text-slate-900 mb-4"
+                        >
+                          Read the case study <Arrow />
+                        </Link>
+                      )}
+                      {"link" in p && (
+                        <a
+                          href={p.link}
+                          {...(p.link === "#" ? { onClick: (e: React.MouseEvent) => e.preventDefault() } : { target: "_blank", rel: "noopener noreferrer" })}
+                          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-900 hover:text-emerald-700"
+                        >
+                          View live project <Arrow />
+                        </a>
+                      )}
                     </div>
                   </article>
                 );
